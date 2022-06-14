@@ -2865,13 +2865,13 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'speedtest': {
-            m.reply('Testing Speed...')
+            replay('Testing Speed...')
             let cp = require('child_process')
             let { promisify } = require('util')
             let exec = promisify(cp.exec).bind(cp)
           let o
           try {
-          o = await exec('python speed.py')
+          o = await exec('python3 speed.py')
           } catch (e) {
           o = e
          } finally {
