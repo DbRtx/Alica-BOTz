@@ -198,10 +198,18 @@ ${pesan}`
 		setting.status = new Date() * 1
 	    }
 	}
-        
+        //Thumbnail
+       let thumbnail = {
+          "externalAdReply": { "title": `${global.footer}`,
+            "body": `runtime bot ${runtime(process.uptime())}`,
+            "previewType": "photo",
+            "sourceUrl": "https://dlvash.github.io",
+            "thumbnail": fs.readFileSync(`./lib/icha.jpg`)
+          }
+       }
 	//replay
        const replay = (anu) => {
-            hisoka.sendMessage(m.chat, { text: anu, contextInfo:{ "externalAdReply": { "title": `${global.footer}`, "body": `runtime bot ${runtime(process.uptime())}`, "previewType": "photo", "sourceUrl": "https://dlvash.github.io", "thumbnail": fs.readFileSync(`./lib/icha.jpg`)}}}, { quoted: m})
+            hisoka.sendMessage(m.chat, { text: anu, contextInfo: thumbnail }, { quoted: m})
 }
 /*
         if (budy.match(`https://youtube.com/${text}`)) {
@@ -545,13 +553,15 @@ Selama ${clockString(new Date - user.afkTime)}
               hisoka.sendText(global.number, anu)
               return replay('*Berhasil mengirim report*')
             }
-            case 'getdb': case 'getsesi': {
-              if (command = "getdb") {
-                let json = fs.readFileSync("./src/database.json")
-              } else {
-                let json = fs.readFileSync("./icha.json")
+            case 'getsesi': {
+              if (!m.isCreator) {
+                replay(mess.owner)
+                break
               }
-              hisoka.sendMessage(m.chat, {document: sesi, mimetype: 'application/json', caption: `nih`}, { quoted: m })
+              let media = fs.readFileSync("./src/database.json")
+              hisoka.sendMedia(m.chat, { document: media, mimetype: 'application/json', fileName: 'database.json'}, { quoted: m })
+              replay(`nih sesi nya`, { quoted: isBaileys })
+
             }
             break
 	    case 'afk': {
@@ -3120,8 +3130,15 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                                     id: 'sc'
                                 }
                             }]
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
-
+              let buttonMessage = {
+                image: thumb,
+                caption: anu,
+                footer: 'by ICHA-BOTz',
+                buttons: btn,
+                contextInfo: thumbnail,
+                headerType: 4
+                }
+              hisoka.sendMessage(m.chat, buttonMessage, { quoted :m })
             }
             break
             case 'list': {
