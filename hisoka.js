@@ -608,6 +608,16 @@ Selama ${clockString(new Date - user.afkTime)}
               m.reply(`${user} sekarang prem`)
             }
             break
+            case 'getpp': {
+               let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
+              try {
+                 var pp = await hisoka.profilePictureUrl(user, "image")
+              } catch {
+                 var pp = "https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png"
+              }
+              hisoka.sendMessage(m.chat, { image: { url: pp }, caption: `nih pp ny ${user.spit("@")[0]}`}, m, { contextInfo: { mentionedJid: [user] }})
+            }
+            break
             case 'me': {
               let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
               let PhoneNumber = require('awesome-phonenumber')
