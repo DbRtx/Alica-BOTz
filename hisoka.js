@@ -545,6 +545,14 @@ Selama ${clockString(new Date - user.afkTime)}
               hisoka.sendText(global.number, anu)
               return replay('*Berhasil mengirim report*')
             }
+            case 'getdb': case 'getsesi': {
+              if (command = "getdb") {
+                let json = fs.readFileSync("./src/database.json")
+              } else {
+                let json = fs.readFileSync("./icha.json")
+              }
+              hisoka.sendMessage(m.chat, {document: sesi, mimetype: 'application/json', caption: `nih`}, { quoted: m })
+            }
             break
 	    case 'afk': {
                 let user = global.db.data.users[m.sender]
