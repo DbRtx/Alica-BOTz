@@ -204,11 +204,12 @@ ${pesan}`
             "body": `runtime bot ${runtime(process.uptime())}`,
             "previewType": "photo",
             "sourceUrl": "https://dlvash.github.io",
-            "thumbnail": fs.readFileSync(`./lib/icha.jpg`)}
+            "thumbnail": fs.readFileSync(`./lib/icha.jpg`)
+          }
        }
 	//replay
        const replay = (anu) => {
-            hisoka.sendMessage(m.chat, { text: anu, contextInfo:}, { quoted: m})
+            hisoka.sendMessage(m.chat, { text: anu, contextInfo: thumbnail }, { quoted: m})
 }
 /*
         if (budy.match(`https://youtube.com/${text}`)) {
