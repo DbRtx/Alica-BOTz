@@ -808,16 +808,9 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             break
             case 'sc': {
               let thumb = fs.readFileSync('./lib/sc.jpg')
-              let anu = `*╔*
-*┃           SCRIPT*
-*╚╦━━━━━━━━━━━━╝*
-*╔╣* 
-*┃┃*
-*┃┃ SC : https://github.com/DikaArdnt/Hisoka-Morou*
-*┃┃ RECODED BY: D_BAJ*
-*┃┃*
-*┃╚═══━━━━━━━━━━━━━⊏⊐*
-*╚━━━━━━━━━━━━━━━━⊏⊐*`
+              let anu = `
+*Public template* : https://github.com/DikaArdnt/Hisoka-Morou
+`
              replay(anu) 
             }
             break
@@ -1458,41 +1451,23 @@ break
                 let anu = await store.chats.all().map(v => v.id)
                 m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
 		for (let yoi of anu) {
-		    await sleep(1500)
-		    let btn = [{
-                      urlButton: {
-                                    displayText: 'Source Code',
-                                    url: 'https://github.com/DikaArdnt/Hisoka-Morou'
-                                }
-                            }, {
-                                callButton: {
-                                    displayText: 'Number Phone Owner',
-                                    phoneNumber: '+62 882-9202-4190'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Status Bot',
-                                    id: 'ping'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Contact Owner',
-                                    id: 'owner'
-                                }  
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Script',
-                                    id: 'sc'
-                                }
-                            }]
-                      let txt = `「 Broadcast Bot 」\n\n${text}`
-                      hisoka.send5ButImg(yoi, txt, hisoka.user.name, global.thumb, btn)
+                  await sleep(1500)
+                  let bc = {
+                    text: `*⌘ BOT BC ⌘* \n\n${text}`,
+                    contextInfo: thumbnail,
+                    footer: global.footer,
+                    headerType: 1
+                  }
+                  hisoka.sendMessage(yoi, bc, { quoted: m })
 		}
-		m.reply('Sukses Broadcast')
+              replay('Sukses Broadcast')
             }
             break
             case 'infochat': {
-                if (!m.quoted) m.reply('Reply Pesan')
+                if (!m.quoted) {
+                  replay('Reply Pesan')
+                  break
+                }
                 let msg = await m.getQuotedObj()
                 if (!m.quoted.isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
                 let teks = ''
@@ -1507,7 +1482,7 @@ break
             }
             break
             case 'q': case 'quoted': {
-		if (!m.quoted) return m.reply('Reply Pesannya!!')
+		if (!m.quoted) return replay('Reply Pesannya!!')
 		let wokwol = await hisoka.serializeM(await m.getQuotedObj())
 		if (!wokwol.quoted) return m.reply('Pesan Yang anda reply tidak mengandung reply')
 		await wokwol.quoted.copyNForward(m.chat, true)
