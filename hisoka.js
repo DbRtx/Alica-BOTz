@@ -540,6 +540,7 @@ Selama ${clockString(new Date - user.afkTime)}
               if (m.quoted.mtype !== 'viewOnceMessage') throw 'yang kamu balas bukan pesan viewOnce'
               await hisoka.copyNForward(m.chat, await hisoka.downloadAndSaveMediaMessage(m.chat, m.quoted.id), false, { readViewOnce: true }).catch(_ => m.reply('mungkin udah dibuka sama bot'))
             }
+            break
             case 'report': {
               if (!text) return replay(`Example: ${prefix + command} pesan`)
               let tempat = m.isGroup ? `GRUP CHAT ${groupName}` : `Private Chat`
@@ -552,6 +553,14 @@ Selama ${clockString(new Date - user.afkTime)}
 *"${text}"*`
               hisoka.sendText(global.number, anu)
               return replay('*Berhasil mengirim report*')
+            }
+            break
+            case 'update': {
+              if (!isCreator) {
+                replay(mess.owner)
+                break
+              }
+              exec('git fetch && git pull')
             }
             case 'getsesi': {
               if (!isCreator) {
@@ -1458,7 +1467,7 @@ break
                     footer: global.footer,
                     headerType: 1
                   }
-                  hisoka.sendMessage(yoi, bc, { quoted: m })
+                  hisoka.sendMessage(yoi, bc)
 		}
               replay('Sukses Broadcast')
             }
