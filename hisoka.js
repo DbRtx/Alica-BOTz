@@ -2472,6 +2472,7 @@ break
                     caption: util.format(anu.result),
                     footer: 'by ICHA-BOTz',
                     buttons: buttons,
+                    contextInfo: thumbnail,
                     headerType: 4
                 }
                 let msg = await hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
@@ -2482,7 +2483,7 @@ break
                 if (!text) return reply(`Enter Query Link!`)
                 return replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/facebook', { url: text }, 'apikey'))
-                hisoka.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `🐦 Title : ${anu.result.title}`}, { quoted: m })            }
+                hisoka.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `🐦 Title : ${anu.result.title}`, contextInfo: thumbnail }, { quoted: m })            }
             break
             case 'umma': case 'ummadl': {
 	        if (!text) throw `Example : ${prefix + command} https://umma.id/channel/video/post/gus-arafat-sumber-kecewa-84464612933698`
@@ -2510,7 +2511,7 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
 		    hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
 		} else if (anu.type == 'image') {
 		    anu.media.map(async (url) => {
-		        hisoka.sendMessage(m.chat, { image: { url }, caption: `⭔ Title : ${anu.title}\n⭔ Author : ${anu.author.name}\n⭔ Like : ${anu.like}\n⭔ Caption : ${anu.caption}` }, { quoted: m })
+		        hisoka.sendMessage(m.chat, { image: { url }, caption: `⭔ Title : ${anu.title}\n⭔ Author : ${anu.author.name}\n⭔ Like : ${anu.like}\n⭔ Caption : ${anu.caption}`, contextInfo: thumbnail }, { quoted: m })
 		    })
 		}
 	    }
@@ -2520,7 +2521,7 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
         let { ringtone } = require('./lib/scraper')
 		let anu = await ringtone(text)
 		let result = anu[Math.floor(Math.random() * anu.length)]
-		hisoka.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
+		hisoka.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg', contextInfo: thumbnail }, { quoted: m })
 	    }
 	    break
 		case 'iqra': {
