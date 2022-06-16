@@ -3342,7 +3342,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                   listType: 1
                 }
               }), {})
-              hisoka.relayMessage(m.chat, template.message, { messageId: template.key.id }, m)
+              hisoka.relayMessage(m.chat, template.message, { messageId: template.key.id, contextInfo: thumbnail }, m)
             }
             break
             case 'semua': case '*': case 'all': {
