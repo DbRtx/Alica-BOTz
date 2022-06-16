@@ -654,7 +654,11 @@ Selama ${clockString(new Date - user.afkTime)}
               } catch {
                  var pp = "https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png"
               }
-              hisoka.sendMessage(m.chat, { image: { url: pp }, caption: `nih pp ny ${user.split("@")[0]}`, contextInfo: { mentionedJid: [user], thumbnail }})
+              hisoka.sendMessage(m.chat, { 
+                image: { url: pp },
+                caption: `nih @${m.sender.split("@")[0]}, ppny si @${user.split("@")[0]}`, 
+                contextInfo: thumbnail
+              }, { quoted: m })
             }
             break
             case 'me': {
