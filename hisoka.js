@@ -559,7 +559,7 @@ Selama ${clockString(new Date - user.afkTime)}
                 break
               }
               let media = fs.readFileSync("./icha.json")
-              hisoka.sendMessage(m.chat, { document: media, mimetype: 'application/json', fileName: 'database.json'}, { quoted: m })
+              hisoka.sendMessage(m.chat, { document: media, mimetype: 'application/json', fileName: global.sessionName }, { quoted: m })
 
             }
             break
