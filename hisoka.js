@@ -560,8 +560,15 @@ Selama ${clockString(new Date - user.afkTime)}
                 replay(mess.owner)
                 break
               }
-              exec('git fetch && git pull')
+              replay('Updating!')
+              try {
+                exec('git fetch && git pull')
+                replay('update complite')
+              } catch {
+                replay('Update failed!')
+              }
             }
+            break
             case 'getsesi': {
               if (!isCreator) {
                 replay(mess.owner)
