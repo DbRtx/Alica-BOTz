@@ -560,7 +560,6 @@ Selama ${clockString(new Date - user.afkTime)}
               }
               let media = fs.readFileSync("./src/database.json")
               hisoka.sendMedia(m.chat, { document: media, mimetype: 'application/json', fileName: 'database.json'}, { quoted: m })
-              replay(`nih sesi nya`, { quoted: isBaileys })
 
             }
             break
