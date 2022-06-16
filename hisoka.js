@@ -199,7 +199,9 @@ ${pesan}`
 	    }
 	}
         //Thumbnail
+       let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender 
        let thumbnail = {
+          mentionedJid: [user]
           "externalAdReply": { "title": `${global.footer}`,
             "body": `runtime bot ${runtime(process.uptime())}`,
             "previewType": "photo",
