@@ -554,7 +554,7 @@ Selama ${clockString(new Date - user.afkTime)}
               return replay('*Berhasil mengirim report*')
             }
             case 'getsesi': {
-              if (!m.isCreator) {
+              if (!isCreator) {
                 replay(mess.owner)
                 break
               }
