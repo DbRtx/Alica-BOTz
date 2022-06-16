@@ -146,19 +146,40 @@ async function startHisoka() {
                 } catch {
                     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
-
-                if (anu.action == 'add') {
-                    hisoka.sendMessage(anu.id, { image: { url: ppuser }, caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}` }, m, {
-                      contextInfo: {
-                        mentionedJid: [num]
-                      }
-                    })
-                } if (anu.action == 'remove') {
-                    hisoka.sendMessage(anu.id, { image: { url: ppuser }, caption: `@${num.split("@")[0]} Leaving To ${metadata.subject}` }, m, {
-                      contextInfo: {
-                        mentionedJid: [num]
-                      }
-                    })
+              let nama = await hisoka.getName(num)
+              let wel = [{
+                buttonId: 'welcome',
+                buttonText: { displayText: "Welcome"},
+                type: 1
+              }]
+              let bye = [{
+                buttonId: 'Goodbye',
+                buttonText: { displayText: "Goodbye" },
+                type: 1
+              }]
+              let thumbnail = {
+                mentionedJid: [num],
+                "externalAdReply": { "title": `${global.footer}`,
+                  "body": `Hi ${nama}`,
+                  "previewType": "photo",
+                  "sourceUrl": "https://dlvash.github.io", 
+                  "thumbnail": fs.readFileSync(`./lib/icha.jpg`)
+                }
+              }
+              if (anu.action == 'add') { 
+                hisoka.sendMessage(anu.id, {
+                  image: { url: ppuser },
+                  contextInfo: thumbnail,
+                  caption: `welcome to *${metadata.subject}* @${num.sp      lit("@")[0]}`,
+                  buttons: wel
+                })
+              } if (anu.action == 'remove') { 
+                hisoka.sendMessage(anu.id, {  
+                  image: { url: ppuser }, 
+                  caption: `Goodbye @${num.split("@")[0]}`,
+                  contextInfo: thumbnail,  
+                  buttons: bye
+                })
                 } else if (anu.action == 'info') {
                   hisoka.sendMessage(anu.id, { image: { url: ppuser }, caption: `Tes`})
                 }
