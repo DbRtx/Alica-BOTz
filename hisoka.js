@@ -658,7 +658,7 @@ Selama ${clockString(new Date - user.afkTime)}
               }
               hisoka.sendMessage(m.chat, { 
                 image: { url: pp },
-                caption: `nih @${m.sender.split("@")[0]}, ppny si @${user.split("@")[0]}`, 
+                caption: `nih @${m.sender.split("@")[0]}`, 
                 contextInfo: thumbnail
               }, { quoted: m })
             }
