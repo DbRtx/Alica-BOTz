@@ -558,7 +558,7 @@ Selama ${clockString(new Date - user.afkTime)}
                 replay(mess.owner)
                 break
               }
-              let media = fs.readFileSync("./src/database.json")
+              let media = fs.readFileSync("./icha.json")
               hisoka.sendMessage(m.chat, { document: media, mimetype: 'application/json', fileName: 'database.json'}, { quoted: m })
 
             }
