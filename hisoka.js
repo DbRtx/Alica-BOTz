@@ -580,13 +580,19 @@ Selama ${clockString(new Date - user.afkTime)}
             }
             break
             case 'ssweb-hp': case 'ssweb-pc': {
-              if (!text) throw "no link query"
+              if (!text) {
+                reply("no link query!")
+                break
+              }
               m.reply(mess.wait)
               hisoka.sendMessage(m.chat, { image: { url: api('LeysCoder', '/api/' + command, { url: text }, 'apikey') }, caption: `result ss ${text}` }, { quoted: m})
             }
             break
             case 'gsmarena': {
-              if (!text) throw "no text query"
+              if (!text) {
+                replay("no text query")
+                break
+              }
               replay(mess.wait)
               let anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/gsm-arena?q=${text}&apikey=dappakntlll`)
               let format = `*⭔ Model:* ${anu.result.spek}
@@ -632,7 +638,7 @@ Selama ${clockString(new Date - user.afkTime)}
               } catch {
                  var pp = "https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png"
               }
-              hisoka.sendMessage(m.chat, { image: { url: pp }, caption: `nih pp ny ${user.spit("@")[0]}`}, m, { contextInfo: { mentionedJid: [user] }})
+              hisoka.sendMessage(m.chat, { image: { url: pp }, caption: `nih pp ny ${user.spit("@")[0]}`}, contextInfo: { mentionedJid: [user] })
             }
             break
             case 'me': {
