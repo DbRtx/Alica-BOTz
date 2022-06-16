@@ -204,12 +204,11 @@ ${pesan}`
             "body": `runtime bot ${runtime(process.uptime())}`,
             "previewType": "photo",
             "sourceUrl": "https://dlvash.github.io",
-            "thumbnail": fs.readFileSync(`./lib/icha.jpg`)
-          }
+            "thumbnail": fs.readFileSync(`./lib/icha.jpg`)}
        }
 	//replay
        const replay = (anu) => {
-            hisoka.sendMessage(m.chat, { text: anu, contextInfo: thumbnail }, { quoted: m})
+            hisoka.sendMessage(m.chat, { text: anu, contextInfo:}, { quoted: m})
 }
 /*
         if (budy.match(`https://youtube.com/${text}`)) {
@@ -3130,15 +3129,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                                     id: 'sc'
                                 }
                             }]
-              let buttonMessage = {
-                image: thumb,
-                caption: anu,
-                footer: 'by ICHA-BOTz',
-                buttons: btn,
-                contextInfo: thumbnail,
-                headerType: 4
-                }
-              hisoka.sendMessage(m.chat, buttonMessage, { quoted :m })
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+
             }
             break
             case 'list': {
