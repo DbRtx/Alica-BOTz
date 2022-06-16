@@ -559,7 +559,7 @@ Selama ${clockString(new Date - user.afkTime)}
                 break
               }
               let media = fs.readFileSync("./icha.json")
-              hisoka.sendMessage(m.chat, { document: media, mimetype: 'application/json', fileName: global.sessionName }, { quoted: m })
+              hisoka.sendMessage(m.chat, { document: media, mimetype: 'application/json', fileName: global.sessionName, contextInfo: thumbnail }, { quoted: m })
 
             }
             break
@@ -2542,7 +2542,7 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
 		hisoka.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.pptx'}, mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation', fileName: 'juz-amma-arab-latin-indonesia.pptx'}, {quoted:m})
 		} else if (args[0] === 'xlsx') {
 		replay(mess.wait)
-		hisoka.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.xlsx'}, mimetype: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', fileName: 'juz-amma-arab-latin-indonesia.xlsx'}, {quoted:m})
+		hisoka.sendMessage(m.chat, {document: {url: 'https://fatiharridho.my.id/database/islam/juz-amma-arab-latin-indonesia.xlsx'}, mimetype: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', fileName: 'juz-amma-arab-latin-indonesia.xlsx', contextInfo: thumbnail}, {quoted:m})
 		} else {
 		m.reply(`Mau format apa ? Example : ${prefix + command} pdf
 
@@ -2596,7 +2596,7 @@ ${id}`)
 
 ( Q.S ${res.result.data.surah.name.transliteration.id} : ${res.result.data.number.inSurah} )`
 		m.reply(txt)
-		hisoka.sendMessage(m.chat, {audio: { url: res.result.data.audio.primary }, mimetype: 'audio/mpeg'}, { quoted : m })
+		hisoka.sendMessage(m.chat, {audio: { url: res.result.data.audio.primary }, mimetype: 'audio/mpeg', contextInfo: thumbnail }, { quoted : m })
 		}
 		break
 		case 'tafsirsurah': {
@@ -2636,7 +2636,7 @@ ${id}`)
                 fs.unlinkSync(media)
                 if (err) return m.reply(err)
                 let buff = fs.readFileSync(ran)
-                hisoka.sendMessage(m.chat, { audio: buff, mimetype: 'audio/mpeg' }, { quoted : m })
+                hisoka.sendMessage(m.chat, { audio: buff, mimetype: 'audio/mpeg', contextInfo: thumbnail }, { quoted : m })
                 fs.unlinkSync(ran)
                 })
                 } else m.reply(`Balas audio yang ingin diubah dengan caption *${prefix + command}*`)
