@@ -3237,6 +3237,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *╚═━━━━━━━━━━━━━━━━⊏⊐*
 `,
                     buttonText: "Menu",
+                    contextInfo: thumbnail,
                     footerText: `${global.footer}`,
                     listType: "SINGLE_SELECT",
                     sections: [
@@ -3342,7 +3343,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                   listType: 1
                 }
               }), {})
-              hisoka.relayMessage(m.chat, template.message, { messageId: template.key.id, contextInfo: thumbnail }, m)
+              hisoka.relayMessage(m.chat, template.message, { messageId: template.key.id }, m)
             }
             break
             case 'semua': case '*': case 'all': {
