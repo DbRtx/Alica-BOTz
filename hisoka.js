@@ -3089,6 +3089,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃┃ ⌗ Runtime* : ${runtime(process.uptime())}
 *┃┃ ⌗ Bot Name* : Icha-BOTz
 *┃┃ ⌗ Bot recoder* : ${global.author}
+*┃┃ ⌗ Bot template* : Hisoka-Morou
 *┃┃ ⌗ Bot Creator* : DikaArdnt
 *┃┃*
 *┃╚━━━━━━━━━━━━━━━━⊏⊐*
@@ -3216,6 +3217,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃┃ ⌗ Runtime* : ${runtime(process.uptime())}
 *┃┃ ⌗ Bot Name* : Icha-BOTz
 *┃┃ ⌗ Bot recoder* : ${global.author}
+*┃┃ ⌗ Bot template* : Hisoka-Morou
 *┃┃ ⌗ Bot Creator* : DikaArdnt
 *┃┃*
 *┃╚━━━━━━━━━━━━━━━━⊏⊐*
@@ -3421,6 +3423,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃┃ ⌗ Runtime* : ${runtime(process.uptime())}
 *┃┃ ⌗ Bot Name* : Icha-BOTz
 *┃┃ ⌗ Bot recoder* : ${global.author}
+*┃┃ ⌗ Bot template* : Hisoka-Morou
 *┃┃ ⌗ Bot Creator* : DikaArdnt
 *┃┃*
 *┃╚━━━━━━━━━━━━━━━━⊏⊐*
