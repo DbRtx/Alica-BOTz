@@ -27,7 +27,7 @@ const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins } = require('./lib/myfunc')
-
+const readmore = require('./readmore.js')
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
 let _family100 = db.data.game.family100 = []
@@ -40,6 +40,8 @@ let tebakkalimat = db.data.game.kalimat = []
 let tebaklirik = db.data.game.lirik = []
 let tebaktebakan = db.data.game.tebakan = []
 let vote = db.data.others.vote = []
+// readmore
+let readMore = readmore.text
 
 //var groups = fazd.chats.array.filter(v => v.jid.endsWith('g.us'))
 //var private = fazd.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
@@ -111,8 +113,7 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
     	const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
     	const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
 ) || false
-	
-	
+
 	try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
             let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
@@ -586,6 +587,12 @@ Selama ${clockString(new Date - user.afkTime)}
                 user.afkTime = + new Date
                 user.afkReason = text
                 m.reply(`${m.pushName} Telah Afk${text ? ': ' + text : ''}`)
+            }
+            case 'readmore': {
+              let [ l, r ] = text.split`|`
+              if (!l) l = ''
+              if (!r) r = ''
+              replay(`${l} ${readMore} ${r}`)
             }
             break 
             case 'bot': {
