@@ -546,15 +546,16 @@ Selama ${clockString(new Date - user.afkTime)}
             case 'view': {
               if (!m.quoted) throw `balas pesan viewOnce nya!`
               if (m.quoted.mtype !== 'viewOnceMessage') throw 'yang kamu balas bukan pesan viewOnce'
-              let q = m.quoted.message[mtype]
+              let type = Object.keys(m.quoted.message)[0]
+              let q = m.quoted.message[type]
               let media = await downloadContentFromMessage(q, type == 'imageMessage' ? 'image' : 'video')
               let buffer = Buffer.from([])
               for (chunk of media) {
                 buffer = Buffer.concat([buffer, chunk])
               }
-              if (/video/.test(mtype)) {
+              if (/video/.test(type)) {
                 return hisoka.sendFile(m.chat, buffer, 'media.mp4', q.caption || '', m)
-              } else if (/image/.test(mtype) {
+              } else if (/image/.test(type) {
                 return hisoka.sendFile(m.chat, buffer, 'media.jpg', q.caption || '', m)
               }
             }
