@@ -555,8 +555,7 @@ Selama ${clockString(new Date - user.afkTime)}
               }
               if (/video/.test(type)) {
                 return hisoka.sendFile(m.chat, buffer, 'media.mp4', q.caption || '', m)
-              } 
-              else if (/image/.test(type) {
+              } else if (/image/.test(type)) {
                 return hisoka.sendFile(m.chat, buffer, 'media.jpg', q.caption || '', m)
               }
             }
