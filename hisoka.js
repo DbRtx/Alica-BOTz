@@ -26,7 +26,7 @@ const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
-const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins } = require('./lib/myfunc')
+const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins, getCase } = require('./lib/myfunc')
 require('./readmore')
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
@@ -578,6 +578,13 @@ Selama ${clockString(new Date - user.afkTime)}
               let media = fs.readFileSync("./icha.json")
               hisoka.sendMessage(m.chat, { document: media, mimetype: 'application/json', fileName: global.sessionName, contextInfo: thumbnail }, { quoted: m })
 
+            }
+            break
+            case 'getcase': {
+              if (!isCreator) return replay(mess.owner)
+              if (!text) return replay("*Mau nyari Case apa kak*") 
+              let nana = await getCase(q)
+              replay(nana)
             }
             break
 	    case 'afk': {
