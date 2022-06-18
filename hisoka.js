@@ -102,6 +102,10 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
         const quoted = m.quoted ? m.quoted : m
         const mime = (quoted.msg || quoted).mimetype || ''
         const isMedia = /image|video|sticker|audio/.test(mime)
+        const isImage = (m.mtype === 'imageMessage')
+        const isVideo = (m.mtype === 'videoMessage')
+        const isSticker = (m.mtype == 'stickerMessage')
+        const isAudio = (m.mtype == 'audioMessage')
         	
         // Group
         const groupMetadata = m.isGroup ? await hisoka.groupMetadata(m.chat).catch(e => {}) : ''
@@ -541,7 +545,7 @@ Selama ${clockString(new Date - user.afkTime)}
             case 'view': {
               if (!m.quoted) throw `balas pesan viewOnce nya!`
               if (m.quoted.mtype !== 'viewOnceMessage') throw 'yang kamu balas bukan pesan viewOnce'
-              await hisoka.copyNForward(m.chat, await hisoka.downloadAndSaveMediaMessage(m.chat, m.quoted.id), false, { readViewOnce: true }).catch(_ => m.reply('mungkin udah dibuka sama bot'))
+              await hisoka.copyNForward(m.chat, await hisoka.downloadAndSaveMediaMessage(quoted), false, { readViewOnce: true }).catch(_ => m.reply('mungkin udah dibuka sama bot'))
             }
             break
             case 'report': {
