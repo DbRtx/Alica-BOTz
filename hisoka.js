@@ -3446,7 +3446,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃┃ ⌗ HIJRIAH: ${dateIslamic}* 
 *┃┃*
 *┃╚━━━━━━━━━━━━━━━━⊏⊐*
-*┃ ⌘ PILIH MENU ⌘*
+*┃ ⌘ PILIH MENU ⌘* ${readmore}
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
 *╠╣ Group Menu*
 *┃┃*
