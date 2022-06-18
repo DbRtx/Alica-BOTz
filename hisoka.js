@@ -549,7 +549,7 @@ Selama ${clockString(new Date - user.afkTime)}
               let q = m.quoted.message[mtype]
               let media = await downloadContentFromMessage(q, type == 'imageMessage' ? 'image' : 'video')
               let buffer = Buffer.from([])
-              for await (const chunk of media) {
+              for (chunk of media) {
                 buffer = Buffer.concat([buffer, chunk])
               }
               if (/video/.test(mtype)) {
