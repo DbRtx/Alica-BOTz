@@ -205,7 +205,6 @@ ${pesan}`
           "externalAdReply": { 
             "title": `${global.footer}`,
             "body": `runtime bot ${runtime(process.uptime())}`,
-            "previewType": "photo",
             "mediaType": 2,
             "sourceUrl": "https://dlvash.github.io",
             "thumbnail": fs.readFileSync(`./lib/icha.jpg`)
