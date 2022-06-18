@@ -548,7 +548,7 @@ Selama ${clockString(new Date - user.afkTime)}
               if (m.quoted.mtype !== 'viewOnceMessage') throw 'yang kamu balas bukan pesan viewOnce'
               let type = Object.keys(m.quoted.message)[0]
               let q = m.quoted.message[type]
-              let media = await downloadContentFromMessage(m.quoted, type == 'imageMessage' ? 'image' : 'video')
+              let media = await downloadContentFromMessage(q, type == 'imageMessage' ? 'image' : 'video')
               let buffer = Buffer.from([])
               for (chunk of media) {
                 buffer = Buffer.concat([buffer, chunk])
