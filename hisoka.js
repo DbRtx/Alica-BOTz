@@ -588,7 +588,7 @@ Selama ${clockString(new Date - user.afkTime)}
               try {
               let nana = await getCase(q)
               replay(nana)
-              } catch {
+              } catch (err) {
                 replay('Case tidak ditemukan')
               }
             }
