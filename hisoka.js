@@ -27,7 +27,8 @@ const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins, getCase } = require('./lib/myfunc')
-require('./readmore')
+const more = String.fromCharCode(8206)
+const readmore = more.repeat(4001)
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
 let _family100 = db.data.game.family100 = []
@@ -597,7 +598,7 @@ Selama ${clockString(new Date - user.afkTime)}
               let [ l, r ] = text.split`|`
               if (!l) l = ''
               if (!r) r = ''
-              replay(`${l} ${readMore} ${r}`)
+              replay(`${l} ${readmore} ${r}`)
             }
             break 
             case 'bot': {
@@ -1601,9 +1602,11 @@ break
 	    break
 	       case 'ttp': {
                  if (!text) throw `Example : ${prefix + command} text`
-                 let ttp = `https://leyscoders-api.herokuapp.com/api/ttp1?text=${encodeURIComponent(text)}&apikey=dappakntlll`
-                 let anu = await hisoka.sendImageAsSticker(m.chat, ttp, m, { packname: global.packname, author: global.author})
-                 await fs.unlinkSync(anu)
+                 await hisoka.sendMessage(from, { sticker: {url:`https://api.xteam.xyz/attp?file&text=${encodeURI(q)}` }}, { quoted: dev })
+} catch (e) {
+ console.log(e)
+ setReply(`Maap sedang error coba lagi besok`)            
+} 
          }
          break
 	       case 'smeme': case 'stickmeme': case 'stikmeme': case 'stickermeme': case 'stikermeme': {
