@@ -585,12 +585,8 @@ Selama ${clockString(new Date - user.afkTime)}
             case 'getcase': {
               if (!isCreator) return replay(mess.owner)
               if (!text) return replay("ambil case ap ?")
-              try {
               let nana = await getCase(q)
               replay(nana)
-              } catch (err) {
-                replay('Case tidak ditemukan')
-              }
             }
             break
 	    case 'afk': {
