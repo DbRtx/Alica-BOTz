@@ -1601,9 +1601,9 @@ break
 	    }
 	    break
 	       case 'ttp': {
-                 try {
                  if (!text) throw `Example : ${prefix + command} text`
-                 await hisoka.sendMessage(from, { sticker: {url:`https://api.xteam.xyz/attp?file&text=${encodeURI(q)}` }}, { quoted: m })
+                 try {                 
+                 await hisoka.sendMessage(m.chat, { sticker: {url:`https://api.xteam.xyz/attp?file&text=${encodeURI(q)}` }}, { quoted: m })
                } catch {
                  replay(`Maap sedang error coba lagi besok`)
                } 
