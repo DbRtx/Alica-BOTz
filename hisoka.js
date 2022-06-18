@@ -24,6 +24,7 @@ const { JSDOM } = require('jsdom')
 const speed = require('performance-now')
 const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
+const { downloadContentFromMessage } = require('@adiwajshing/baileys')
 const primbon = new Primbon()
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins, getCase } = require('./lib/myfunc')
@@ -545,7 +546,17 @@ Selama ${clockString(new Date - user.afkTime)}
             case 'view': {
               if (!m.quoted) throw `balas pesan viewOnce nya!`
               if (m.quoted.mtype !== 'viewOnceMessage') throw 'yang kamu balas bukan pesan viewOnce'
-              await hisoka.copyNForward(m.chat, await hisoka.downloadAndSaveMediaMessage(quoted), false, { readViewOnce: true }).catch(_ => m.reply('mungkin udah dibuka sama bot'))
+              let q = m.quoted.message[mtype]
+              let media = await downloadContentFromMessage(q, type == 'imageMessage' ? 'image' : 'video')
+              let buffer = Buffer.from([])
+              for await (const chunk of media) {
+                buffer = Buffer.concat([buffer, chunk])
+              }
+              if (/video/.test(mtype)) {
+                return hisoka.sendFile(m.chat, buffer, 'media.mp4', q.caption || '', m)
+              } else if (/image/.test(mtype) {
+                return hisoka.sendFile(m.chat, buffer, 'media.jpg', q.caption || '', m)
+              }
             }
             break
             case 'report': {
