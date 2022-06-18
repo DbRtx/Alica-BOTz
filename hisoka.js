@@ -202,9 +202,11 @@ ${pesan}`
        let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender 
        let thumbnail = {
           mentionedJid: [user],
-          "externalAdReply": { "title": `${global.footer}`,
+          "externalAdReply": { 
+            "title": `${global.footer}`,
             "body": `runtime bot ${runtime(process.uptime())}`,
             "previewType": "photo",
+            "mediaType": 2
             "sourceUrl": "https://dlvash.github.io",
             "thumbnail": fs.readFileSync(`./lib/icha.jpg`)
           }
@@ -583,9 +585,13 @@ Selama ${clockString(new Date - user.afkTime)}
             break
             case 'getcase': {
               if (!isCreator) return replay(mess.owner)
-              if (!text) return replay("*Mau nyari Case apa kak*") 
+              if (!text) return replay("ambil case ap ?")
+              try {
               let nana = await getCase(q)
               replay(nana)
+              } catch {
+                replay('Case tidak ditemukan')
+              }
             }
             break
 	    case 'afk': {
