@@ -1605,7 +1605,7 @@ break
                  if (!text) throw `Example : ${prefix + command} text`
                  await hisoka.sendMessage(from, { sticker: {url:`https://api.xteam.xyz/attp?file&text=${encodeURI(q)}` }}, { quoted: m })
                } catch {
-                 console.log(e)
+                 console.log(err)
                  setReply(`Maap sedang error coba lagi besok`)
                } 
          }
