@@ -1,5 +1,5 @@
 {
-  "name": "hisoka",
+  "name": "Gojo-Satoru",
   "version": "2.0.0",
   "description": "WhatsApp Using Lib Baileys Multi Device",
   "main": "index.js",
@@ -11,14 +11,14 @@
     "termux",
     "whatsapp",
     "2022",
-    "hisoka",
+    "GojoSatoru",
     "base",
     "baileys-md",
     "bot",
     "bot-md",
     "multi-device"
   ],
-  "author": "dikaardn",
+  "author": "NexusNw",
   "license": "MIT",
   "dependencies": {
     "@adiwajshing/baileys": "^4.1.0",
@@ -64,10 +64,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DikaArdnt/Hisoka-Morou"
+    "url": "git+https://github.com/nexusNw/Gojo-Satoru.git"
   },
   "bugs": {
-    "url": "https://github.com/DikaArdnt/Hisoka-Morou/issues"
+    "url": "https://github.com/nexusNw/Gojo-Satoru/issues"
   },
-  "homepage": "https://github.com/DikaArdnt/Hisoka-Morou#readme"
+  "homepage": "https://github.com/nexusNw/Gojo-Satoru#readme"
 }
