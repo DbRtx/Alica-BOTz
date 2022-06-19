@@ -498,7 +498,6 @@ klik https://wa.me/${botNumber.split`@`[0]}`, m, { mentions: [roof.p, roof.p2] }
 	    delete this.suit[roof.id]
 	    }
 	    } 
-          /**
 	    let mentionUser = [...new Set([...(m.mentionedJid || []), ...(m.quoted ? [m.quoted.sender] : [])])]
 	    for (let jid of mentionUser) {
             let user = global.db.data.users[jid]
@@ -521,7 +520,6 @@ Selama ${clockString(new Date - user.afkTime)}
             user.afkTime = -1
             user.afkReason = ''
         }
-	 */
         switch(command) {
             case 'kirim' : {
               if (!isCreator) throw (mess.owner)
