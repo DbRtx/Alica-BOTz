@@ -1177,6 +1177,13 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
             hisoka.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
+            case 'inpo': {
+            if (!m.isGroup) throw (mess.group)
+            if (!isBotAdmins) throw (mess.botAdmin)
+            if (!isAdmins) throw (mess.admin)
+            hisoka.sendMessage(m.chat, { text : `${command} ${text}` , mentions: participants.map(a => a.id)}, { quoted: m })
+            }
+            break
 	    case 'style': case 'styletext': {
 	        if (!isPremium && global.db.data.users[m.sender].limit < 1) throw (mess.endLimit) // respon ketika limit habis
 		db.data.users[m.sender].limit -= 1 // -1 limit
