@@ -1171,7 +1171,7 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
                 hisoka.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
                 break
-          case 'hidetag': case 'inpo': {
+          case 'hidetag': {
             if (!m.isGroup) throw (mess.group)
             if (!isBotAdmins) throw (mess.botAdmin)
             if (!isAdmins) throw (mess.admin)
