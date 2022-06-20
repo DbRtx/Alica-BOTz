@@ -2515,7 +2515,7 @@ break
             }
             break
 	      case 'fbdl': case 'fb': case 'facebook': {
-                if (!text) return reply(`Enter Query Link!`)
+                if (!text) return replay(`Enter Query Link!`)
                 return replay(mess.wait)
                 let anu = await fetchJson(api('zenz', '/downloader/facebook', { url: text }, 'apikey'))
                 hisoka.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `🐦 Title : ${anu.result.title}`, contextInfo: thumbnail }, { quoted: m })            }
