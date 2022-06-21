@@ -522,7 +522,7 @@ Selama ${clockString(new Date - user.afkTime)}
         }
         switch(command) {
             case 'kirim' : {
-              if (!isCreator) throw (mess.owner)
+              if (!isCreator) return replay(mess.owner)
               if (!args[0]) throw ('siapa penerima ny?')
               if (!args[1]) throw ('text?')
               let penerima = args[0] ? `${args[0]}` : '6282346048026-1620355258@g.us'
@@ -868,7 +868,7 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break
             case 'chat': {
-                if (!isCreator) throw (mess.owner)
+                if (!isCreator) return replay(mess.owner)
                 if (!q) throw 'Option : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
                 if (args[0] === 'mute') {
                     hisoka.chatModify({ mute: 'Infinity' }, m.chat, []).then((res) => m.reply("*Done*")).catch((err) => m.reply(jsonformat(err)))
@@ -1013,7 +1013,7 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break
             case 'jodohku': {
-            if (!m.isGroup) throw (mess.group)
+            if (!m.isGroup) return replay(mess.group)
             let member = participants.map(u => u.id)
             let me = m.sender
             let jodoh = member[Math.floor(Math.random() * member.length)]
@@ -1028,7 +1028,7 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break
             case 'jadian': {
-            if (!m.isGroup) throw (mess.group)
+            if (!m.isGroup) return replay(mess.group)
             let member = participants.map(u => u.id)
             let orang = member[Math.floor(Math.random() * member.length)]
             let jodoh = member[Math.floor(Math.random() * member.length)]
@@ -1053,7 +1053,7 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break  
             case 'join': {
-                if (!isCreator) throw (mess.owner)
+                if (!isCreator) return replay(mess.owner)
                 if (!text) throw 'Masukkan Link Group!'
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalid!'
                 replay(mess.wait)
@@ -1062,12 +1062,12 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break
             case 'leave': {
-                if (!isCreator) throw (mess.owner)
+                if (!isCreator) return replay(mess.owner)
                 await hisoka.groupLeave(m.chat).then((res) => m.reply("*Done*")).catch((err) => m.reply(jsonformat(err)))
             }
             break
             case 'setexif': {
-               if (!isCreator) throw (mess.owner)
+               if (!isCreator) return replay(mess.owner)
                if (!text) throw `Example : ${prefix + command} packname|author`
           global.packname = text.split("|")[0]
           global.author = text.split("|")[1]
@@ -1075,9 +1075,9 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break
 	case 'kick': { 
-		if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+		if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
                 const Admin = m.isGroup ? groupAdmins.includes(users) : false
                 if (Admin) throw "Dia admin ga bisa di kick" 
@@ -1086,59 +1086,59 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
 	}
 	break
 	case 'add': {
-		if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+		if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await hisoka.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply("*Done*")).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
 	case 'promote': {
-		if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+		if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await hisoka.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply("*Done*")).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
 	case 'demote': {
-		if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+		if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await hisoka.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply("*Done*")).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
         case 'block': {
-		if (!isCreator) throw (mess.owner)
+		if (!isCreator) return replay(mess.owner)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await hisoka.updateBlockStatus(users, 'block').then((res) => m.reply("*Done*")).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
         case 'unblock': {
-		if (!isCreator) throw (mess.owner)
+		if (!isCreator) return replay(mess.owner)
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await hisoka.updateBlockStatus(users, 'unblock').then((res) => m.reply(`${users} unblocked`)).catch((err) => m.reply(jsonformat(err)))
 	}
 	break
 	    case 'setname': case 'setsubject': {
-                if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+                if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
                 if (!text) throw 'Text ?'
                 await hisoka.groupUpdateSubject(m.chat, text).then((res) => replay(mess.success)).catch((err) => m.reply(jsonformat(err)))
             }
             break
           case 'setdesc': case 'setdesk': {
-                if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+                if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
                 if (!text) throw 'Text ?'
                 await hisoka.groupUpdateDescription(m.chat, text).then((res) => replay(mess.success)).catch((err) => m.reply(jsonformat(err)))
             }
             break
           case 'setppbot': {
-                if (!isCreator) throw (mess.owner)
+                if (!isCreator) return replay(mess.owner)
                 if (!quoted) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
                 if (!/image/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
                 if (/webp/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
@@ -1148,8 +1148,8 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
                 }
                 break
            case 'setppgroup': case 'setppgrup': case 'setppgc': {
-                if (!m.isGroup) throw (mess.group)
-                if (!isAdmins) throw (mess.admin)
+                if (!m.isGroup) return replay(mess.group)
+                if (!isAdmins) return replay(mess.admin)
                 if (!quoted) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
                 if (!/image/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
                 if (/webp/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
@@ -1159,9 +1159,9 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
                 }
                 break
             case 'tagall': {
-                if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+                if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
 let teks = `══✪〘 *👥 Tag All* 〙✪══
  
  ➲ *Pesan : ${q ? q : 'kosong'}*\n\n`
@@ -1172,16 +1172,16 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
                 }
                 break
           case 'hidetag': {
-            if (!m.isGroup) throw (mess.group)
-            if (!isBotAdmins) throw (mess.botAdmin)
-            if (!isAdmins) throw (mess.admin)
+            if (!m.isGroup) return replay(mess.group)
+            if (!isBotAdmins) return replay(mess.botAdmin)
+            if (!isAdmins) return replay(mess.admin)
             hisoka.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
             case 'inpo': {
-            if (!m.isGroup) throw (mess.group)
-            if (!isBotAdmins) throw (mess.botAdmin)
-            if (!isAdmins) throw (mess.admin)
+            if (!m.isGroup) return replay(mess.group)
+            if (!isBotAdmins) return replay(mess.botAdmin)
+            if (!isAdmins) return replay(mess.admin)
             hisoka.sendMessage(m.chat, { text : `${command} ${text}` , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
@@ -1199,7 +1199,7 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
 	    }
 	    break
                case 'vote': {
-            if (!m.isGroup) throw (mess.group)
+            if (!m.isGroup) return replay(mess.group)
             if (m.chat in vote) throw `_Masih ada vote di chat ini!_\n\n*${prefix}hapusvote* - untuk menghapus vote`
             if (!text) throw `Masukkan Alasan Melakukan Vote, Example: *${prefix + command} Owner Ganteng*`
             m.reply(`Vote dimulai!\n\n*${prefix}upvote* - untuk ya\n*${prefix}devote* - untuk tidak\n*${prefix}cekvote* - untuk mengecek vote\n*${prefix}hapusvote* - untuk menghapus vote`)
@@ -1241,7 +1241,7 @@ let buttonsVote = [
 	    }
             break
                case 'upvote': {
-            if (!m.isGroup) throw (mess.group)
+            if (!m.isGroup) return replay(mess.group)
             if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
@@ -1283,7 +1283,7 @@ ${vote[m.chat][2].map((v, i) => `╠ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 	    }
              break
                 case 'devote': {
-            if (!m.isGroup) throw (mess.group)
+            if (!m.isGroup) return replay(mess.group)
             if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
@@ -1326,7 +1326,7 @@ ${vote[m.chat][2].map((v, i) => `╠ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
             break
                  
 case 'cekvote':
-if (!m.isGroup) throw (mess.group)
+if (!m.isGroup) return replay(mess.group)
 if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
 teks_vote = `*「 VOTE 」*
 
@@ -1354,16 +1354,16 @@ ${vote[m.chat][2].map((v, i) => `╠ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 hisoka.sendTextWithMentions(m.chat, teks_vote, m)
 break
 		case 'deletevote': case'delvote': case 'hapusvote': {
-            if (!m.isGroup) throw (mess.group)
+            if (!m.isGroup) return replay(mess.group)
             if (!(m.chat in vote)) throw `_*tidak ada voting digrup ini!*_\n\n*${prefix}vote* - untuk memulai vote`
             delete vote[m.chat]
             m.reply('Berhasil Menghapus Sesi Vote Di Grup Ini')
 	    }
             break
                case 'group': case 'grup': {
-                if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+                if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
                 if (args[0] === 'close'){
                     await hisoka.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`Sukses Menutup Group`)).catch((err) => m.reply(jsonformat(err)))
                 } else if (args[0] === 'open'){
@@ -1379,9 +1379,9 @@ break
             }
             break
             case 'editinfo': {
-                if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+                if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
              if (args[0] === 'open'){
                 await hisoka.groupSettingUpdate(m.chat, 'unlocked').then((res) => m.reply(`Sukses Membuka Edit Info Group`)).catch((err) => m.reply(jsonformat(err)))
              } else if (args[0] === 'close'){
@@ -1397,9 +1397,9 @@ break
             }
             break
             case 'antilink': {
-                if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+                if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
                 if (args[0] === "on") {
                 if (db.data.chats[m.chat].antilink) return m.reply(`Sudah Aktif Sebelumnya`)
                 db.data.chats[m.chat].antilink = true
@@ -1418,9 +1418,9 @@ break
              }
              break
              case 'mute': {
-                if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+                if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
                 if (args[0] === "on") {
                 if (db.data.chats[m.chat].mute) return m.reply(`Sudah Aktif Sebelumnya`)
                 db.data.chats[m.chat].mute = true
@@ -1439,16 +1439,16 @@ break
              }
              break
             case 'linkgroup': case 'linkgc': {
-                if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
+                if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
                 let response = await hisoka.groupInviteCode(m.chat)
                 hisoka.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nLink Group : ${groupMetadata.subject}`, m, { detectLink: true })
             }
             break
             case 'ephemeral': {
-                if (!m.isGroup) throw (mess.group)
-                if (!isBotAdmins) throw (mess.botAdmin)
-                if (!isAdmins) throw (mess.admin)
+                if (!m.isGroup) return replay(mess.group)
+                if (!isBotAdmins) return replay(mess.botAdmin)
+                if (!isAdmins) return replay(mess.admin)
                 if (!text) throw 'Masukkan value enable/disable'
                 if (args[0] === 'enable') {
                     await hisoka.sendMessage(m.chat, { disappearingMessagesInChat: WA_DEFAULT_EPHEMERAL }).then((res) => m.reply("*Done*")).catch((err) => m.reply(jsonformat(err)))
@@ -1465,7 +1465,7 @@ break
             }
             break
             case 'bcgc': case 'bcgroup': {
-                if (!isCreator) throw (mess.owner)
+                if (!isCreator) return replay(mess.owner)
                 if (!text) throw `Text mana?\n\nExample : ${prefix + command} fatih-san`
                 let getGroups = await hisoka.groupFetchAllParticipating()
                 let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
@@ -1506,7 +1506,7 @@ break
             }
             break
             case 'bc': case 'broadcast': case 'bcall': {
-                if (!isCreator) throw (mess.owner)
+                if (!isCreator) return replay(mess.owner)
                 if (!text) throw `Text mana?\n\nExample : ${prefix + command} fatih-san`
                 let anu = await store.chats.all().map(v => v.id)
                 m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
@@ -2741,7 +2741,7 @@ ${Object.entries(global.db.data.sticker).map(([key, value], index) => `${index +
             }
             break
             case 'lockcmd': {
-                if (!isCreator) throw (mess.owner)
+                if (!isCreator) return replay(mess.owner)
                 if (!m.quoted) throw 'Reply Pesan!'
                 if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
                 let hash = m.quoted.fileSha256.toString('base64')
@@ -2902,13 +2902,13 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
             }
             break
             case 'public': {
-                if (!isCreator) throw (mess.owner)
+                if (!isCreator) return replay(mess.owner)
                 hisoka.public = true
                 m.reply('Sukse Change To Public Usage')
             }
             break
             case 'self': {
-                if (!isCreator) throw (mess.owner)
+                if (!isCreator) return replay(mess.owner)
                 hisoka.public = false
                 m.reply('Sukses Change To Self Usage')
             }
@@ -4286,7 +4286,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
              
             default:
                 if (budy.startsWith('=>')) {
-                    if (!isCreator) throw (mess.owner)
+                    if (!isCreator) return replay(mess.owner)
                     function Return(sul) {
                         sat = JSON.stringify(sul, null, 2)
                         bang = util.format(sat)
@@ -4303,7 +4303,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 }
 
                 if (budy.startsWith('>')) {
-                    if (!isCreator) throw (mess.owner)
+                    if (!isCreator) return replay(mess.owner)
                     try {
                         let evaled = await eval(budy.slice(2))
                         if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
