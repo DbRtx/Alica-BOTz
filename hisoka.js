@@ -1586,7 +1586,7 @@ break
                   author: author
                 })
                 await fs.unlinkSync(encmedia)
-            } else if (/video/.test(mime)) {
+            } else {
                 replay('Maap bot belum suport sticker mp4 :(')
             }
             }
