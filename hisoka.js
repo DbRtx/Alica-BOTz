@@ -1580,10 +1580,17 @@ break
               let pack = text.split`|`[0] ? text.split`|`[0] : global.packname
               let author = text.split`|`[1] ? text.split`|`[1] : global.author
               let media = hisoka.downloadAndSaveMediaMessage(quoted, "stik")
-              hisoka.sendImageAsSticker(m.chat, media, m, {
+              if (/image/.test(mime)) {
+                hisoka.sendImageAsSticker(m.chat, media, m, {
                 packname: pack,
                 author: author
               })
+              } else if (/video/.test(mime)) {
+                hisoka.sendVideoAsSticker(m.chat, media, m, {
+                packname: pack,
+                author: author
+              })
+              }            
             }
             break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
