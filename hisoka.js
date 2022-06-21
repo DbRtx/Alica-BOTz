@@ -599,11 +599,10 @@ Selama ${clockString(new Date - user.afkTime)}
                   }
                 }]
               hisoka.sendMessage(m.chat, {
-                image: { url: ppgc },
-                caption: id,
+                text: id,
                 templateButtons: buttons,
                 footer: hisoka.user.name
-              })
+              }, { quoted: m })
             }
             break
             case 'getsesi': {
