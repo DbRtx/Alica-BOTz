@@ -523,21 +523,16 @@ Selama ${clockString(new Date - user.afkTime)}
         switch(command) {
             case 'kirim' : {
               if (!isCreator) return replay(mess.owner)
-              if (!args[0]) throw ('siapa penerima ny?')
-              if (!args[1]) throw ('text?')
-              let penerima = args[0] ? `${args[0]}` : '6282346048026-1620355258@g.us'
-              let anu = `*╔*
-*┃           PESAN*
-*╚╦━━━━━━━━━━━━╝*
-*╔╣* 
-*┃┃  DARI:* ${m.sender} 
-*┃┃  PESAN:*
-*┃┃*
-*┃┃  "${args[1]} ${args[2]} ${args[3]} ${args[4]}"*
-*┃┃*
-*┃╚═══━━━━━━━━━━━━━⊏⊐*
-*╚━━━━━━━━━━━━━━━━⊏⊐*`
-              hisoka.sendMessage(penerima, { image: { url: './lib/icha.jpg'}, caption: `${anu}`})
+              if (!text) return replay(`Example: ${prefix + command} number id/grup id|text pesan ny`)
+              let penerima = text.split`|`[0]
+              let pesan = text.split`|`[1]
+              if (!penerima) return replay(`penerima tidak ditemukan!`)
+              if (!pesan) return replay(`mana pesan ny?`)
+              let anu = `*⌘ PESAN ⌘*\n*⌘ DARI : ${m.sender}*\n*⌘ PESAN:*\n\n*"${pesan}"*`
+              hisoka.sendMessage(penerima, {
+                text: pesan,
+                contextInfo: thumbnail
+              })
               replay(`*Berhasil mengirim pesan ke ${penerima}*`)
            }
             break
