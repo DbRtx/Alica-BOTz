@@ -1587,12 +1587,7 @@ break
                 })
                 await fs.unlinkSync(encmedia)
             } else if (/video/.test(mime)) {
-                let media = await quoted.download()
-                let encmedia = await hisoka.sendVideoAsSticker(m.chat, media, m, { 
-                  packname: pack, 
-                  author: author 
-                })
-                await fs.unlinkSync(encmedia)
+                replay('Maap bot belum suport sticker mp4 :(')
             }
             }
             break
@@ -1609,7 +1604,7 @@ break
                 let encmedia = await hisoka.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(encmedia)
             } else {
-                replay (`Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 Detik`)
+                replay(`Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 Detik`)
                 }
             }
             break
