@@ -594,11 +594,11 @@ Selama ${clockString(new Date - user.afkTime)}
               let buttons = [{
                   urlButton: {
                     displayText: 'COPY ID',
-                    url: `https://www.whatsapp.com/otp/copy/${id}`
+                    url: `https://www.whatsapp.com/otp/copy/+${id}`
                   }
                 }]
               hisoka.sendMessage(m.chat, {
-                //image: { url: ppgc },
+                image: { url: ppgc },
                 caption: id,
                 templateButtons: buttons,
                 footer: hisoka.user.name
