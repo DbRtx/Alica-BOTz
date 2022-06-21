@@ -598,11 +598,7 @@ Selama ${clockString(new Date - user.afkTime)}
                     url: 'https://www.whatsapp.com/otp/copy/'+id
                   }
                 }]
-              hisoka.sendMessage(m.chat, {
-                text: id,
-                templateButtons: buttons,
-                footer: hisoka.user.name
-              })
+              hisoka.send5ButImg(m.chat, id, hisoka.user.name, ppgc, buttons)
             }
             break
             case 'getsesi': {
