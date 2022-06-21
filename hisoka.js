@@ -598,7 +598,7 @@ Selama ${clockString(new Date - user.afkTime)}
                   }
                 }]
               hisoka.sendMessage(m.chat, {
-                image: { url: ppgc },
+                //image: { url: ppgc },
                 caption: id,
                 templateButtons: buttons,
                 footer: hisoka.user.name
