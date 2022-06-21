@@ -589,12 +589,13 @@ Selama ${clockString(new Date - user.afkTime)}
             case 'getgcid': {
               if (!m.isGroup) return replay(mess.group)
               let metadata = await hisoka.groupMetadata(m.chat)
+              var id = metadata.id
               hisoka.sendMessage(m.chat, {
                 text: id,
                 templateButtons: {
                   urlButton: {
                     displayText: 'COPY ID',
-                    url: `https://www.whatsapp.com/otp/copy/${metadata.id}`
+                    url: `https://www.whatsapp.com/otp/copy/+id`
                   }
                 },
                 footer: hisoka.user.name
