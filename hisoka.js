@@ -527,8 +527,8 @@ Selama ${clockString(new Date - user.afkTime)}
               if (!text.split`?`[0]) return replay('penerima tidak ditemukan')
               if (!text.split`?`[1]) return replay('pesan?')
 
-              penerima = text.split`?`[0] ? text.split`?`[0]
-              pesan = text.split`?`[1] ? text.split`?`[1]
+              let penerima = text.split`?`[0]
+              let pesan = text.split`?`[1]
               let anu = `*⌘ PESAN ⌘*\n*⌘ DARI : ${m.sender}*\n*⌘ PESAN:*\n\n*"${pesan}"*`
               hisoka.sendMessage(penerima, {
                 text: pesan,
