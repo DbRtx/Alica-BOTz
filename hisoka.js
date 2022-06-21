@@ -1579,16 +1579,16 @@ break
               if (!text) return replay(`Example: ${prefix + command} NamePack | NameAuthor`)
               let pack = text.split`|`[0] ? text.split`|`[0] : global.packname
               let author = text.split`|`[1] ? text.split`|`[1] : global.author 
-              if (/image/.test(mime)) {
+              try {
                 let media = await quoted.download()
                 let encmedia = await hisoka.sendImageAsSticker(m.chat, media, m, { 
                   packname: pack,
                   author: author
                 })
                 await fs.unlinkSync(encmedia)
-            } else {
+              } catch (err) {
                 replay('Maap bot belum suport sticker mp4 :(')
-            }
+              } 
             }
             break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
