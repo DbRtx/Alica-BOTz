@@ -1573,7 +1573,19 @@ break
                     let online = [...Object.keys(store.presences[id]), botNumber]
                     hisoka.sendText(m.chat, 'List Online:\n\n' + online.map(v => '⭔ @' + v.replace(/@.+/, '')).join`\n`, m, { mentions: online })
              }
-             break
+            break
+            case 'wm': {
+              if (!m.quoted) return replay(`Reply stiker`)
+              if (!text) return replay(`Example: ${prefix + command} NamePack | NameAuthor`)
+              let pack = text.split`|`[0] ? text.split`|`[0] : global.packname
+              let author = text.split`|`[1] ? text.split`|`[1] : global.author
+              let media = hisoka.downloadAndSaveMediaMessage(quoted, "stik")
+              hisoka.sendImageAsSticker(m.chat, media, m, {
+                packname: pack,
+                author: author
+              })
+            }
+            break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
               if (!m.quoted) m.reply(`Balas Video/Image Dengan Caption *${prefix + command}*`)
               replay(mess.wait)
