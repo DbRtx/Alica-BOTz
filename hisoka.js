@@ -590,14 +590,15 @@ Selama ${clockString(new Date - user.afkTime)}
               if (!m.isGroup) return replay(mess.group)
               let metadata = await hisoka.groupMetadata(m.chat)
               var id = metadata.id
-              hisoka.sendMessage(m.chat, {
-                text: id,
-                templateButtons: {
+              let buttons = [{
                   urlButton: {
                     displayText: 'COPY ID',
                     url: `https://www.whatsapp.com/otp/copy/+id`
                   }
-                },
+                }]
+              hisoka.sendMessage(m.chat, {
+                text: id,
+                templateButtons: buttons,
                 footer: hisoka.user.name
               })
             }
