@@ -1579,13 +1579,15 @@ break
               if (!text) return replay(`Example: ${prefix + command} NamePack | NameAuthor`)
               let pack = text.split`|`[0] ? text.split`|`[0] : global.packname
               let author = text.split`|`[1] ? text.split`|`[1] : global.author
-              let media = quoted.download()
+    
               if (/image/.test(mime)) {
+                let media = quoted.download()
                 hisoka.sendImageAsSticker(m.chat, media, m, {
                 packname: pack,
                 author: author
               })
               } else if (/video/.test(mime)) {
+                let media = quoted.download()
                 hisoka.sendVideoAsSticker(m.chat, media, m, {
                 packname: pack,
                 author: author
