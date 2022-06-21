@@ -615,7 +615,7 @@ Selama ${clockString(new Date - user.afkTime)}
             }
             case 'readmore': {
               let l = text.split`|`[0] ? text.split`|`[0] : ''
-              let l = text.split`|`[1] ? text.split`|`[1] : ''
+              let r = text.split`|`[1] ? text.split`|`[1] : ''
               replay(`${l} ${readmore} ${r}`)
             }
             break 
