@@ -3519,6 +3519,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃┃* ◆ ${prefix}upvote
 *┃┃* ◆ ${prefix}cekvote
 *┃┃* ◆ ${prefix}hapusvote
+*┃┃* ◆ ${prefix}hidetag
 *┃╚━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
 *╠╣ Webzone Menu*
@@ -3700,6 +3701,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃┃* ◆ ${prefix}ttp  (new)
 *┃┃* ◆ ${prefix}ssweb-pc (new)
 *┃┃* ◆ ${prefix}ssweb-hp (new)
+*┃┃* ◆ ${prefix}readmore
+*┃┃* ◆ ${prefix}wm
 *┃┃* ◆ ${prefix}toimage
 *┃┃* ◆ ${prefix}removebg
 *┃┃* ◆ ${prefix}sticker
@@ -3776,6 +3779,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
 *╠╣ Owner Menu*
 *┃┃*
+*┃┃* ◆ ${prefix}getsesi
+*┃┃* ◆ ${prefix}getcase
 *┃┃* ◆ ${prefix}react [emoji]
 *┃┃* ◆ ${prefix}chat [option]
 *┃┃* ◆ ${prefix}join [link]
