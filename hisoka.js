@@ -1588,7 +1588,8 @@ break
                 if ((quoted.msg || quoted).seconds > 11) return replay('Maksimal 10 detik!')
                 let media = await quoted.download()
                 let encmedia = await hisoka.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(encmedia)            
+                await fs.unlinkSync(encmedia)
+            }
             }
             break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
