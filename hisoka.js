@@ -590,7 +590,7 @@ Selama ${clockString(new Date - user.afkTime)}
               if (!m.isGroup) return replay(mess.group)
               let metadata = await hisoka.groupMetadata(m.chat)
               let id = metadata.id
-              let ppgc = hisoka.profilePictureUrl(id, 'image')
+              let ppgc = await hisoka.profilePictureUrl(metadata.id, 'image')
               let buttons = [{
                   urlButton: {
                     displayText: 'COPY ID',
