@@ -530,11 +530,15 @@ Selama ${clockString(new Date - user.afkTime)}
               let penerima = text.split`?`[0]
               let pesan = text.split`?`[1]
               let anu = `*⌘ PESAN ⌘*\n*⌘ DARI : ${m.sender}*\n*⌘ PESAN:*\n\n*"${pesan}"*`
-              hisoka.sendMessage(penerima, {
-                text: pesan,
+              try {
+                hisoka.sendMessage(penerima, {
+                text: anu,
                 contextInfo: thumbnail
               })
               replay(`*Berhasil mengirim pesan ke ${penerima}*`)
+              } catch (err) {
+                replay('Invalid number or grup id!')
+              } 
            }
             break
             case 'view': {
