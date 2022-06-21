@@ -592,9 +592,10 @@ Selama ${clockString(new Date - user.afkTime)}
               let id = metadata.id
               let ppgc = await hisoka.profilePictureUrl(metadata.id, 'image')
               let buttons = [{
+                  index: 1,
                   urlButton: {
                     displayText: 'COPY ID',
-                    url: `https://www.whatsapp.com/otp/copy/+${id}`
+                    url: 'https://www.whatsapp.com/otp/copy/'+id
                   }
                 }]
               hisoka.sendMessage(m.chat, {
