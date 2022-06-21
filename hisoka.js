@@ -614,9 +614,8 @@ Selama ${clockString(new Date - user.afkTime)}
                 m.reply(`${m.pushName} Telah Afk${text ? ': ' + text : ''}`)
             }
             case 'readmore': {
-              let [ l, r ] = text.split`|`
-              if (!l) l = ''
-              if (!r) r = ''
+              let l = text.split`|`[0] ? text.split`|`[0] : ''
+              let l = text.split`|`[1] ? text.split`|`[1] : ''
               replay(`${l} ${readmore} ${r}`)
             }
             break 
