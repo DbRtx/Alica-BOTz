@@ -526,7 +526,7 @@ Selama ${clockString(new Date - user.afkTime)}
               if (!text) return replay(`Example: ${prefix + command} number id/grup id?text pesan ny`)
               if (!text.split`?`[0]) return replay('penerima tidak ditemukan')
               if (!text.split`?`[1]) return replay('pesan?')
-
+              if (!text.match(``))
               let penerima = text.split`?`[0]
               let pesan = text.split`?`[1]
               let anu = `*⌘ PESAN ⌘*\n*⌘ DARI : ${m.sender}*\n*⌘ PESAN:*\n\n*"${pesan}"*`
@@ -572,6 +572,10 @@ Selama ${clockString(new Date - user.afkTime)}
               return replay('*Berhasil mengirim report*')
             }
             break
+            case 'runtime': {
+              replay(`⌛ runtime bot ${runtime(process.uptime())}`)
+            }
+            break
             case 'update': {
               if (!isCreator) {
                 replay(mess.owner)
@@ -584,6 +588,19 @@ Selama ${clockString(new Date - user.afkTime)}
               } catch {
                 replay('Update failed!')
               }
+            }
+            break
+            case 'getgcdet': {
+              if (!isGroup) return replay(mess.group)
+              let metadata = await hisoka.groupMetadata(m.chat)
+              let anu = `*╔*
+*┃       GC DETAILS*
+*╚━━━━━━━━━━━━━╝*
+
+*⌗ GC NAME: ${metadata.subject}*
+*⌗ GC OWNER: ${metadata.owner.split`@`[0]}*
+*⌗ GC CREATED: ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}*
+*⌗ `
             }
             break
             case 'getgcid': {
