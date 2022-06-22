@@ -593,11 +593,7 @@ Selama ${clockString(new Date - user.afkTime)}
               if (!m.isGroup) return replay(mess.group)
               let metadata = await hisoka.groupMetadata(m.chat)
               var id = metadata.id
-              try {
-                let ppgc = await hisoka.profilePictureUrl(metadata.id, 'image')
-              } catch {
-                let ppgc = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
-              }
+              let ppgc = await hisoka.profilePictureUrl(metadata.id, 'image') 
               let buttons = [{
                   index: 1,
                   urlButton: {
