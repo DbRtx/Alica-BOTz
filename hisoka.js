@@ -2184,18 +2184,12 @@ break
                 hisoka.sendMessage(m.chat, { image: { url: api('zekais', '/textpro/' + command, { text: text }, 'apikey') }, caption: `Text Pro ${command}` }, { quoted: m})
 	    }
             break
-	    case 'shadow': case 'romantic': case 'smoke': case 'burnpapper': case 'naruto': case 'lovemsg': case 'grassmsg': case 'lovetext': case 'coffecup': case 'butterfly': case 'harrypotter': case 'retrolol': {
+          case 'shadow': case 'flaming': case 'rainbow': case 'smoke': case 'neon': case 'doublelove': case 'wood': case 'coffe': case 'stars': case 'summer': case 'candy': case 'underwater': case 'burnpapper': case 'fur': {
                 if (!text) throw 'No Query Text'
                 replay(mess.wait)
-                hisoka.sendMessage(m.chat, { image: { url: api('zenz', '/photooxy/' + command, { text: text }, 'apikey') }, caption: `Photo Oxy ${command}` }, { quoted: m })
+                hisoka.sendMessage(m.chat, { image: { url: api('zekais', '/oxy/' + command, { text: text }, 'apikey') }, caption: `Photo Oxy ${command}` }, { quoted: m })
             }
-            break
-            case 'ffcover': case 'crossfire': case 'galaxy': case 'glass': case 'neon': case 'beach': case 'blackpink': case 'igcertificate': case 'ytcertificate': {
-                if (!text) throw 'No Query Text'
-                replay(mess.wait)
-                hisoka.sendMessage(m.chat, { image: { url: api('zenz', '/ephoto/' + command, { text: text }, 'apikey') }, caption: `Ephoto ${command}` }, { quoted: m })
-            }
-            break
+            break 
 	    case 'nomerhoki': case 'nomorhoki': {
                 if (!Number(text)) throw `Example : ${prefix + command} 6288292024190`
                 let anu = await primbon.nomer_hoki(Number(text))
@@ -3432,10 +3426,6 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                             "description": "Menampilkan photo oxy menu",
                             "rowId": `${prefix}photooxymenu`
                           },{
-                            "title": "Ephoto menu",
-                            "description": "Menampilkan ephoto menu",
-                            "rowId": `${prefix}ephotomenu`
-                          },{
                             "title": "Fun menu",
                             "description": "Menampilkan fun menu",
                             "rowId": `${prefix}funmenu`
@@ -3667,66 +3657,34 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
 *╠╣ Text Pro Menu (kadang error)*
 *┃┃*
-*┃┃* ◆ ${prefix}3dchristmas
-*┃┃* ◆ ${prefix}3ddeepsea
-*┃┃* ◆ ${prefix}americanflag
-*┃┃* ◆ ${prefix}3dscifi
-*┃┃* ◆ ${prefix}3drainbow
-*┃┃* ◆ ${prefix}3dwaterpipe
-*┃┃* ◆ ${prefix}halloweenskeleton
-*┃┃* ◆ ${prefix}sketch
-*┃┃* ◆ ${prefix}bluecircuit
-*┃┃* ◆ ${prefix}space
-*┃┃* ◆ ${prefix}metallic
-*┃┃* ◆ ${prefix}fiction
-*┃┃* ◆ ${prefix}greenhorror
-*┃┃* ◆ ${prefix}transformer
-*┃┃* ◆ ${prefix}berry
-*┃┃* ◆ ${prefix}thunder
+*┃┃* ◆ ${prefix}demon
 *┃┃* ◆ ${prefix}magma
-*┃┃* ◆ ${prefix}3dcrackedstone
-*┃┃* ◆ ${prefix}3dneonlight
-*┃┃* ◆ ${prefix}impressiveglitch
-*┃┃* ◆ ${prefix}naturalleaves
-*┃┃* ◆ ${prefix}fireworksparkle
-*┃┃* ◆ ${prefix}matrix
-*┃┃* ◆ ${prefix}dropwater
-*┃┃* ◆ ${prefix}harrypotter
-*┃┃* ◆ ${prefix}foggywindow
-*┃┃* ◆ ${prefix}neondevils
-*┃┃* ◆ ${prefix}christmasholiday
-*┃┃* ◆ ${prefix}3dgradient
+*┃┃* ◆ ${prefix}glitch
+*┃┃* ◆ ${prefix}devil
+*┃┃* ◆ ${prefix}graffiti
+*┃┃* ◆ ${prefix}skeleton
 *┃┃* ◆ ${prefix}blackpink
-*┃┃* ◆ ${prefix}gluetext
+*┃┃* ◆ ${prefix}cloud
+*┃┃* ◆ ${prefix}blood
+*┃┃* ◆ ${prefix}firework
+*┃┃* ◆ ${prefix}lava
+*┃┃* ◆ ${prefix}toxic
+*┃┃* ◆ ${prefix}thunder
+*┃┃* ◆ ${prefix}thunder2
+*┃┃* ◆ ${prefix}neon
+*┃┃* ◆ ${prefix}greenneon
+*┃┃* ◆ ${prefix}glitter
+*┃┃* ◆ ${prefix}glow
+*┃┃* ◆ ${prefix}galaxy
 *┃╚━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
 *╠╣ Photo Oxy Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}shadow
-*┃┃* ◆ ${prefix}romantic
+*┃┃* ◆ ${prefix}flaming
+*┃┃* ◆ ${prefix}rainbow
 *┃┃* ◆ ${prefix}smoke
-*┃┃* ◆ ${prefix}burnpapper
-*┃┃* ◆ ${prefix}naruto
-*┃┃* ◆ ${prefix}lovemsg
-*┃┃* ◆ ${prefix}grassmsg
-*┃┃* ◆ ${prefix}lovetext
-*┃┃* ◆ ${prefix}coffecup
-*┃┃* ◆ ${prefix}butterfly
-*┃┃* ◆ ${prefix}harrypotter
-*┃┃* ◆ ${prefix}retrolol
-*┃╚━━━━━━━━━━━━━⊏⊐*
-*┃╔━━━━━━━━━━━━━━━━⊏⊐*
-*╠╣ Ephoto Menu*
-*┃┃*
-*┃┃* ◆ ${prefix}ffcover
-*┃┃* ◆ ${prefix}crossfire
-*┃┃* ◆ ${prefix}galaxy
-*┃┃* ◆ ${prefix}glass
 *┃┃* ◆ ${prefix}neon
-*┃┃* ◆ ${prefix}beach
-*┃┃* ◆ ${prefix}blackpink
-*┃┃* ◆ ${prefix}igcertificate
-*┃┃* ◆ ${prefix}ytcertificate
 *┃╚━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
 *╠╣ Fun Menu*
@@ -4046,39 +4004,27 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               thumb = fs.readFileSync('./lib/text_pro.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Text Pro Menu (pitur g jelas)*
+*╔╣ Text Pro Menu*
 *┃┃*
-*┃┃* ◆ ${prefix}3dchristmas
-*┃┃* ◆ ${prefix}3ddeepsea
-*┃┃* ◆ ${prefix}americanflag
-*┃┃* ◆ ${prefix}3dscifi
-*┃┃* ◆ ${prefix}3drainbow
-*┃┃* ◆ ${prefix}3dwaterpipe
-*┃┃* ◆ ${prefix}halloweenskeleton
-*┃┃* ◆ ${prefix}sketch
-*┃┃* ◆ ${prefix}bluecircuit
-*┃┃* ◆ ${prefix}space
-*┃┃* ◆ ${prefix}metallic
-*┃┃* ◆ ${prefix}fiction
-*┃┃* ◆ ${prefix}greenhorror
-*┃┃* ◆ ${prefix}transformer
-*┃┃* ◆ ${prefix}berry
-*┃┃* ◆ ${prefix}thunder
+*┃┃* ◆ ${prefix}demon
 *┃┃* ◆ ${prefix}magma
-*┃┃* ◆ ${prefix}3dcrackedstone
-*┃┃* ◆ ${prefix}3dneonlight
-*┃┃* ◆ ${prefix}impressiveglitch
-*┃┃* ◆ ${prefix}naturalleaves
-*┃┃* ◆ ${prefix}fireworksparkle
-*┃┃* ◆ ${prefix}matrix
-*┃┃* ◆ ${prefix}dropwater
-*┃┃* ◆ ${prefix}harrypotter
-*┃┃* ◆ ${prefix}foggywindow
-*┃┃* ◆ ${prefix}neondevils
-*┃┃* ◆ ${prefix}christmasholiday
-*┃┃* ◆ ${prefix}3dgradient
+*┃┃* ◆ ${prefix}glitch
+*┃┃* ◆ ${prefix}devil
+*┃┃* ◆ ${prefix}graffiti
+*┃┃* ◆ ${prefix}skeleton
 *┃┃* ◆ ${prefix}blackpink
-*┃┃* ◆ ${prefix}gluetext
+*┃┃* ◆ ${prefix}cloud
+*┃┃* ◆ ${prefix}blood
+*┃┃* ◆ ${prefix}firework
+*┃┃* ◆ ${prefix}lava
+*┃┃* ◆ ${prefix}toxic
+*┃┃* ◆ ${prefix}thunder
+*┃┃* ◆ ${prefix}thunder2
+*┃┃* ◆ ${prefix}neon
+*┃┃* ◆ ${prefix}greenneon
+*┃┃* ◆ ${prefix}glitter
+*┃┃* ◆ ${prefix}glow
+*┃┃* ◆ ${prefix}galaxy
 *╚╣*
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
@@ -4092,10 +4038,10 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Photo Oxy Menu*
 *┃┃* ◆ ${prefix}shadow
-*┃┃* ◆ ${prefix}romantic
+*┃┃* ◆ ${prefix}flaming
+*┃┃* ◆ ${prefix}rainbow
 *┃┃* ◆ ${prefix}smoke
-*┃┃* ◆ ${prefix}burnpapper
-*┃┃* ◆ ${prefix}naruto
+*┃┃* ◆ ${prefix}neon
 *╚╣*
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
@@ -4103,6 +4049,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
+/**
             case 'ephotomenu': {
               thumb = fs.readFileSync('./lib/ephoto.jpg')
               anu = `
@@ -4124,7 +4071,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               `
               hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
-            break
+            break*/
             case 'funmenu': {
               thumb = fs.readFileSync('./lib/fun.jpg')
               anu = `
