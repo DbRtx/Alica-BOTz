@@ -175,12 +175,12 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
           let pesan = budy || m.mtype
           let tempat = m.isGroup ? groupMetadata.subject : 'Private Chat'
           var gc = m.isGroup ? groupMetadata.id : m.chat
-          var user = m.sender
+          var usr = m.sender
           let buttons = [{
                   index: 1,
                   urlButton: {
                     displayText: 'COPY USER JID',
-                    url: 'https://www.whatsapp.com/otp/copy/'+user
+                    url: 'https://www.whatsapp.com/otp/copy/'+usr
                   }
                 },{
                   index: 1,
