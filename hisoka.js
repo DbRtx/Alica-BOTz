@@ -173,14 +173,32 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
         if (m.message) {
           const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
           let pesan = budy || m.mtype
-          let tempat = m.isGroup ? pushname : 'Private Chat'
+          let tempat = m.isGroup ? groupMetadata.subject : 'Private Chat'
+          let gcjid = m.chat
+          let userjid = m.sender
+          let buttons = [{
+                  index: 1,
+                  urlButton: {
+                    displayText: 'COPY USER JID',
+                    url: 'https://www.whatsapp.com/otp/copy/'+userjid
+                  }
+                },{
+                  index: 1,
+                  urlButton: {
+                    displayText: 'COPY PLACE JID',
+                    url: 'https://www.whatsapp.com/otp/copy/'+gcjid
+                  }
+                }]
           let monit = `*[ PESAN ] ${time}*
 *=> Dari* ${pushname} ${m.sender}
 *=> Di* ${tempat} ${m.chat}
 *=> Pesan*
 
 ${pesan}`
-          hisoka.sendText(global.server, monit)
+         hisoka.sendMessage(global.server, {
+           text: monit,
+           templateButtons: buttons
+         })
         }	
 	// reset limit every 12 hours
         let cron = require('node-cron')
