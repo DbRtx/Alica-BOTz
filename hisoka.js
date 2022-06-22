@@ -2502,7 +2502,7 @@ break
                 if (!text) throw 'Masukkan Query Link!'
                 link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text
                 replay(mess.wait)
-                let anu = await fetchJson(api('zekais', '/tiktok', { url: link }, 'apikey'))
+                let anu = await fetchJson(api('zekais', '/tiktokmusic', { url: link }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktoknowm ${link}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokwm ${link}`, buttonText: {displayText: '► With Watermark'}, type: 1}
@@ -2515,7 +2515,7 @@ break
                     headerType: 2
                 }
                 let msg = await hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
-                hisoka.sendMessage(m.chat, { audio: { url: anu.result.audio }, mimetype: 'audio/mpeg'}, { quoted: msg })
+                hisoka.sendMessage(m.chat, { audio: { url: anu.result }, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
 	        case 'instagram': case 'ig': case 'igdl': {
