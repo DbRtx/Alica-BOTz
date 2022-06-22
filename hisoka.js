@@ -592,6 +592,18 @@ Selama ${clockString(new Date - user.afkTime)}
             case 'getgcdet': {
               if (!isGroup) return replay(mess.group)
               let metadata = await hisoka.groupMetadata(m.chat)
+              try {
+                let ppgc = await hisoka.profilePictureUrl(metadata.id, 'image')
+              } catch {
+                let ppgc = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+              }
+              let buttons = [{
+                  index: 1,
+                  urlButton: {
+                    displayText: 'COPY ID',
+                    url: 'https://www.whatsapp.com/otp/copy/'+id
+                  }
+                }]
               let anu = `*╔*
 *┃       GC DETAILS*
 *╚━━━━━━━━━━━━━╝*
@@ -599,7 +611,19 @@ Selama ${clockString(new Date - user.afkTime)}
 *⌗ GC NAME: ${metadata.subject}*
 *⌗ GC OWNER: ${metadata.owner.split`@`[0]}*
 *⌗ GC CREATED: ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}*
-*⌗ `
+*⌗ GC DESC: ${metadata.desc}*
+`
+              let msg = await hisoka.sendMessage(m.chat, {
+                image: { url: ppgc },
+                caption: anu,
+                contextInfo: thumbnail,
+                footer: hisoka.user.name
+              })
+              hisoka.sendMessage(m.chat { 
+                text: `*# GC ID: ${metadata.id}*`,
+                templateButtons: buttons,
+                footer: hisoka.user.name
+              }, { quoted : msg })
             }
             break
             case 'getgcid': {
