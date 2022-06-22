@@ -174,17 +174,19 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
           const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
           let pesan = budy || m.mtype
           let tempat = m.isGroup ? groupMetadata.subject : 'Private Chat'
+          var gc = m.isGroup ? groupMetadata.id : m.chat
+          var user = m.sender
           let buttons = [{
                   index: 1,
                   urlButton: {
                     displayText: 'COPY USER JID',
-                    url: 'https://www.whatsapp.com/otp/copy/'+${m.sender}
+                    url: 'https://www.whatsapp.com/otp/copy/'+user
                   }
                 },{
                   index: 1,
                   urlButton: {
                     displayText: 'COPY PLACE JID',
-                    url: 'https://www.whatsapp.com/otp/copy/'+${groupMetadata.id}
+                    url: 'https://www.whatsapp.com/otp/copy/'+gc
                   }
                 }]
           let monit = `*[ PESAN ] ${time}*
