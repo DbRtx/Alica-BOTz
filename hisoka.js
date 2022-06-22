@@ -606,7 +606,7 @@ Selama ${clockString(new Date - user.afkTime)}
 *╚━━━━━━━━━━━━━╝*
 
 *⌗ GC NAME: ${metadata.subject}*
-*⌗ GC OWNER: ${metadata.owner.split`@`[0]}*
+*⌗ GC OWNER: @${metadata.owner.split`@`[0]}*
 *⌗ GC CREATED: ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}*
 *⌗ GC DESC: ${metadata.desc}*
 `
