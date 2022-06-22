@@ -608,7 +608,9 @@ Selama ${clockString(new Date - user.afkTime)}
 *⌗ GC NAME: ${metadata.subject}*
 *⌗ GC OWNER: @${metadata.owner.split("@")[0]}*
 *⌗ GC CREATED: ${moment(metadata.creation * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}*
-*⌗ GC DESC: ${metadata.desc}*
+*⌗ GC DESC:* 
+
+*${metadata.desc}*
 `
               let msg = await hisoka.sendMessage(m.chat, {
                 image: { url: ppgc },
@@ -619,7 +621,8 @@ Selama ${clockString(new Date - user.afkTime)}
               hisoka.sendMessage(m.chat, { 
                 text: `*# GC ID: ${metadata.id}*`,
                 templateButtons: buttons,
-                footer: hisoka.user.name
+                footer: hisoka.user.name,
+                contextInfo: thumbnail
               }, { quoted : msg })
             }
             break
