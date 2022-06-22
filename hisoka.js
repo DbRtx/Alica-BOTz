@@ -619,7 +619,7 @@ Selama ${clockString(new Date - user.afkTime)}
                 contextInfo: thumbnail,
                 footer: hisoka.user.name
               })
-              hisoka.sendMessage(m.chat { 
+              hisoka.sendMessage(m.chat, { 
                 text: `*# GC ID: ${metadata.id}*`,
                 templateButtons: buttons,
                 footer: hisoka.user.name
