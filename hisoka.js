@@ -528,7 +528,7 @@ Selama ${clockString(new Date - user.afkTime)}
               if (!text.split`?`[1]) return replay('pesan?')
               let penerima = text.split`?`[0]
               let pesan = text.split`?`[1]
-              let anu = `*⌘ PESAN ⌘*\n*⌘ DARI : ${m.sender}*\n*⌘ PESAN:*\n\n*"${pesan}"*`
+              let anu = `*⌘ BOT SENDER ⌘*\n\n\n*⌘ DARI : ${m.sender}*\n*⌘ PESAN:*\n\n*"${pesan}"*`
               try {
                 hisoka.sendMessage(penerima, {
                 text: anu,
@@ -2462,16 +2462,17 @@ break
                 if (!text && !m.quoted) throw 'masukan link / reply link'  
                 link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text 
                 replay(mess.wait)
-                let anu = await fetchJson(api('neoxr', '/api/tiktok', { url: link }, 'apikey'))
+                let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktokwm ${link}`, buttonText: {displayText: '► With Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${link}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: anu.data.video },
-                    caption: `*Download From* ${link}\n*Caption:* ${anu.caption}\n*Author:* ${anu.author}`,
+                    video: { url: anu.result.no_wm },
+                    caption: `*Download From* ${link}*`,
                     footer: 'by ICHA-BOTz',
                     buttons: buttons,
+                    contextInfo: thumbnail,
                     headerType: 5
                 }
                 hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
@@ -2481,16 +2482,17 @@ break
                 if (!text) throw 'Masukkan Query Link!'
                 replay(mess.wait)
                 link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text
-                let anu = await fetchJson(api('neoxr', '/api/tiktok', { url: link }, 'apikey'))
+                let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktoknowm ${link}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${link}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
-                    video: { url: anu.data.videoWM },
+                    video: { url: anu.result.with_wm },
                     caption: `*Download From* ${link}\n*Caption:* ${anu.caption}\n*Author:* ${anu.author}`,
                     footer: 'by ICHA-BOTz',
                     buttons: buttons,
+                    contextInfo: thumbnail,
                     headerType: 5
                 }
                 hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
@@ -2500,7 +2502,7 @@ break
                 if (!text) throw 'Masukkan Query Link!'
                 link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text
                 replay(mess.wait)
-                let anu = await fetchJson(api('neoxr', '/api/tiktok', { url: link }, 'apikey'))
+                let anu = await fetchJson(api('zekais', '/tiktok', { url: link }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktoknowm ${link}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokwm ${link}`, buttonText: {displayText: '► With Watermark'}, type: 1}
@@ -2509,10 +2511,11 @@ break
                     text: `*Download From* ${link}\n*Caption:* ${anu.caption}\n*Author:* ${anu.author}`,
                     footer: 'by ICHA-BOTz',
                     buttons: buttons,
+                    contextInfo: thumbnail,
                     headerType: 2
                 }
                 let msg = await hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
-                hisoka.sendMessage(m.chat, { audio: { url: anu.data.audio }, mimetype: 'audio/mpeg'}, { quoted: msg })
+                hisoka.sendMessage(m.chat, { audio: { url: anu.result.audio }, mimetype: 'audio/mpeg'}, { quoted: msg })
             }
             break
 	        case 'instagram': case 'ig': case 'igdl': {
