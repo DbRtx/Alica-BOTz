@@ -687,8 +687,8 @@ Selama ${clockString(new Date - user.afkTime)}
               }
             }
             break
-            case 'ssweb-hp': case 'ssweb-pc': {
-              if (text = "ssweb") return replay("Example: ssweb-hp/pc github.com")
+            case 'ssweb-hp': case 'ssweb-pc': case 'ssweb': {
+              if (command = "ssweb") return reply("Example: ssweb-hp/ssweb-pc google.com")
               if (!text) return replay("no link query!")
               m.reply(mess.wait)
               hisoka.sendMessage(m.chat, { image: { url: api('LeysCoder', '/api/' + command, { url: text }, 'apikey') }, caption: `result ss ${text}` }, { quoted: m})
