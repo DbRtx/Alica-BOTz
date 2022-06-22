@@ -2181,13 +2181,21 @@ break
           case 'demon': case 'magma': case 'glitch': case 'devil': case 'graffiti': case 'skeleton': case 'blackpink': case 'cloud': case 'blood': case 'firework': case 'lava': case 'toxic': case 'thunder': case 'thunder2': case 'neon': case 'greenneon': case 'glitter': case 'glow': case 'galaxy': {
                 if (!text) throw `Example : ${prefix + command} text`
                 replay(mess.wait)
-                hisoka.sendMessage(m.chat, { image: { url: api('zekais', '/textpro/' + command, { text: text }, 'apikey') }, caption: `Text Pro ${command}` }, { quoted: m})
+                try {
+                  hisoka.sendMessage(m.chat, { image: { url: api('zekais', '/textpro/' + command, { text: text }, 'apikey') }, caption: `Text Pro ${command}` }, { quoted: m})
+                } catch (err) {
+                  replay("Fitur sedang error!")
+                } 
 	    }
             break
           case 'shadow': case 'flaming': case 'rainbow': case 'smoke': case 'neon': case 'doublelove': case 'wood': case 'coffe': case 'stars': case 'summer': case 'candy': case 'underwater': case 'burnpapper': case 'fur': {
                 if (!text) throw 'No Query Text'
                 replay(mess.wait)
-                hisoka.sendMessage(m.chat, { image: { url: api('zekais', '/oxy/' + command, { text: text }, 'apikey') }, caption: `Photo Oxy ${command}` }, { quoted: m })
+                try {
+                  hisoka.sendMessage(m.chat, { image: { url: api('zekais', '/oxy/' + command, { text: text }, 'apikey') }, caption: `Photo Oxy ${command}` }, { quoted: m })
+                } catch (err) {
+                  replay("Fitur sedang error!")
+                } 
             }
             break 
 	    case 'nomerhoki': case 'nomorhoki': {
