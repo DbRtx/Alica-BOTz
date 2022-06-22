@@ -1111,7 +1111,10 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break  
             case 'join': {
-                if (!isCreator) return replay(mess.owner)
+                if (!isCreator) {
+                  replay(mess.owner)
+                  break
+                }
                 if (!text) throw 'Masukkan Link Group!'
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalid!'
                 replay(mess.wait)
