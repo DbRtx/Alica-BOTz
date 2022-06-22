@@ -174,7 +174,7 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
           const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
           let pesan = budy || m.mtype
           let tempat = m.isGroup ? groupMetadata.subject : 'Private Chat'
-          var gc = groupMetadata.id(m.chat)
+          var gc = groupMetadata.id
           var usr = m.sender
           let buttons = [{
                   index: 1,
