@@ -526,7 +526,6 @@ Selama ${clockString(new Date - user.afkTime)}
               if (!text) return replay(`Example: ${prefix + command} number id/grup id?text pesan ny`)
               if (!text.split`?`[0]) return replay('penerima tidak ditemukan')
               if (!text.split`?`[1]) return replay('pesan?')
-              if (!text.match(``))
               let penerima = text.split`?`[0]
               let pesan = text.split`?`[1]
               let anu = `*⌘ PESAN ⌘*\n*⌘ DARI : ${m.sender}*\n*⌘ PESAN:*\n\n*"${pesan}"*`
