@@ -592,6 +592,7 @@ Selama ${clockString(new Date - user.afkTime)}
             case 'getgcdet': {
               if (!m.isGroup) return replay(mess.group)
               let metadata = await hisoka.groupMetadata(m.chat)
+              var id = metadata.id
               try {
                 let ppgc = await hisoka.profilePictureUrl(metadata.id, 'image')
               } catch {
