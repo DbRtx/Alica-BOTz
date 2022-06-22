@@ -546,7 +546,7 @@ Selama ${clockString(new Date - user.afkTime)}
               if (!text.split`?`[1]) return replay('pesan?')
               let penerima = text.split`?`[0]
               let pesan = text.split`?`[1]
-              let anu = `*⌘ BOT SENDER ⌘*\n\n\n*⌘ DARI : ${m.sender}*\n*⌘ PESAN:*\n\n*"${pesan}"*`
+              let anu = `*⌘ BOT SENDER ⌘*\n\n\n*⌘ DARI : https://wa.me/${m.sender.split("@")[0]}*\n*⌘ PESAN:*\n\n*"${pesan}"*`
               try {
                 hisoka.sendMessage(penerima, {
                 text: anu,
