@@ -2508,7 +2508,7 @@ break
                     {buttonId: `tiktokwm ${link}`, buttonText: {displayText: '► With Watermark'}, type: 1}
                 ]
                 let buttonMessage = {
-                    text: `*Download From* ${link}\n*Caption:* ${anu.caption}\n*Author:* ${anu.author}`,
+                    text: `*Download From* ${link}`,
                     footer: 'by ICHA-BOTz',
                     buttons: buttons,
                     contextInfo: thumbnail,
