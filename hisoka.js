@@ -2515,7 +2515,11 @@ break
                     headerType: 2
                 }
                 let msg = await hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
-                hisoka.sendMessage(m.chat, { audio: { url: anu.result }, mimetype: 'audio/mpeg'}, { quoted: msg })
+                hisoka.sendMessage(m.chat, {
+                  audio: { url: anu.result },
+                  mimetype: 'audio/mpeg',
+                  contextInfo: thumbnail
+                },{ quoted: msg })
             }
             break
 	        case 'instagram': case 'ig': case 'igdl': {
