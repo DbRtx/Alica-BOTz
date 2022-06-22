@@ -16,8 +16,8 @@ global.APIs = {
         pencarikode: 'https://pencarikode.xyz',
         LeysCoder: 'https://leyscoders-api.herokuapp.com',
         lol: 'https://api.lolhuman.xyz',
-        neoxr: 'https://api.neoxr.my.id'
-        zekq: 'http://zekais-api.herokuapp.com'
+        neoxr: 'https://api.neoxr.my.id',
+        zekais: 'http://zekais-api.herokuapp.com'
 }
 
 // Apikey Website Api
@@ -29,7 +29,7 @@ global.APIKeys = {
         'https://pencarikode.xyz': 'pais', 
         'https://leyscoders-api.herokuapp.com': 'dappakntlll',
         'https://api.lolhuman.xyz': '9be02aafd6efee353b7769b0',
-        'https://api.neoxr.my.id': 'mfE85g5I'
+        'https://api.neoxr.my.id': 'mfE85g5I',
         'http://zekais-api.herokuapp.com': 'zekais'
 }
 //user_data
