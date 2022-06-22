@@ -634,7 +634,7 @@ Selama ${clockString(new Date - user.afkTime)}
               let buttons = [{
                   index: 1,
                   urlButton: {
-                    displayText: 'COPY ID',
+                    displayText: 'COPY JID',
                     url: 'https://www.whatsapp.com/otp/copy/'+id
                   }
                 }]
