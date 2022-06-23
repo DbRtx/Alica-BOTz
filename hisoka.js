@@ -277,8 +277,10 @@ let thumbnail = {
 	
 //replay
 const replay = (anu) => {
-  hisoka.sendMessage(m.chat, { text: anu, contextInfo: thumbnail }, { quoted: m})
-  break
+  hisoka.sendMessage(m.chat, { 
+    text: anu, 
+    contextInfo: thumbnail 
+  }, { quoted: m})
 }
 
 /*
