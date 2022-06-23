@@ -2080,6 +2080,7 @@ break
             }
             break
             case 'ytmp4': case 'ytvideo': {
+              try { 
                 let { ytv } = require('./lib/y2mate')
                 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
                 let quality = args[1] ? args[1] : '360p'
@@ -2092,6 +2093,10 @@ break
                   contextInfo: thumbnail,
                   fileName: `${media.title}.mp4`,
                   caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${args[1] || '360p'}` }, { quoted: m })
+
+              } catch (err) {
+                replay("eror mungkin resolusi tidak ditemukan")
+              }
             }
             break
 	    case 'getmusic': {
