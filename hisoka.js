@@ -1983,14 +1983,13 @@ break
                 let teks = 'YouTube Search\n\n Result From '+text+'\n\n'
                 let no = 1
                 for (let i of search.all) {
-                    teks += `⭔ No : ${no++}
+                teks += `⭔ No : ${no++}
 ⭔ Type : ${i.type}
 ⭔ Video ID : ${i.videoId}\n
 ⭔ Title : ${i.title}
 ⭔ Views : ${i.views}
 ⭔ Duration : ${i.timestamp}
 ⭔ Upload At : ${i.ago}
-⭔ Author : ${i.author.name}
 ⭔ Url : ${i.url} 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━ 
