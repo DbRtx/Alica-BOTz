@@ -802,7 +802,12 @@ switch(command) {
        let filename = (await fetch(url, {method: 'HEAD'})).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
 // 'attachment; filename=ilmanhdyt/ShiraoriBOT-Mdv2.5.1-251-g836cccd.zip'
        replay(mess.wait)
-       await hisoka.sendMedia(m.chat, url, m, { fileName: "debaj" })
+       hisoka.sendMessage(m.chat, {
+         document: url,
+         mimetype: 'application/zip',
+         fileName: filename,
+         contextInfo: thumbnail
+       }) 
        } catch (err) {
          replay("Error :(")
        }
