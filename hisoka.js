@@ -1983,7 +1983,19 @@ break
                 let teks = 'YouTube Search\n\n Result From '+text+'\n\n'
                 let no = 1
                 for (let i of search.all) {
-                    teks += `⭔ No : ${no++}\n⭔ Type : ${i.type}\n⭔ Video ID : ${i.videoId}\n⭔ Title : ${i.title}\n⭔ Views : ${i.views}\n⭔ Duration : ${i.timestamp}\n⭔ Upload At : ${i.ago}\n⭔ Author : ${i.author}\n⭔ Url : ${i.url}\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n\n`
+                    teks += `⭔ No : ${no++}
+⭔ Type : ${i.type}
+⭔ Video ID : ${i.videoId}\n
+⭔ Title : ${i.title}
+⭔ Views : ${i.views}
+⭔ Duration : ${i.timestamp}
+⭔ Upload At : ${i.ago}
+⭔ Author : ${i.author.name}
+⭔ Url : ${i.url} 
+
+━━━━━━━━━━━━━━━━━━━━━━━━ 
+
+`
                 }
                 hisoka.sendMessage(m.chat, { image: { url: search.all[0].thumbnail },  caption: teks }, { quoted: m })
             }
