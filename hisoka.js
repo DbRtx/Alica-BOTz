@@ -788,8 +788,26 @@ switch(command) {
     let r = text.split`|`[1] ? text.split`|`[1] : ''
     replay(`${l}${readmore}${r}`)
   }
-    break 
-            
+    break
+
+  case 'gitclone': {
+    try{
+      let regex = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
+      if (!text) return setReply( 'link githubnya mana? contoh: https://github.com/saipulanuar/v18 ')
+       if (!regex.test(text)) return setReply('link salah!')
+       let [, user, repos] = text.match(regex) || []
+       let repo = repos.replace(/.git$/, '')
+       let url = `https://api.github.com/repos/${user}/${repos}/zipball`
+       let filename = (await fetch(url, {method: 'HEAD'})).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
+// 'attachment; filename=ilmanhdyt/ShiraoriBOT-Mdv2.5.1-251-g836cccd.zip'
+       replay(mess.wait)
+       await hisoka.sendMedia(m.chat, url, m, { fileName: filename })
+       } catch (err){
+         replay("Error :(")
+       }
+  }
+    break
+
   case 'bot': {
     replay("*BOT ON*")
   }
