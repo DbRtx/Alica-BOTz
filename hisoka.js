@@ -384,7 +384,7 @@ if (kuismath.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
 
 
 //tebakgambar
-if (tebakgambar.hasOwnProperty(m.sender.split('@')[0]) && isCmd {
+if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) && isCmd {
   kuis = true
   jawaban = tebakgambar[m.sender.split('@')[0]]
   if (budy.toLowerCase() == jawaban) {
