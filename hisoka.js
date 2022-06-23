@@ -959,8 +959,12 @@ ${arr.slice(6).join('')}
 Menunggu @${room.game.currentTurn.split('@')[0]}
 
 Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
-    if (room.x !== room.o) await hisoka.sendText(room.x, str, m, { mentions: parseMention(str) } )
-    await hisoka.sendText(room.o, str, m, { mentions: parseMention(str) } )
+    if (room.x !== room.o) await hisoka.sendText(room.x, str, m, { 
+      mentions: parseMention(str) 
+    })
+    await hisoka.sendText(room.o, str, m, { 
+      mentions: parseMention(str) 
+    })
     } else {
       room = {
         id: 'tictactoe-' + (+new Date),
@@ -989,8 +993,9 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
       replay('rusak')
     }
   }
-            break
-            case 'suitpvp': case 'suit': {
+    break
+            
+  case 'suitpvp': case 'suit': {
             this.suit = this.suit ? this.suit : {}
             let poin = 10
             let poin_lose = 10
