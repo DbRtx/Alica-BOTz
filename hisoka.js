@@ -791,16 +791,7 @@ switch(command) {
     break 
             
   case 'bot': {
-    let tombol = [{ 
-      buttonId: 'menu', 
-      buttonText: { displayText: 'MENU' }, 
-      type: 1 
-    }] 
-     hisoka.sendMessage(m.chat, {
-       text: "*BOT ON*",
-       buttons: tombol,
-       contextInfo: thumbnail
-     },{ quoted: m })
+    replay("*BOT ON*")
   }
     break
             
@@ -3098,7 +3089,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                 m.reply('Sukses Change To Self Usage')
             }
             break
-            case 'ping': case 'botstatus': case 'statusbot': {
+case 'speed': case 'ping': case 'botstatus': case 'statusbot': {
                 const used = process.memoryUsage()
                 const cpus = os.cpus().map(cpu => {
                     cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
