@@ -384,7 +384,7 @@ if (kuismath.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
 
 
 //tebakgambar
-if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) && isCmd {
+if (tebakgambar.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
   kuis = true
   jawaban = tebakgambar[m.sender.split('@')[0]]
   if (budy.toLowerCase() == jawaban) {
@@ -396,7 +396,6 @@ if (tebakgambar.hasOwnProperty(m.sender.split('@')[0])) && isCmd {
     delete tebakgambar[m.sender.split('@')[0]]
   } else replay('*Jawaban Salah!*')
 }
-
 
 //tebakkata
 if (tebakkata.hasOwnProperty(m.sender.split('@')[0]) && isCmd) {
