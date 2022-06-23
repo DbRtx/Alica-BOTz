@@ -931,7 +931,7 @@ switch(command) {
     if (Object.values(this.game).find(room => room.id.startsWith('tictactoe') && [room.game.playerX, room.game.playerO].includes(m.sender))) throw 'Kamu masih didalam game'
     let room = Object.values(this.game).find(room => room.state === 'WAITING' && (text ? room.name === text : true))
     if (room) {
-      m.reply('Partner ditemukan!')
+      replay('Partner ditemukan!')
       room.o = m.chat
       room.game.playerO = m.sender
       room.state = 'PLAYING'
@@ -959,12 +959,12 @@ ${arr.slice(6).join('')}
 Menunggu @${room.game.currentTurn.split('@')[0]}
 
 Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
-    if (room.x !== room.o) await hisoka.sendText(room.x, str, m, { 
-      mentions: parseMention(str) 
-    })
-    await hisoka.sendText(room.o, str, m, { 
-      mentions: parseMention(str) 
-    })
+      if (room.x !== room.o) await hisoka.sendText(room.x, str, m, { 
+        mentions: parseMention(str) 
+      })
+      await hisoka.sendText(room.o, str, m, { 
+        mentions: parseMention(str) 
+      })
     } else {
       room = {
         id: 'tictactoe-' + (+new Date),
