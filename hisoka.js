@@ -917,7 +917,8 @@ switch(command) {
         type: 1 
       }]
       hisoka.sendMessage(m.chat, {
-        text: pesan,
+        image: { url: global.thumb },
+        caption: pesan,
         contextInfo: thumbnail,
         buttons: tombol 
       },{ quoted: m })
