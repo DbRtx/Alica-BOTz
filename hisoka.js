@@ -388,7 +388,11 @@ if (tebakgambar.hasOwnProperty(m.sender.split('@')[0]) && isCmd {
   kuis = true
   jawaban = tebakgambar[m.sender.split('@')[0]]
   if (budy.toLowerCase() == jawaban) {
-    await hisoka.sendButtonText(m.chat, [{ buttonId: 'tebak gambar', buttonText: { displayText: 'Tebak Gambar' }, type: 1 }], `🎮 Tebak Gambar 🎮\n\nJawaban Benar 🎉\n\nIngin bermain lagi? tekan button dibawah`, hisoka.user.name, m)
+    await hisoka.sendButtonText(m.chat, [{ 
+      buttonId: 'tebak gambar', 
+      buttonText: { displayText: 'Tebak Gambar' }, 
+      type: 1 }], 
+      `🎮 Tebak Gambar 🎮\n\nJawaban Benar 🎉\n\nIngin bermain lagi? tekan button dibawah`, hisoka.user.name, m)
     delete tebakgambar[m.sender.split('@')[0]]
   } else replay('*Jawaban Salah!*')
 }
