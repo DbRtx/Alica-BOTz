@@ -803,7 +803,7 @@ switch(command) {
 // 'attachment; filename=ilmanhdyt/ShiraoriBOT-Mdv2.5.1-251-g836cccd.zip'
        replay(mess.wait)
        await hisoka.sendMedia(m.chat, url, m, { fileName: "debaj" })
-       } catch (err)
+       } catch (err) {
          replay("Error :(")
        }
   }
