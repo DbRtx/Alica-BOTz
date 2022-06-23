@@ -906,7 +906,7 @@ switch(command) {
             
   case 'assalamualaikum':{
     if (!m.isGroup) {
-      pesan = `*Waalakumussalam*\n\n\n*Hi ${pushname} welcome to ICHA-BOTz.*\n\n*Saat ini anda sedang chating dengam BOT system.*\n*Jika ingin berkomunikasi dengan owner bot ini(debj), silahkan PC owner dibawah ini.*\n\n\n*Thanks*`
+      pesan = `*Waalakumussalam*\n\n*Hi ${pushname} welcome to ICHA-BOTz.*\n\n*Saat ini anda sedang chating dengam BOT system.*\n*Jika ingin berkomunikasi dengan owner bot ini(debj), silahkan PC owner dibawah ini.*\n\n\n*Thanks*`
       let tombol = [{ 
         buttonId: 'owner',
         buttonText: { displayText: 'Contact Owner' },
@@ -917,8 +917,7 @@ switch(command) {
         type: 1 
       }]
       hisoka.sendMessage(m.chat, {
-        image: { url: global.thumb },
-        caption: pesan,
+        text: pesan,
         contextInfo: thumbnail,
         buttons: tombol 
       },{ quoted: m })
