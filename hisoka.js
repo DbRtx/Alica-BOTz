@@ -239,7 +239,7 @@ ${pesan}`
 
 // reset limit every 12 hours
 let cron = require('node-cron')
-ron.schedule('00 12 * * *', () => {
+cron.schedule('00 12 * * *', () => {
   let user = Object.keys(global.db.data.users)
   let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
   for (let jid of user) global.db.data.users[jid].limit = limitUser 
