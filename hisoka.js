@@ -918,8 +918,8 @@ switch(command) {
       }]
       hisoka.sendMessage(m.chat, {
         text: pesan,
-        buttons: tombol,
-        contextInfo: thumbnail
+        contextInfo: thumbnail,
+        buttons: tombol 
       },{ quoted: m })
     } else {
       replay("Waalakumussalam")
