@@ -793,8 +793,8 @@ switch(command) {
   case 'gitclone': {
     /*try{*/
       let regex = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
-      if (!text) return setReply( 'link githubnya mana? contoh: https://github.com/saipulanuar/v18 ')
-       if (!regex.test(text)) return setReply('link salah!')
+      if (!text) return replay( 'link githubnya mana? contoh: https://github.com/saipulanuar/v18 ')
+       if (!regex.test(text)) return replay('link salah!')
        let [, user, repos] = text.match(regex) || []
        let repo = repos.replace(/.git$/, '')
        let url = `https://api.github.com/repos/${user}/${repos}/zipball`
