@@ -235,7 +235,7 @@ ${pesan}`
   hisoka.sendMessage(global.server, {
     text: monit,
     templateButtons: buttons 
-  })
+  },{ quoted: m })
 }	
 	
 
