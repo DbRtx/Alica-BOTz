@@ -222,7 +222,7 @@ if (m.message) {
     index: 1,
     urlButton: {
       displayText: `${gc}`,
-      url: 'https://www.whatsapp.com/otp/copy/'+gc
+      url: `https://www.whatsapp.com/otp/copy/${gc}`
     }
   }]
   let monit = `*[ PESAN ] ${time}*
