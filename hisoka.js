@@ -226,7 +226,7 @@ if (m.message) {
 *=> Pesan*
 
 ${pesan}`
-  let msg = await hisoka.sendMessage(m.chat, {
+  let msg = await hisoka.sendMessage(global.server, {
     text: `${gc}`
   })
   hisoka.sendMessage(global.server, {
