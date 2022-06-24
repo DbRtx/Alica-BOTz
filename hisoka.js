@@ -1835,7 +1835,7 @@ break
 		}
 	    }
 	    break
-            case 'ttp': case 'attp': {
+            case 'attp': {
                  if (!text) throw `Example : ${prefix + command} text`
                  try {                 
                  await hisoka.sendMessage(m.chat, { sticker: {url:`https://api.xteam.xyz/${command}?file&text=${encodeURI(q)}` }}, { quoted: m })
@@ -1843,7 +1843,16 @@ break
                  replay(`Maap sedang error coba lagi besok`)
                } 
          }
-         break
+            break
+            case 'ttp': {
+              if (!text) return replay(`Example : ${prefix + command} text`)
+              try {
+                await hisoka.sendImageAsSticker(m.chat, `http://zekais-api.herokuapp.com/text2png?text=${text}&color=white&apikey=zekais`, m, { packname: global.packname, author: global.auhor })
+              } catch (err) {
+                replay("Fitur sedang error") 
+              }
+            }
+            break
 	       case 'smeme': case 'stickmeme': case 'stikmeme': case 'stickermeme': case 'stikermeme': {
                  let respond = `Kirim/reply image/sticker dengan caption ${prefix + command} text1|text2`
                  if (!/image/.test(mime)) throw (respond)
