@@ -684,7 +684,7 @@ switch(command) {
   }
     break
 
-  case 'update': case 'up'{
+  case 'update': case 'up': {
     if (!isCreator) return replay(mess.owner)
     replay('Updating!')
     try {
