@@ -644,7 +644,18 @@ switch(command) {
       replay('Invalid number or grup jid!')
     }
   }
-    break 
+    break
+
+  case 'nulis': {
+    if (!text) return replay(`Example: ${prefix + command} text`)
+    let buku = `http://zekais-api.herokuapp.com/bukukanan?text=${text}&apikey=zekais`
+    hisoka.sendMessage(m.chat, {
+      image: { url: buku },
+      caption: "nih mageran :v",
+      contextInfo: thumbnail
+    },{ quoted: m })
+  } 
+    break
 
   case 'view': {
     if (!m.quoted) throw `balas pesan viewOnce nya!`
