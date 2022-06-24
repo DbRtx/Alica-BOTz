@@ -210,7 +210,8 @@ if (m.message) {
   const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
   let pesan = budy || m.mtype
   let tempat = m.isGroup ? groupMetadata.subject : 'Private Chat'
-  var gc = groupMetadata.id
+  let metadata = await hisoka.groupMetadata(m.sender)
+  var gc = metadata.is
   var usr = m.sender
   let buttons = [{
     index: 1,
@@ -226,6 +227,7 @@ if (m.message) {
     }
   }]
   let monit = `*[ PESAN ] ${time}*
+
 *=> Dari* ${pushname} ${m.sender}
 *=> Di* ${tempat} ${m.chat}
 *=> Pesan*
