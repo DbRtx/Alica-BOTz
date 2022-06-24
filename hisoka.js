@@ -211,7 +211,7 @@ if (m.message) {
   let pesan = budy || m.mtype
   let tempat = m.isGroup ? groupMetadata.subject : 'Private Chat'
   let metadata = await hisoka.groupMetadata(m.sender)
-  var gc = metadata.is
+  var gc = metadata.id
   var usr = m.sender
   let buttons = [{
     index: 1,
