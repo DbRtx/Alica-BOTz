@@ -217,6 +217,11 @@ if (m.message) {
     urlButton: {
       displayText: 'COPY USER JID',
       url: 'https://www.whatsapp.com/otp/copy/'+usr 
+    },{
+    index: 1,
+    urlButton: {
+      displayText: 'COPY PLACE JID',
+      url: 'https://www.whatsapp.com/otp/copy/'+m.chat 
     }
   }]
   let monit = `*[ PESAN ] ${time}*
@@ -226,13 +231,11 @@ if (m.message) {
 *=> Pesan*
 
 ${pesan}`
-  let msg = await hisoka.sendMessage(global.server, {
-    text: `${gc}`
-  })
+
   hisoka.sendMessage(global.server, {
     text: monit,
     templateButtons: buttons 
-  },{ quoted: msg })
+  })
 }	
 	
 
@@ -680,7 +683,7 @@ switch(command) {
   }
     break
 
-  case 'update': case 'up': {
+  case 'update': case 'up'{
     if (!isCreator) return replay(mess.owner)
     replay('Updating!')
     try {
