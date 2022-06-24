@@ -221,7 +221,7 @@ if (m.message) {
   },{
     index: 1,
     urlButton: {
-      displayText: 'COPY PLACE JID',
+      displayText: `${gc}`,
       url: 'https://www.whatsapp.com/otp/copy/'+gc
     }
   }]
