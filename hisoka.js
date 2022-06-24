@@ -218,12 +218,6 @@ if (m.message) {
       displayText: 'COPY USER JID',
       url: 'https://www.whatsapp.com/otp/copy/'+usr 
     }
-  },{
-    index: 1,
-    urlButton: {
-      displayText: `${gc}`,
-      url: `https://www.whatsapp.com/otp/copy/${gc}`
-    }
   }]
   let monit = `*[ PESAN ] ${time}*
 
@@ -232,10 +226,13 @@ if (m.message) {
 *=> Pesan*
 
 ${pesan}`
+  let msg = await hisoka.sendMessage(m.chat, {
+    text: `${gc}`
+  })
   hisoka.sendMessage(global.server, {
     text: monit,
     templateButtons: buttons 
-  },{ quoted: m })
+  },{ quoted: msg })
 }	
 	
 
