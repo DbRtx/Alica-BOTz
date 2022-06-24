@@ -217,7 +217,8 @@ if (m.message) {
     urlButton: {
       displayText: 'COPY USER JID',
       url: 'https://www.whatsapp.com/otp/copy/'+usr 
-    },{
+    }
+  },{
     index: 1,
     urlButton: {
       displayText: 'COPY PLACE JID',
