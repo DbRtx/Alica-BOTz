@@ -296,7 +296,7 @@ let thumbnail = {
     "title": `${global.footer}`,
     "body": `runtime bot ${runtime(process.uptime())}`,
     "mediaType": 2,
-    "mediaUrl": "https://youtu.be/v4kWLu4Eb1Y"
+    "mediaUrl": "https://youtu.be/v4kWLu4Eb1Y",
     "sourceUrl": "https://dlvash.github.io",
     "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
   }
