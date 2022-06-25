@@ -110,6 +110,9 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
     const isVideo = (m.mtype === 'videoMessage')
     const isSticker = (m.mtype == 'stickerMessage')
     const isAudio = (m.mtype == 'audioMessage')
+    const pickRandom = (arr) => {
+      return arr[Math.floor(Math.random() * arr.length)]
+    }
 
 //DOWNLOAD MP4
 const downloadMp4 = async (Link ) => {
@@ -256,8 +259,8 @@ let regex = [
 ]
 for (let i of regex) {
   if (m.isGroup && budy.toLowerCase().includes(i)) {
-    let emot = await getRandom(["🗿", "👍", "🙄", "😝", "😏", "💩", "👻","🔥", "🤣","🤬", "😎", "😂", "😘", "😑", "😱", "❤️", "🔥", "😳","😍","🤩 ","🥳","🤔","🤗","🤤","👎","👊","🙈","🤡" ])
-    hisoka.sendMessage(m.chat , { react: { text: "🙄", key: m.key }})
+    let emot = await pickRandom(["🗿", "👍", "🙄", "😝", "😏", "💩", "👻","🔥", "🤣","🤬", "😎", "😂", "😘", "😑", "😱", "❤️", "🔥", "😳","😍","🤩 ","🥳","🤔","🤗","🤤","👎","👊","🙈","🤡" ])
+    hisoka.sendMessage(m.chat , { react: { text: emot, key: m.key }})
   }
 }
 // reset limit every 12 hours
