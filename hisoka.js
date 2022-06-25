@@ -257,7 +257,7 @@ let regex = [
 for (let i of regex) {
   if (m.isGroup && budy.toLowerCase().includes(i)) {
     let emot = await getRandom(["🗿", "👍", "🙄", "😝", "😏", "💩", "👻","🔥", "🤣","🤬", "😎", "😂", "😘", "😑", "😱", "❤️", "🔥", "😳","😍","🤩 ","🥳","🤔","🤗","🤤","👎","👊","🙈","🤡" ])
-    hisoka.sendMessage(m.chat , { react: { text: emot, key: m.key }})
+    hisoka.sendMessage(m.chat , { react: { text: "🙄", key: m.key }})
   }
 }
 // reset limit every 12 hours
