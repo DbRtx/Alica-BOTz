@@ -2169,7 +2169,7 @@ break
             break
             case 'pinterest': {
                 replay(mess.wait)
-		let { pinterest } = require('./lib/scraper')
+		let { pinterest } = require('./lib/pinterest')
                 anu = await pinterest(text)
                 result = anu[Math.floor(Math.random() * anu.length)]
                 hisoka.sendMessage(m.chat, { image: { url: result }, caption: '*⭔ Media Url :* '+result }, { quoted: m })
