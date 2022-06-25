@@ -37,7 +37,7 @@ global.APIKeys = {
 // Other
 global.server = '6282346048026-1620355258@g.us'
 global.number = '6288229863041@s.whatsapp.net'
-global.footer = 'Icha-BOTz'
+global.footer = 'Alica-BOTz'
 global.bot = ['6283827461476']
 global.owner = ['6288229863041']
 global.creator = ['6288292024190']
