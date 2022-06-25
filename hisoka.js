@@ -243,8 +243,8 @@ ${pesan}`
 let regex = [
   "tai",
   "kntll",
-  "kntlll"
-  "kntl"
+  "kntlll",
+  "kntl",
   "kontol",
   "memek",
   "mmk",
