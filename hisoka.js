@@ -1,4 +1,4 @@
-/**
+*
    * Create By Dika Ardnt.
    * Contact Me on wa.me/6288292024190
    * Follow https://github.com/DikaArdnt
@@ -273,7 +273,7 @@ let thumbnail = {
     "body": `runtime bot ${runtime(process.uptime())}`,
     "mediaType": 2,
     "sourceUrl": "https://dlvash.github.io",
-    "thumbnail": fs.readFileSync(`./lib/icha.jpg`)
+    "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
   }
 }
 
@@ -767,7 +767,7 @@ switch(command) {
             
   case 'getsesi': {
     if (!isCreator) return replay(mess.owner)
-    let media = fs.readFileSync("./icha.json")
+    let media = fs.readFileSync("./alica.json")
     hisoka.sendMessage(m.chat, { 
       document: media,
       mimetype: 'application/json',
@@ -919,7 +919,7 @@ switch(command) {
             
   case 'assalamualaikum':{
     if (!m.isGroup) {
-      pesan = `*Waalakumussalam*\n\n*Hi ${pushname} welcome to ICHA-BOTz.*\n\n*Saat ini anda sedang chating dengam BOT system.*\n*Jika ingin berkomunikasi dengan owner bot ini(debj), silahkan PC owner dibawah ini.*\n\n\n*Thanks*`
+      pesan = `*Waalakumussalam*\n\n*Hi ${pushname} welcome to alica-BOTz.*\n\n*Saat ini anda sedang chating dengam BOT system.*\n*Jika ingin berkomunikasi dengan owner bot ini(debj), silahkan PC owner dibawah ini.*\n\n\n*Thanks*`
       let tombol = [{ 
         buttonId: 'owner',
         buttonText: { displayText: 'Contact Owner' },
@@ -1243,7 +1243,7 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
                     await hisoka.sendButtonText(m.chat, buttons, jawab, hisoka.user.name, m, {mentions: menst})
             }
             break
-            case 'react': {
+  case 'react': case 'r':{
                 reactionMessage = {
                     react: {
                         text: args[0],
@@ -2252,7 +2252,7 @@ break
                 ]
                 let buttonMessage = {
                     text: `~_${result.quotes}_\n\nBy '${result.karakter}', ${result.anime}\n\n- ${result.up_at}`,
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     headerType: 2
                 }
@@ -2266,7 +2266,7 @@ break
                 ]
                 let buttonMessage = {
                     text: `"${anu.result.quotes}"\n\n*~${anu.result.author}*`,
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     headerType: 2
                 }
@@ -2280,7 +2280,7 @@ break
                 ]
                 let buttonMessage = {
                     text: anu.result,
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     headerType: 2
                 }
@@ -2294,7 +2294,7 @@ break
                 ]
                 let buttonMessage = {
                     text: anu.result,
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     headerType: 2
                 }
@@ -2308,7 +2308,7 @@ break
                 ]
                 let buttonMessage = {
                     text: anu.result,
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     headerType: 2
                 }
@@ -2322,7 +2322,7 @@ break
                 ]
                 let buttonMessage = {
                     text: anu.result.message,
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     headerType: 2
                 }
@@ -2667,7 +2667,7 @@ break
                 let buttonMessage = {
                     video: { url: anu.result.no_wm },
                     caption: `*Download From* ${link}*`,
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     contextInfo: thumbnail,
                     headerType: 5
@@ -2687,7 +2687,7 @@ break
                 let buttonMessage = {
                     video: { url: anu.result.with_wm },
                     caption: `*Download From* ${link}\n*Caption:* ${anu.caption}\n*Author:* ${anu.author}`,
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     contextInfo: thumbnail,
                     headerType: 5
@@ -2706,7 +2706,7 @@ break
                 ]
                 let buttonMessage = {
                     text: `*Download From* ${link}`,
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     contextInfo: thumbnail,
                     headerType: 2
@@ -2753,7 +2753,7 @@ break
                 let buttonMessage = {
                     video: { url: anu.result.HD || anu.result.SD },
                     caption: util.format(anu.result),
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     headerType: 5
                 }
@@ -2770,7 +2770,7 @@ break
                 let buttonMessage = {
 		    image: { url: anu.result.thumb },
                     caption: util.format(anu.result),
-                    footer: 'by ICHA-BOTz',
+                    footer: 'by alica-BOTz',
                     buttons: buttons,
                     contextInfo: thumbnail,
                     headerType: 4
@@ -3379,7 +3379,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *╔╣*
 *┃┃ Halo ${pushname} 👋🤗*
 *┃┃ ${ucapanWaktu}*
-*┃┃ Welcome to ICHA-BOTz*
+*┃┃ Welcome to alica-BOTz*
 *┃┃*
 *┃╚━━━━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
@@ -3387,7 +3387,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃┃* 
 *┃┃ ⌗ Speed* : ${latensi.toFixed(4)} millisecond
 *┃┃ ⌗ Runtime* : ${runtime(process.uptime())}
-*┃┃ ⌗ Bot Name* : Icha-BOTz
+*┃┃ ⌗ Bot Name* : alica-BOTz
 *┃┃ ⌗ Bot recoder* : ${global.author}
 *┃┃ ⌗ Bot template* : Hisoka-Morou
 *┃┃ ⌗ Bot Creator* : DikaArdnt
@@ -3508,14 +3508,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *╔╣*
 *┃┃ Halo ${pushname}*
 *┃┃ ${ucapanWaktu}*
-*┃┃ Welcome to ICHA-BOTz* 
+*┃┃ Welcome to alica-BOTz* 
 *┃╚━━━━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
 *╠╣ ⌘ BOT STATUS ⌘*
 *┃┃* 
 *┃┃ ⌗ Speed* : ${latensi.toFixed(4)} millisecond
 *┃┃ ⌗ Runtime* : ${runtime(process.uptime())}
-*┃┃ ⌗ Bot Name* : Icha-BOTz
+*┃┃ ⌗ Bot Name* : alica-BOTz
 *┃┃ ⌗ Bot recoder* : ${global.author}
 *┃┃ ⌗ Bot template* : Hisoka-Morou
 *┃┃ ⌗ Bot Creator* : DikaArdnt
@@ -3710,14 +3710,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *╔╣*
 *┃┃ Halo ${pushname}*
 *┃┃ ${ucapanWaktu}*
-*┃┃ Welcome to ICHA-BOTz* 
+*┃┃ Welcome to alica-BOTz* 
 *┃╚━━━━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
 *╠╣    ⌘ BOT STATUS ⌘*
 *┃┃* 
 *┃┃ ⌗ Speed* : ${latensi.toFixed(4)} millisecond
 *┃┃ ⌗ Runtime* : ${runtime(process.uptime())}
-*┃┃ ⌗ Bot Name* : Icha-BOTz
+*┃┃ ⌗ Bot Name* : alica-BOTz
 *┃┃ ⌗ Bot recoder* : ${global.author}
 *┃┃ ⌗ Bot template* : Hisoka-Morou
 *┃┃ ⌗ Bot Creator* : DikaArdnt
