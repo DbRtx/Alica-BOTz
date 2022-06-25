@@ -205,7 +205,7 @@ if (m.message) {
   console.log(chalk.black(chalk.bgWhite('[ PESAN ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> Dari'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> Di'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
 }
       
-// monitoring message
+// MONIT MESSAGE TO SERVER GC
 if (m.message) {
   const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
   let pesan = budy || m.mtype
@@ -239,7 +239,27 @@ ${pesan}`
   })
 }	
 	
-
+// AUTO REACT 
+let regex = [
+  "tai",
+  "kntll",
+  "kntlll"
+  "kntl"
+  "kontol",
+  "memek",
+  "mmk",
+  "bacot",
+  "bang",
+  "banh",
+  "coli",
+  "tes"
+]
+for (let i of regex) {
+  if (isGroup && budy.toLowerCase().includes(i)) {
+    let emot = await getRandom(["🗿", "👍", "🙄", "😝", "😏", "💩", "👻","🔥", "🤣","🤬", "😎", "😂", "😘", "😑", "😱", "❤️", "🔥", "😳","😍","🤩 ","🥳","🤔","🤗","🤤","👎","👊","🙈","🤡" ])
+    hisoka.sendMessage(m.chat , { react: { text: emot, key: m.key }})
+  }
+}
 // reset limit every 12 hours
 let cron = require('node-cron')
 cron.schedule('00 12 * * *', () => {
