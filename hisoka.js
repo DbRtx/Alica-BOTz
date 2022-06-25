@@ -277,7 +277,8 @@ cron.schedule('00 12 * * *', () => {
         
 	
 // auto set bio
-if (db.data.settings[botNumber].autobio) {
+var autobio = true
+if (autobio) {
   let setting = global.db.data.settings[botNumber]
   if (new Date() * 1 - setting.status > 1000) {
     let uptime = await runtime(process.uptime())
