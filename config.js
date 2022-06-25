@@ -44,7 +44,7 @@ global.creator = ['6288292024190']
 global.premium = ['6283827461476', '6288802495232']
 global.packname = 'i hope you\'r gk looting'
 global.author = 'D_4J'
-global.sessionName = 'icha'
+global.sessionName = 'alica'
 global.prefa = ['!','.','🐦','🐤','🗿']
 global.sp = '⭔'
 global.mess = {
@@ -66,7 +66,7 @@ global.User = {
     premium: "Yes",
     free: "No"
 }
-global.thumb = fs.readFileSync('./lib/icha.jpg')
+global.thumb = fs.readFileSync('./lib/alica.jpg')
 
 
 let file = require.resolve(__filename)
