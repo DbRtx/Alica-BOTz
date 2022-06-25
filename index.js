@@ -163,7 +163,7 @@ async function startHisoka() {
                   "body": `Hi ${nama}`,
                   "previewType": "photo",
                   "sourceUrl": "https://dlvash.github.io", 
-                  "thumbnail": fs.readFileSync(`./lib/icha.jpg`)
+                  "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
                 }
               }
               if (anu.action == 'add') { 
