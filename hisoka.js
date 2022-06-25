@@ -255,7 +255,7 @@ let regex = [
   "tes"
 ]
 for (let i of regex) {
-  if (isGroup && budy.toLowerCase().includes(i)) {
+  if (m.isGroup && budy.toLowerCase().includes(i)) {
     let emot = await getRandom(["🗿", "👍", "🙄", "😝", "😏", "💩", "👻","🔥", "🤣","🤬", "😎", "😂", "😘", "😑", "😱", "❤️", "🔥", "😳","😍","🤩 ","🥳","🤔","🤗","🤤","👎","👊","🙈","🤡" ])
     hisoka.sendMessage(m.chat , { react: { text: emot, key: m.key }})
   }
