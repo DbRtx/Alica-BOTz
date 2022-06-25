@@ -295,7 +295,7 @@ let thumbnail = {
   "externalAdReply": { 
     "title": `${global.footer}`,
     "body": `runtime bot ${runtime(process.uptime())}`,
-    "mediaType": 1,
+    "mediaType": 3,
     "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
     "sourceUrl": "https://dlvash.github.io",
     "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
