@@ -159,7 +159,7 @@ async function startHisoka() {
                 "externalAdReply": { 
                   "title": `${global.footer}`,
                   "body": `runtime bot ${runtime(process.uptime())}`,
-                  "mediaType": 3,
+                  "mediaType": 2,
                   "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
                   "sourceUrl": "https://dlvash.github.io",
                   "thumbnail": ppuser
