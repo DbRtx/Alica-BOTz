@@ -178,7 +178,7 @@ async function startHisoka() {
                 if (anu.action == 'add') {
                     hisoka.sendMessage(anu.id, {  
                       image: { url: ppuser },
-                      caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}\n\n*Rules*\n${metadata.desc}`,
+                      caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}\n\n*Rules:*\n\n${metadata.desc}`,
                       contextInfo: thumbnail,
                       footer: global.footer,
                       buttons: wel
