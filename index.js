@@ -82,7 +82,7 @@ async function startHisoka() {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
     let pa7rick = await hisoka.sendContact(callerId, global.owner)
-    hisoka.sendMessage(callerId, { text: `Sistem otomatis block!\nJangan menelpon bot!\nSilahkan Hubungi Owner Untuk Dibuka !`}, { quoted : pa7rick })
+    hisoka.sendMessage(callerId, { text: `*⚠️Warning⚠️*  \n\n*Sistem otomatis block!*\n*Jangan menelpon bot!*\n*Silahkan Hubungi Owner Untuk Dibuka !*\n\n\n\nThanks`}, { quoted : pa7rick })
     await sleep(8000)
     await hisoka.updateBlockStatus(callerId, "block")
     }
@@ -106,31 +106,25 @@ async function startHisoka() {
     
     // Group Update
     hisoka.ev.on('groups.update', async pea => {
-    //console.log(pea)
-    try {
-    for(let ciko of pea) {
+       //console.log(pea)
     // Get Profile Picture Group
        try {
-       ppgc = await hisoka.profilePictureUrl(ciko.id, 'image')
+       ppgc = await hisoka.profilePictureUrl(pea[0].id, 'image')
        } catch {
-       ppgc = 'https://tinyurl.com/yx93l6da'
+       ppgc = 'https://shortlink.hisokaarridho.my.id/rg1oT'
        }
        let wm_fatih = { url : ppgc }
-       if (ciko.announce == true) {
-       hisoka.send5ButImg(ciko.id, `「 Group Settings Change 」\n\nGroup telah ditutup oleh admin, Sekarang hanya admin yang dapat mengirim pesan !`, `Group Settings Change Message`, wm_fatih, [])
-       } else if (ciko.announce == false) {
-       hisoka.send5ButImg(ciko.id, `「 Group Settings Change 」\n\nGroup telah dibuka oleh admin, Sekarang peserta dapat mengirim pesan !`, `Group Settings Change Message`, wm_fatih, [])
-       } else if (ciko.restrict == true) {
-       hisoka.send5ButImg(ciko.id, `「 Group Settings Change 」\n\nInfo group telah dibatasi, Sekarang hanya admin yang dapat mengedit info group !`, `Group Settings Change Message`, wm_fatih, [])
-       } else if (ciko.restrict == false) {
-       hisoka.send5ButImg(ciko.id, `「 Group Settings Change 」\n\nInfo group telah dibuka, Sekarang peserta dapat mengedit info group !`, `Group Settings Change Message`, wm_fatih, [])
+       if (pea[0].announce == true) {
+       hisoka.send5ButImg(pea[0].id, `「 Group Settings Change 」\n\nGroup telah ditutup oleh admin, Sekarang hanya admin yang dapat mengirim pesan !`, `Group Settings Change Message`, wm_fatih, [])
+       } else if(pea[0].announce == false) {
+       hisoka.send5ButImg(pea[0].id, `「 Group Settings Change 」\n\nGroup telah dibuka oleh admin, Sekarang peserta dapat mengirim pesan !`, `Group Settings Change Message`, wm_fatih, [])
+       } else if (pea[0].restrict == true) {
+       hisoka.send5ButImg(pea[0].id, `「 Group Settings Change 」\n\nInfo group telah dibatasi, Sekarang hanya admin yang dapat mengedit info group !`, `Group Settings Change Message`, wm_fatih, [])
+       } else if (pea[0].restrict == false) {
+       hisoka.send5ButImg(pea[0].id, `「 Group Settings Change 」\n\nInfo group telah dibuka, Sekarang peserta dapat mengedit info group !`, `Group Settings Change Message`, wm_fatih, [])
        } else {
-       hisoka.send5ButImg(ciko.id, `「 Group Settings Change 」\n\nGroup Subject telah diganti menjadi *${ciko.subject}*`, `Group Settings Change Message`, wm_fatih, [])
+       hisoka.send5ButImg(pea[0].id, `「 Group Settings Change 」\n\nGroup Subject telah diganti menjadi *${pea[0].subject}*`, `Group Settings Change Message`, wm_fatih, [])
      }
-    }
-    } catch (err){
-    console.log(err)
-    }
     })
 
     hisoka.ev.on('group-participants.update', async (anu) => {
@@ -143,28 +137,16 @@ async function startHisoka() {
                 try {
                     ppuser = await hisoka.profilePictureUrl(num, 'image')
                 } catch {
-                    ppuser = 'https://tinyurl.com/yx93l6da'
+                    ppuser = './lib/null.jpg'
                 }
 
                 // Get Profile Picture Group
                 try {
                     ppgroup = await hisoka.profilePictureUrl(anu.id, 'image')
                 } catch {
-                    ppgroup = 'https://tinyurl.com/yx93l6da'
+                    ppgroup = './lib/null.jpg'
                 }
-              //Thumbnail
-
-            let user = await hisoka.getName(num)
-            let thumbnail = {
-              mentionedJid: [num],
-                "externalAdReply": { 
-                  "title": `${global.footer}`,
-                  "body": `Hi ${user}`,
-                  "mediaType": 1,
-                  "sourceUrl": "https://dlvash.github.io",
-                  "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
-                }
-              }
+              let nama = await hisoka.getName(num)
               let wel = [{
                 buttonId: 'welcome',
                 buttonText: { displayText: "Welcome"},
@@ -174,28 +156,33 @@ async function startHisoka() {
                 buttonId: 'Goodbye',
                 buttonText: { displayText: "Goodbye" },
                 type: 1
-              }] 
-                if (anu.action == 'add') {
-                    hisoka.sendMessage(anu.id, {  
-                      image: { url: ppuser },
-                      caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}\n\n*Rules:*\n\n${metadata.desc}`,
-                      contextInfo: thumbnail,
-                      footer: global.footer,
-                      buttons: wel
-                      })
-                } else if (anu.action == 'remove') {
-                    hisoka.sendMessage(anu.id, {  
-                      image: { url: ppuser },
-                      caption: `Goodbye @${num.split("@")[0]}`,
-                      contextInfo: thumbnail,
-                      footer: global.footer,
-                      buttons: bye
-                      })
-                } else if (anu.action == 'promote') {
-                    hisoka.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `@${num.split('@')[0]} Promote From ${metadata.subject}` })
-                } else if (anu.action == 'demote') {
-                    hisoka.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `@${num.split('@')[0]} Demote From ${metadata.subject}` })
+              }]
+              let thumbnail = {
+                mentionedJid: [num],
+                "externalAdReply": { "title": `${global.footer}`,
+                  "body": `Hi ${nama}`,
+                  "previewType": "photo",
+                  "sourceUrl": "https://dlvash.github.io", 
+                  "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
+                }
               }
+              if (anu.action == 'add') { 
+                hisoka.sendMessage(anu.id, {
+                  image: { url: ppuser },
+                  contextInfo: thumbnail,
+                  caption: `welcome to *${metadata.subject}* @${num.split("@")[0]}`,
+                  buttons: wel
+                })
+              } if (anu.action == 'remove') { 
+                hisoka.sendMessage(anu.id, {  
+                  image: { url: ppuser }, 
+                  caption: `Goodbye @${num.split("@")[0]}`,
+                  contextInfo: thumbnail,  
+                  buttons: bye
+                })
+                } else if (anu.action == 'info') {
+                  hisoka.sendMessage(anu.id, { image: { url: ppuser }, caption: `Tes`})
+                }
             }
         } catch (err) {
             console.log(err)
@@ -241,7 +228,7 @@ async function startHisoka() {
 	for (let i of kon) {
 	    list.push({
 	    	displayName: await hisoka.getName(i + '@s.whatsapp.net'),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await hisoka.getName(i + '@s.whatsapp.net')}\nFN:${await hisoka.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET:okeae2410@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/cak_haho\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await hisoka.getName(i + '@s.whatsapp.net')}\nFN:${await hisoka.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET:debajbahyabaa.h@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/dlva127_\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
 	hisoka.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
@@ -287,48 +274,6 @@ async function startHisoka() {
     hisoka.ev.on('creds.update', saveState)
 
     // Add Other
-      
-      /** Resize Image
-      *
-      * @param {Buffer} Buffer (Only Image)
-      * @param {Numeric} Width
-      * @param {Numeric} Height
-      */
-      hisoka.reSize = async (image, width, height) => {
-       let jimp = require('jimp')
-       var oyy = await jimp.read(image);
-       var kiyomasa = await oyy.resize(width, height).getBufferAsync(jimp.MIME_JPEG)
-       return kiyomasa
-      }
-      // Siapa yang cita-citanya pakai resize buat keliatan thumbnailnya
-      
-      /** Send Button 5 Location
-       *
-       * @param {*} jid
-       * @param {*} text
-       * @param {*} footer
-       * @param {*} location
-       * @param [*] button
-       * @param {*} options
-       */
-      hisoka.send5ButLoc = async (jid , text = '' , footer = '', lok, but = [], options = {}) =>{
-       let resize = await hisoka.reSize(lok, 300, 150)
-       var template = generateWAMessageFromContent(jid, {
-       "templateMessage": {
-       "hydratedTemplate": {
-       "locationMessage": {
-       "degreesLatitude": 0,
-       "degreesLongitude": 0,
-       "jpegThumbnail": resize
-       },
-       "hydratedContentText": text,
-       "hydratedFooterText": footer,
-       "hydratedButtons": but
-       }
-       }
-       }, options)
-       hisoka.relayMessage(jid, template.message, { messageId: template.key.id })
-      }
 
       /**
       *
@@ -338,7 +283,6 @@ async function startHisoka() {
       * @param {*} quoted
       * @param {*} options
       */
-     
      hisoka.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
       let mime = '';
       let res = await axios.head(url)
@@ -411,9 +355,8 @@ async function startHisoka() {
      * @param {*} options
      * @returns
      */
-    hisoka.send5ButImg = async (jid , text = '' , footer = '', img, but = [], buff, options = {}) =>{
-        let resize = await hisoka.reSize(buff, 300, 150)
-        let message = await prepareWAMessageMedia({ image: img, jpegThumbnail: resize }, { upload: hisoka.waUploadToServer })
+    hisoka.send5ButImg = async (jid , text = '' , footer = '', img, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ image: img }, { upload: hisoka.waUploadToServer })
         var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
         templateMessage: {
         hydratedTemplate: {
@@ -437,9 +380,8 @@ async function startHisoka() {
      * @param {*} options
      * @returns
      */
-    hisoka.send5ButVid = async (jid , text = '' , footer = '', vid, but = [], buff, options = {}) =>{
-        let resize = await hisoka.reSize(buff, 300, 150)
-        let message = await prepareWAMessageMedia({ video: vid, jpegThumbnail: resize }, { upload: hisoka.waUploadToServer })
+    hisoka.send5ButVid = async (jid , text = '' , footer = '', vid, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ video: vid }, { upload: hisoka.waUploadToServer })
         var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
         templateMessage: {
         hydratedTemplate: {
@@ -463,11 +405,8 @@ async function startHisoka() {
      * @param {*} options
      * @returns
      */
-    hisoka.send5ButGif = async (jid , text = '' , footer = '', gif, but = [], buff, options = {}) =>{
-        let resize = await hisoka.reSize(buff, 300, 150)
-        let a = [1,2]
-        let b = a[Math.floor(Math.random() * a.length)]
-        let message = await prepareWAMessageMedia({ video: gif, gifPlayback: true, jpegThumbnail: resize, gifAttribution: b}, { upload: hisoka.waUploadToServer })
+    hisoka.send5ButGif = async (jid , text = '' , footer = '', gif, but = [], options = {}) =>{
+        let message = await prepareWAMessageMedia({ video: gif, gifPlayback: true }, { upload: hisoka.waUploadToServer })
         var template = generateWAMessageFromContent(jid, proto.Message.fromObject({
         templateMessage: {
         hydratedTemplate: {
@@ -561,7 +500,7 @@ async function startHisoka() {
      * @param {*} options 
      * @returns 
      */
-    hisoka.sendTextWithMentions = async (jid, text, quoted, options = {}) => hisoka.sendMessage(jid, { text: text, mentions: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net'), ...options }, { quoted })
+    hisoka.sendTextWithMentions = async (jid, text, quoted, options = {}) => hisoka.sendMessage(jid, { text: text, contextInfo: { mentionedJid: [...text.matchAll(/@(\d{0,16})/g)].map(v => v[1] + '@s.whatsapp.net') }, ...options }, { quoted })
 
     /**
      * 
