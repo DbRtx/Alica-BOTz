@@ -153,12 +153,13 @@ async function startHisoka() {
                     ppgroup = 'https://tinyurl.com/yx93l6da'
                 }
               //Thumbnail
-            let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender 
+
+            let user = await hisoka.getName(num)
             let thumbnail = {
               mentionedJid: [num],
                 "externalAdReply": { 
                   "title": `${global.footer}`,
-                  "body": `runtime bot ${runtime(process.uptime())}`,
+                  "body": `Hi ${nama}`,
                   "mediaType": 2,
                   "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
                   "sourceUrl": "https://dlvash.github.io",
