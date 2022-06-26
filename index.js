@@ -152,11 +152,45 @@ async function startHisoka() {
                 } catch {
                     ppgroup = 'https://tinyurl.com/yx93l6da'
                 }
-
+              //Thumbnail
+            let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender 
+            let thumbnail = {
+              mentionedJid: [num],
+                "externalAdReply": { 
+                  "title": `${global.footer}`,
+                  "body": `runtime bot ${runtime(process.uptime())}`,
+                  "mediaType": 3,
+                  "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+                  "sourceUrl": "https://dlvash.github.io",
+                  "thumbnail": ppuser
+                }
+              }
+              let wel = [{
+                buttonId: 'welcome',
+                buttonText: { displayText: "Welcome"},
+                type: 1
+              }]
+              let bye = [{
+                buttonId: 'Goodbye',
+                buttonText: { displayText: "Goodbye" },
+                type: 1
+              }] 
                 if (anu.action == 'add') {
-                    hisoka.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}` })
+                    hisoka.sendMessage(anu.id, { 
+                      image: { url: ppuser }, 
+                      contextInfo: thumbnail, 
+                      caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}\n\n*Rules*\n${metadata.desc}`,
+                      footer: global.footer,
+                      buttons: wel
+                      })
                 } else if (anu.action == 'remove') {
-                    hisoka.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `@${num.split("@")[0]} Leaving To ${metadata.subject}` })
+                    hisoka.sendMessage(anu.id, { 
+                      image: { url: ppuser }, 
+                      contextInfo: thumbnail, 
+                      caption: `Goodbye @${num.split("@")[0]}`,
+                      footer: global.footer,
+                      buttons: bye
+                      })
                 } else if (anu.action == 'promote') {
                     hisoka.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `@${num.split('@')[0]} Promote From ${metadata.subject}` })
                 } else if (anu.action == 'demote') {
@@ -304,6 +338,7 @@ async function startHisoka() {
       * @param {*} quoted
       * @param {*} options
       */
+     
      hisoka.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
       let mime = '';
       let res = await axios.head(url)
