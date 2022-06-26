@@ -177,16 +177,16 @@ async function startHisoka() {
                 type: 1
               }] 
                 if (anu.action == 'add') {
-                    hisoka.sendMessage(anu.id, {  
-                      contextInfo: thumbnail, 
+                    hisoka.sendMessage(anu.id, {   
                       text: `Welcome To ${metadata.subject} @${num.split("@")[0]}\n\n*Rules*\n${metadata.desc}`,
+                      contextInfo: thumbnail,
                       footer: global.footer,
                       buttons: wel
                       })
                 } else if (anu.action == 'remove') {
                     hisoka.sendMessage(anu.id, {  
-                      contextInfo: thumbnail, 
                       text: `Goodbye @${num.split("@")[0]}`,
+                      contextInfo: thumbnail,
                       footer: global.footer,
                       buttons: bye
                       })
