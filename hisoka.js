@@ -255,7 +255,10 @@ let regex = [
   "bang",
   "banh",
   "coli",
-  "tes"
+  "tes",
+  "hah",
+  "ha?",
+  "ha"
 ]
 for (let i of regex) {
   if (m.isGroup && budy.toLowerCase().includes(i)) {
