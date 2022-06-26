@@ -159,7 +159,7 @@ async function startHisoka() {
               mentionedJid: [num],
                 "externalAdReply": { 
                   "title": `${global.footer}`,
-                  "body": `Hi ${nama}`,
+                  "body": `Hi ${user}`,
                   "mediaType": 2,
                   "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
                   "sourceUrl": "https://dlvash.github.io",
