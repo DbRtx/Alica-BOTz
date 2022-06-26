@@ -160,10 +160,9 @@ async function startHisoka() {
                 "externalAdReply": { 
                   "title": `${global.footer}`,
                   "body": `Hi ${user}`,
-                  "mediaType": 2,
-                  "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+                  "mediaType": 1,
                   "sourceUrl": "https://dlvash.github.io",
-                  "thumbnail": ppuser
+                  "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
                 }
               }
               let wel = [{
@@ -177,18 +176,20 @@ async function startHisoka() {
                 type: 1
               }] 
                 if (anu.action == 'add') {
-                    hisoka.sendMessage(anu.id, {   
-                      text: `Welcome To ${metadata.subject} @${num.split("@")[0]}\n\n*Rules*\n${metadata.desc}`,
+                    hisoka.sendMessage(anu.id, {  
+                      image: { url: ppuser },
+                      caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}\n\n*Rules*\n${metadata.desc}`,
                       contextInfo: thumbnail,
                       footer: global.footer,
                       buttons: wel
                       })
                 } else if (anu.action == 'remove') {
                     hisoka.sendMessage(anu.id, {  
-                      text: `Goodbye @${num.split("@")[0]}`,
+                      image: { url: ppuser },
+                      caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}\n\n*Rules*\n${metadata.desc}`,
                       contextInfo: thumbnail,
                       footer: global.footer,
-                      buttons: bye
+                      buttons: wel
                       })
                 } else if (anu.action == 'promote') {
                     hisoka.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `@${num.split('@')[0]} Promote From ${metadata.subject}` })
