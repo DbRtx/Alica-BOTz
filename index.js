@@ -186,10 +186,10 @@ async function startHisoka() {
                 } else if (anu.action == 'remove') {
                     hisoka.sendMessage(anu.id, {  
                       image: { url: ppuser },
-                      caption: `Welcome To ${metadata.subject} @${num.split("@")[0]}\n\n*Rules*\n${metadata.desc}`,
+                      caption: `Goodbye @${num.split("@")[0]}`,
                       contextInfo: thumbnail,
                       footer: global.footer,
-                      buttons: wel
+                      buttons: bye
                       })
                 } else if (anu.action == 'promote') {
                     hisoka.sendMessage(anu.id, { image: { url: ppuser }, mentions: [num], caption: `@${num.split('@')[0]} Promote From ${metadata.subject}` })
