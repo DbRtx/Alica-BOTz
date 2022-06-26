@@ -170,7 +170,7 @@ async function startHisoka() {
                 hisoka.sendMessage(anu.id, {
                   image: { url: ppuser },
                   contextInfo: thumbnail,
-                  caption: `welcome to *${metadata.subject}* @${num.split("@")[0]}`,
+                  caption: `welcome to *${metadata.subject}* @${num.split("@")[0]}\n\n*Rules*:\n${metadata.desc}`,
                   buttons: wel
                 })
               } if (anu.action == 'remove') { 
@@ -180,9 +180,7 @@ async function startHisoka() {
                   contextInfo: thumbnail,  
                   buttons: bye
                 })
-                } else if (anu.action == 'info') {
-                  hisoka.sendMessage(anu.id, { image: { url: ppuser }, caption: `Tes`})
-                }
+              }
             }
         } catch (err) {
             console.log(err)
