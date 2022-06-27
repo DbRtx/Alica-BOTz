@@ -3289,7 +3289,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     contextInfo: thumbnail,
                   },{ quoted : m })
                   hisoka.sendMessage(m.chat, {
-                    text: `@${global.owner} nih owner nya @${m.sender.split("@")[0]}`
+                    text: `@${global.owner} nih owner nya @${m.sender.split("@")[0]}`,
+                    contextInfo: thumb
                   }, { quoted : msg })
                 } else {
                   hisoka.sendContact(m.chat, global.owner, m)
