@@ -2197,7 +2197,7 @@ break
             break
             case 'pinterest': {
               const { pinterest } = require("./lib/pinterest")
-              if (args.length < 2) return replay(`Kirim perintah ${command} query atau ${command} query --jumlah\nContoh :\n${command} cecan atau ${command} cecan --10`)
+              if (args.length < 1) return replay(`Kirim perintah ${prefix + command } query atau ${prefix + command} query --jumlah\n*Example* : ${prefix + command} cecan atau ${prefix + command} cecan --10`)
               replay(mess.wait)
               var jumlah;
               if (q.includes('--')) jumlah = q.split('--')[1]
