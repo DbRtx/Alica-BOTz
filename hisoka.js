@@ -3288,13 +3288,12 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                         "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
                         "sourceUrl": "https://dlvash.github.io",
                         "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
-                      }
-                    },{ quoted: msg })
-                  }
-                } else {
+                    }
+                  },{ quoted: msg })
+                }
+              } else {
                 hisoka.sendContact(m.chat, global.owner, m)
-                }            
-              }
+              }      
             }
             break
             case 'dika': {
