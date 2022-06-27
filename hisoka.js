@@ -2694,7 +2694,7 @@ break
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.no_wm },
-                    caption: `*Download From* ${link}*`,
+                    caption: `*Download From* ${link}`,
                     footer: 'by alica-BOTz',
                     buttons: buttons,
                     contextInfo: thumbnail,
