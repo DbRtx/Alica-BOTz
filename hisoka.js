@@ -3267,12 +3267,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             break
             case 'owner': case 'creator': {
               if (m.isGroup) {
+                let memJid = []
                 let mem = []
                 for (let i of participants){
-                  mem.push(i.id)
+                  memJid.push(i.id)
+                  mem.push(i.id.split("@")[0])
                 }
                 let thumb = {
-                  mentionedJid: [mem.id, m.sender],
+                  mentionedJid: [memJid, m.sender],
                   "externalAdReply": { 
                     "title": `${global.footer}`,
                     "body": `runtime bot ${runtime(process.uptime())}`,
@@ -3282,7 +3284,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
                   }
                 }
-                let ownerInGc = mem.split("@")[0].includes(global.owner[0])
+                let ownerInGc = mem.includes(global.owner[0])
                 if (ownerInGc) {
                   let msg = await hisoka.sendMessage(m.chat, {
                     text: `Sepertinya owner ku ad di sini ...`,
