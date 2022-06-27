@@ -3266,13 +3266,35 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'owner': case 'creator': {
-              let con = await hisoka.sendContact(m.chat, global.owner, m)
-              hisoka.sendMessage(m.chat, {
-                text: `nih contact owner ku @${m.sender.split("@")[0]}`,
-                contextInfo: thumbnail,
-                footer: global.footer
-              },{ quoted: con })
-
+              if (m.isGroup) {
+                let mem = []
+                for (let i of participants){
+                  mem.push(i.id.split("@")[0])
+                }
+                let ownerInGc = mem.includes(global.owner[0])
+                if (ownerInGc) {
+                  let msg = await hisoka.sendMessage(m.chat, {
+                    text: `Sepertinya owner ku ad di sini ...`,
+                    contextInfo: thumbnail,
+                  },{ quoted : m })
+                  hisoka.sendMessage(m.chat, {
+                    text: `@${global.owner[0]}, nih owner nya @${m.sender.split("@")[0]}`,
+                    contextInfo: {
+                      mentionedJid: [mem.id, m.sender],
+                      "externalAdReply": { 
+                        "title": `${global.footer}`,
+                        "body": `runtime bot ${runtime(process.uptime())}`,
+                        "mediaType": 3,
+                        "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+                        "sourceUrl": "https://dlvash.github.io",
+                        "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
+                      }
+                    },{ quoted: msg })
+                  }
+                } else {
+                hisoka.sendContact(m.chat, global.owner, m)
+                }            
+              }
             }
             break
             case 'dika': {
