@@ -3271,6 +3271,17 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 for (let i of participants){
                   mem.push(i.id.split("@")[0])
                 }
+                let thumb = {
+                  mentionedJid: [mem.id, m.sender],
+                  "externalAdReply": { 
+                    "title": `${global.footer}`,
+                    "body": `runtime bot ${runtime(process.uptime())}`,
+                    "mediaType": 3,
+                    "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+                    "sourceUrl": "https://dlvash.github.io",
+                    "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
+                  }
+                }
                 let ownerInGc = mem.includes(global.owner[0])
                 if (ownerInGc) {
                   let msg = await hisoka.sendMessage(m.chat, {
@@ -3278,18 +3289,10 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     contextInfo: thumbnail,
                   },{ quoted : m })
                   hisoka.sendMessage(m.chat, {
-                    text: `@${global.owner[0]}, nih owner nya @${m.sender.split("@")[0]}`,
-                    contextInfo: {
-                      mentionedJid: [mem.id, m.sender],
-                      "externalAdReply": { 
-                        "title": `${global.footer}`,
-                        "body": `runtime bot ${runtime(process.uptime())}`,
-                        "mediaType": 3,
-                        "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
-                        "sourceUrl": "https://dlvash.github.io",
-                        "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
-                    }
-                  },{ quoted: msg })
+                    text: `@${global.owner} nih owner nya @${m.sender.split("@")[0]}`
+                  }, { quoted : msg })
+                } else {
+                  hisoka.sendContact(m.chat, global.owner, m)
                 }
               } else {
                 hisoka.sendContact(m.chat, global.owner, m)
