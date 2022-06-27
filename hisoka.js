@@ -2689,8 +2689,8 @@ break
                 replay(mess.wait)
                 let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
                 let buttons = [
-                    {buttonId: `tiktokwm ${link}`, buttonText: {displayText: '► With Watermark'}, type: 1},
-                    {buttonId: `tiktokmp3 ${link}`, buttonText: {displayText: '♫ Audio'}, type: 1}
+                    {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1},
+                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.no_wm },
@@ -2709,8 +2709,8 @@ break
                 let link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : text : q ? q : text
                 let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
                 let buttons = [
-                    {buttonId: `tiktoknowm ${link}`, buttonText: {displayText: '► No Watermark'}, type: 1},
-                    {buttonId: `tiktokmp3 ${link}`, buttonText: {displayText: '♫ Audio'}, type: 1}
+                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
+                    {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
                 let buttonMessage = {
                     video: { url: anu.result.with_wm },
@@ -2729,8 +2729,8 @@ break
                 replay(mess.wait)
                 let anu = await fetchJson(api('zekais', '/tiktokmusic', { url: link }, 'apikey'))
                 let buttons = [
-                    {buttonId: `tiktoknowm ${link}`, buttonText: {displayText: '► No Watermark'}, type: 1},
-                    {buttonId: `tiktokwm ${link}`, buttonText: {displayText: '► With Watermark'}, type: 1}
+                    {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
+                    {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1}
                 ]
                 let buttonMessage = {
                     text: `*Download From* ${link}`,
