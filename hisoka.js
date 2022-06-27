@@ -2707,7 +2707,7 @@ break
                 if (!text) throw 'Masukkan Query Link!'
                 replay(mess.wait)
                 let link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : text : q ? q : text
-                let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
+                let anu = await fetchJson(api('zekais', '/tiktok2', { url: text }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
@@ -2727,7 +2727,7 @@ break
                 if (!text) throw 'Masukkan Query Link!'
                 link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text
                 replay(mess.wait)
-                let anu = await fetchJson(api('zekais', '/tiktokmusic', { url: link }, 'apikey'))
+                let anu = await fetchJson(api('zekais', '/tiktokmusic', { url: text }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktoknowm ${text}`, buttonText: {displayText: '► No Watermark'}, type: 1},
                     {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1}
