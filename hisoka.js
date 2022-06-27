@@ -3269,7 +3269,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               if (m.isGroup) {
                 let mem = []
                 for (let i of participants){
-                  mem.push(i.id.split("@")[0])
+                  mem.push(i.id)
                 }
                 let thumb = {
                   mentionedJid: [mem.id, m.sender],
@@ -3282,7 +3282,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
                   }
                 }
-                let ownerInGc = mem.includes(global.owner[0])
+                let ownerInGc = mem.split("@")[0].includes(global.owner[0])
                 if (ownerInGc) {
                   let msg = await hisoka.sendMessage(m.chat, {
                     text: `Sepertinya owner ku ad di sini ...`,
