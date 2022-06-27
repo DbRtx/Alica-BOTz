@@ -3274,7 +3274,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                   mem.push(i.id.split("@")[0])
                 }
                 let thumb = {
-                  mentionedJid: [memJid, m.sender],
+                  mentionedJid: [global.number, m.sender],
                   "externalAdReply": { 
                     "title": `${global.footer}`,
                     "body": `runtime bot ${runtime(process.uptime())}`,
