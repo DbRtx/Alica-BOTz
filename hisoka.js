@@ -2685,7 +2685,7 @@ break
             break
 	      case 'tt': case 'tiktok': case 'tiktoknowm': {
                 if (!text && !m.quoted) throw 'masukan link / reply link'  
-                link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text 
+                let link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text 
                 replay(mess.wait)
                 let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
                 let buttons = [
