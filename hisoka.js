@@ -3244,7 +3244,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'owner': case 'creator': {
-              let con = await hisoka.sendContact(m.chat, global.owner, m)
+              let con = await hisoka.sendContact(m.chat, global.owner, { quoted : m })
               hisoka.sendMessage(m.chat, {
                 text: `nih contact owner ku @${m.sender.split("@")[0]}`,
                 contextInfo: thumbnail,
