@@ -2737,7 +2737,7 @@ break
                     footer: 'by alica-BOTz',
                     buttons: buttons,
                     contextInfo: thumbnail,
-                    headerType: 2
+                    headerType: 5
                 }
                 let msg = await hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
                 hisoka.sendMessage(m.chat, {
@@ -3244,7 +3244,13 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'owner': case 'creator': {
-                hisoka.sendContact(m.chat, global.owner, m)
+              let con = await hisoka.sendContact(m.chat, global.owner, m)
+              hisoka.sendMessage(m.chat, {
+                text: `nih contact owner ku @${m.sender.split("@")[0]}`,
+                contextInfo: thumbnail,
+                footer: global.footer
+              },{ quoted: con })
+
             }
             break
             case 'dika': {
