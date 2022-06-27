@@ -2196,11 +2196,33 @@ break
             }
             break
             case 'pinterest': {
-                replay(mess.wait)
-		let { pinterest } = require('./lib/pinterest')
-                anu = await pinterest(text)
-                result = anu[Math.floor(Math.random() * anu.length)]
-                hisoka.sendMessage(m.chat, { image: { url: result }, caption: '*⭔ Media Url :* '+result }, { quoted: m })
+              const { pinterest } = require("../lib/pinterest")
+              if (args.length < 2) return replay(`Kirim perintah ${command} query atau ${command} query --jumlah\nContoh :\n${command} cecan atau ${command} cecan --10`)
+              replay(mess.wait)
+              var jumlah;
+              if (q.includes('--')) jumlah = q.split('--')[1]
+              pinterest(q.replace('--'+jumlah, '')).then(async(data) => {
+                if (q.includes('--')) {
+                  if (data.result.length < jumlah) {
+                    jumlah = data.result.length
+                    replay(`Hanya ditemukan ${data.result.length}, foto segera dikirim`)
+                  }
+                  for (let i = 0; i < jumlah; i++) {
+                    hisoka.sendMessage(m.chat, { 
+                      image: { url: data.result[i] }
+                    })
+                  }
+                } else {
+                  var but = [{buttonId: `${command} ${q}`, buttonText: { displayText: 'Next Photo' }, type: 1 }]
+                  hisoka.sendMessage(m.chat, { 
+                    caption: `Hasil pencarian dari ${q}`, 
+                    image: { url: pickRandom(data.result) }, 
+                    buttons: but, 
+                    contextInfo: thumbnail,
+                    footer: 'Pencet tombol dibawah untuk foto selanjutnya' 
+                  }, { quoted: m })
+                }
+              })
             }
             break
             case 'anime': case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob': {
