@@ -2196,7 +2196,7 @@ break
             }
             break
             case 'pinterest': {
-              const { pinterest } = require("../lib/pinterest")
+              const { pinterest } = require("./lib/pinterest")
               if (args.length < 2) return replay(`Kirim perintah ${command} query atau ${command} query --jumlah\nContoh :\n${command} cecan atau ${command} cecan --10`)
               replay(mess.wait)
               var jumlah;
