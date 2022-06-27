@@ -2706,7 +2706,7 @@ break
             case 'tiktokwm': case 'tiktokwatermark': {
                 if (!text) throw 'Masukkan Query Link!'
                 replay(mess.wait)
-                link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text
+                let link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : m.text : q ? q : m.text
                 let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
                 let buttons = [
                     {buttonId: `tiktoknowm ${link}`, buttonText: {displayText: '► No Watermark'}, type: 1},
