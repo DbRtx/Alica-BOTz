@@ -2149,24 +2149,42 @@ break
             }
             break
             case 'ytmp4': case 'ytvideo': {
-              try { 
-                let { ytv } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
-                let quality = args[1] ? args[1] : '360p'
-                let media = await ytv(text, quality)
-                if (media.filesize >= 100000) return m.reply('File Melebihi Batas '+util.format(media))
-                replay(mess.wait)
-                hisoka.sendMessage(m.chat, { 
-                  video: { url: media.dl_link },
-                  mimetype: 'video/mp4',
-                  contextInfo: thumbnail,
-                  fileName: `${media.title}.mp4`,
-                  caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP4\n⭔ Resolusi : ${args[1] || '360p'}` }, { quoted: m })
+              try{
+                if (q.includes("https://youtube.com/channel/")) return replay("Sorry itu bukan link video") 
+                replay("*Scrapping...*")
+                if(q.includes("https://youtu.be/")){
+                  var videoId = q.replace('https://youtu.be/', '')
+                } else if(q.includes("https://youtube.com/watch?v=")){
+                  var videoId = q.split('=')[1]
+                } else if(q.includes("https://youtube.com/shorts/")){
+                  var videoId = q.replace('https://youtube.com/shorts/', '')
+                }  else {
+                  return replay("Link salah")
+                }
+                let link =`https://youtube.com/watch?v=${videoId}`
+                let anu = await yts(link)
+                if(anu.all.length == "0") return setReply("Video tidak di temukan")
+                let info = await ytdl.getInfo(link);
+                let format = ytdl.chooseFormat(info.formats, { quality: '18' });
+                if(Number(format.contentLength) > 40000000 ) return setReply(`Bjir sizenya ${FileSize(format.contentLength)}\nAu ah ga mao download 😤`)
+                let teks =`*YOUTUBE VIDEO DOWNLOADER*
 
-              } catch (err) {
-                replay("eror mungkin resolusi tidak ditemukan")
+📂 Title : ${anu.all[0].title}
+💾 Ext : 360p
+📄 Size : ${FileSize(format.contentLength)}
+🆔 ID : ${videoId}
+⏲️ Duration : ${anu.all[0].timestamp}
+🌎 Viewers : ${h2k(anu.all[0].views)}
+🌐 Upload At : ${anu.all[0].ago}
+🔖 Author : ${anu.all[0].author.name}
+📹 Channel : ${anu.all[0].author.url}
+🔗 Url : ${anu.all[0].url}
+📝 Description : ${anu.all[0].description}`
+                await hisoka.sendMessage(from, {image: {url: anu.all[0].image}, caption: teks},{quoted: m })
+                downloadMp4(q) 
+              } catch(err){
+                replay(`Fitur mungkin sedang error`)
               }
-            }
             break
 	    case 'getmusic': {
                 let { yta } = require('./lib/y2mate')
