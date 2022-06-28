@@ -125,7 +125,7 @@ console.log("Download video with ytdl-core")
 let nana = ytdl(Link)
 .pipe(fs.createWriteStream(mp4File))
 .on("finish", async () => {    
-await hisoka.sendMessage(m.chat, { video: fs.readFileSync(mp4File), caption: "Nih!",gifPlayback: false},{quoted: dev})
+await hisoka.sendMessage(m.chat, { video: fs.readFileSync(mp4File), caption: "Nih!",gifPlayback: false},{quoted: m})
 fs.unlinkSync(`./${mp4File}`)
 })     
 } catch(err) {
@@ -143,7 +143,7 @@ console.log("Download audio with ytdl-core")
 ytdl(Link, {filter: 'audioonly'})
 .pipe(fs.createWriteStream(mp3File))
 .on("finish", async () => {  
-await hisoka.sendMessage(m.chat, {audio:  fs.readFileSync(mp3File), mimetype: 'audio/mp4' },{ quoted: dev })
+await hisoka.sendMessage(m.chat, {audio:  fs.readFileSync(mp3File), mimetype: 'audio/mp4' },{ quoted: m })
 fs.unlinkSync(mp3File)
 })       
 } catch (err){
