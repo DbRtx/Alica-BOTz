@@ -129,7 +129,7 @@ await xdev.sendMessage(m.chat, { video: fs.readFileSync(mp4File), caption: "Nih!
 fs.unlinkSync(`./${mp4File}`)
 })     
 } catch(err) {
-setReply(`${err}`)
+replay(`${err}`)
 }
 }
 
@@ -2166,7 +2166,7 @@ break
                 }
                 let link =`https://youtube.com/watch?v=${videoId}`
                 let anu = await yts(link)
-                if(anu.all.length == "0") return setReply("Video tidak di temukan")
+                if(anu.all.length == "0") return replay("Video tidak di temukan")
                 let info = await ytdl.getInfo(link);
                 let format = ytdl.chooseFormat(info.formats, { quality: '18' });
                 if(Number(format.contentLength) > 40000000 ) return replay(`Bjir sizenya ${FileSize(format.contentLength)}\nAu ah ga mao download 😤`)
