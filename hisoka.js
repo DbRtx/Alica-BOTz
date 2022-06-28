@@ -2141,12 +2141,17 @@ break
                 let quality = args[1] ? args[1] : '128kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 100000) return m.reply('File Melebihi Batas '+util.format(media))
-                hisoka.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, m)
+                let msg = await hisoka.sendMessage(m.chat,{
+                  image: { url: media.thumb },
+                  caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`,
+                  contextInfo: thumbnail
+                })
                 hisoka.sendMessage(m.chat, { 
                   audio: { url: media.dl_link }, 
                   mimetype: 'audio/mpeg', 
                   fileName: `${media.title}.mp3`,
-                  contextInfo: thumbnail
+                  contextInfo: thumbnail,
+                  footer: "Download by y2mate"
                 }, { quoted: m })
             }
             break
@@ -2191,7 +2196,8 @@ break
                       await hisoka.sendMessage(m.chat, { 
                         video: fs.readFileSync(mp4File), 
                         caption: teks,
-                        contextInfo: thumbnail
+                        contextInfo: thumbnail,
+                        footer: "Download by ytdl-core"
                       },{ quoted: m })
                     fs.unlinkSync(`./${mp4File}`)
                     })
