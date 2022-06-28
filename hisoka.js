@@ -2197,7 +2197,7 @@ Description : ${anu.all[0].description}`
                     fs.unlinkSync(`./${mp4File}`)
                     })
                 } catch (err) {
-                  replay(${err})
+                  replay(`${err}`)
                 }   
               } catch(err){
                 replay(`${err}`)
