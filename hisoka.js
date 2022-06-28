@@ -2172,17 +2172,16 @@ break
                 if(Number(format.contentLength) > 40000000 ) return replay(`Bjir sizenya ${FileSize(format.contentLength)}\nAu ah ga mao download 😤`)
                 let teks =`*YOUTUBE VIDEO DOWNLOADER*
 
-📂 Title : ${anu.all[0].title}
-💾 Ext : 360p
-📄 Size : ${FileSize(format.contentLength)}
-🆔 ID : ${videoId}
-⏲️ Duration : ${anu.all[0].timestamp}
-🌎 Viewers : ${h2k(anu.all[0].views)}
-🌐 Upload At : ${anu.all[0].ago}
-🔖 Author : ${anu.all[0].author.name}
-📹 Channel : ${anu.all[0].author.url}
-🔗 Url : ${anu.all[0].url}
-📝 Description : ${anu.all[0].description}`
+Title : ${anu.all[0].title}
+Ext : 360p
+Size : ${FileSize(format.contentLength)}
+ID : ${videoId}
+Duration : ${anu.all[0].timestamp}
+Upload At : ${anu.all[0].ago}
+Author : ${anu.all[0].author.name}
+Channel : ${anu.all[0].author.url}
+Url : ${anu.all[0].url}
+Description : ${anu.all[0].description}`
                 await hisoka.sendMessage(from, {image: {url: anu.all[0].image}, caption: teks},{quoted: m })
                 downloadMp4(q) 
               } catch(err){
