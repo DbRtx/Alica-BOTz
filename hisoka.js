@@ -125,7 +125,7 @@ console.log(color("Download video with ytdl-core"))
 let nana = ytdl(Link)
 .pipe(fs.createWriteStream(mp4File))
 .on("finish", async () => {    
-await xdev.sendMessage(from, { video: fs.readFileSync(mp4File), caption: "Nih!",gifPlayback: false},{quoted: dev})
+await xdev.sendMessage(m.chat, { video: fs.readFileSync(mp4File), caption: "Nih!",gifPlayback: false},{quoted: dev})
 fs.unlinkSync(`./${mp4File}`)
 })     
 } catch(err) {
@@ -143,7 +143,7 @@ console.log(color("Download audio with ytdl-core"))
 ytdl(Link, {filter: 'audioonly'})
 .pipe(fs.createWriteStream(mp3File))
 .on("finish", async () => {  
-await xdev.sendMessage(from, {audio:  fs.readFileSync(mp3File), mimetype: 'audio/mp4' },{ quoted: dev })
+await xdev.sendMessage(m.chat, {audio:  fs.readFileSync(mp3File), mimetype: 'audio/mp4' },{ quoted: dev })
 fs.unlinkSync(mp3File)
 })       
 } catch (err){
@@ -2182,7 +2182,7 @@ Author : ${anu.all[0].author.name}
 Channel : ${anu.all[0].author.url}
 Url : ${anu.all[0].url}
 Description : ${anu.all[0].description}`
-                await hisoka.sendMessage(from, {image: {url: anu.all[0].image}, caption: teks},{quoted: m })
+                await hisoka.sendMessage(m.chat, {image: {url: anu.all[0].image}, caption: teks},{quoted: m })
                 downloadMp4(q) 
               } catch(err){
                 replay(`${err}`)
