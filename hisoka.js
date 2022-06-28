@@ -2187,6 +2187,12 @@ break
 ⭔ Channel : ${anu.all[0].author.url}
 ⭔ Description : ${anu.all[0].description}
 ⭔ Url : ${anu.all[0].url}`
+                let msg = await hisoka.sendMessage(m.chat, {
+                  image: { url: anu.thumb },
+                  caption: teks,
+                  contextInfo: thumbnail,
+                  footer: "Download by ytdl-core"
+                },{ quoted: m })
                 try { 
                   await ytdl.getInfo(text);
                   let mp4File = getRandom('.mp4') 
@@ -2195,10 +2201,10 @@ break
                     .on("finish", async () => {    
                       await hisoka.sendMessage(m.chat, { 
                         video: fs.readFileSync(mp4File), 
-                        caption: teks,
+                        caption: `nih @${m.sender.split("@")[0]}`,
                         contextInfo: thumbnail,
                         footer: "Download by ytdl-core"
-                      },{ quoted: m })
+                      },{ quoted: msg })
                     fs.unlinkSync(`./${mp4File}`)
                     })
                 } catch (err) {
