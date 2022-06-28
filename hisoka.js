@@ -2161,7 +2161,7 @@ break
                   var videoId = text.split('=')[1]
                 } else if(q.includes("https://youtube.com/shorts/")){
                   var videoId = text.replace('https://youtube.com/shorts/', '')
-                }  else {
+                } else {
                   return replay("Link salah")
                 }
                 let link =`https://youtube.com/watch?v=${videoId}`
@@ -2199,8 +2199,11 @@ break
                   replay(`${err}`)
                 }   
               } catch(err){
-                replay(`${err}`)
-                replay(`Silahkan report ke owner dengan command:\n*.report* pesan`)
+                let msg = replay(`${err}`)
+                hisoka.sendMessage(m.chat {
+                  text: `Silahkan report ke owner dengan command:\n*.report* pesan`,
+                  contextInfo: thumbnail
+                },{ quoted: msg })
               }
             }
             break
