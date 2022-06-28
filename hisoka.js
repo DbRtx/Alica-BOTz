@@ -1901,7 +1901,7 @@ break
                  replay(mess.wait)
                  atas = text.split('|')[0] ? text.split('|')[0] : '-'
                  bawah = text.split('|')[1] ? text.split('|')[1] : '-'
-                 let dl = hisoka.downloadAndSaveMediaMessage(quoted, "meme")
+                 let dl = hisoka.downloadAndSaveMediaMessage(quoted)
                  let { TelegraPh } = require('./lib/uploader')
 	         let fatGans = await TelegraPh(dl)
 	         let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${fatGans}`
