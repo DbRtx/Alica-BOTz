@@ -31,6 +31,7 @@ const { downloadContentFromMessage } = require('@adiwajshing/baileys')
 const primbon = new Primbon()
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins, getCase, FileSize} = require('./lib/myfunc')
+const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/uploader')
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
 // read database
@@ -1901,7 +1902,7 @@ break
                  replay(mess.wait)
                  atas = text.split('|')[0] ? text.split('|')[0] : '-'
                  bawah = text.split('|')[1] ? text.split('|')[1] : '-'
-                 let dl = hisoka.downloadAndSaveMediaMessage(quoted)
+                 let dl = hisoka.downloadAndSaveMediaMessage(quoted, "meme")
                  let { TelegraPh } = require('./lib/uploader')
 	         let fatGans = await TelegraPh(dl)
 	         let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${fatGans}`
