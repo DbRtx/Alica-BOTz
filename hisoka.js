@@ -2169,8 +2169,8 @@ break
                 if(anu.all.length == "0") return replay("Video tidak di temukan")
                 let info = await ytdl.getInfo(link);
                 let format = ytdl.chooseFormat(info.formats, { quality: '18' });
-                if(Number(format.contentLength) > 40000000 ) return replay(`Bjir sizenya ${FileSize(format.contentLength)}\nAu ah ga mao download 😤`)
-                let teks =`*YOUTUBE VIDEO DOWNLOADER*
+                if(Number(format.contentLength) > 40000000 ) return replay(`Maap size melebihi batas ${FileSize(format.contentLength)}`)
+                let teks =`*YTDL*
 
 Title : ${anu.all[0].title}
 Ext : 360p
@@ -2182,10 +2182,26 @@ Author : ${anu.all[0].author.name}
 Channel : ${anu.all[0].author.url}
 Url : ${anu.all[0].url}
 Description : ${anu.all[0].description}`
-                await hisoka.sendMessage(m.chat, {image: {url: anu.all[0].image}, caption: teks},{quoted: m })
-                downloadMp4(q) 
+                try { 
+                  await ytdl.getInfo(text);
+                  let mp4File = getRandom('.mp4') 
+                  let nana = ytdl(text)
+                    .pipe(fs.createWriteStream(mp4File))
+                    .on("finish", async () => {    
+                      await hisoka.sendMessage(m.chat, { 
+                        video: fs.readFileSync(mp4File), 
+                        caption: teks,
+                        contextInfo: thumbnail,
+                        gifPlayback: false
+                      },{ quoted: m })
+                    fs.unlinkSync(`./${mp4File}`)
+                    })
+                } catch (err) {
+                  replay(${err})
+                }   
               } catch(err){
                 replay(`${err}`)
+                replay(`Silahkan report ke owner dengan command:\n*.report* pesan`)
               }
             }
             break
