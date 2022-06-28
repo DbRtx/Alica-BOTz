@@ -2170,18 +2170,18 @@ break
                 let info = await ytdl.getInfo(link);
                 let format = ytdl.chooseFormat(info.formats, { quality: '18' });
                 if(Number(format.contentLength) > 40000000 ) return replay(`Maap size melebihi batas ${FileSize(format.contentLength)}`)
-                let teks =`*YTDL*
-
-Title : ${anu.all[0].title}
-Ext : 360p
-Size : ${FileSize(format.contentLength)}
-ID : ${videoId}
-Duration : ${anu.all[0].timestamp}
-Upload At : ${anu.all[0].ago}
-Author : ${anu.all[0].author.name}
-Channel : ${anu.all[0].author.url}
-Url : ${anu.all[0].url}
-Description : ${anu.all[0].description}`
+                let teks =`
+⭔ Title : ${anu.all[0].title}
+⭔ Ext : 360p
+⭔ Size : ${FileSize(format.contentLength)}
+⭔ ID : ${videoId}
+⭔ Duration : ${anu.all[0].timestamp}
+⭔ Viewers : ${anu.all[0].views}
+⭔ Upload At : ${anu.all[0].ago}
+⭔ Author : ${anu.all[0].author.name}
+⭔ Channel : ${anu.all[0].author.url}
+⭔ Description : ${anu.all[0].description}
+⭔ Url : ${anu.all[0].url}`
                 try { 
                   await ytdl.getInfo(text);
                   let mp4File = getRandom('.mp4') 
@@ -2191,8 +2191,7 @@ Description : ${anu.all[0].description}`
                       await hisoka.sendMessage(m.chat, { 
                         video: fs.readFileSync(mp4File), 
                         caption: teks,
-                        contextInfo: thumbnail,
-                        gifPlayback: false
+                        contextInfo: thumbnail
                       },{ quoted: m })
                     fs.unlinkSync(`./${mp4File}`)
                     })
