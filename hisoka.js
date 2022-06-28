@@ -2184,7 +2184,7 @@ break
                 await hisoka.sendMessage(from, {image: {url: anu.all[0].image}, caption: teks},{quoted: m })
                 downloadMp4(q) 
               } catch(err){
-                replay(`Fitur mungkin sedang error`)
+                replay(`${err}`)
               }
             }
             break
