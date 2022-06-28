@@ -121,7 +121,7 @@ const downloadMp4 = async (Link ) => {
 try{
 await ytdl.getInfo(Link);
 let mp4File = getRandom('.mp4') 
-console.log(color("Download video with ytdl-core"))
+console.log("Download video with ytdl-core")
 let nana = ytdl(Link)
 .pipe(fs.createWriteStream(mp4File))
 .on("finish", async () => {    
@@ -139,7 +139,7 @@ const downloadMp3 = async (Link ) => {
 try{
 await ytdl.getInfo(Link);
 let mp3File = getRandom('.mp3') 
-console.log(color("Download audio with ytdl-core"))
+console.log("Download audio with ytdl-core")
 ytdl(Link, {filter: 'audioonly'})
 .pipe(fs.createWriteStream(mp3File))
 .on("finish", async () => {  
@@ -147,7 +147,7 @@ await xdev.sendMessage(m.chat, {audio:  fs.readFileSync(mp3File), mimetype: 'aud
 fs.unlinkSync(mp3File)
 })       
 } catch (err){
-console.log(color(err))
+console.log(err)
 }
 }
 
