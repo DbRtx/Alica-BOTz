@@ -2185,6 +2185,7 @@ break
               } catch(err){
                 replay(`Fitur mungkin sedang error`)
               }
+            }
             break
 	    case 'getmusic': {
                 let { yta } = require('./lib/y2mate')
