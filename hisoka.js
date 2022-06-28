@@ -31,6 +31,7 @@ const { downloadContentFromMessage } = require('@adiwajshing/baileys')
 const primbon = new Primbon()
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins, getCase } = require('./lib/myfunc')
+const {parseMention, FileSize, weton,week,calender,dateIslamic,formatDate, makeid, generateMessageTag, runtime, randomNomor, jsonformat, generateProfilePicture, h2k, generateMessageID, getRandom} = require('../lib/functions')
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
 // read database
@@ -2169,7 +2170,7 @@ break
                 if(anu.all.length == "0") return setReply("Video tidak di temukan")
                 let info = await ytdl.getInfo(link);
                 let format = ytdl.chooseFormat(info.formats, { quality: '18' });
-                if(Number(format.contentLength) > 40000000 ) return setReply(`Bjir sizenya ${FileSize(format.contentLength)}\nAu ah ga mao download 😤`)
+                if(Number(format.contentLength) > 40000000 ) return replay(`Bjir sizenya ${FileSize(format.contentLength)}\nAu ah ga mao download 😤`)
                 let teks =`*YOUTUBE VIDEO DOWNLOADER*
 
 📂 Title : ${anu.all[0].title}
