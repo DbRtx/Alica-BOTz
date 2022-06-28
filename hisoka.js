@@ -2151,16 +2151,16 @@ break
             }
             break
             case 'ytmp4': case 'ytvideo': {
-              try{
-                if (!text) return replay(`Example: ${prefix + command} link`)
-                if (q.includes("https://youtube.com/channel/")) return replay("Sorry itu bukan link video") 
+              if (!text) return replay(`Example: ${prefix + command} link`)
+              try{ 
+                if (text.includes("https://youtube.com/channel/")) return replay("Sorry itu bukan link video") 
                 replay(mess.wait)
-                if(q.includes("https://youtu.be/")){
-                  var videoId = q.replace('https://youtu.be/', '')
-                } else if(q.includes("https://youtube.com/watch?v=")){
-                  var videoId = q.split('=')[1]
+                if(text.includes("https://youtu.be/")){
+                  var videoId = text.replace('https://youtu.be/', '')
+                } else if(text.includes("https://youtube.com/watch?v=")){
+                  var videoId = text.split('=')[1]
                 } else if(q.includes("https://youtube.com/shorts/")){
-                  var videoId = q.replace('https://youtube.com/shorts/', '')
+                  var videoId = text.replace('https://youtube.com/shorts/', '')
                 }  else {
                   return replay("Link salah")
                 }
