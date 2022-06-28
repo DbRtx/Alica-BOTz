@@ -2188,7 +2188,7 @@ break
 ⭔ Description : ${anu.all[0].description}
 ⭔ Url : ${anu.all[0].url}`
                 let msg = await hisoka.sendMessage(m.chat, {
-                  image: { url: anu.thumb },
+                  image: { url: anu.all[0].image },
                   caption: teks,
                   contextInfo: thumbnail,
                   footer: "Download by ytdl-core"
