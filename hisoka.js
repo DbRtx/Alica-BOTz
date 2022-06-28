@@ -2145,14 +2145,14 @@ break
                   image: { url: media.thumb },
                   caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`,
                   contextInfo: thumbnail
-                })
+                }, { quoted: m })
                 hisoka.sendMessage(m.chat, { 
                   audio: { url: media.dl_link }, 
                   mimetype: 'audio/mpeg', 
                   fileName: `${media.title}.mp3`,
                   contextInfo: thumbnail,
                   footer: "Download by y2mate"
-                }, { quoted: m })
+                }, { quoted: msg })
             }
             break
             case 'ytmp4': case 'ytvideo': {
