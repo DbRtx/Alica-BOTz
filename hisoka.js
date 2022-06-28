@@ -2211,7 +2211,7 @@ break
                   replay(`${err}`)
                 }   
               } catch(err){
-                let msg = replay(`${err}`)
+                let msg = await hisoka.sendMessage(m.chat, { text: err }, {quoted : m})
                 hisoka.sendMessage(m.chat, {
                   text: `Silahkan report ke owner dengan command:\n*.report* pesan`,
                   contextInfo: thumbnail
