@@ -2136,8 +2136,10 @@ break
             }
             break
 	    case 'ytmp3': case 'ytaudio': {
-                let { yta } = require('./lib/y2mate')
+              let { yta } = require('./lib/y2mate')
+              try {
                 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
+                replay(mess.wait)
                 let quality = args[1] ? args[1] : '128kbps'
                 let media = await yta(text, quality)
                 if (media.filesize >= 100000) return m.reply('File Melebihi Batas '+util.format(media))
@@ -2153,6 +2155,9 @@ break
                   contextInfo: thumbnail,
                   footer: "Download by y2mate"
                 }, { quoted: msg })
+              } catch (err) {
+                replay("Mungkin sedang error")
+              }
             }
             break
             case 'ytmp4': case 'ytvideo': {
