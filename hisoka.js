@@ -1901,9 +1901,9 @@ break
                  replay(mess.wait)
                  atas = text.split('|')[0] ? text.split('|')[0] : '-'
                  bawah = text.split('|')[1] ? text.split('|')[1] : '-'
-                 let dl = quoted.download()
-                 let { floNime } = require('./lib/uploader')
-	         let fatGans = await floNime(dl)
+                 let dl = hisoka.downloadAndSaveMediaMessage(quoted, "meme")
+                 let { TelegraPh } = require('./lib/uploader')
+	         let fatGans = await TelegraPh(dl)
 	         let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${fatGans}`
 	         let anu = await hisoka.sendImageAsSticker(m.chat, smeme, m, { packname: global.packname, author: global.auhor })
 	         await fs.unlinkSync(anu)
