@@ -2200,7 +2200,7 @@ break
                 }   
               } catch(err){
                 let msg = replay(`${err}`)
-                hisoka.sendMessage(m.chat {
+                hisoka.sendMessage(m.chat, {
                   text: `Silahkan report ke owner dengan command:\n*.report* pesan`,
                   contextInfo: thumbnail
                 },{ quoted: msg })
