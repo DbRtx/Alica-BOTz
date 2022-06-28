@@ -2150,8 +2150,9 @@ break
             break
             case 'ytmp4': case 'ytvideo': {
               try{
+                if (!text) return replay(`Example: ${prefix + command} link`)
                 if (q.includes("https://youtube.com/channel/")) return replay("Sorry itu bukan link video") 
-                replay("*Scrapping...*")
+                replay(mess.wait)
                 if(q.includes("https://youtu.be/")){
                   var videoId = q.replace('https://youtu.be/', '')
                 } else if(q.includes("https://youtube.com/watch?v=")){
