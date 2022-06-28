@@ -20,6 +20,7 @@ const path = require('path')
 const fetch = require('node-fetch')
 const PhoneNumber = require('awesome-phonenumber')
 const os = require('os')
+const yts = require("yt-search");
 const moment = require('moment-timezone')
 const { JSDOM } = require('jsdom')
 const speed = require('performance-now')
