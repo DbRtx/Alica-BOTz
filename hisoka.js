@@ -1653,6 +1653,43 @@ break
                 }
              }
              break
+
+  case 'muton': {
+    if (!isCreator) return replay(mess.owner)
+    if (!text) return replay("Please input chat or group jid")
+    try { 
+      if (db.data.chats[text].mute) return replay(`Sudah Aktif Sebelumnya`)
+      db.data.chats[text].mute = true
+      hisoka.sendMessage(text, {
+        text: `${hisoka.user.name} telah di mute di group ini !`,
+        contextInfo: thumbnail,
+        footer: global.footer
+      })
+      replay("Done")
+    } catch (err) {
+      replay(err)
+    }
+  }
+    break
+
+  case 'mutoff': {
+    if (!isCreator) return replay(mess.owner)
+    if (!text) return replay("Please input chat or group jid")
+    try { 
+      if (db.data.chats[text].mute) return replay(`Sudah Tidak Aktif Sebelumnya`)
+      db.data.chats[text].mute = false
+      hisoka.sendMessage(text, {
+        text: `${hisoka.user.name} telah di unmute di group ini !`,
+        contextInfo: thumbnail,
+        footer: global.footer
+      })
+      replay("Done")
+    } catch (err) {
+      replay(err)
+    }
+  }
+    break
+
              case 'mute': {
                 if (!m.isGroup) return replay(mess.group)
                 if (!isBotAdmins) return replay(mess.botAdmin)
