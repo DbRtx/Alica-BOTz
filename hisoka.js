@@ -1693,7 +1693,7 @@ break
         if (!db.data.chats[args[1]].mute) return replay(`Sudah Tidak Aktif Sebelumnya`)
         db.data.chats[args[1]].mute = false
         hisoka.sendMessage(args[1], {
-          text: `${hisoka.user.name} telah di unmute di group ini !`
+          text: `${hisoka.user.name} telah di unmute di group ini !`,
           contextInfo: thumbnail
         })
         replay("Done")
