@@ -1672,9 +1672,9 @@ break
           { buttonId: 'mute off', buttonText: { displayText: 'Off' }, type: 1 }
         ]
         await hisoka.sendMessage(m.chat, {
-          image: { url: "./lib/mute.jpg"}
+          image: { url: "./lib/mute.jpg"},
           caption: " ",
-          footer: "Mute BOT"
+          footer: "Mute BOT",
           buttons: buttons,
           contextInfo: thumbnail
         },{ quoted: m })
