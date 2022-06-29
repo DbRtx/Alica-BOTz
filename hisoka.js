@@ -1865,20 +1865,22 @@ break
             }
             break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
-              if (!m.quoted) m.reply(`Balas Video/Image Dengan Caption *${prefix + command}*`)
-              replay(mess.wait)
-              if (/image/.test(mime)) {
-                let media = await quoted.download()
-                let encmedia = await hisoka.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(encmedia)
-            } else if (/video/.test(mime)) {
-                if ((quoted.msg || quoted).seconds > 11) return replay('Maksimal 10 detik!')
-                let media = await quoted.download()
-                let encmedia = await hisoka.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(encmedia)
-            } else {
-                replay(`Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 Detik`)
+              try { 
+                if (/image/.test(mime)) {
+                  let media = await quoted.download()
+                  let encmedia = await hisoka.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                  await fs.unlinkSync(encmedia)
+                } else if (/video/.test(mime)) {
+                  if ((quoted.msg || quoted).seconds > 11) return replay('Maksimal 10 detik!')
+                  let media = await quoted.download()
+                  let encmedia = await hisoka.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                  await fs.unlinkSync(encmedia)
+                } else {
+                  replay(`Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 Detik`)
                 }
+              } catch (err) {
+                replay(`Kirim/reply gambar/video dengan caption ${prefix + command }`)
+              }              
             }
             break
             case 'ebinary': {
