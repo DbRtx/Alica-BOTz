@@ -1096,6 +1096,8 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
               let thumb = fs.readFileSync('./lib/sc.jpg')
               let anu = `
 *Public template* : https://github.com/DikaArdnt/Hisoka-Morou
+*Bantu kembangin donh kaka : )*
+*Sc recode*: https://github.com/dlvash/Alica-md
 `
              replay(anu) 
             }
