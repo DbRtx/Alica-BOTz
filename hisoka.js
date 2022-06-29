@@ -3780,7 +3780,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                           {
                             "title": "All menu",
                             "description": "Menampilkan semua menu",
-                            "rowId": `${prefix}all`
+                            "rowId": `*`
                           }
                         ]
                       }
