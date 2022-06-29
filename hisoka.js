@@ -2764,23 +2764,27 @@ break
             }
             break
 	      case 'tt': case 'tiktok': case 'tiktoknowm': {
-                if (!text && !m.quoted) throw 'masukan link / reply link'  
-                let link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : text : q ? q : text 
-                replay(mess.wait)
-                let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
-                let buttons = [
+                if (!text && !m.quoted) throw 'masukan link / reply link'
+                try {
+                  let link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : text : q ? q : text 
+                  replay(mess.wait)
+                  let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
+                  let buttons = [
                     {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
                 ]
-                let buttonMessage = {
+                  let buttonMessage = {
                     video: { url: anu.result.no_wm },
                     caption: `*Download From* ${link}`,
                     footer: 'by alica-BOTz',
                     buttons: buttons,
                     contextInfo: thumbnail,
-                    headerType: 5
-                }
-                hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
+                    headerType: 5 
+                  }
+                  hisoka.sendMessage(m.chat, buttonMessage, { quoted: m }) 
+                } catch (err) {
+                  replay("Server error :(")
+                } 
             }
             break
             case 'tiktokwm': case 'tiktokwatermark': {
