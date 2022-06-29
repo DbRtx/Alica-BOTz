@@ -1096,8 +1096,6 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
               let thumb = fs.readFileSync('./lib/sc.jpg')
               let anu = `
 *Public template* : https://github.com/DikaArdnt/Hisoka-Morou
-*Bantu kembangin donh kaka : )*
-*Sc recode*: https://github.com/dlvash/Alica-BOTz
 `
              replay(anu) 
             }
@@ -2183,7 +2181,7 @@ break
                 if(anu.all.length == "0") return replay("Video tidak di temukan")
                 let info = await ytdl.getInfo(link);
                 let format = ytdl.chooseFormat(info.formats, { quality: '18' });
-                if(Number(format.contentLength) > 40000000000000 ) return replay(`Maap size melebihi batas ${FileSize(format.contentLength)}`)
+                if(Number(format.contentLength) > 40000000 ) return replay(`Maap size melebihi batas ${FileSize(format.contentLength)}`)
                 let teks =`
 ⭔ Title : ${anu.all[0].title}
 ⭔ Ext : 360p
