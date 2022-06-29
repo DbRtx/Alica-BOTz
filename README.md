@@ -5,7 +5,7 @@ Kalo mau jualan normal aja, jangan sampe nipu atau memberi harapan kosong, conto
 
 Best Regards. Hisoka
 
-# Icha-BOTz
+# Alica-BOTz 
 Script WhatsApp Bot Multi Device
 
 ## NOTE
