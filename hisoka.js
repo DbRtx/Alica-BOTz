@@ -2006,8 +2006,7 @@ break
             }
             break
             case 'toaud': case 'toaudio': {
-            if (!/video/.test(mime) && !/audio/.test(mime)) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`
-            if (!quoted) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan Audio Dengan Caption ${prefix + command}`
+            if (!quoted) throw `Reply Video/Audio Yang Ingin Dijadikan Audio Dengan reply ${prefix + command}`
             replay(mess.wait)
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
@@ -2930,9 +2929,18 @@ break
             break
 	      case 'fbdl': case 'fb': case 'facebook': {
                 if (!text) return replay(`Enter Query Link!`)
-                return replay(mess.wait)
-                let anu = await fetchJson(api('zenz', '/downloader/facebook', { url: text }, 'apikey'))
-                hisoka.sendMessage(m.chat, { video: { url: anu.result.url }, caption: `🐦 Title : ${anu.result.title}`, contextInfo: thumbnail }, { quoted: m })            }
+                try {
+                  return replay(mess.wait)
+                  let anu = await fetchJson(api('lol', '/api/$facebook', 'apikey', { url: text }))
+                  hisoka.sendMessage(m.chat, { 
+                    video: { url: anu.result }, 
+                    caption: `nih kak @${m.sender.split("@")[0]}`, 
+                    contextInfo: thumbnail 
+                  }, { quoted: m })                  
+                } catch (err) {
+                  replay(err)
+                }                            
+              }
             break
             case 'umma': case 'ummadl': {
 	        if (!text) throw `Example : ${prefix + command} https://umma.id/channel/video/post/gus-arafat-sumber-kecewa-84464612933698`
