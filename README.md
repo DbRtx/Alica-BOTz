@@ -26,7 +26,7 @@ This is Script of WhatsApp multi device, working with [`@adiwajshing/baileys`](h
 
 
 ```bash
-git clone https://github.com/DikaArdnt/Hisoka-Morou
+git clone https://github.com/dlvash/Alica-BOTz
 cd Hisoka-Morou
 npm install
 ```
@@ -39,7 +39,6 @@ npm install
 * Example `web: node . -- db 'Your Mongo URI'`
 
 
-
 ## FOR TERMUX/UBUNTU/SSH USER
 
 ```bash
@@ -47,7 +46,7 @@ apt update && apt upgrade
 apt install git -y
 apt install nodejs -y
 apt install ffmpeg -y
-git clone https://github.com/DikaArdnt/Hisoka-Morou
+git clone https://github.com/dlvash/Alica-BOTz
 cd Hisoka-Morou
 npm install
 ```
