@@ -3759,10 +3759,6 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                             "description": "Menampilkan grup menu",
                             "rowId": `${prefix}grupmenu`
                           },{
-                            "title": "Web menu",
-                            "description": "Menampilkan web menu",
-                            "rowId": `${prefix}webzone`
-                          },{
                             "title": "Downloader menu",
                             "description": "Menampilkan download menu",
                             "rowId": `${prefix}downmenu`
@@ -3954,39 +3950,23 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃┃* ◆ ${prefix}hapusvote
 *┃┃* ◆ ${prefix}hidetag
 *┃╚━━━━━━━━━━━━━⊏⊐*
-*┃╔━━━━━━━━━━━━━━━━⊏⊐*
-*╠╣ Webzone Menu*
-*┃┃*
-*┃┃* ◆ ${prefix}gsmarena
-*┃┃* ◆ ${prefix}jadwalbioskop (err)
-*┃┃* ◆ ${prefix}nowplayingbioskop (err)
-*┃┃* ◆ ${prefix}aminio (err)
-*┃┃* ◆ ${prefix}wattpad (err)
-*┃┃* ◆ ${prefix}webtoons (err)
-*┃┃* ◆ ${prefix}drakor (err)
-*┃╚━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐* 
 *╠╣ Downloader Menu*
 *┃┃*
+*┃┃* ◆ ${prefix}gitclone
 *┃┃* ◆ ${prefix}tiktoknowm [url]
 *┃┃* ◆ ${prefix}tiktokwm [url] 
 *┃┃* ◆ ${prefix}tiktokmp3 [url]
 *┃┃* ◆ ${prefix}instagram [url] 
-*┃┃* ◆ ${prefix}twitter [url]
-*┃┃* ◆ ${prefix}twittermp3 [url]
-*┃┃* ◆ ${prefix}facebook [url]
-*┃┃* ◆ ${prefix}pinterestdl [url]
 *┃┃* ◆ ${prefix}ytmp3 [url]
 *┃┃* ◆ ${prefix}ytmp4 [url]
 *┃┃* ◆ ${prefix}getmusic [query]
 *┃┃* ◆ ${prefix}getvideo [query]
-*┃┃* ◆ ${prefix}umma [url]
-*┃┃* ◆ ${prefix}joox [query]
-*┃┃* ◆ ${prefix}soundcloud [url]
 *┃╚━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
 *╠╣ Search Menu*
 *┃┃*
+*┃┃* ◆ ${prefix}gsmarena [query]
 *┃┃* ◆ ${prefix}play [query]
 *┃┃* ◆ ${prefix}yts [query]
 *┃┃* ◆ ${prefix}google [query]
@@ -4012,7 +3992,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃┃* ◆ ${prefix}couple
 *┃╚━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
-*╠╣ Text Pro Menu (kadang error)*
+*╠╣ Text Pro Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}demon
 *┃┃* ◆ ${prefix}magma
@@ -4256,26 +4236,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               `
               hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
-            break
-            case 'webzone': {
-              thumb = fs.readFileSync('./lib/web.jpg')
-              anu = `
-*⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Webzone Menu*
-*┃┃*
-*┃┃* ◆ ${prefix}gsmarena
-*┃┃* ◆ ${prefix}jadwalbioskop
-*┃┃* ◆ ${prefix}nowplayingbioskop
-*┃┃* ◆ ${prefix}aminio
-*┃┃* ◆ ${prefix}wattpad
-*┃┃* ◆ ${prefix}drakor
-*╚╣*
-*⌘╚━━━━━━━━━━━━━⊏⊐*
-              `
-               hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
-
-            }
-            break
+            break 
             case 'downmenu': {
               thumb = fs.readFileSync('./lib/downloader.jpg')
               anu = `
@@ -4283,22 +4244,16 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╔━━━━━━━━━━━━━⊏⊐* 
 *╔╣ Downloader Menu*
 *┃┃*
-*┃┃* ◆ ${prefix}tiktoknowm [url] (error)
-*┃┃* ◆ ${prefix}tiktokwm [url] (error)
-*┃┃* ◆ ${prefix}tiktokmp3 [url] (error)
-*┃┃* ◆ ${prefix}instagram [url] (error)
-*┃┃* ◆ ${prefix}twitter [url]
-*┃┃* ◆ ${prefix}twittermp3 [url]
-*┃┃* ◆ ${prefix}facebook [url]
-*┃┃* ◆ ${prefix}pinterestdl [url]
+*┃┃* ◆ ${prefix}gitclone [url]
+*┃┃* ◆ ${prefix}tiktoknowm [url]
+*┃┃* ◆ ${prefix}tiktokwm [url] 
+*┃┃* ◆ ${prefix}tiktokmp3 [url]
+*┃┃* ◆ ${prefix}instagram [url] 
 *┃┃* ◆ ${prefix}ytmp3 [url]
 *┃┃* ◆ ${prefix}ytmp4 [url]
 *┃┃* ◆ ${prefix}getmusic [query]
 *┃┃* ◆ ${prefix}getvideo [query]
-*┃┃* ◆ ${prefix}umma [url]
-*┃┃* ◆ ${prefix}joox [query]
-*┃┃* ◆ ${prefix}soundcloud [url]
-**╚╣*
+*╚╣*
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
 
@@ -4312,6 +4267,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Search Menu*
 *┃┃*
+*┃┃* ◆ ${prefix}gsmarena [query]
 *┃┃* ◆ ${prefix}play [query]
 *┃┃* ◆ ${prefix}yts [query]
 *┃┃* ◆ ${prefix}google [query]
@@ -4505,8 +4461,10 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Convert Menu*
 *┃┃*
-*┃┃* ◆ ${prefix}attp (new)
-*┃┃* ◆ ${prefix}ttp  (new)
+*┃┃* ◆ ${prefix}attp 
+*┃┃* ◆ ${prefix}ssweb-hp [url]
+*┃┃* ◆ ${prefix}ssweb-pc [url]
+*┃┃* ◆ ${prefix}ttp 
 *┃┃* ◆ ${prefix}toimage
 *┃┃* ◆ ${prefix}removebg
 *┃┃* ◆ ${prefix}sticker
@@ -4638,7 +4596,9 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Owner Menu*
 *┃┃*
-*┃┃* ◆ ${prefix}react [emoji]
+*┃┃* ◆ ${prefix}getsesi
+*┃┃* ◆ ${prefix}getcase
+*┃┃* ◆ ${prefix}kirim
 *┃┃* ◆ ${prefix}chat [option]
 *┃┃* ◆ ${prefix}join [link]
 *┃┃* ◆ ${prefix}leave
