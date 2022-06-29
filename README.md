@@ -5,16 +5,16 @@ Kalo mau jualan normal aja, jangan sampe nipu atau memberi harapan kosong, conto
 
 Best Regards. Hisoka
 
-# Icha-BOTz
+# Alica-BOTz 
 Script WhatsApp Bot Multi Device
 
 ## NOTE
 This Script is for everyone, not for Sale. Jika dijual neraka menunggumu brother !
 
 <p align="center">
-	<img src="./lib/20220618_142647.png" width="100%" style="margin-left: auto;margin-right: auto;display: block;">
+	<img src="./lib/alica.jpg" width="100%" style="margin-left: auto;margin-right: auto;display: block;">
 </p>
-<h1 align="center">Icha-BOTz</h1>
+<h1 align="center">Alica-BOTz</h1>
 
 This is Script of WhatsApp multi device, working with [`@adiwajshing/baileys`](https://github.com/adiwajshing/baileys)
 
@@ -26,7 +26,7 @@ This is Script of WhatsApp multi device, working with [`@adiwajshing/baileys`](h
 
 
 ```bash
-git clone https://github.com/DikaArdnt/Hisoka-Morou
+git clone https://github.com/dlvash/Alica-BOTz
 cd Hisoka-Morou
 npm install
 ```
@@ -39,7 +39,6 @@ npm install
 * Example `web: node . -- db 'Your Mongo URI'`
 
 
-
 ## FOR TERMUX/UBUNTU/SSH USER
 
 ```bash
@@ -47,7 +46,7 @@ apt update && apt upgrade
 apt install git -y
 apt install nodejs -y
 apt install ffmpeg -y
-git clone https://github.com/DikaArdnt/Hisoka-Morou
+git clone https://github.com/dlvash/Alica-BOTz
 cd Hisoka-Morou
 npm install
 ```
