@@ -1875,9 +1875,7 @@ break
                   let media = await quoted.download()
                   let encmedia = await hisoka.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
                   await fs.unlinkSync(encmedia)
-                } else {
-                  replay(`Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 Detik`)
-                }
+                } 
               } catch (err) {
                 replay(`Kirim/reply gambar/video dengan caption ${prefix + command }`)
               }              
