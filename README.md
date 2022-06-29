@@ -12,7 +12,7 @@ Script WhatsApp Bot Multi Device
 This Script is for everyone, not for Sale. Jika dijual neraka menunggumu brother !
 
 <p align="center">
-	<img src="./lib/20220618_142647.png" width="100%" style="margin-left: auto;margin-right: auto;display: block;">
+	<img src="./lib/alica.jpg" width="100%" style="margin-left: auto;margin-right: auto;display: block;">
 </p>
 <h1 align="center">Alica-BOTz</h1>
 
