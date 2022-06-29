@@ -1654,10 +1654,10 @@ break
              }
     break
 
-  case 'mute': {
-    if (!isBotAdmins) return replay(mess.botAdmin)
-    if (!isAdmins) return replay(mess.admin)
+  case 'mute': { 
     if (m.isGroup) { 
+      if (!isBotAdmins) return replay(mess.botAdmin)
+      if (!isAdmins) return replay(mess.admin)
       if (args[0] === "on") {
         if (db.data.chats[m.chat].mute) return replay(`Sudah Aktif Sebelumnya`)
         db.data.chats[m.chat].mute = true
@@ -1678,6 +1678,7 @@ break
         })
       }
     } else {
+      if (!isCreator) return replay(mess.owner)
       if (!args[0]) return replay("On or Off ?")
       if (!args[1]) return replay("Please input group JID !")
       if (!args[1].includes("@g.us")) return replay("Invalid group JID") 
