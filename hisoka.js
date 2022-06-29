@@ -16,6 +16,7 @@ const FileType = require('file-type')
 const _ = require('lodash')
 const { exec, spawn, execSync } = require("child_process")
 const axios = require('axios')
+const hxz = require("hxz-api");
 const path = require('path')
 const fetch = require('node-fetch')
 const PhoneNumber = require('awesome-phonenumber')
