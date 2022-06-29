@@ -1676,7 +1676,7 @@ break
     if (!isCreator) return replay(mess.owner)
     if (!text) return replay("Please input chat or group jid")
     try { 
-      if (db.data.chats[text].mute) return replay(`Sudah Tidak Aktif Sebelumnya`)
+      if (!db.data.chats[text].mute) return replay(`Sudah Tidak Aktif Sebelumnya`)
       db.data.chats[text].mute = false
       hisoka.sendMessage(text, {
         text: `${hisoka.user.name} telah di unmute di group ini !`,
