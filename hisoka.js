@@ -1652,65 +1652,55 @@ break
                     await hisoka.sendButtonText(m.chat, buttons, `Mode Antilink`, hisoka.user.name, m)
                 }
              }
-             break
-
-  case 'muton': {
-    if (!isCreator) return replay(mess.owner)
-    if (!text) return replay("Please input chat or group jid")
-    try { 
-      if (db.data.chats[text].mute) return replay(`Sudah Aktif Sebelumnya`)
-      db.data.chats[text].mute = true
-      hisoka.sendMessage(text, {
-        text: `${hisoka.user.name} telah di mute di group ini !`,
-        contextInfo: thumbnail,
-        footer: global.footer
-      })
-      replay("Done")
-    } catch (err) {
-      replay(err)
-    }
-  }
     break
 
-  case 'mutoff': {
-    if (!isCreator) return replay(mess.owner)
-    if (!text) return replay("Please input chat or group jid")
-    try { 
-      if (!db.data.chats[text].mute) return replay(`Sudah Tidak Aktif Sebelumnya`)
-      db.data.chats[text].mute = false
-      hisoka.sendMessage(text, {
-        text: `${hisoka.user.name} telah di unmute di group ini !`,
-        contextInfo: thumbnail,
-        footer: global.footer
-      })
-      replay("Done")
-    } catch (err) {
-      replay(err)
+  case 'mute': {
+    if (!isBotAdmins) return replay(mess.botAdmin)
+    if (!isAdmins) return replay(mess.admin)
+    if (m.isGroup) { 
+      if (args[0] === "on") {
+        if (db.data.chats[m.chat].mute) return replay(`Sudah Aktif Sebelumnya`)
+        db.data.chats[m.chat].mute = true
+        replay(`${hisoka.user.name} telah di mute di group ini !`)
+      } else if (args[0] === "off") {
+        if (!db.data.chats[m.chat].mute) return replay(`Sudah Tidak Aktif Sebelumnya`)
+        db.data.chats[m.chat].mute = false
+        replay(`${hisoka.user.name} telah di unmute di group ini !`)
+      } else {
+        let buttons = [
+          { buttonId: 'mute on', buttonText: { displayText: 'On' }, type: 1 },
+          { buttonId: 'mute off', buttonText: { displayText: 'Off' }, type: 1 }
+        ]
+        await hisoka.sendMessage(m.chat, {
+          text: "Mute Bot",
+          buttons: buttons,
+          contextInfo: thumbnail
+        })
+      }
+    } else {
+      if (!args[0]) return replay("On or Off ?")
+      if (!args[1]) return replay("Please input group JID !")
+      if (!args[1].includes("@g.us")) return replay("Invalid group JID") 
+      if (args[0] === "on") {
+        if (db.data.chats[args[1]].mute) return replay(`Sudah Aktif Sebelumnya`)
+        db.data.chats[args[1]].mute = true
+        hisoka.sendMessage(args[1], {
+          text: `${hisoka.user.name} telah di mute di group ini !`,
+          contextInfo: thumbnail
+        })
+        replay("Done")
+      } else if (args[0] === "off") {
+        if (!db.data.chats[args[1]].mute) return replay(`Sudah Tidak Aktif Sebelumnya`)
+        db.data.chats[args[1]].mute = false
+        hisoka.sendMessage(args[1], {
+          text: `${hisoka.user.name} telah di unmute di group ini !`
+          contextInfo: thumbnail
+        })
+        replay("Done")
+      }
     }
-  }
+  } 
     break
-
-             case 'mute': {
-                if (!m.isGroup) return replay(mess.group)
-                if (!isBotAdmins) return replay(mess.botAdmin)
-                if (!isAdmins) return replay(mess.admin)
-                if (args[0] === "on") {
-                if (db.data.chats[m.chat].mute) return replay(`Sudah Aktif Sebelumnya`)
-                db.data.chats[m.chat].mute = true
-                replay(`${hisoka.user.name} telah di mute di group ini !`)
-                } else if (args[0] === "off") {
-                if (!db.data.chats[m.chat].mute) return replay(`Sudah Tidak Aktif Sebelumnya`)
-                db.data.chats[m.chat].mute = false
-                replay(`${hisoka.user.name} telah di unmute di group ini !`)
-                } else {
-                 let buttons = [
-                        { buttonId: 'mute on', buttonText: { displayText: 'On' }, type: 1 },
-                        { buttonId: 'mute off', buttonText: { displayText: 'Off' }, type: 1 }
-                    ]
-                    await hisoka.sendButtonText(m.chat, buttons, `Mute Bot`, hisoka.user.name, m)
-                }
-             }
-             break
             case 'linkgroup': case 'linkgc': {
                 if (!m.isGroup) return replay(mess.group)
                 if (!isBotAdmins) return replay(mess.botAdmin)
@@ -2018,13 +2008,17 @@ break
             break
             case 'tomp3': {
             if (/document/.test(mime)) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`
-            if (!/video/.test(mime) && !/audio/.test(mime)) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`
-            if (!quoted) return replay`Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}`
+            if (!/video/.test(mime) && !/audio/.test(mime)) throw `Kirim/Reply Video/Audio Yang Ingin Dijadikan MP3 Dengan Caption ${prefix + command}` 
             replay(mess.wait)
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
-            hisoka.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Convert By ${hisoka.user.name}.mp3`}, { quoted : m })
+            hisoka.sendMessage(m.chat, {
+              document: audio,
+              mimetype: 'audio/mpeg',
+              fileName: `Convert By ${hisoka.user.name}.mp3`,
+              contextInfo: thumbnail
+            }, { quoted : m })
             }
             break
             case 'tovn': case 'toptt': {
@@ -2034,7 +2028,11 @@ break
             let media = await quoted.download()
             let { toPTT } = require('./lib/converter')
             let audio = await toPTT(media, 'mp4')
-            hisoka.sendMessage(m.chat, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
+            hisoka.sendMessage(m.chat, {
+              audio: audio,
+              mimetype:'audio/mpeg',
+              ptt:true 
+            }, {quoted:m})
             }
             break
             case 'togif': {
@@ -2044,7 +2042,13 @@ break
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await hisoka.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
-                await hisoka.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' }, gifPlayback: true }, { quoted: m })
+                await hisoka.sendMessage(m.chat, { 
+                  video: { url: webpToMp4.result,
+                    caption: 'Convert Webp To Video' 
+                  }, 
+                  gifPlayback: true,
+                  contextInfo: thumbnail
+                }, { quoted: m })
                 await fs.unlinkSync(media)
             }
             break
