@@ -2878,7 +2878,7 @@ break
             break
    case 'instagram': case 'ig': case 'igdl': {
      if (!text && !m.quoted) throw 'masukan link / reply link'
-     try { 
+     //try { 
        let ling = m.quoted ? m.quoted.text ? m.quoted.text : q ? q: m.text : q ? q : m.text
        replay(mess.wait)
        let anu = await fetchJson(api('zekais', 'igdl2', { url: ling }, 'apikey'))
@@ -2890,9 +2890,9 @@ break
            footer: global.footer 
          },{ quoted: m })
        }
-     } catch (err) {
-       replay(`Server error`)
-     }
+     //} catch (err) {
+    //   replay(`Server error`)
+   //  }
    }
             break
             case 'joox': case 'jooxdl': {
