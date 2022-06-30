@@ -1943,14 +1943,18 @@ break
                  if (!/image/.test(mime)) return replay(respond)
                  if (!text) return replay(respond)
                  replay(mess.wait)
-                 atas = text.split('|')[0] ? text.split('|')[0] : '-'
-                 bawah = text.split('|')[1] ? text.split('|')[1] : '-'
-                 let dwnld = await quoted.download()
-                 let { floNime } = require('./lib/uploader')
-                 let alica = await floNime(dwnld)
-                 let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${alica.result.url}`
-                 let debj = await hisoka.sendImageAsSticker(m.chat, smeme, m, { packname: global.packname, author: global.auhor })
-                 await fs.unlinkSync(debj)
+                 try {  
+                   atas = text.split('|')[0] ? text.split('|')[0] : '-'
+                   bawah = text.split('|')[1] ? text.split('|')[1] : '-'
+                   let dwnld = await quoted.download()
+                   let { floNime } = require('./lib/uploader')
+                   let alica = await floNime(dwnld)
+                   let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${alica.result.url}`
+                   let debj = await hisoka.sendImageAsSticker(m.chat, smeme, m, { packname: global.packname, author: global.auhor })
+                   await fs.unlinkSync(debj)
+                 } catch (err) { 
+                   replay(`*Error system*\n\n${err}`)
+                 }                 
             }
             break
           case 'emoji': {
