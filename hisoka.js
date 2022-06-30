@@ -192,9 +192,9 @@ try {
   if (setting) {
     if (!isNumber(setting.status)) setting.status = 0
     if (!('autobio' in setting)) setting.autobio = false
-    autoreact: false,
-    autosimi: false,
-    nsfw: false
+    autoreact = false,
+    autosimi = false,
+    nsfw = false
   } else global.db.data.settings[botNumber] = {
     status: 0,
     autobio: false,
