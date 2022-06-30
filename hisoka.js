@@ -2964,7 +2964,7 @@ break
                 if (!text) return replay(`Enter Query Link!`)
                 try {
                   return replay(mess.wait)
-                  let anu = await fetchJson(api('lol', '/api/$facebook', 'apikey', { url: text }))
+                  let anu = await fetchJson(api('lol', '/api/facebook', 'apikey', { url: text }))
                   hisoka.sendMessage(m.chat, { 
                     video: { url: anu.result }, 
                     caption: `nih kak @${m.sender.split("@")[0]}`, 
