@@ -250,7 +250,7 @@ ${pesan}`
 }	
 	
 // AUTO REACT
-var autoreact = global.db.data.settings.[botNumber].autoreact
+var autoreact = global.db.data.settings[botNumber].autoreact
 if (autoreact) { 
   let regex = [
     "tai",
