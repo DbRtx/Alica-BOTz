@@ -2876,13 +2876,24 @@ break
                 },{ quoted: msg })
             }
             break
-	        case 'instagram': case 'ig': case 'igdl': {
-                if (!text && !m.quoted) throw 'masukan link / reply link'
-                ling = m.quoted ? m.quoted.text ? m.quoted.text : q ? q: m.text : q ? q : m.text
-                replay(mess.wait)
-                    let anu = await fetchJson(api('lol', '/api/instagram', { url: ling}, 'apikey'))
-                    for (let media of anu.result) hisoka.sendFileUrl(m.chat, media, `Download Url Instagram From ${isUrl(ling)[0]}`, m) 
-            }
+   case 'instagram': case 'ig': case 'igdl': {
+     if (!text && !m.quoted) throw 'masukan link / reply link'
+     try { 
+       let ling = m.quoted ? m.quoted.text ? m.quoted.text : q ? q: m.text : q ? q : m.text
+       replay(mess.wait)
+       let anu = await fetchJson(api('zekais', 'igdl2', { url: ling }, 'apikey'))
+       for (let media of anu.result) {
+         hisoka.sendMessage(m.chat, {
+           video: { url: media.url },
+           caption: `Download from ${ling}`,
+           contextInfo: thumbnail,
+           footer: global.footer 
+         },{ quoted: m })
+       }
+     } catch (err) {
+       replay(`Server error`)
+     }
+   }
             break
             case 'joox': case 'jooxdl': {
                 if (!text) throw 'No Query Title'
