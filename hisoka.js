@@ -2878,24 +2878,24 @@ break
             break
    case 'instagram': case 'ig': case 'igdl': {
      if (!text && !m.quoted) throw 'masukan link / reply link'
-     //try { 
+     try { 
        let ling = m.quoted ? m.quoted.text ? m.quoted.text : q ? q: m.text : q ? q : m.text
        replay(mess.wait)
        let anu = await fetchJson(api('zekais', '/igdl2', { url: ling }, 'apikey'))
-       for (let media of anu.result) {
-         if (media.type === "video") {
-         hisoka.sendMessage(m.chat, {
-           video: { url: media.url },
-           caption: `Download from ${ling}`,
-           contextInfo: thumbnail,
-           footer: global.footer 
-         },{ quoted: m })
-         }
-       }
-     //} catch (err) {
-    //   replay(`Server error`)
-   //  }
-   }
+       let text = `*Username*: ${anu.username}\n*Fullname*: ${anu.fullName}`
+       let msg = await hisoka.sendMessage(m.chat, {
+         video: { url: anu.result.url },
+         caption: text,
+         contextInfo: thumbnail
+       },{ quoted: m })
+       hisoka.sendMessage(m.chat, {
+         text: `nih kak @${m.sender.split("@")[0]}`,
+         contextInfo: thumbnail
+       },{ quoted: msg })
+     } catch (err) {
+       replay(`Server error`)
+     }
+}
             break
             case 'joox': case 'jooxdl': {
                 if (!text) throw 'No Query Title'
