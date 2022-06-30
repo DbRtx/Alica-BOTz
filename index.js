@@ -324,6 +324,25 @@ async function startHisoka() {
         }
         hisoka.sendMessage(jid, listMes, { quoted: quoted })
         }
+    /** Send Button 5 loc */
+
+      hisoka.send5ButLoc = async (jid , text = '' , footer = '', lok, but = [], options = {}) =>{
+       var template = generateWAMessageFromContent(jid, {
+       "templateMessage": {
+       "hydratedTemplate": {
+       "locationMessage": {
+       "degreesLatitude": 0,
+       "degreesLongitude": 0,
+       "jpegThumbnail": lok
+       },
+       "hydratedContentText": text,
+       "hydratedFooterText": footer,
+       "hydratedButtons": but
+       }
+       }
+       }, options)
+       hisoka.relayMessage(jid, template.message, { messageId: template.key.id })
+      }
 
     /** Send Button 5 Message
      * 
