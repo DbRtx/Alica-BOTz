@@ -2893,7 +2893,7 @@ break
          contextInfo: thumbnail
        },{ quoted: msg })
      } catch (err) {
-       replay(`Server error`)
+       replay(err)
      }
 }
             break
