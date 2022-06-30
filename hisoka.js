@@ -1955,7 +1955,7 @@ break
           case 'emoji': {
             if (!text) throw `Example: ${prefix + command} 🙂`
             replay(mess.wait)
-            let emot = `https://leyscoders-api.herokuapp.com/api/emojito-png?emoji=${encodeURIComponent(text)}&apikey=dappakntlll`
+            let emot = `https://api.zekais.com/emoji?unicode=${encodeURIComponent(text)}&apikey=zekais` 
             let anu = await hisoka.sendImageAsSticker(m.chat, emot, m, { packname: global.packname, author: global.author })
             await fs.unlinkSync(anu)
           }
