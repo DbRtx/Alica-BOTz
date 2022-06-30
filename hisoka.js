@@ -1939,23 +1939,20 @@ break
             }
             break
 	       case 'smeme': case 'stickmeme': case 'stikmeme': case 'stickermeme': case 'stikermeme': {
-                 let respond = `Kirim/reply image/sticker dengan caption ${prefix + command} text1|text2`
-                 if (!/image/.test(mime)) return replay(respond)
-                 if (!text) return replay(respond)
-                 replay(mess.wait)
-                 try {  
-                   atas = text.split('|')[0] ? text.split('|')[0] : '-'
-                   bawah = text.split('|')[1] ? text.split('|')[1] : '-'
-                   let dl = await quoted.download()
-                   let alica = await floNime(dl)
-                   let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${alica.result.url}`
-                   let debj = await hisoka.sendImageAsSticker(m.chat, smeme, m, { packname: global.packname, author: global.auhor })
-                   await fs.unlinkSync(debj)
-                 } catch (err) { 
-                   replay(`*Error system*\n\n${err}`)
-                 }                 
+	        let respond = `Kirim/reply image/sticker dengan caption ${prefix + command} text1|text2`
+	        if (!/image/.test(mime)) throw respond
+            if (!text) throw respond
+	        m.reply(mess.wait)
+            atas = text.split('|')[0] ? text.split('|')[0] : '-'
+            bawah = text.split('|')[1] ? text.split('|')[1] : '-'
+	        let dwnld = await quoted.download()
+	        let { floNime } = require('./lib/uploader')
+	        let fatGans = await floNime(dwnld)
+	        let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${fatGans.result.url}`
+	        let FaTiH = await hisoka.sendImageAsSticker(m.chat, smeme, m, { packname: global.packname, author: global.auhor })
+	        await fs.unlinkSync(FaTiH)
             }
-            break
+	       break
           case 'emoji': {
             if (!text) throw `Example: ${prefix + command} 🙂`
             replay(mess.wait)
