@@ -195,6 +195,9 @@ try {
   } else global.db.data.settings[botNumber] = {
     status: 0,
     autobio: false,
+    autoreact: false,
+    autosimi: false,
+    nsfw: false
   }
 } catch (err) {
   console.error(err)
@@ -246,30 +249,34 @@ ${pesan}`
   })
 }	
 	
-// AUTO REACT 
-let regex = [
-  "tai",
-  "kntll",
-  "kntlll",
-  "kntl",
-  "kontol",
-  "memek",
-  "mmk",
-  "bacot",
-  "bang",
-  "banh",
-  "coli",
-  "tes",
-  "hah",
-  "ha?",
-  "ha"
-]
-for (let i of regex) {
-  if (m.isGroup && budy.toLowerCase().includes(i)) {
-    let emot = await pickRandom(["🗿", "👍", "🙄", "😝", "😏", "💩", "👻","🔥", "🤣","🤬", "😎", "😂", "😘", "😑", "😱", "❤️", "🔥", "😳","😍","🤩 ","🥳","🤔","🤗","🤤","👎","👊","🙈","🤡" ])
-    hisoka.sendMessage(m.chat , { react: { text: emot, key: m.key }})
+// AUTO REACT
+var autoreact = global.db.data.settings.[botNumber].autoreact
+if (autoreact) { 
+  let regex = [
+    "tai",
+    "kntll",
+    "kntlll",
+    "kntl",
+    "kontol",
+    "memek",
+    "mmk",
+    "bacot",
+    "bang",
+    "banh",
+    "coli",
+    "tes",
+    "hah",
+    "ha?",
+    "ha"
+  ]
+  for (let i of regex) {
+    if (m.isGroup && budy.toLowerCase().includes(i)) {
+      let emot = await pickRandom(["🗿", "👍", "🙄", "😝", "😏", "💩", "👻","🔥", "🤣","🤬", "😎", "😂", "😘", "😑", "😱", "❤️", "🔥", "😳","😍","🤩 ","🥳","🤔","🤗","🤤","👎","👊","🙈","🤡" ])
+      hisoka.sendMessage(m.chat , { react: { text: emot, key: m.key }})
+    }
   }
 }
+
 // reset limit every 12 hours
 let cron = require('node-cron')
 cron.schedule('00 12 * * *', () => {
@@ -284,7 +291,7 @@ cron.schedule('00 12 * * *', () => {
         
 	
 // auto set bio
-var autobio = true
+var autobio = global.db.data.settings[botNumber].autobio
 if (autobio) {
   let setting = global.db.data.settings[botNumber]
   if (new Date() * 1 - setting.status > 1000) {
@@ -293,7 +300,6 @@ if (autobio) {
     setting.status = new Date() * 1 
   }
 }
-        
 
 //Thumbnail
 let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender 
@@ -2328,8 +2334,8 @@ break
               })
             }
             break
-            case 'anime': case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob': {
-                if (m.isGroup) {
+  case 'anime': case 'waifu': case 'husbu': case 'neko': case 'shinobu': case 'megumin': case 'waifus': case 'nekos': case 'trap': case 'blowjob': {
+    if (m.isGroup) {
                 return replay('*Warn⚠️⚠️*\n*Fitur tidak pantas untuk digunakan di Grup.*\n*Silahkan PC bot jika ingin tetap menggunakan fitur ini.*\n\n*note:* \n*Dosa tidak ditnggung owner.*')}
                 if (!m.isGroup) {
                 replay(`loading mass ..\nsabar mas jan tegang dulu ...\n*note: Dosa tidak ditnggung owner.*`)
