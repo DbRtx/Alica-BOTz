@@ -2964,12 +2964,20 @@ break
                 if (!text) return replay(`Enter Query Link!`)
                 try {
                   return replay(mess.wait)
-                  let anu = await fetchJson(api('lol', '/api/facebook', 'apikey', { url: text }))
-                  hisoka.sendMessage(m.chat, { 
-                    video: { url: anu.result }, 
-                    caption: `nih kak @${m.sender.split("@")[0]}`, 
-                    contextInfo: thumbnail 
-                  }, { quoted: m })                  
+                  let anu = await fetchJson(api('neoxr', '/api/fb', { url: text }, 'apikey')) 
+                  if (!anu.status) return replay("Mungkin ad kesalahan")
+                  for (let media of anu.data ) {
+                    let text = `*Size*: ${media.size}\n*Quality*: ${media.quality}\n*Type*: ${media.type}`                
+                    let vid = hisoka.sendMessage(m.chat, {
+                      video: { url: media.url },
+                      caption: text,
+                      contextInfo: thumbnail 
+                    },{ quoted: m })
+                    hisoka.sendMessage(m.chat, {
+                      text: `nih kak @${m.sender.split("@")[0]}`,
+                      contextInfo: thumbnail
+                    },{ quoted: m })
+                  }                                    
                 } catch (err) {
                   replay(err)
                 }                            
