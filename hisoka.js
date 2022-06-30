@@ -2882,18 +2882,18 @@ break
        let ling = m.quoted ? m.quoted.text ? m.quoted.text : q ? q: m.text : q ? q : m.text
        replay(mess.wait)
        let anu = await fetchJson(api('zekais', '/igdl2', { url: ling }, 'apikey'))
-       let text = `*Username*: ${anu.username}\n*Fullname*: ${anu.fullName}`
+       let text = `*Download from*: ${ling}\n*Username*: ${anu.username}\n*Fullname*: ${anu.fullName}`
        for (let media of anu.result) { 
          let msg = await hisoka.sendMessage(m.chat, {
          video: { url: media.url },
          caption: text,
          contextInfo: thumbnail
        },{ quoted: m })
-       } 
-       hisoka.sendMessage(m.chat, {
+         hisoka.sendMessage(m.chat, {
          text: `nih kak @${m.sender.split("@")[0]}`,
          contextInfo: thumbnail
        },{ quoted: msg })
+       }  
      } catch (err) {
        replay(err)
      }
