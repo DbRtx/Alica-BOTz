@@ -172,9 +172,9 @@ try {
     if (!('afkReason' in user)) user.afkReason = ''
     if (user.premium = true) user.limit = "Infinity"
     if (isPremium) user.premium = true
-    ban = false
-    exp = 200
-    level = 1
+    ban = false,
+    exp = 200,
+    level = 1,
     rank = ''
   } else global.db.data.users[m.sender] = {
     afkTime: -1,
