@@ -1947,7 +1947,7 @@ break
 	        let dwnld = await hisoka.downloadAndSaveMediaMessage(quoted)
 	        let { UploadFileUgu } = require('./lib/uploader')
 	        let fatGans = await UploadFileUgu(dwnld)
-	        let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${fatGans.result.url}`
+	        let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${fatGans.url}`
 	        let FaTiH = await hisoka.sendImageAsSticker(m.chat, smeme, m, { packname: global.packname, author: global.auhor })
 	        await fs.unlinkSync(FaTiH)
             }
