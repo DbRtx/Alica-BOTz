@@ -188,7 +188,7 @@ try {
   let chats = global.db.data.chats[m.chat]
   if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
   if (chats) {
-    jid = m.chat,
+    jid = m.chat
     if (!('mute' in chats)) chats.mute = false
     if (!('antilink' in chats)) chats.antilink = false
   } else global.db.data.chats[m.chat] = {
