@@ -160,18 +160,17 @@ const participants = m.isGroup ? await groupMetadata.participants : ''
 const groupAdmins = m.isGroup ? await getGroupAdmins(participants) : ''
 const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
 const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
-const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
-) || false
+const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender) || false
 try {
   let isNumber = x => typeof x === 'number' && !isNaN(x)
   let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
   let user = global.db.data.users[m.sender]
   if (typeof user !== 'object') global.db.data.users[m.sender] = {}   
   if (user) {
-    if (!isNumber(user.afkTime)) user.afkTime = -1
-    if (!('afkReason' in user)) user.afkReason = ''
-    if (user.premium = true) user.limit = "Infinity"
-    if (isPremium) user.premium = true
+    if (!isNumber(user.afkTime)) user.afkTime = -1,
+    if (!('afkReason' in user)) user.afkReason = '',
+    if (isPremium) user.limit = limitUser,
+    if (isPremium) user.premium = true,
     ban = false,
     exp = 200,
     level = 1,
@@ -179,7 +178,7 @@ try {
   } else global.db.data.users[m.sender] = {
     afkTime: -1,
     afkReason: '',
-    limit: limitawal.free,
+    limit: limitUser,
     premium: false,
     ban: false,
     exp: 200,
@@ -189,7 +188,7 @@ try {
   let chats = global.db.data.chats[m.chat]
   if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
   if (chats) {
-    jid = m.chat
+    jid = m.chat,
     if (!('mute' in chats)) chats.mute = false
     if (!('antilink' in chats)) chats.antilink = false
   } else global.db.data.chats[m.chat] = {
