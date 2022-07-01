@@ -1944,9 +1944,9 @@ break
 	        m.reply(mess.wait)
             atas = text.split('|')[0] ? text.split('|')[0] : '-'
             bawah = text.split('|')[1] ? text.split('|')[1] : '-'
-	        let dwnld = await quoted.download()
-	        let { floNime } = require('./lib/uploader')
-	        let fatGans = await floNime(dwnld)
+	        let dwnld = await hisoka.downloadAndSaveMediaMessage(quoted)
+	        let { UploadFileUgu } = require('./lib/uploader')
+	        let fatGans = await UploadFileUgu(dwnld)
 	        let smeme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas)}/${encodeURIComponent(bawah)}.png?background=${fatGans.result.url}`
 	        let FaTiH = await hisoka.sendImageAsSticker(m.chat, smeme, m, { packname: global.packname, author: global.auhor })
 	        await fs.unlinkSync(FaTiH)
