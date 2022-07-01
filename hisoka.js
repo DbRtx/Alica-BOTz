@@ -167,10 +167,10 @@ try {
   let user = global.db.data.users[m.sender]
   if (typeof user !== 'object') global.db.data.users[m.sender] = {}   
   if (user) {
-    if (!isNumber(user.afkTime)) user.afkTime = -1,
-    if (!('afkReason' in user)) user.afkReason = '',
-    if (isPremium) user.limit = limitUser,
-    if (isPremium) user.premium = true,
+    if (!isNumber(user.afkTime)) user.afkTime = -1
+    if (!('afkReason' in user)) user.afkReason = ''
+    if (isPremium) user.limit = limitUser
+    if (isPremium) user.premium = true
     ban = false,
     exp = 200,
     level = 1,
