@@ -189,10 +189,12 @@ try {
   if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
   if (chats) {
     jid = m.chat
+    gcname = groupName
     if (!('mute' in chats)) chats.mute = false
     if (!('antilink' in chats)) chats.antilink = false
   } else global.db.data.chats[m.chat] = {
     jid: m.chat,
+    gcname = groupName,
     mute: false,
     antilink: false,
   } 
@@ -232,7 +234,7 @@ if (m.message) {
   const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
   let pesan = budy || m.mtype
   let tempat = m.isGroup ? groupMetadata.subject : 'Private Chat'
-  var gc = m.chat
+  var gc = m.isGroup ? global.db.data.chats[m.chat].jid : m.chat
   var usr = m.sender
   let buttons = [{
     index: 1,
@@ -244,7 +246,7 @@ if (m.message) {
     index: 1,
     urlButton: {
       displayText: 'COPY PLACE JID',
-      url: 'https://www.whatsapp.com/otp/copy/'+m.chat 
+      url: 'https://www.whatsapp.com/otp/copy/'gc
     }
   }]
   let monit = `*[ PESAN ] ${time}*
