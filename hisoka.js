@@ -194,7 +194,7 @@ try {
     if (!('antilink' in chats)) chats.antilink = false
   } else global.db.data.chats[m.chat] = {
     jid: m.chat,
-    gcname = groupName,
+    gcname: groupName,
     mute: false,
     antilink: false,
   } 
