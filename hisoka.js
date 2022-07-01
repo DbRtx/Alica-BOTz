@@ -170,20 +170,30 @@ try {
   if (user) {
     if (!isNumber(user.afkTime)) user.afkTime = -1
     if (!('afkReason' in user)) user.afkReason = ''
-    if (user.premium = true) user.limit = global.limitawal.premium
+    if (user.premium = true) user.limit = "Infinity"
     if (isPremium) user.premium = true
+    ban = false
+    exp = 200
+    level = 1
+    rank = ''
   } else global.db.data.users[m.sender] = {
     afkTime: -1,
     afkReason: '',
-    limit: limitUser,
-    premium: false
+    limit: limitawal.free,
+    premium: false,
+    ban: false,
+    exp = 200,
+    level = 1,
+    rank = ''
   }
   let chats = global.db.data.chats[m.chat]
   if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
   if (chats) {
+    jid = m.chat
     if (!('mute' in chats)) chats.mute = false
     if (!('antilink' in chats)) chats.antilink = false
   } else global.db.data.chats[m.chat] = {
+    jid: m.chat,
     mute: false,
     antilink: false,
   } 

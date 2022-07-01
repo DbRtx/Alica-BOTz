@@ -62,10 +62,6 @@ global.limitawal = {
     premium: "Infinity",
     free: "10"
 }
-global.User = {
-    premium: "Yes",
-    free: "No"
-}
 global.thumb = fs.readFileSync('./lib/alica.jpg')
 
 
