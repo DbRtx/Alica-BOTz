@@ -182,9 +182,9 @@ try {
     limit: limitawal.free,
     premium: false,
     ban: false,
-    exp = 200,
-    level = 1,
-    rank = ''
+    exp: 200,
+    level: 1,
+    rank: ''
   }
   let chats = global.db.data.chats[m.chat]
   if (typeof chats !== 'object') global.db.data.chats[m.chat] = {}
