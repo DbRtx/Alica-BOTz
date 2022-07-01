@@ -2069,7 +2069,7 @@ break
                   let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
                   let media = await hisoka.downloadAndSaveMediaMessage(quoted)
                   let anu = await UploadFileUgu(media)
-                  replay(util.format(anu.url))  
+                  replay(anu.url)  
             }
             break
             case 'imagenobg': case 'removebg': case 'remove-bg': {
