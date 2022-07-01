@@ -33,7 +33,6 @@ const { downloadContentFromMessage } = require('@adiwajshing/baileys')
 const primbon = new Primbon()
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/exif')
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins, getCase, FileSize} = require('./lib/myfunc')
-const { TelegraPh, UploadFileUgu, webp2mp4File, floNime } = require('./lib/uploader')
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
 // read database
@@ -2066,17 +2065,11 @@ break
             }
             break
 	        case 'tourl': {
-                replay(mess.wait)
-		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
-                let media = await hisoka.downloadAndSaveMediaMessage(quoted)
-                if (/image/.test(mime)) {
-                    let anu = await TelegraPh(media)
-                    m.reply(util.format(anu))
-                } else if (!/image/.test(mime)) {
-                    let anu = await UploadFileUgu(media)
-                    m.reply(util.format(anu))
-                }
-                await fs.unlinkSync(media)
+                  replay(mess.wait)
+                  let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+                  let media = await hisoka.downloadAndSaveMediaMessage(quoted)
+                  let anu = await UploadFileUgu(media)
+                  replay(util.format(anu))  
             }
             break
             case 'imagenobg': case 'removebg': case 'remove-bg': {
