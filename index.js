@@ -93,7 +93,7 @@ async function startHisoka() {
       text: anu,
       templateButtons: but,
       contextInfo: {
-        mentionedJid: [num],
+        mentionedJid: [callerId],
         "externalAdReply": { "title": `${global.footer}`,
           "body": `Hi`,
           "previewType": "photo",
