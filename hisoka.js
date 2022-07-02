@@ -225,8 +225,8 @@ if (!hisoka.public) {
 
 //simple exp system 
 if (m.message && isCmd) {
-  let exp = db.data.users[m.sender].exp
-  exp + 2
+  let exp = global.db.data.users[m.sender].exp
+  exp += 2
 }
 
 // Push Message To Console && Auto Read
