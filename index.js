@@ -163,7 +163,7 @@ async function startHisoka() {
                 try {
                     ppgroup = await hisoka.profilePictureUrl(anu.id, 'image')
                 } catch {
-                    ppgroup = './lib/null.jpg'
+                    ppgroup = './src/jpg/null.jpg'
                 }
               let nama = await hisoka.getName(num)
               let wel = [{
