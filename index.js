@@ -81,8 +81,26 @@ async function startHisoka() {
     hisoka.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
-    let pa7rick = await hisoka.sendContact(callerId, global.owner)
-    hisoka.sendMessage(callerId, { text: `*⚠️Warning⚠️*  \n\n*Sistem otomatis block!*\n*Jangan menelpon bot!*\n*Silahkan Hubungi Owner Untuk Dibuka !*\n\n\n\nThanks`}, { quoted : pa7rick })
+    let but = [{
+      index: 1,
+      urlButton: {
+        displayText: "PC OWNER",
+        url: 'https://wa.me/message/7TJJ7FANW43XO1'
+      }
+    }]
+    let anu = `*⚠️Warning⚠️*  \n\n*Sistem otomatis block!*\n*Jangan menelpon bot!*\n*Silahkan Hubungi Owner Untuk Dibuka !*\n\n\n\nThanks`
+    hisoka.sendMessage(callerId, { 
+      text: anu,
+      templateButtons: but,
+      contextInfo: {
+        mentionedJid: [num],
+        "externalAdReply": { "title": `${global.footer}`,
+          "body": `Hi`,
+          "previewType": "photo",
+          "sourceUrl": "https://dlvash.github.io", 
+          "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
+      }
+    }, { quoted : m })
     await sleep(8000)
     await hisoka.updateBlockStatus(callerId, "block")
     }
@@ -163,7 +181,7 @@ async function startHisoka() {
                   "body": `Hi ${nama}`,
                   "previewType": "photo",
                   "sourceUrl": "https://dlvash.github.io", 
-                  "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
+                  "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
                 }
               }
               if (anu.action == 'add') { 
