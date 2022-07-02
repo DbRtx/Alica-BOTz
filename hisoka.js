@@ -223,7 +223,12 @@ if (!hisoka.public) {
   if (!m.key.fromMe) return
 }
 
-        
+//simple exp system 
+if (m.message && isCmd) {
+  let exp = db.data.users[m.sender].exp
+  exp + 2
+}
+
 // Push Message To Console && Auto Read
 if (m.message) {
   console.log(chalk.black(chalk.bgWhite('[ PESAN ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> Dari'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> Di'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
@@ -369,6 +374,10 @@ if (db.data.chats[m.chat].mute && !isAdmins && !isCreator) {
   return
 }
 
+// Ban chat
+if (db.data.users[m.sender].ban) {
+  return
+}
 
 // Respon Cmd with media 
 if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.data.sticker)) {
@@ -3556,10 +3565,10 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               let latensi = speed() - timestamp
               const hour_now = moment.tz('Asia/Jakarta').format('HH')
               var ucapanWaktu = 'Good morning 🌄'
-              var thumb = thumb = fs.readFileSync('./lib/pagi.jpg')
+              var thumb = thumb = fs.readFileSync('./src/jpg/pagi.jpg')
               if (hour_now >= '03' && hour_now <= '04') {
                 ucapanWaktu = 'Good morning 🌌'
-                thumb = fs.readFileSync('./lib/malam.jpg')
+                thumb = fs.readFileSync('/malam.jpg')
               } else if (hour_now >= '04' && hour_now <= '09') {
                 ucapanWaktu = 'Good morning 🌄'
                 thumb = fs.readFileSync('./lib/pagi.jpg') 
@@ -3681,28 +3690,28 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             case 'list': {
               const hour_now = moment.tz('Asia/Jakarta').format('HH')
               var ucapanWaktu = 'Good morning 🌄'
-              var thumb = thumb = fs.readFileSync('./lib/pagi.jpg')
+              
               if (hour_now >= '03' && hour_now <= '04') {
                 ucapanWaktu = 'Good morning 🌌'
-                thumb = fs.readFileSync('./lib/malam.jpg')
+                
               } else if (hour_now >= '04' && hour_now <= '09') {
                 ucapanWaktu = 'Good morning 🌄'
-                thumb = fs.readFileSync('./lib/pagi.jpg') 
+                 
               } else if (hour_now >= '10' && hour_now <= '15'){
                 ucapanWaktu = 'Good Afternoon ☀️'
-                thumb = fs.readFileSync('./lib/siang.jpg')
+                
               } else if (hour_now >= '16' && hour_now <= '17') {
                 ucapanWaktu = 'Good Evening ☀️'
-                thumb = fs.readFileSync('./lib/sore.jpg')
+                
               } else if (hour_now >= '18' && hour_now <= '19') {
                 ucapanWaktu = 'Good Night 🌠'
-                thumb = fs.readFileSync('./lib/malam.jpg')
+                
               } else if (hour_now >= '20' && hour_now <= '23') {
                 ucapanWaktu = 'Good Night 🌌'
-                thumb = fs.readFileSync('./lib/malam.jpg')
+                
               } else {
                 ucapanWaktu = 'Good Night'//'Selamat Malam!'
-                thumb = fs.readFileSync('./lib/malam.jpg')
+                
               }
               //MASEHI
               let tw = new Date();
@@ -3881,7 +3890,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             case 'semua': case '*': case 'all': {
               let timestamp = speed()
               let latensi = speed() - timestamp
-              let thumb = fs.readFileSync('./lib/all.jpg') 
+              let thumb = fs.readFileSync('./src/jpg/all.jpg') 
                 //-----------JAM-------------
               const hour_now = moment.tz('Asia/Jakarta').format('HH')
               var ucapanWaktu = 'Good morning 🌄'
@@ -4244,7 +4253,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                      }
             break
             case 'grupmenu': {
-              thumb = fs.readFileSync('./lib/grup.jpg')
+              thumb = fs.readFileSync('./src/jpg/grup.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Group Menu*
@@ -4277,7 +4286,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break 
             case 'downmenu': {
-              thumb = fs.readFileSync('./lib/downloader.jpg')
+              thumb = fs.readFileSync('./src/jpg/downloader.jpg')
               anu = `
 
 *⌘╔━━━━━━━━━━━━━⊏⊐* 
@@ -4301,7 +4310,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'searchmenu': {
-              thumb = fs.readFileSync('./lib/search.jpg')
+              thumb = fs.readFileSync('./src/jpg/search.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Search Menu*
@@ -4325,7 +4334,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'randommenu': {
-              thumb = fs.readFileSync('./lib/random.jpg')
+              thumb = fs.readFileSync('./src/jpg/random.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Random Menu*
@@ -4353,7 +4362,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'textpromenu': {
-              thumb = fs.readFileSync('./lib/text_pro.jpg')
+              thumb = fs.readFileSync('./src/jpg/text_pro.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Text Pro Menu*
@@ -4385,7 +4394,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'photooxymenu': {
-              thumb = fs.readFileSync('./lib/photo_oxy.jpg')
+              thumb = fs.readFileSync('./src/jpg/photo_oxy.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Photo Oxy Menu*
@@ -4425,7 +4434,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break*/
             case 'funmenu': {
-              thumb = fs.readFileSync('./lib/fun.jpg')
+              thumb = fs.readFileSync('./src/jpg/fun.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Fun Menu*
@@ -4452,7 +4461,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'primbonmenu': {
-              thumb = fs.readFileSync('./lib/primbon.jpg')
+              thumb = fs.readFileSync('./src/jpg/primbon.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Primbon Menu*
@@ -4495,7 +4504,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'convertmenu': {
-              thumb = fs.readFileSync('./lib/convert.jpg')
+              thumb = fs.readFileSync('./src/jpg/convert.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Convert Menu*
@@ -4527,7 +4536,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'mainmenu': {
-              thumb = fs.readFileSync('./lib/main.jpg')
+              thumb = fs.readFileSync('./src/jpg/main.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Main Menu*
@@ -4550,7 +4559,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
              case 'databasemenu': {
-              thumb = fs.readFileSync('./lib/database.jpg')
+              thumb = fs.readFileSync('./src/jpg/database.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Database Menu*
@@ -4571,7 +4580,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'anonimmenu': {
-              thumb = fs.readFileSync('./lib/anonymous.jpg')
+              thumb = fs.readFileSync('./src/jpg/anonymous.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Anonymous Menu*
@@ -4588,7 +4597,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
              case 'islammenu': {
-              thumb = fs.readFileSync('./lib/islamic.jpg')
+              thumb = fs.readFileSync('./src/jpg/islamic.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Islamic Menu*
@@ -4606,7 +4615,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
              case 'voicemenu': {
-              thumb = fs.readFileSync('./lib/voice.jpg')
+              thumb = fs.readFileSync('./src/jpg/voice.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Voice Changer*
@@ -4630,7 +4639,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
              case 'ownermenu': {
-              thumb = fs.readFileSync('./lib/owner.jpg')
+              thumb = fs.readFileSync('./src/jpg/owner.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
 *╔╣ Owner Menu*
