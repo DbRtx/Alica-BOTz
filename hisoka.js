@@ -3568,25 +3568,25 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               var thumb = thumb = fs.readFileSync('./src/jpg/pagi.jpg')
               if (hour_now >= '03' && hour_now <= '04') {
                 ucapanWaktu = 'Good morning 🌌'
-                thumb = fs.readFileSync('/malam.jpg')
+                thumb = fs.readFileSync('./src/jpg/malam.jpg')
               } else if (hour_now >= '04' && hour_now <= '09') {
                 ucapanWaktu = 'Good morning 🌄'
-                thumb = fs.readFileSync('./lib/pagi.jpg') 
+                thumb = fs.readFileSync('./src/jpg/pagi.jpg') 
               } else if (hour_now >= '10' && hour_now <= '15'){
                 ucapanWaktu = 'Good Afternoon ☀️'
-                thumb = fs.readFileSync('./lib/siang.jpg')
+                thumb = fs.readFileSync('./src/jpg/siang.jpg')
               } else if (hour_now >= '16' && hour_now <= '17') {
                 ucapanWaktu = 'Good Evening ☀️'
-                thumb = fs.readFileSync('./lib/sore.jpg')
+                thumb = fs.readFileSync('./src/jpg/sore.jpg')
               } else if (hour_now >= '18' && hour_now <= '19') {
                 ucapanWaktu = 'Good Night 🌠'
-                thumb = fs.readFileSync('./lib/malam.jpg')
+                thumb = fs.readFileSync('./src/jpg/malam.jpg')
               } else if (hour_now >= '20' && hour_now <= '23') {
                 ucapanWaktu = 'Good Night 🌌'
-                thumb = fs.readFileSync('./lib/malam.jpg')
+                thumb = fs.readFileSync('./src/jpg/malam.jpg')
               } else {
                 ucapanWaktu = 'Good Night'//'Selamat Malam!'
-                thumb = fs.readFileSync('./lib/malam2.jpg')
+                thumb = fs.readFileSync('./src/jpg/malam2.jpg')
               }
               //MASEHI
               let tw = new Date();
