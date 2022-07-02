@@ -330,7 +330,7 @@ let thumbnail = {
     "mediaType": 3,
     "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
     "sourceUrl": "https://dlvash.github.io",
-    "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
+    "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
   }
 }
 
