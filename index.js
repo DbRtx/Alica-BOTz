@@ -99,6 +99,7 @@ async function startHisoka() {
           "previewType": "photo",
           "sourceUrl": "https://dlvash.github.io", 
           "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
+        }
       }
     }, { quoted : m })
     await sleep(8000)
