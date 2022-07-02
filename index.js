@@ -156,7 +156,7 @@ async function startHisoka() {
                 try {
                     ppuser = await hisoka.profilePictureUrl(num, 'image')
                 } catch {
-                    ppuser = './lib/null.jpg'
+                    ppuser = './src/jpg/null.jpg'
                 }
 
                 // Get Profile Picture Group
