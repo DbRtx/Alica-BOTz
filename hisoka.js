@@ -105,7 +105,8 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
 
 
     var budy = (typeof m.text == 'string' ? m.text : '')
-    var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : '.'
+    var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0]
+
     const isCmd = body.startsWith(prefix)
     const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
     const args = body.trim().split(/ +/).slice(1)
