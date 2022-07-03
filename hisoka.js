@@ -4749,80 +4749,73 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
-             
-            default:
-                if (budy.startsWith('=>')) {
-                    if (!isCreator) return replay(mess.owner)
-                    function Return(sul) {
-                        sat = JSON.stringify(sul, null, 2)
-                        bang = util.format(sat)
-                            if (sat == undefined) {
-                                bang = util.format(sul)
-                            }
-                            return m.reply(bang)
-                    }
-                    try {
-                        m.reply(util.format(eval(`(async () => { return ${budy.slice(3)} })()`)))
-                    } catch (e) {
-                        m.reply(String(e))
-                    }
-                }
-
-                if (budy.startsWith('>')) {
-                    if (!isCreator) return replay(mess.owner)
-                    try {
-                        let evaled = await eval(budy.slice(2))
-                        if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
-                        await m.reply(evaled)
-                    } catch (err) {
-                        await m.reply(String(err))
-                    }
-                }
-
-                if (budy.startsWith('$')) {
-                    if (!isCreator) {
-                      replay(mess.owner)
-                      break
-                    }
-                    exec(budy.slice(2), (err, stdout) => {
-                        if(err) return m.reply(err)
-                        if (stdout) return m.reply(stdout)
-                    })
-                }
-			
-		if (m.chat.endsWith('@s.whatsapp.net') && isCmd) {
-                    this.anonymous = this.anonymous ? this.anonymous : {}
-                    let room = Object.values(this.anonymous).find(room => [room.a, room.b].includes(m.sender) && room.state === 'CHATTING')
-                    if (room) {
-                        if (/^.*(next|leave|start)/.test(m.text)) return
-                        if (['.next', '.leave', '.stop', '.start', 'Cari Partner', 'Keluar', 'Lanjut', 'Stop'].includes(m.text)) return
-                        let other = [room.a, room.b].find(user => user !== m.sender)
-                        m.copyNForward(other, true, m.quoted && m.quoted.fromMe ? {
-                            contextInfo: {
-                                ...m.msg.contextInfo,
-                                forwardingScore: 0,
-                                isForwarded: true,
-                                participant: other
-                            }
-                        } : {})
-                    }
-                    return !0
-                }
-			
-		if (isCmd && budy.toLowerCase() != undefined) {
-		    if (m.chat.endsWith('broadcast')) return
-		    if (m.isBaileys) return
-		    let msgs = global.db.data.database
-		    if (!(budy.toLowerCase() in msgs)) return
-		    hisoka.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
-		}
-        }
-        
-
-    } catch (err) {
-        m.reply(util.format(err))
+            
+default:
+if (budy.startsWith('=>')) {
+  if (!isCreator) return replay(mess.owner)
+  function Return(sul) {
+    sat = JSON.stringify(sul, null, 2)
+    bang = util.format(sat)
+    if (sat == undefined) {
+      bang = util.format(sul)
     }
+    return m.reply(bang)
+  }
+  try {
+    m.reply(util.format(eval(`(async () => { return ${budy.slice(3)} })()`)))
+  } catch (e) {
+    m.reply(String(e))
+  }
 }
+
+if (budy.startsWith('>')) { 
+  if (!isCreator) return replay(mess.owner) 
+  try {
+    let evaled = await eval(budy.slice(2))
+    if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
+    await m.reply(evaled)
+  } catch (err) {
+    await m.reply(String(err))
+  } 
+}
+
+if (budy.startsWith('$')) { 
+  if (!isCreator) {
+    replay(mess.owner)
+    break
+  }
+  exec(budy.slice(2), (err, stdout) => {
+    if(err) return m.reply(err)
+    if (stdout) return m.reply(stdout)
+  }) 
+}			
+if (m.chat.endsWith('@s.whatsapp.net') && isCmd) { 
+  this.anonymous = this.anonymous ? this.anonymous : {} 
+  let room = Object.values(this.anonymous).find(room => [room.a, room.b].includes(m.sender) && room.state === 'CHATTING')
+  if (room) {
+    if (/^.*(next|leave|start)/.test(m.text)) return
+    if (['.next', '.leave', '.stop', '.start', 'Cari Partner', 'Keluar', 'Lanjut', 'Stop'].includes(m.text)) return
+    let other = [room.a, room.b].find(user => user !== m.sender)
+    m.copyNForward(other, true, m.quoted && m.quoted.fromMe ? {
+      contextInfo: {
+        ...m.msg.contextInfo,
+        forwardingScore: 0,
+        isForwarded: true,
+        participant: other
+      }
+    } : {})
+  }
+  return !0
+}			
+if (isCmd && budy.toLowerCase() != undefined) {
+  if (m.chat.endsWith('broadcast')) return
+  if (m.isBaileys) return 
+  let msgs = global.db.data.database
+  if (!(budy.toLowerCase() in msgs)) return 
+  hisoka.copyNForward(m.chat, msgs[budy.toLowerCase()], true) 
+} 
+}  
+
 
 
 let file = require.resolve(__filename)
