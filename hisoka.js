@@ -270,23 +270,23 @@ if (m.message && cmd) {
   global.db.data.users[m.sender].exp += 2
 
   //levelling
-  if (xp < 500) { 
+  if (uXp < 500) { 
     var level = "1"
     var kurang = 1000 - xp
     var progres = `(${uXp}/1000)  -${kurang} untuk levelup`
-  } else if (xp >= 500 && xp < 1000 ) {
+  } else if (Uxp >= 500 && xp < 1000 ) {
     var level = "2"
     var kurang = 1500 - xp
     var progres = `(${uXp}/1500)  -${kurang} untuk levelup`
-  } else if (xp >= 1000 && xp < 1500 ) { 
+  } else if (uXp >= 1000 && xp < 1500 ) { 
     var level = "3"
     var kurang = 2000 - xp
     var progres = `(${uXp}/2000)  -${kurang} untuk levelup`
-  } else if (xp >= 1500 && xp < 2000 ) { 
+  } else if (uXp >= 1500 && xp < 2000 ) { 
     var level = "4"
     var kurang = 2500 - xp
     var progres = `(${uXp}/2500)  -${kurang} untuk levelup`
-  } else if (xp >= 2500 ) {
+  } else if (uXp >= 2500 ) {
     var level = "5"
     var kurang = 2500 - xp
     var progres = `max level`
