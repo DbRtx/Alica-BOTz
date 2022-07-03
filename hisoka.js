@@ -36,7 +36,7 @@ const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins, getCase, FileSize} = require('./lib/myfunc')
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
-const stik = JSON.parse(fs.readFileSync('./src/stik.json'))
+const stik = require("./src/stik.json")
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
 let _family100 = db.data.game.family100 = []
