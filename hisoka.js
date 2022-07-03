@@ -291,13 +291,11 @@ if (m.message && isCmd) {
   }
   lvl = level
 
-// ketentan
-let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
-let uLevel = global.db.data.users[user].level
-let uXp = global.db.data.users[user].exp
-let uLimit = global.db.data.users[user].limit
-let uPrem = global.db.data.users[user].premium
-let uRank = global.db.data.users[user].rank
+let uLevel = global.db.data.users[m.sender].level
+let uXp = global.db.data.users[m.sender].exp
+let uLimit = global.db.data.users[m.sender].limit
+let uPrem = global.db.data.users[m.sender].premium
+let uRank = global.db.data.users[m.sender].rank
 
 // Push Message To Console && Auto Read
 if (m.message) {
@@ -1005,7 +1003,8 @@ switch(command) {
   }
     break
 
-  case 'me': { 
+  case 'me': {
+    let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
     let PhoneNumber = require('awesome-phonenumber')
     let username = await hisoka.getName(user)
     let statuses
@@ -1017,26 +1016,31 @@ switch(command) {
     try {
       var pp = await hisoka.profilePictureUrl(user, "image")
     } catch {
-      var pp = "./src/jpg/null.jpg" 
+      var pp = "https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png" 
     }
+      let limit = global.db.data.users[user].limit
+      if (global.db.data.users[user].premium = true) {
+        type = 'Premium'
+      } else if (isCreator) {
+        type = 'Owner'
+      } else {
+        type = 'Free'
+      }
       anu = `*╔*
 *┃           ABOUT*
 *╚╦━━━━━━━━━━━━╝*
 *╔╣* 
-*┃┃* ⭔ Username : ${username} @${user.split`@`[0]}
-*┃┃* ⭔ Number   : ${user.split("@")[0]}
+*┃┃* ⭔ Username : ${username}
+*┃┃* ⭔ Number   : @${user.split("@")[0]}
 *┃┃* ⭔ Link     : https://wa.me/${user.split`@`[0]}
 *┃┃* 
-*┃┃* ⭔ Exp      : ${uXp}
-*┃┃* ⭔ Level    : ${uLevel}
-*┃┃* ⭔ Premium  : ${uPrem}
+*┃┃* ⭔ User     : ${type} 
 *┃┃* ⭔ Limit    : ${limit}
 *┃┃*
 *┃╚═══━━━━━━━━━━━━━⊏⊐*
 *╚━━━━━━━━━━━━━━━━⊏⊐*`
       hisoka.sendMessage(m.chat, { 
-        image: { url: pp },
-        contextInfo: thumbnail,
+        image: { url: pp }, 
         caption: `${anu}` 
       }, { quoted : m })
   }
@@ -4429,7 +4433,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               thumb = fs.readFileSync('./src/jpg/text_pro.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Text Pro menu*
+*╔╣ Text Pro Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}demon
 *┃┃* ◆ ${prefix}magma
@@ -4454,14 +4458,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
             case 'photooxymenu': {
-              thumb = fs.readfilesync('./src/jpg/photo_oxy.jpg')
+              thumb = fs.readFileSync('./src/jpg/photo_oxy.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ photo oxy menu*
+*╔╣ Photo Oxy Menu*
 *┃┃* ◆ ${prefix}shadow
 *┃┃* ◆ ${prefix}flaming
 *┃┃* ◆ ${prefix}rainbow
@@ -4471,15 +4475,15 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
 /**
             case 'ephotomenu': {
-              thumb = fs.readfilesync('./lib/ephoto.jpg')
+              thumb = fs.readFileSync('./lib/ephoto.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ ephoto menu*
+*╔╣ Ephoto Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}ffcover
 *┃┃* ◆ ${prefix}crossfire
@@ -4494,14 +4498,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break*/
             case 'funmenu': {
-              thumb = fs.readfilesync('./src/jpg/fun.jpg')
+              thumb = fs.readFileSync('./src/jpg/fun.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ fun menu*
+*╔╣ Fun Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}simih
 *┃┃* ◆ ${prefix}halah
@@ -4521,14 +4525,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
             case 'primbonmenu': {
-              thumb = fs.readfilesync('./src/jpg/primbon.jpg')
+              thumb = fs.readFileSync('./src/jpg/primbon.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ primbon menu*
+*╔╣ Primbon Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}nomorhoki
 *┃┃* ◆ ${prefix}artimimpi
@@ -4564,14 +4568,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
             case 'convertmenu': {
-              thumb = fs.readfilesync('./src/jpg/convert.jpg')
+              thumb = fs.readFileSync('./src/jpg/convert.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ convert menu*
+*╔╣ Convert Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}attp 
 *┃┃* ◆ ${prefix}ssweb-hp [url]
@@ -4596,14 +4600,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
             case 'mainmenu': {
-              thumb = fs.readfilesync('./src/jpg/main.jpg')
+              thumb = fs.readFileSync('./src/jpg/main.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ main menu*
+*╔╣ Main Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}ping
 *┃┃* ◆ ${prefix}owner
@@ -4619,14 +4623,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
              case 'databasemenu': {
-              thumb = fs.readfilesync('./src/jpg/database.jpg')
+              thumb = fs.readFileSync('./src/jpg/database.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ database menu*
+*╔╣ Database Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}setcmd
 *┃┃* ◆ ${prefix}listcmd
@@ -4640,14 +4644,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
             case 'anonimmenu': {
-              thumb = fs.readfilesync('./src/jpg/anonymous.jpg')
+              thumb = fs.readFileSync('./src/jpg/anonymous.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ anonymous menu*
+*╔╣ Anonymous Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}anonymous
 *┃┃* ◆ ${prefix}start
@@ -4657,14 +4661,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
              case 'islammenu': {
-              thumb = fs.readfilesync('./src/jpg/islamic.jpg')
+              thumb = fs.readFileSync('./src/jpg/islamic.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ islamic menu*
+*╔╣ Islamic Menu*
 *┃┃*
 *┃┃* ◆ ${prefix}iqra
 *┃┃* ◆ ${prefix}hadist
@@ -4675,14 +4679,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
              case 'voicemenu': {
-              thumb = fs.readfilesync('./src/jpg/voice.jpg')
+              thumb = fs.readFileSync('./src/jpg/voice.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ voice changer*
+*╔╣ Voice Changer*
 *┃┃*
 *┃┃* ◆ ${prefix}bass
 *┃┃* ◆ ${prefix}blown
@@ -4749,76 +4753,82 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
-            
-default:
-if (budy.startsWith('=>')) {
-  if (!isCreator) return replay(mess.owner)
-  function Return(sul) {
-    sat = JSON.stringify(sul, null, 2)
-    bang = util.format(sat)
-    if (sat == undefined) {
-      bang = util.format(sul)
+             
+            default:
+                if (budy.startsWith('=>')) {
+                    if (!isCreator) return replay(mess.owner)
+                    function Return(sul) {
+                        sat = JSON.stringify(sul, null, 2)
+                        bang = util.format(sat)
+                            if (sat == undefined) {
+                                bang = util.format(sul)
+                            }
+                            return m.reply(bang)
+                    }
+                    try {
+                        m.reply(util.format(eval(`(async () => { return ${budy.slice(3)} })()`)))
+                    } catch (e) {
+                        m.reply(String(e))
+                    }
+                }
+
+                if (budy.startsWith('>')) {
+                    if (!isCreator) return replay(mess.owner)
+                    try {
+                        let evaled = await eval(budy.slice(2))
+                        if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
+                        await m.reply(evaled)
+                    } catch (err) {
+                        await m.reply(String(err))
+                    }
+                }
+
+                if (budy.startsWith('$')) {
+                    if (!isCreator) {
+                      replay(mess.owner)
+                      break
+                    }
+                    exec(budy.slice(2), (err, stdout) => {
+                        if(err) return m.reply(err)
+                        if (stdout) return m.reply(stdout)
+                    })
+                }
+			
+		if (m.chat.endsWith('@s.whatsapp.net') && isCmd) {
+                    this.anonymous = this.anonymous ? this.anonymous : {}
+                    let room = Object.values(this.anonymous).find(room => [room.a, room.b].includes(m.sender) && room.state === 'CHATTING')
+                    if (room) {
+                        if (/^.*(next|leave|start)/.test(m.text)) return
+                        if (['.next', '.leave', '.stop', '.start', 'Cari Partner', 'Keluar', 'Lanjut', 'Stop'].includes(m.text)) return
+                        let other = [room.a, room.b].find(user => user !== m.sender)
+                        m.copyNForward(other, true, m.quoted && m.quoted.fromMe ? {
+                            contextInfo: {
+                                ...m.msg.contextInfo,
+                                forwardingScore: 0,
+                                isForwarded: true,
+                                participant: other
+                            }
+                        } : {})
+                    }
+                    return !0
+                }
+			
+		if (isCmd && budy.toLowerCase() != undefined) {
+		    if (m.chat.endsWith('broadcast')) return
+		    if (m.isBaileys) return
+		    let msgs = global.db.data.database
+		    if (!(budy.toLowerCase() in msgs)) return
+		    hisoka.copyNForward(m.chat, msgs[budy.toLowerCase()], true)
+		}
+        }
+        
+
+    } catch (err) {
+        m.reply(util.format(err))
     }
-    return m.reply(bang)
-  }
-  try {
-    m.reply(util.format(eval(`(async () => { return ${budy.slice(3)} })()`)))
-  } catch (e) {
-    m.reply(String(e))
-  }
 }
 
-if (budy.startsWith('>')) { 
-  if (!isCreator) return replay(mess.owner) 
-  try {
-    let evaled = await eval(budy.slice(2))
-    if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
-    await m.reply(evaled)
-  } catch (err) {
-    await m.reply(String(err))
-  } 
-}
 
-if (budy.startsWith('$')) { 
-  if (!isCreator) {
-    replay(mess.owner)
-    break
-  }
-  exec(budy.slice(2), (err, stdout) => {
-    if(err) return m.reply(err)
-    if (stdout) return m.reply(stdout)
-  }) 
-}			
-if (m.chat.endsWith('@s.whatsapp.net') && isCmd) { 
-  this.anonymous = this.anonymous ? this.anonymous : {} 
-  let room = Object.values(this.anonymous).find(room => [room.a, room.b].includes(m.sender) && room.state === 'CHATTING')
-  if (room) {
-    if (/^.*(next|leave|start)/.test(m.text)) return
-    if (['.next', '.leave', '.stop', '.start', 'Cari Partner', 'Keluar', 'Lanjut', 'Stop'].includes(m.text)) return
-    let other = [room.a, room.b].find(user => user !== m.sender)
-    m.copyNForward(other, true, m.quoted && m.quoted.fromMe ? {
-      contextInfo: {
-        ...m.msg.contextInfo,
-        forwardingScore: 0,
-        isForwarded: true,
-        participant: other
-      }
-    } : {})
-  }
-  return !0
-}			
-if (isCmd && budy.toLowerCase() != undefined) {
-  if (m.chat.endsWith('broadcast')) return
-  if (m.isBaileys) return 
-  let msgs = global.db.data.database
-  if (!(budy.toLowerCase() in msgs)) return 
-  hisoka.copyNForward(m.chat, msgs[budy.toLowerCase()], true) 
-}
-}
-} catch (err) {
-  m.reply(util.format(err))
-}
-}
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
 	fs.unwatchFile(file)
