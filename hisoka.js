@@ -269,31 +269,29 @@ if (m.message && cmd) {
   // xp user
   global.db.data.users[m.sender].exp += 2
 
-  //levelling 
-  let lvl = global.db.data.users[m.sender].level
-  let xp = global.db.data.users[m.sender].exp
+  //levelling
   if (xp < 500) { 
     var level = "1"
     var kurang = 1000 - xp
-    var progres = `(${xp}/1000)  -${kurang} untuk levelup`
+    var progres = `(${uXp}/1000)  -${kurang} untuk levelup`
   } else if (xp >= 500 && xp < 1000 ) {
     var level = "2"
     var kurang = 1500 - xp
-    var progres = `(${xp}/1500)  -${kurang} untuk levelup`
+    var progres = `(${uXp}/1500)  -${kurang} untuk levelup`
   } else if (xp >= 1000 && xp < 1500 ) { 
     var level = "3"
     var kurang = 2000 - xp
-    var progres = `(${xp}/2000)  -${kurang} untuk levelup`
+    var progres = `(${uXp}/2000)  -${kurang} untuk levelup`
   } else if (xp >= 1500 && xp < 2000 ) { 
     var level = "4"
     var kurang = 2500 - xp
-    var progres = `(${xp}/2500)  -${kurang} untuk levelup`
+    var progres = `(${uXp}/2500)  -${kurang} untuk levelup`
   } else if (xp >= 2500 ) {
     var level = "5"
     var kurang = 2500 - xp
     var progres = `max level`
   }
-  lvl = level
+  uLevel = level
 }
 // Push Message To Console && Auto Read
 if (m.message) {
