@@ -290,7 +290,15 @@ if (m.message && isCmd) {
     var progres = `max level`
   }
   lvl = level
-}
+
+// ketentan
+let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
+let uLevel = global.db.data.users[user].level
+let uXp = global.db.data.users[user].exp
+let uLimit = global.db.data.users[user].limit
+let uPrem = global.db.data.users[user].premium
+let uRank = global.db.data.users[user].rank
+
 // Push Message To Console && Auto Read
 if (m.message) {
   console.log(chalk.black(chalk.bgWhite('[ PESAN ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> Dari'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> Di'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
@@ -997,8 +1005,7 @@ switch(command) {
   }
     break
 
-  case 'me': {
-    let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
+  case 'me': { 
     let PhoneNumber = require('awesome-phonenumber')
     let username = await hisoka.getName(user)
     let statuses
@@ -1010,31 +1017,26 @@ switch(command) {
     try {
       var pp = await hisoka.profilePictureUrl(user, "image")
     } catch {
-      var pp = "https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png" 
+      var pp = "./src/jpg/null.jpg" 
     }
-      let limit = global.db.data.users[user].limit
-      if (global.db.data.users[user].premium = true) {
-        type = 'Premium'
-      } else if (isCreator) {
-        type = 'Owner'
-      } else {
-        type = 'Free'
-      }
       anu = `*╔*
 *┃           ABOUT*
 *╚╦━━━━━━━━━━━━╝*
 *╔╣* 
-*┃┃* ⭔ Username : ${username}
-*┃┃* ⭔ Number   : @${user.split("@")[0]}
+*┃┃* ⭔ Username : ${username} @${user.split`@`[0]}
+*┃┃* ⭔ Number   : ${user.split("@")[0]}
 *┃┃* ⭔ Link     : https://wa.me/${user.split`@`[0]}
 *┃┃* 
-*┃┃* ⭔ User     : ${type} 
+*┃┃* ⭔ Exp      : ${uXp}
+*┃┃* ⭔ Level    : ${uLevel}
+*┃┃* ⭔ Premium  : ${uPrem}
 *┃┃* ⭔ Limit    : ${limit}
 *┃┃*
 *┃╚═══━━━━━━━━━━━━━⊏⊐*
 *╚━━━━━━━━━━━━━━━━⊏⊐*`
       hisoka.sendMessage(m.chat, { 
-        image: { url: pp }, 
+        image: { url: pp },
+        contextInfo: thumbnail,
         caption: `${anu}` 
       }, { quoted : m })
   }
