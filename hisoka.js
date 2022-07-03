@@ -50,7 +50,7 @@ let tebaklirik = db.data.game.lirik = []
 let tebaktebakan = db.data.game.tebakan = []
 let vote = db.data.others.vote = []
 let stik = db.data.others.stik = []
-let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
+let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : quoted.sender : m.sender
 // readmore
 //var groups = fazd.chats.array.filter(v => v.jid.endsWith('g.us'))
 //var private = fazd.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
