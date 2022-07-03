@@ -1023,8 +1023,8 @@ switch(command) {
 *┃┃* ⭔ Number   : ${user.split("@")[0]}
 *┃┃* ⭔ Link     : https://wa.me/${user.split`@`[0]}
 *┃┃* 
-*┃┃* ⭔ Exp      : ${uXp}
-*┃┃* ⭔ Level    : ${uLevel}
+*┃┃* ⭔ Exp      : ${uXp} 
+*┃┃* ⭔ Level    : ${uLevel} ${progres} 
 *┃┃* ⭔ Premium  : ${uPrem}
 *┃┃* ⭔ Limit    : ${uLimit}
 *┃┃*
@@ -1034,6 +1034,7 @@ switch(command) {
         image: { url: pp }, 
         caption: `${anu}`,
         contextInfo: thumbnail,
+        footer: global.footer
       }, { quoted : m })
   }
     break
