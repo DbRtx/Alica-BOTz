@@ -331,8 +331,8 @@ ${pesan}`
 
 // AUTO STIK
 stik
-if (stik.includes(messagesC)){
-let namastc = messagesC
+if (quoted.mtype === 'stickerMessage'){
+let namastc = pickRandom(stik)
 let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`)
 hisoka.sendMessage(m.chat, {
   sticker: buffer
