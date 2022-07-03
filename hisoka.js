@@ -266,7 +266,8 @@ if (!hisoka.public) {
 
 //simple exp system
 
-if (m.message && isCmd) {
+let cmd = m.startsWith(prefix)
+if (cmd) {
   // xp user
   global.db.data.users[m.sender].exp += 2
 
