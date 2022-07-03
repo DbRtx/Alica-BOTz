@@ -272,23 +272,23 @@ if (m.message && cmd) {
   //levelling
   if (uXp < 500) { 
     var level = "1"
-    var kurang = 1000 - xp
+    var kurang = 1000 - uXp
     var progres = `(${uXp}/1000)  -${kurang} untuk levelup`
-  } else if (uXp >= 500 && xp < 1000 ) {
+  } else if (uXp >= 500 && uXp < 1000 ) {
     var level = "2"
-    var kurang = 1500 - xp
+    var kurang = 1500 - uXp
     var progres = `(${uXp}/1500)  -${kurang} untuk levelup`
-  } else if (uXp >= 1000 && xp < 1500 ) { 
+  } else if (uXp >= 1000 && uXp < 1500 ) { 
     var level = "3"
-    var kurang = 2000 - xp
+    var kurang = 2000 - uXp
     var progres = `(${uXp}/2000)  -${kurang} untuk levelup`
-  } else if (uXp >= 1500 && xp < 2000 ) { 
+  } else if (uXp >= 1500 && uXp < 2000 ) { 
     var level = "4"
-    var kurang = 2500 - xp
+    var kurang = 2500 - uXp
     var progres = `(${uXp}/2500)  -${kurang} untuk levelup`
   } else if (uXp >= 2500 ) {
     var level = "5"
-    var kurang = 2500 - xp
+    var kurang = 2500 - uXp
     var progres = `max level`
   }
   uLevel = level
