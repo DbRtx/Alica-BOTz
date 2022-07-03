@@ -257,6 +257,7 @@ let uXp = global.db.data.users[user].exp
 let uLevel = global.db.data.users[user].level 
 let uLimit = global.db.data.users[user].limit
 let uPrem = global.db.data.users[user].premium
+let uRank = global.db.data.users[user].rank
 
 // Public & !Self
 if (!hisoka.public) {
@@ -1002,8 +1003,6 @@ switch(command) {
     break
 
   case 'me': {
-    let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
-    let PhoneNumber = require('awesome-phonenumber')
     let username = await hisoka.getName(user)
     let statuses
     try {
@@ -1015,31 +1014,26 @@ switch(command) {
       var pp = await hisoka.profilePictureUrl(user, "image")
     } catch {
       var pp = "https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png" 
-    }
-      let limit = global.db.data.users[user].limit
-      if (global.db.data.users[user].premium = true) {
-        type = 'Premium'
-      } else if (isCreator) {
-        type = 'Owner'
-      } else {
-        type = 'Free'
-      }
+    } 
       anu = `*╔*
 *┃           ABOUT*
 *╚╦━━━━━━━━━━━━╝*
 *╔╣* 
 *┃┃* ⭔ Username : ${username}
-*┃┃* ⭔ Number   : @${user.split("@")[0]}
+*┃┃* ⭔ Number   : ${user.split("@")[0]}
 *┃┃* ⭔ Link     : https://wa.me/${user.split`@`[0]}
 *┃┃* 
-*┃┃* ⭔ User     : ${type} 
-*┃┃* ⭔ Limit    : ${limit}
+*┃┃* ⭔ Exp      : ${uXp}
+*┃┃* ⭔ Level    : ${uLevel}
+*┃┃* ⭔ Premium  : ${uPrem}
+*┃┃* ⭔ Limit    : ${uLimit}
 *┃┃*
 *┃╚═══━━━━━━━━━━━━━⊏⊐*
 *╚━━━━━━━━━━━━━━━━⊏⊐*`
       hisoka.sendMessage(m.chat, { 
         image: { url: pp }, 
-        caption: `${anu}` 
+        caption: `${anu}`,
+        contextInfo: thumbnail,
       }, { quoted : m })
   }
     break
