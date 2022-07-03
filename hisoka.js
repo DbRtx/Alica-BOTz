@@ -904,7 +904,7 @@ switch(command) {
     if(!text) return replay("Nama stiker ny ap woy")
     try { 
       await hisoka.downloadAndSaveMediaMessage(quoted, `./src/stik/${text}`)
-      srik.push(text)
+      stik.push(text)
       replay("Berhasil menambahkan sriker")
     } catch (err) {
       replay("Kek ad yg salah")
