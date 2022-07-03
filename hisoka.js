@@ -897,7 +897,20 @@ switch(command) {
     }
   }
     break
-	    
+
+  case 'addstik': {
+    if(!isCreator) return replay(mess.owner)
+    if(!m.quoted) return replay("Reply stiker yg mau di add")
+    if(!text) return replay("Nama stiker ny ap woy")
+    try { 
+      await hisoka.downloadAndSaveMediaMessage(quoted, `./src/stik/${text}`)
+      srik.push(text)
+      replay("Berhasil menambahkan sriker")
+    } catch (err) {
+      replay("Kek ad yg salah")
+    }
+  } 
+    break
   case 'afk': {
     let user = global.db.data.users[m.sender]
     user.afkTime = + new Date
