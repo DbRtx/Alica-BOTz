@@ -2960,14 +2960,15 @@ break
                 },{ quoted: msg })
             }
             break
+
    case 'instagram': case 'ig': case 'igdl': {
      if (!text && !m.quoted) throw 'masukan link / reply link'
      try { 
        let ling = m.quoted ? m.quoted.text ? m.quoted.text : q ? q: m.text : q ? q : m.text
        replay(mess.wait)
-       let anu = await fetchJson(api('zekais', '/igdl2', { url: ling }, 'apikey'))
-       let text = `*Download from*: ${ling}\n*Username*: ${anu.username}\n*Fullname*: ${anu.fullName}`
-       for (let media of anu.result) { 
+       let anu = await fetchJson(api('neoxr', '/api/ig', { url: ling }, 'apikey'))
+       let text = `*Download from*: ${ling}`
+       for (let media of anu.data ) { 
          let msg = await hisoka.sendMessage(m.chat, {
          video: { url: media.url },
          caption: text,
