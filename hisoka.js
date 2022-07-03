@@ -231,9 +231,8 @@ try {
 } catch (err) {
   console.error(err)
 }
-
-//Thumbnail
 let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender 
+//Thumbnail
 let thumbnail = {
   mentionedJid: [user],
   "externalAdReply": { 
@@ -244,8 +243,8 @@ let thumbnail = {
     "sourceUrl": "https://dlvash.github.io",
     "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
   }
-}
-	
+} 
+
 //replay
 const replay = (anu) => {
   hisoka.sendMessage(m.chat, { 
@@ -253,6 +252,11 @@ const replay = (anu) => {
     contextInfo: thumbnail 
   }, { quoted: m})
 }
+//Db
+let uXp = global.db.data.users[user].xp
+let uLevel = global.db.data.users[user].level 
+let uLimit = global.db.data.users[user].limit
+let uPrem = global.db.data.users[user].premium
 
 // Public & !Self
 if (!hisoka.public) {
