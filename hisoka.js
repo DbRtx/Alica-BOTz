@@ -38,7 +38,7 @@ const readmore = more.repeat(4001)
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
 let _family100 = db.data.game.family100 = []
-let kuismath = db.data.game.math = []
+var kuismath = db.data.game.math = []
 let tebakgambar = db.data.game.tebakgambar = []
 let tebakkata = db.data.game.tebakkata = [] 
 let caklontong = db.data.game.lontong = []
@@ -161,6 +161,11 @@ const groupAdmins = m.isGroup ? await getGroupAdmins(participants) : ''
 const isBotAdmins = m.isGroup ? groupAdmins.includes(botNumber) : false
 const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
 const isPremium = isCreator || global.premium.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender) || false
+try { 
+  var ppuser = await hisoka.profilePictureUrl(m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender)
+} catch { 
+  var ppuser = "https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png"
+}
 try {
   let isNumber = x => typeof x === 'number' && !isNaN(x)
   let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
@@ -205,29 +210,85 @@ try {
     if (!('autobio' in setting)) setting.autobio = false
     autoreact = false,
     autosimi = false,
-    nsfw = false
+    nsfw = false,
+    levelmsg = false
   } else global.db.data.settings[botNumber] = {
     status: 0,
     autobio: false,
     autoreact: false,
     autosimi: false,
-    nsfw: false
+    nsfw: false,
+    levelmsg: false
   }
 } catch (err) {
   console.error(err)
 }
 
+//Thumbnail
+let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender 
+let thumbnail = {
+  mentionedJid: [user],
+  "externalAdReply": { 
+    "title": `${global.footer}`,
+    "body": `runtime bot ${runtime(process.uptime())}`,
+    "mediaType": 3,
+    "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+    "sourceUrl": "https://dlvash.github.io",
+    "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
+  }
+}
+	
+//replay
+const replay = (anu) => {
+  hisoka.sendMessage(m.chat, { 
+    text: anu, 
+    contextInfo: thumbnail 
+  }, { quoted: m})
+}
 
 // Public & !Self
 if (!hisoka.public) {
-  if (!m.key.fromMe) return
+  if (!isCreator) return
 }
 
-//simple exp system 
+//simple exp system
+
 if (m.message && isCmd) {
+  // xp user
   global.db.data.users[m.sender].exp += 2
-}
 
+  //levelling 
+  let lvl = global.db.data.users[m.sender].level
+  let xp = global.db.data.users[m.sender].exp
+  if (xp < 500) { 
+    var level = "1"
+    var kurang = 1000 - xp
+    var progres = `${xp}/1000 -${kurang} untuk levelup`
+  } else if (xp >= 500 && xp < 1000 ) {
+    var level = "2"
+    var kurang = 1500 - xp
+    var progres = `${xp}/1500 -${kurang} untuk levelup`
+  } else if (xp >= 1000 && xp < 1500 ) { 
+    var level = "3"
+    var kurang = 2000 - xp
+    var progres = `${xp}/2000 -${kurang} untuk levelup`
+  } else if (xp >= 1500 && xp < 2000 ) { 
+    var level = "4"
+    var kurang = 2500 - xp
+    var progres = `${xp}/2500 -${kurang} untuk levelup`
+  } else if (xp >= 2500 ) {
+    var level = "5"
+    var kurang = 2500 - xp
+    var progres = `max level`
+  }
+  lvl = level
+  if (levelmsg) {
+    hisoka.sendMessage(m.chat, {
+      image: { url: }
+    })
+  }
+
+}
 // Push Message To Console && Auto Read
 if (m.message) {
   console.log(chalk.black(chalk.bgWhite('[ PESAN ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> Dari'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> Di'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
@@ -317,30 +378,7 @@ if (autobio) {
     await hisoka.setStatus(`${hisoka.user.name} [ Runtime : ${runtime(process.uptime())} ]`)
     setting.status = new Date() * 1 
   }
-}
-
-//Thumbnail
-let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender 
-let thumbnail = {
-  mentionedJid: [user],
-  "externalAdReply": { 
-    "title": `${global.footer}`,
-    "body": `runtime bot ${runtime(process.uptime())}`,
-    "mediaType": 3,
-    "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
-    "sourceUrl": "https://dlvash.github.io",
-    "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
-  }
-}
-
-	
-//replay
-const replay = (anu) => {
-  hisoka.sendMessage(m.chat, { 
-    text: anu, 
-    contextInfo: thumbnail 
-  }, { quoted: m})
-}
+} 
 
 /*
 //antilink yt
@@ -3442,7 +3480,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     "mediaType": 3,
                     "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
                     "sourceUrl": "https://dlvash.github.io",
-                    "thumbnail": fs.readFileSync(`./lib/alica.jpg`)
+                    "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
                   }
                 }
                 let ownerInGc = mem.includes(global.owner[0])
