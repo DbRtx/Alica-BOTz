@@ -4429,7 +4429,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               thumb = fs.readFileSync('./src/jpg/text_pro.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Text Pro Menu*
+*╔╣ Text Pro menu*
 *┃┃*
 *┃┃* ◆ ${prefix}demon
 *┃┃* ◆ ${prefix}magma
@@ -4454,14 +4454,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
             case 'photooxymenu': {
-              thumb = fs.readFileSync('./src/jpg/photo_oxy.jpg')
+              thumb = fs.readfilesync('./src/jpg/photo_oxy.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Photo Oxy Menu*
+*╔╣ photo oxy menu*
 *┃┃* ◆ ${prefix}shadow
 *┃┃* ◆ ${prefix}flaming
 *┃┃* ◆ ${prefix}rainbow
@@ -4471,15 +4471,15 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
 /**
             case 'ephotomenu': {
-              thumb = fs.readFileSync('./lib/ephoto.jpg')
+              thumb = fs.readfilesync('./lib/ephoto.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Ephoto Menu*
+*╔╣ ephoto menu*
 *┃┃*
 *┃┃* ◆ ${prefix}ffcover
 *┃┃* ◆ ${prefix}crossfire
@@ -4494,14 +4494,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break*/
             case 'funmenu': {
-              thumb = fs.readFileSync('./src/jpg/fun.jpg')
+              thumb = fs.readfilesync('./src/jpg/fun.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Fun Menu*
+*╔╣ fun menu*
 *┃┃*
 *┃┃* ◆ ${prefix}simih
 *┃┃* ◆ ${prefix}halah
@@ -4521,14 +4521,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
             case 'primbonmenu': {
-              thumb = fs.readFileSync('./src/jpg/primbon.jpg')
+              thumb = fs.readfilesync('./src/jpg/primbon.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Primbon Menu*
+*╔╣ primbon menu*
 *┃┃*
 *┃┃* ◆ ${prefix}nomorhoki
 *┃┃* ◆ ${prefix}artimimpi
@@ -4564,14 +4564,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
             case 'convertmenu': {
-              thumb = fs.readFileSync('./src/jpg/convert.jpg')
+              thumb = fs.readfilesync('./src/jpg/convert.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Convert Menu*
+*╔╣ convert menu*
 *┃┃*
 *┃┃* ◆ ${prefix}attp 
 *┃┃* ◆ ${prefix}ssweb-hp [url]
@@ -4596,14 +4596,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
             case 'mainmenu': {
-              thumb = fs.readFileSync('./src/jpg/main.jpg')
+              thumb = fs.readfilesync('./src/jpg/main.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Main Menu*
+*╔╣ main menu*
 *┃┃*
 *┃┃* ◆ ${prefix}ping
 *┃┃* ◆ ${prefix}owner
@@ -4619,14 +4619,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
              case 'databasemenu': {
-              thumb = fs.readFileSync('./src/jpg/database.jpg')
+              thumb = fs.readfilesync('./src/jpg/database.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Database Menu*
+*╔╣ database menu*
 *┃┃*
 *┃┃* ◆ ${prefix}setcmd
 *┃┃* ◆ ${prefix}listcmd
@@ -4640,14 +4640,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
             case 'anonimmenu': {
-              thumb = fs.readFileSync('./src/jpg/anonymous.jpg')
+              thumb = fs.readfilesync('./src/jpg/anonymous.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Anonymous Menu*
+*╔╣ anonymous menu*
 *┃┃*
 *┃┃* ◆ ${prefix}anonymous
 *┃┃* ◆ ${prefix}start
@@ -4657,14 +4657,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
              case 'islammenu': {
-              thumb = fs.readFileSync('./src/jpg/islamic.jpg')
+              thumb = fs.readfilesync('./src/jpg/islamic.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Islamic Menu*
+*╔╣ islamic menu*
 *┃┃*
 *┃┃* ◆ ${prefix}iqra
 *┃┃* ◆ ${prefix}hadist
@@ -4675,14 +4675,14 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              hisoka.send5butimg(m.chat, anu, hisoka.user.name, thumb, btn)
             }
             break
              case 'voicemenu': {
-              thumb = fs.readFileSync('./src/jpg/voice.jpg')
+              thumb = fs.readfilesync('./src/jpg/voice.jpg')
               anu = `
 *⌘╔━━━━━━━━━━━━━⊏⊐*
-*╔╣ Voice Changer*
+*╔╣ voice changer*
 *┃┃*
 *┃┃* ◆ ${prefix}bass
 *┃┃* ◆ ${prefix}blown
