@@ -268,6 +268,8 @@ const cmd = m.text.startsWith('.')
 if (m.message && cmd) {
   // xp user
   global.db.data.users[m.sender].exp += 2
+}
+if (m.message) {
 
   //levelling
   if (uXp < 500) { 
