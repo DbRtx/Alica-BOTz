@@ -274,7 +274,7 @@ if (m.message && cmd) {
     var level = "1"
     var kurang = 1000 - xp
     var progres = `(${uXp}/1000)  -${kurang} untuk levelup`
-  } else if (Uxp >= 500 && xp < 1000 ) {
+  } else if (uXp >= 500 && xp < 1000 ) {
     var level = "2"
     var kurang = 1500 - xp
     var progres = `(${uXp}/1500)  -${kurang} untuk levelup`
