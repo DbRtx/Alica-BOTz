@@ -276,19 +276,19 @@ if (m.message && isCmd) {
   if (xp < 500) { 
     var level = "1"
     var kurang = 1000 - xp
-    var progres = `${xp}/1000 -${kurang} untuk levelup`
+    var progres = `(${xp}/1000)  -${kurang} untuk levelup`
   } else if (xp >= 500 && xp < 1000 ) {
     var level = "2"
     var kurang = 1500 - xp
-    var progres = `${xp}/1500 -${kurang} untuk levelup`
+    var progres = `(${xp}/1500)  -${kurang} untuk levelup`
   } else if (xp >= 1000 && xp < 1500 ) { 
     var level = "3"
     var kurang = 2000 - xp
-    var progres = `${xp}/2000 -${kurang} untuk levelup`
+    var progres = `(${xp}/2000)  -${kurang} untuk levelup`
   } else if (xp >= 1500 && xp < 2000 ) { 
     var level = "4"
     var kurang = 2500 - xp
-    var progres = `${xp}/2500 -${kurang} untuk levelup`
+    var progres = `(${xp}/2500)  -${kurang} untuk levelup`
   } else if (xp >= 2500 ) {
     var level = "5"
     var kurang = 2500 - xp
