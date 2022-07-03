@@ -50,6 +50,7 @@ let tebaklirik = db.data.game.lirik = []
 let tebaktebakan = db.data.game.tebakan = []
 let vote = db.data.others.vote = []
 let stik = db.data.others.stik = []
+let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
 // readmore
 //var groups = fazd.chats.array.filter(v => v.jid.endsWith('g.us'))
 //var private = fazd.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
@@ -175,7 +176,7 @@ try {
 }
 try {
   let isNumber = x => typeof x === 'number' && !isNaN(x)
-  let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
+let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
   let user = global.db.data.users[m.sender]
   if (typeof user !== 'object') global.db.data.users[m.sender] = {}   
   if (user) {
@@ -230,7 +231,7 @@ try {
 } catch (err) {
   console.error(err)
 }
-let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender 
+
 //Thumbnail
 let thumbnail = {
   mentionedJid: [user],
