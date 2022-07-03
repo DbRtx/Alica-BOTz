@@ -331,7 +331,6 @@ ${pesan}`
 }	
 
 // AUTO STIK
-stik
 if (quoted.isBaileys && m.mtype === 'stickerMessage') {
 let namastc = pickRandom(stik)
 let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`)
@@ -732,6 +731,7 @@ Selama ${clockString(new Date - user.afkTime)}
 `.trim())
   user.afkTime = -1
   user.afkReason = ''
+  return
 }
 
 //FITUR AD DI SINI
