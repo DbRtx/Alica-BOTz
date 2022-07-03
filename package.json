@@ -22,6 +22,10 @@
   "dependencies": {
     "@adiwajshing/baileys": "^4.1.0",
     "@adiwajshing/keyed-db": "^0.2.4",
+    "@bochilteam/scraper": "latest",
+    "@phaticusthiccy/open-apis": "latest",
+    "@vitalets/google-translate-api": "^7.0.0",
+    "acrcloud": "^1.4.0",
     "awesome-phonenumber": "^2.64.0",
     "axios": "^0.24.0",
     "chalk": "^4.1.2",

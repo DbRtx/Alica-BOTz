@@ -21,6 +21,7 @@ const path = require('path')
 const fetch = require('node-fetch')
 const PhoneNumber = require('awesome-phonenumber')
 const os = require('os')
+const Download = require("@phaticusthiccy/open-apis");
 const yts = require("yt-search")
 const ytdl = require('ytdl-core')
 const unicode = require('escape-unicode')
@@ -1153,7 +1154,6 @@ Silahkan @${m.mentionedJid[0].split`@`[0]} untuk ketik terima/tolak`
             }
             break*/
             case 'sc': {
-              let thumb = fs.readFileSync('./lib/sc.jpg')
               let anu = `
 *Public template* : https://github.com/DikaArdnt/Hisoka-Morou
 `
@@ -2949,7 +2949,7 @@ break
        },{ quoted: msg })
        }  
      } catch (err) {
-       replay(err)
+       replay("server error!")
      }
 }
             break
