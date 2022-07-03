@@ -264,8 +264,8 @@ if (!hisoka.public) {
 }
 
 //simple exp system
-
-if (m.message && isCmd) {
+const cmd = m.text.startsWith('.')
+if (m.message && cmd) {
   // xp user
   global.db.data.users[m.sender].exp += 2
 
