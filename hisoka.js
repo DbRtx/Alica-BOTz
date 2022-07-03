@@ -332,7 +332,7 @@ ${pesan}`
 
 // AUTO STIK
 stik
-if (stik.includes(messagesC)){
+if (quoted.isBaileys) {
 let namastc = pickRandom(stik)
 let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`)
 hisoka.sendMessage(m.chat, {
