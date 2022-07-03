@@ -253,7 +253,7 @@ const replay = (anu) => {
   }, { quoted: m})
 }
 //Db
-let uXp = global.db.data.users[user].xp
+let uXp = global.db.data.users[user].exp
 let uLevel = global.db.data.users[user].level 
 let uLimit = global.db.data.users[user].limit
 let uPrem = global.db.data.users[user].premium
