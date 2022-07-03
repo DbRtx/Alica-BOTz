@@ -724,14 +724,14 @@ Selama ${clockString(new Date - afkTime)}
 `.trim())
 }
 
-if (db.data.users[m.sender].afkTime > -1) {
-let user = global.db.data.users[m.sender]
-replay(`
-Kamu berhenti AFK${user.afkReason ? ' setelah ' + user.afkReason : ''}
-Selama ${clockString(new Date - user.afkTime)}
-`.trim())
+if (db.data.users[m.sender].afkTime > -1) { 
+  let user = global.db.data.users[m.sender]   
+  replay(`Kamu berhenti AFK${user.afkReason ? ' setelah ' + user.afkReason : ''}
+Selama ${clockString(new Date - user.afkTime)} 
+`.trim()) 
   user.afkTime = -1
   user.afkReason = ''
+  return
 }
 
 //FITUR AD DI SINI
