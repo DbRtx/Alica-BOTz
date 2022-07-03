@@ -282,12 +282,6 @@ if (m.message && isCmd) {
     var progres = `max level`
   }
   lvl = level
-  if (levelmsg) {
-    hisoka.sendMessage(m.chat, {
-      image: { url: }
-    })
-  }
-
 }
 // Push Message To Console && Auto Read
 if (m.message) {
