@@ -36,6 +36,7 @@ const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins, getCase, FileSize} = require('./lib/myfunc')
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
+const stik = JSON.parse(fs.readFileSync('./src/stik.json'))
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
 let _family100 = db.data.game.family100 = []
@@ -97,6 +98,11 @@ var waktu_tgl= hariarray[h]+" "+t+" "+bulanarray[b]+" "+th;
 module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
   try {
     var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
+    const rep = (type === 'conversation' && m.message.conversation) ? m.message.conversation : (type == 'imageMessage') && m.message.imageMessage.caption ? m.message.imageMessage.caption : (type == 'videoMessage') && m.message.videoMessage.caption ? m.message.videoMessage.caption : (type == 'extendedTextMessage') && m.message.extendedTextMessage.text ? m.message.extendedTextMessage.text : '' 
+    const messagesD = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
+    const messagesC = pes.slice(0).trim()
+
+
     var budy = (typeof m.text == 'string' ? m.text : '')
     var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix 
     const isCmd = body.startsWith(prefix)
@@ -322,7 +328,17 @@ ${pesan}`
     templateButtons: buttons 
   })
 }	
-	
+
+// AUTO STIK
+stik
+if (stik.includes(messagesC)){
+let namastc = messagesC
+let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`)
+hisoka.sendMessage(m.chat, {
+  sticker: buffer
+}, { quoted: m })
+}
+
 // AUTO REACT
 var autoreact = global.db.data.settings[botNumber].autoreact
 if (autoreact) { 
