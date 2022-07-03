@@ -290,13 +290,7 @@ if (m.message && isCmd) {
     var progres = `max level`
   }
   lvl = level
-
-let uLevel = global.db.data.users[m.sender].level
-let uXp = global.db.data.users[m.sender].exp
-let uLimit = global.db.data.users[m.sender].limit
-let uPrem = global.db.data.users[m.sender].premium
-let uRank = global.db.data.users[m.sender].rank
-
+}
 // Push Message To Console && Auto Read
 if (m.message) {
   console.log(chalk.black(chalk.bgWhite('[ PESAN ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> Dari'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> Di'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
@@ -730,14 +724,14 @@ Selama ${clockString(new Date - afkTime)}
 `.trim())
 }
 
-if (db.data.users[m.sender].afkTime > -1) { 
-  let user = global.db.data.users[m.sender]   
-  replay(`Kamu berhenti AFK${user.afkReason ? ' setelah ' + user.afkReason : ''}
-Selama ${clockString(new Date - user.afkTime)} 
-`.trim()) 
+if (db.data.users[m.sender].afkTime > -1) {
+let user = global.db.data.users[m.sender]
+replay(`
+Kamu berhenti AFK${user.afkReason ? ' setelah ' + user.afkReason : ''}
+Selama ${clockString(new Date - user.afkTime)}
+`.trim())
   user.afkTime = -1
   user.afkReason = ''
-  return
 }
 
 //FITUR AD DI SINI
