@@ -101,7 +101,7 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
     var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
     var rep = (m.mtype === 'conversation' && m.message.conversation) ? m.message.conversation : (m.mtype == 'imageMessage') && m.message.imageMessage.caption ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') && m.message.videoMessage.caption ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') && m.message.extendedTextMessage.text ? m.message.extendedTextMessage.text : '' 
     var budy = (typeof m.text == 'string' ? m.text : '')
-    var prefix = /^[°zZ#@+,.?=''():√%!¢£¥€π¤ΠΦ&<`™©®Δ^βα¦|/\\©^]/.test(body) ? body.match(/^[°zZ#@+,.?=''():√%¢£¥€π¤ΠΦ&<!`™©®Δ^βα¦|/\\©^]/gi) : '.'
+    var prefix = /^[°zZ#@+,.?=():√%!¢£¥€π¤ΠΦ&<™©®Δ^βα¦|/\\©^]/.test(body) ? body.match(/^[°zZ#@+,.?=():√%¢£¥€π¤ΠΦ&<!™©®Δ^βα¦|/\\©^]/gi) : '.'
 
     const messagesD = rep.slice(0).trim().split(/ +/).shift().toLowerCase()
     const messagesC = rep.slice(0).trim()
