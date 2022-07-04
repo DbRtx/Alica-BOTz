@@ -50,8 +50,6 @@ let tebaklirik = db.data.game.lirik = []
 let tebaktebakan = db.data.game.tebakan = []
 let vote = db.data.others.vote = []
 let stik = db.data.others.stik = []
-let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender
-
 // readmore
 //var groups = fazd.chats.array.filter(v => v.jid.endsWith('g.us'))
 //var private = fazd.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
@@ -126,6 +124,9 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
     const pickRandom = (arr) => {
       return arr[Math.floor(Math.random() * arr.length)]
     }
+    let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender
+
+
 
 //DOWNLOAD MP4
 const downloadMp4 = async (Link ) => {
