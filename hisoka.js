@@ -255,11 +255,11 @@ const replay = (anu) => {
   }, { quoted: m})
 }
 //Db
-let uXp = global.db.data.users[m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender].exp
-let uLevel = global.db.data.users[m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender].level 
-let uLimit = global.db.data.users[m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender].limit
-let uPrem = global.db.data.users[m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender].premium
-let uRank = global.db.data.users[m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender].rank
+let uXp = global.db.data.users[user].exp
+let uLevel = global.db.data.users[user].level 
+let uLimit = global.db.data.users[user].limit
+let uPrem = global.db.data.users[user].premium
+let uRank = global.db.data.users[user].rank
 
 // Public & !Self
 if (!hisoka.public) {
@@ -338,15 +338,12 @@ ${pesan}`
 }	
 
 // AUTO STIK
-let auto = false 
-if (auto) {
 if (quoted.isBaileys && m.mtype === 'stickerMessage') {
 let namastc = pickRandom(stik)
 let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`)
 hisoka.sendMessage(m.chat, {
   sticker: buffer
 }, { quoted: m })
-}
 }
 
 // AUTO REACT
