@@ -255,8 +255,9 @@ const replay = (anu) => {
   hisoka.sendMessage(m.chat, { 
     text: anu, 
     contextInfo: thumbnail 
-  }, { quoted: m})
-}
+  }, { quoted: m })
+} 
+
 //Db
 let uXp = global.db.data.users[user].exp
 let uLevel = global.db.data.users[user].level 
