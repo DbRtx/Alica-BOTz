@@ -128,10 +128,7 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
     let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender
 
 
-// settings 
-let autostiker = global.db.data.settings[botNumber].autostiker
-let autoreact = global.db.data.settings[botNumber].autoreact
-var autobio = global.db.data.settings[botNumber].autobio
+
 //DOWNLOAD MP4
 const downloadMp4 = async (Link ) => {
 try{
@@ -345,7 +342,7 @@ ${pesan}`
 }	
 
 // AUTO STIK
-
+let autostiker = global.db.data.settings[botNumber].autostiker
 if (autostiker && quoted.isBaileys && m.mtype === 'stickerMessage') {
 let namastc = pickRandom(stik)
 let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`)
@@ -355,7 +352,7 @@ hisoka.sendMessage(m.chat, {
 }
 
 // AUTO REACT
-
+var autoreact = global.db.data.settings[botNumber].autoreact
 if (autoreact) { 
   let regex = [
     "tai",
@@ -396,7 +393,7 @@ cron.schedule('00 12 * * *', () => {
         
 	
 // auto set bio
-
+var autobio = global.db.data.settings[botNumber].autobio
 if (autobio) {
   let setting = global.db.data.settings[botNumber]
   if (new Date() * 1 - setting.status > 1000) {
