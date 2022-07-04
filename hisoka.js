@@ -3327,7 +3327,8 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                   if (other) await hisoka.sendText(other, `\`\`\`Partner Telah Meninggalkan Sesi Anonymous\`\`\``, m) 
                   delete this.anonymous[room.id]
                   if (command === 'leave') break 
-                }                
+                }         
+              replay("ok")
             }
 break
             case 'mulai': case 'start': {
