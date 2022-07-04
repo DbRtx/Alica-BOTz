@@ -3328,7 +3328,6 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                   delete this.anonymous[room.id]
                   if (command === 'leave') break 
                 }         
-              replay("ok")
             }
 break
             case 'mulai': case 'start': {
