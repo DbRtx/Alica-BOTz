@@ -3321,7 +3321,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                     let buttons = [
                         { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
                     ]
-                    await hisokq.sendMessage(m.chat, {
+                    await hisoka.sendMessage(m.chat, {
                       text: `\`\`\`Kamu Sedang Tidak Berada Di Sesi Anonymous, Tekan Button Untuk Mencari Partner \`\`\``,
                       buttons: buttons,
                       contextInfo: thumbnail,
