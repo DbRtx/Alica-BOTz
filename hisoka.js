@@ -990,7 +990,6 @@ switch(command) {
     break
             
   case 'getpp': {
-    let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
     try {
       var pp = await hisoka.profilePictureUrl(user, "image")
     } catch {
