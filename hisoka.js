@@ -342,7 +342,8 @@ ${pesan}`
 }	
 
 // AUTO STIK
-if (quoted.isBaileys && m.mtype === 'stickerMessage') {
+let autostiker = global.db.data.settings[botNumber].autostiker
+if (autostiker && quoted.isBaileys && m.mtype === 'stickerMessage') {
 let namastc = pickRandom(stik)
 let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`)
 hisoka.sendMessage(m.chat, {
@@ -3322,21 +3323,24 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                         { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
                     ]
                     await hisoka.sendMessage(m.chat, {
-                      text: `\`\`\`Kamu Sedang Tidak Berada Di Sesi Anonymous, Tekan Button Untuk Mencari Partner \`\`\``,
+                      text: `*Kamu Sedang Tidak Berada Di Sesi Anonymous, Tekan Button Untuk Mencari Partner*`,
                       buttons: buttons,
                       contextInfo: thumbnail,
                       footer: global.footer
                     },{ quoted: m })
                 } else { 
                   let other = room.other(m.sender) 
-                  if (other) await hisoka.sendText(other, `\`\`\`Partner Telah Meninggalkan Sesi Anonymous\`\`\``, m) 
+                  if (other) await hisoka.sendMessage(other, {
+                    text: `*Partner Telah Meninggalkan Sesi Anonymous*`
+                    contextInfo: thumbnail
+                  }, { quoted: m }) 
                   delete this.anonymous[room.id]
                   if (command === 'leave') break 
                 }         
             }
 break
             case 'mulai': case 'start': {
-                if (m.isGroup) return m.reply('Fitur Tidak Dapat Digunakan Untuk Group!')
+                if (m.isGroup) return replay('Fitur Tidak Dapat Digunakan Untuk Group!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 if (Object.values(this.anonymous).find(room => room.check(m.sender))) {
                     let buttons = [
