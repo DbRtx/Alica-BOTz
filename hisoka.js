@@ -255,11 +255,11 @@ const replay = (anu) => {
   }, { quoted: m})
 }
 //Db
-let uXp = global.db.data.users[user].exp
-let uLevel = global.db.data.users[user].level 
-let uLimit = global.db.data.users[user].limit
-let uPrem = global.db.data.users[user].premium
-let uRank = global.db.data.users[user].rank
+let uXp = global.db.data.users[m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender].exp
+let uLevel = global.db.data.users[m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender].level 
+let uLimit = global.db.data.users[m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender].limit
+let uPrem = global.db.data.users[m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender].premium
+let uRank = global.db.data.users[m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender].rank
 
 // Public & !Self
 if (!hisoka.public) {
