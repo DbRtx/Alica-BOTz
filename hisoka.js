@@ -36,7 +36,8 @@ const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins, getCase, FileSize} = require('./lib/myfunc')
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
-const stik = JSON.parse(fs.readFileSync('./src/stik.json'))
+//const stik = JSON.parse(fs.readFileSync('./src/stik.json'))
+const stik = global.db.data.others.stik
 
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
@@ -50,7 +51,6 @@ let tebakkalimat = db.data.game.kalimat = []
 let tebaklirik = db.data.game.lirik = []
 let tebaktebakan = db.data.game.tebakan = []
 let vote = db.data.others.vote = []
-let stik = db.data.others.stik = []
 // readmore
 //var groups = fazd.chats.array.filter(v => v.jid.endsWith('g.us'))
 //var private = fazd.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
