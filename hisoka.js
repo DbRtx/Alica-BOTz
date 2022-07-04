@@ -3331,7 +3331,7 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                 } else { 
                   let other = room.other(m.sender) 
                   if (other) await hisoka.sendMessage(other, {
-                    text: `*Partner Telah Meninggalkan Sesi Anonymous*`
+                    text: `*Partner Telah Meninggalkan Sesi Anonymous*`,
                     contextInfo: thumbnail
                   }, { quoted: m }) 
                   delete this.anonymous[room.id]
