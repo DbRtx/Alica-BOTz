@@ -36,6 +36,7 @@ const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./lib/
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, generateMessageTag, getRandom, getGroupAdmins, getCase, FileSize} = require('./lib/myfunc')
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
+const stik = JSON.parse(fs.readFileSync('./src/stik.json'))
 
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
@@ -219,6 +220,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     if (!isNumber(setting.status)) setting.status = 0
     if (!('autobio' in setting)) setting.autobio = false
     autoreact = false,
+    autostiker = false,
     autosimi = false,
     nsfw = false,
     levelmsg = false
@@ -226,6 +228,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     status: 0,
     autobio: false,
     autoreact: false,
+    autostiker: false,
     autosimi: false,
     nsfw: false,
     levelmsg: false
@@ -910,9 +913,10 @@ switch(command) {
     if(!isCreator) return replay(mess.owner)
     if(!m.quoted) return replay("Reply stiker yg mau di add")
     if(!text) return replay("Nama stiker ny ap woy")
+    let set = global.db.data.others.stik
     try { 
       await hisoka.downloadAndSaveMediaMessage(quoted, `./src/stik/${text}`)
-      stik.push(text)
+      set.push(text)
       replay("Berhasil menambahkan sriker")
     } catch (err) {
       replay("Kek ad yg salah")
