@@ -3322,11 +3322,12 @@ Lihat list Pesan Dengan ${prefix}listmsg`)
                         { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
                     ]
                     await hisoka.sendButtonText(m.chat, buttons, `\`\`\`Kamu Sedang Tidak Berada Di Sesi Anonymous, Tekan Button Untuk Mencari Partner \`\`\``)
-                }
-                let other = room(m.sender)
-                if (other) await hisoka.sendText(other, `\`\`\`Partner Telah Meninggalkan Sesi Anonymous\`\`\``, m)
-                delete this.anonymous[room.id]
-                if (command === 'leave') break
+                } else { 
+                  let other = room.other(m.sender) 
+                  if (other) await hisoka.sendText(other, `\`\`\`Partner Telah Meninggalkan Sesi Anonymous\`\`\``, m) 
+                  delete this.anonymous[room.id]
+                  if (command === 'leave') break 
+                }                
             }
 break
             case 'mulai': case 'start': {
