@@ -217,7 +217,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
   } 
   
   if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
-  let setting = global.db.data.settings[botNumber]
+  var setting = global.db.data.settings[botNumber]
   if (setting) {
     if (!isNumber(setting.status)) setting.status = 0
     if (!('autobio' in setting)) setting.autobio = false
