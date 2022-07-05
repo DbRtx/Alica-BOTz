@@ -57,8 +57,8 @@ let vote = db.data.others.vote = []
 //global.btn
 let btn = [{
   urlButton: {
-    displayText: 'Follow IG',
-    url: 'https://www.instagram.com/dva127__'
+    displayText: 'GC BOT',
+    url: 'https://chat.whatsapp.com/By8xoYnP4UBHaa5bqST4FD'
   }
 }, {
   urlButton: {
@@ -3739,32 +3739,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃ ⌘ SILAHKAN PILIH ⌘*
 *╚═══━━━━━━━━━━━━━━━━⊏⊐*
 `
-              let btn = [{
-                                urlButton: {
-                                    displayText: 'Follow IG',
-                                    url: 'https://www.instagram.com/dva127__'
-                                }
-                            }, {
-                                urlButton: {
-                                    displayText: 'PC Owner',
-                                    url: 'https://wa.me/message/7TJJ7FANW43XO1'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'MENU',
-                                    id: 'list'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'ALL MENU',
-                                    id: 'all'
-                                }  
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Script',
-                                    id: 'sc'
-                                }
-                            }]
+              
               hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
 
             }
