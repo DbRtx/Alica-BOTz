@@ -350,7 +350,8 @@ if (isImage) {
   let wsf = false
   let mime = (m.msg || m).mimetype || ''
   if (/image/.test(mime)) {
-    let img = await hisoka.downloadAndSaveMediaMessage(quoted).wsf = new WSF.Sticker(img, {
+    let img = await hisoka.downloadAndSaveMediaMessage(quoted) 
+    wsf = new WSF.Sticker(img, {
       type: WSF.StickerTypes.FULL,
       crop: true, 
     }) 
