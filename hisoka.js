@@ -37,7 +37,6 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
 //const stik = JSON.parse(fs.readFileSync('./src/stik.json'))
-const stik = global.db.data.others.stik
 
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
