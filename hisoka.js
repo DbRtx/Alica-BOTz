@@ -73,7 +73,7 @@ let btn = [{
 }, {
   quickReplyButton: {
     displayText: 'Contact Owner',
-    id: 'owner dika'
+    id: 'owner'
   }  
 }, {
   quickReplyButton: {
@@ -125,7 +125,7 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
     const pickRandom = (arr) => {
       return arr[Math.floor(Math.random() * arr.length)]
     }
-    let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender
+    let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
      
     
 
