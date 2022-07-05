@@ -957,6 +957,13 @@ switch(command) {
     }
   } 
     break
+  case 'setting': case 'pengaturan': {
+    if (!text) return replay("text ?")
+    if (!isCreator) return replay(mess.owner)
+    let set = global.db.data.settings[botNumber]
+    const status = (anu) => { set.anu ? "✅" : "❌" }
+    replay(`${status(text)}`)
+  }
   case 'afk': {
     let user = global.db.data.users[m.sender]
     user.afkTime = + new Date
