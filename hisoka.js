@@ -2293,7 +2293,7 @@ break
                   footer: "Download by y2mate"
                 }, { quoted: msg })
               } catch (err) {
-                replay("Mungkin sedang error")
+                replay(`*[error system]*\n\n\n${err}`)
               }             
             }
             break
