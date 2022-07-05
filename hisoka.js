@@ -2280,7 +2280,7 @@ break
                 replay(mess.wait)
                 let media = fetchJson(api('zekais', '/youtube', { url: text }, apikey))
                 for (let anu of media.audio ) { 
-                  if (anu.size >= 100000) return replay(`File Melebihi Batas ( ${anu.size} )`
+                  if (anu.size >= 100000) return replay(`File Melebihi Batas ( ${anu.size} )`)
                   let msg = await hisoka.sendMessage(m.chat,{
                     image: { url: media.thumb },
                     caption: `⭔ Title : ${media.title}\n⭔ File Size : ${anu.size}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Bitrate: ${anu.bitrate}`,
