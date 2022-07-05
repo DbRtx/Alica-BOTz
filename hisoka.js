@@ -126,7 +126,7 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
       return arr[Math.floor(Math.random() * arr.length)]
     }
     let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender
-     
+    let setting = global.db.data.settings[botNumber] 
     let autostiker = global.db.data.settings[botNumber].autostiker
     let autoreact = global.db.data.settings[botNumber].autoreact
 
@@ -220,7 +220,6 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
   } 
   
   if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
-  let setting = global.db.data.settings[botNumber]
   if (setting) {
     if (!isNumber(setting.status)) setting.status = 0
     if (!('autobio' in setting)) setting.autobio = false
@@ -228,7 +227,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     autostiker = false,
     autosimi = false,
     nsfw = false,
-    pribadi = false
+    levelmsg = false
   } else global.db.data.settings[botNumber] = {
     status: 0,
     autobio: false,
@@ -236,7 +235,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     autostiker: false,
     autosimi: false,
     nsfw: false,
-    pribadi: false
+    levelmsg: false
   }
 } catch (err) {
   console.error(err)
@@ -3435,16 +3434,14 @@ break
             break
             case 'public': {
                 if (!isCreator) return replay(mess.owner)
-                if (!global.db.data.setting[botNumber].ownerOnly) return replay("*Bot sudah di mode public*")
-                global.db.data.setting[botNumber].ownerOnly = false
-                replay('Sukse Change To Public Usage')
+                hisoka.public = true
+                m.reply('Sukse Change To Public Usage')
             }
             break
             case 'self': {
                 if (!isCreator) return replay(mess.owner)
-                if (global.db.data.setting[botNumber].ownerOnly) return replay("*Bot sudah di mode self*")
-                global.db.data.setting[botNumber].ownerOnly = true
-                replay('Sukses Change To Self Usage')
+                hisoka.public = false
+                m.reply('Sukses Change To Self Usage')
             }
             break
 case 'speed': case 'ping': case 'botstatus': case 'statusbot': {
