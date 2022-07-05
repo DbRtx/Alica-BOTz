@@ -963,8 +963,17 @@ switch(command) {
     let set = global.db.data.settings[botNumber]
     let anu = `*SETTINGS*
 
-⌘ Autobio : *${set.autobio}*`
-    replay(anu)
+⌘ autobio : *${set.autobio}*
+⌘ automake : *${set.automake}*
+⌘ autostiker : *${set.autostiker}*
+⌘ autoreact : *${set.autoreact}*
+⌘ nsfw : *${set.nsfw}*
+`
+    hisoka.sendMessage(m.chat, {
+      text: anu,
+      contextInfo: thumbnail,
+      footer: "Use .enable for enable settings"
+    }, { quoted: m })
   }
     break
   case 'afk': {
