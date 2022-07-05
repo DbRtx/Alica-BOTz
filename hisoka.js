@@ -228,7 +228,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     autosimi = false,
     nsfw = false,
     levelmsg = false,
-    ownerOnly = false
+    pribadi = false
   } else global.db.data.settings[botNumber] = {
     status: 0,
     autobio: false,
@@ -237,7 +237,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     autosimi: false,
     nsfw: false,
     levelmsg: false,
-    ownerOnly: false
+    pribadi: false
   }
 } catch (err) {
   console.error(err)
