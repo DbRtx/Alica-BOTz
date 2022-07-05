@@ -2293,7 +2293,7 @@ break
                 hisoka.sendMessage(m.chat, { 
                   audio: { url: anu.audio[0] }, 
                   mimetype: 'audio/mpeg', 
-                  fileName: `${media.title}.mp3`,
+                  fileName: `${anu.title}.mp3`,
                   contextInfo: thumbnail,
                   footer: "Download by zekais"
                 }, { quoted: msg })
