@@ -346,7 +346,7 @@ ${pesan}`
 }	
 // AUTO MAKE STIKER 
 if ( m && isImage && m.isGroup ) { 
-  hisoka.sendImageAsSticke(m.chat, m, m)
+  hisoka.sendImageAsSticker(m.chat, m, m)
 } 
 // AUTO STIK
 if (global.db.data.settings[botNumber].autostiker) { 
