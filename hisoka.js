@@ -51,9 +51,6 @@ let tebakkalimat = db.data.game.kalimat = []
 let tebaklirik = db.data.game.lirik = []
 let tebaktebakan = db.data.game.tebakan = []
 let vote = db.data.others.vote = []
-let setting = global.db.data.settings[botNumber] 
-let autostiker = global.db.data.settings[botNumber].autostiker
-let autoreact = global.db.data.settings[botNumber].autoreact
 // readmore
 //var groups = fazd.chats.array.filter(v => v.jid.endsWith('g.us'))
 //var private = fazd.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
@@ -129,6 +126,10 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
       return arr[Math.floor(Math.random() * arr.length)]
     }
     let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender
+    let setting = global.db.data.settings[botNumber] 
+    let autostiker = global.db.data.settings[botNumber].autostiker
+    let autoreact = global.db.data.settings[botNumber].autoreact
+
 
 
 
