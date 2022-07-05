@@ -126,11 +126,8 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
       return arr[Math.floor(Math.random() * arr.length)]
     }
     let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.quoted ? m.quoted.sender : m.sender
-    let setting = global.db.data.settings[botNumber] 
-    let autostiker = global.db.data.settings[botNumber].autostiker
-    let autoreact = global.db.data.settings[botNumber].autoreact
-
-
+     
+    
 
 
 //DOWNLOAD MP4
@@ -220,6 +217,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
   } 
   
   if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
+  let setting = global.db.data.settings[botNumber]
   if (setting) {
     if (!isNumber(setting.status)) setting.status = 0
     if (!('autobio' in setting)) setting.autobio = false
@@ -359,7 +357,7 @@ if (global.db.data.settings[botNumber].autostiker) {
 
 // AUTO REACT
 
-if (autoreact) { 
+if (global.db.data.settings[botNumber].autoreact) { 
   let regex = [
     "tai",
     "kntll",
