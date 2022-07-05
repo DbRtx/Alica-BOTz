@@ -3738,6 +3738,33 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃ ⌘ SILAHKAN PILIH ⌘*
 *╚═══━━━━━━━━━━━━━━━━⊏⊐*
 `
+              let btn = [{
+                                urlButton: {
+                                    displayText: 'GC BOT',
+                                    url: 'https://chat.whatsapp.com/By8xoYnP4UBHaa5bqST4FD'
+
+                                }
+                            }, {
+                                urlButton: {
+                                    displayText: 'PC Owner',
+                                    url: 'https://wa.me/message/7TJJ7FANW43XO1'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'MENU',
+                                    id: 'list'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'ALL MENU',
+                                    id: 'semua'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Script',
+                                    id: 'sc'
+                                }
+                            }]
               
               hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
 
