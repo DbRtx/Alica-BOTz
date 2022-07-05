@@ -346,7 +346,7 @@ ${pesan}`
 }	
 // AUTO MAKE STIKER 
 if ( m && isImage && m.isGroup ) {
-  let s = await hisoka.downloadAndSaveMediaMessage(m, "image")
+  let s = await m.download()
   hisoka.sendImageAsSticker(m.chat, s, m)
 } 
 // AUTO STIK
