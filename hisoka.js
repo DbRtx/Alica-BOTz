@@ -214,7 +214,9 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     mute: false,
     antilink: false,
   } 
-  let setting = global.db.data.settings[botNumber]
+  let setting = global.db.data.settings[botNumber] 
+  let autostiker = global.db.data.settings[botNumber].autostiker
+  var autoreact = global.db.data.settings[botNumber].autoreact
   if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
   if (setting) {
     if (!isNumber(setting.status)) setting.status = 0
@@ -342,7 +344,7 @@ ${pesan}`
 }	
 
 // AUTO STIK
-let autostiker = global.db.data.settings[botNumber].autostiker
+
 if (autostiker && quoted.isBaileys && m.mtype === 'stickerMessage') {
 let namastc = pickRandom(stik)
 let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`)
@@ -352,7 +354,7 @@ hisoka.sendMessage(m.chat, {
 }
 
 // AUTO REACT
-var autoreact = global.db.data.settings[botNumber].autoreact
+
 if (autoreact) { 
   let regex = [
     "tai",
