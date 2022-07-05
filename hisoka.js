@@ -961,9 +961,10 @@ switch(command) {
     if (!text) return replay("text ?")
     if (!isCreator) return replay(mess.owner)
     let set = global.db.data.settings[botNumber]
-    let text = `*SETTINGS*
+    let anu = `*SETTINGS*
 
 ${set}`
+    replay(anu)
   }
     break
   case 'afk': {
