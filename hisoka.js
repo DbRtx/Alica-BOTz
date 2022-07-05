@@ -346,14 +346,16 @@ ${pesan}`
 }	
 
 // AUTO STIK
-
-if (autostiker && quoted.isBaileys && m.mtype === 'stickerMessage') {
-let namastc = pickRandom(stik)
-let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`)
-hisoka.sendMessage(m.chat, {
-  sticker: buffer
-}, { quoted: m })
+if (autostiker) { 
+  if (quoted.isBaileys && m.mtype === 'stickerMessage') { 
+    let namastc = pickRandom(stik) 
+    let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`) 
+    hisoka.sendMessage(m.chat, { 
+      sticker: buffer 
+    }, { quoted: m }) 
+  }
 }
+
 
 // AUTO REACT
 
