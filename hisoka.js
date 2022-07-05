@@ -2286,7 +2286,7 @@ break
                 if (anu.size >= 100000) return replay(`File Melebihi Batas ( ${anu.size} )`)
                 let msg = await hisoka.sendMessage(m.chat,{
                   image: { url: anu.thumb },
-                  caption: `⭔ Title : ${anu.title}\n⭔ File Size : ${anu.size}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Bitrate: ${anu.bitrate}`,
+                  caption: `⭔ Title : ${anu.title}\n⭔ File Size : ${anu.audio[0].size}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Bitrate: ${anu.audio[0].bitrate}`,
                   contextInfo: thumbnail
                 }, { quoted: m })
                 
