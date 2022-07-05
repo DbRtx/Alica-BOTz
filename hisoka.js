@@ -2282,7 +2282,7 @@ break
               try {
                 if (!text) return replay`Example : ytmp3 link`
                 replay(mess.wait)
-                let anu = fetchJson(api('zekais', '/youtube', { url: text }, 'apikey')) 
+                let anu = await fetchJson(api('zekais', '/youtube', { url: text }, 'apikey')) 
                 if (anu.size >= 100000) return replay(`File Melebihi Batas ( ${anu.size} )`)
                 let msg = await hisoka.sendMessage(m.chat,{
                   image: { url: anu.thumb },
