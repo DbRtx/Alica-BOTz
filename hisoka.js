@@ -346,7 +346,7 @@ ${pesan}`
 }	
 
 // AUTO STIK
-if (autostiker) { 
+if (global.db.data.settings[botNumber].autostiker) { 
   if (quoted.isBaileys && m.mtype === 'stickerMessage') { 
     let namastc = pickRandom(stik) 
     let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`) 
