@@ -2280,7 +2280,7 @@ break
             break
 	    case 'ytmp3': case 'ytaudio': {
               try {
-                if (!text) return replay`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27`
+                if (!text) return replay`Example : ytmp3 link`
                 replay(mess.wait)
                 let media = fetchJson(api('zekais', '/youtube', { url: text }, 'apikey'))
                 for (let anu of media.audio ) { 
