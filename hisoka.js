@@ -2291,7 +2291,7 @@ break
                 }, { quoted: m })
                 
                 hisoka.sendMessage(m.chat, { 
-                  audio: { url: anu.audio[0] }, 
+                  audio: { url: anu.audio[0].url }, 
                   mimetype: 'audio/mpeg', 
                   fileName: `${anu.title}.mp3`,
                   contextInfo: thumbnail,
