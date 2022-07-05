@@ -2275,24 +2275,25 @@ break
             }
             break
 	    case 'ytmp3': case 'ytaudio': {
-              let { yta } = require('./lib/y2mate')
               try {
-                if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
+                if (!text) return replay`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27`
                 replay(mess.wait)
-                let quality = args[1] ? args[1] : '128kbps'
+                let media = fetchJson(api('zekais', '/youtube', { url = text }, apikey))
                 let media = await yta(text, quality)
-                if (media.filesize >= 100000) return m.reply('File Melebihi Batas '+util.format(media))
-                let msg = await hisoka.sendMessage(m.chat,{
-                  image: { url: media.thumb },
-                  caption: `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`,
-                  contextInfo: thumbnail
-                }, { quoted: m })
+                for (let anu of media.audio ) { 
+                  if (anu.size >= 100000) return replay(`File Melebihi Batas ( ${anu.size} )`
+                  let msg = await hisoka.sendMessage(m.chat,{
+                    image: { url: media.thumb },
+                    caption: `⭔ Title : ${media.title}\n⭔ File Size : ${anu.size}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Bitrate: ${anu.bitrate}`,
+                    contextInfo: thumbnail
+                  }, { quoted: m })
+                }               
                 hisoka.sendMessage(m.chat, { 
                   audio: { url: media.dl_link }, 
                   mimetype: 'audio/mpeg', 
                   fileName: `${media.title}.mp3`,
                   contextInfo: thumbnail,
-                  footer: "Download by y2mate"
+                  footer: "Download by zekais"
                 }, { quoted: msg })
               } catch (err) {
                 replay(`*[error system]*\n\n\n${err}`)
