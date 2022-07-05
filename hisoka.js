@@ -345,10 +345,27 @@ ${pesan}`
   })
 }	
 // AUTO MAKE STIKER 
-if ( m && isImage && m.isGroup ) {
-  let s = await m.download()
-  hisoka.sendImageAsSticker(m.chat, s, m)
-} 
+if (isImage) {
+  let WSF = require('wa-sticker-formatter')
+  let wsf = false
+  let mime = (m.msg || m).mimetype || ''
+  if (/image/.test(mime)) {
+    let img = await hisoka.downloadAndSaveMediaMessage(quoted).wsf = new WSF.Sticker(img, {
+      type: WSF.StickerTypes.FULL,
+      crop: true, 
+    }) 
+  }         
+  if (wsf) { 
+    await wsf.build() 
+    const sticBuffer = await wsf.get() 
+    if (sticBuffer) await hisoka.sendMessage(m.chat, { sticker: sticBuffer }, { 
+      quoted: m,
+      mimetype: 'image/webp',
+      ephemeralExpiration: 86400 
+    }) 
+  } 
+}
+
 // AUTO STIK
 if (global.db.data.settings[botNumber].autostiker) { 
   if (quoted.isBaileys && m.mtype === 'stickerMessage') { 
