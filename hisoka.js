@@ -51,6 +51,9 @@ let tebakkalimat = db.data.game.kalimat = []
 let tebaklirik = db.data.game.lirik = []
 let tebaktebakan = db.data.game.tebakan = []
 let vote = db.data.others.vote = []
+let setting = global.db.data.settings[botNumber] 
+let autostiker = global.db.data.settings[botNumber].autostiker
+let autoreact = global.db.data.settings[botNumber].autoreact
 // readmore
 //var groups = fazd.chats.array.filter(v => v.jid.endsWith('g.us'))
 //var private = fazd.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
@@ -214,9 +217,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     mute: false,
     antilink: false,
   } 
-  let setting = global.db.data.settings[botNumber] 
-  let autostiker = global.db.data.settings[botNumber].autostiker
-  var autoreact = global.db.data.settings[botNumber].autoreact
+  
   if (typeof setting !== 'object') global.db.data.settings[botNumber] = {}
   if (setting) {
     if (!isNumber(setting.status)) setting.status = 0
