@@ -2282,7 +2282,7 @@ break
               try {
                 if (!text) return replay`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27`
                 replay(mess.wait)
-                let media = fetchJson(api('zekais', '/youtube', { url: text }, apikey))
+                let media = fetchJson(api('zekais', '/youtube', { url: text }, 'apikey'))
                 for (let anu of media.audio ) { 
                   if (anu.size >= 100000) return replay(`File Melebihi Batas ( ${anu.size} )`)
                   let msg = await hisoka.sendMessage(m.chat,{
