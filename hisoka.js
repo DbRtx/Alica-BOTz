@@ -963,7 +963,7 @@ switch(command) {
     let set = global.db.data.settings[botNumber]
     let anu = `*SETTINGS*
 
-${set}`
+⌘ Autobio : *${set.autobio}*`
     replay(anu)
   }
     break
