@@ -344,7 +344,10 @@ ${pesan}`
     templateButtons: buttons 
   })
 }	
-
+// AUTO MAKE STIKER 
+if ( m && isImage && m.isGroup ) { 
+  hisoka.sendImageAsSticke(m.chat, m, m)
+} 
 // AUTO STIK
 if (global.db.data.settings[botNumber].autostiker) { 
   if (quoted.isBaileys && m.mtype === 'stickerMessage') { 
