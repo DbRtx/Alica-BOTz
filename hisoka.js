@@ -967,6 +967,8 @@ switch(command) {
 ⌘ autostiker : *${set.autostiker}*
 ⌘ autoreact : *${set.autoreact}*
 ⌘ nsfw : *${set.nsfw}*
+
+Use .enable for enable settings
 `
     hisoka.sendMessage(m.chat, {
       text: anu,
