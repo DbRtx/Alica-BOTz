@@ -958,7 +958,6 @@ switch(command) {
   } 
     break
   case 'setting': case 'pengaturan': {
-    if (!text) return replay("text ?")
     if (!isCreator) return replay(mess.owner)
     let set = global.db.data.settings[botNumber]
     let anu = `*SETTINGS*
