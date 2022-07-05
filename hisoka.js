@@ -223,6 +223,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     if (!('autobio' in setting)) setting.autobio = false
     autoreact = false,
     autostiker = false,
+    automake = false,
     autosimi = false,
     nsfw = false,
     levelmsg = false,
@@ -231,6 +232,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     status: 0,
     autobio: false,
     autoreact: false,
+    automake: false,
     autostiker: false,
     autosimi: false,
     nsfw: false,
@@ -345,7 +347,8 @@ ${pesan}`
   })
 }	
 // AUTO MAKE STIKER 
-if (isImage) {
+var automake = global.db.data.settings[botNumber].automake
+if (isImage && automake) {
   let WSF = require('wa-sticker-formatter')
   let wsf = false
   let mime = (m.msg || m).mimetype || ''
@@ -368,7 +371,8 @@ if (isImage) {
 }
 
 // AUTO STIK
-if (global.db.data.settings[botNumber].autostiker) { 
+var autostiker = global.db.data.settings[botNumber].autostiker
+if (autostiker) { 
   if (quoted.isBaileys && m.mtype === 'stickerMessage') { 
     let namastc = pickRandom(stik) 
     let buffer = fs.readFileSync(`./src/stik/${namastc}.webp`) 
