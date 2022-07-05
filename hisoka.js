@@ -227,7 +227,8 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     autostiker = false,
     autosimi = false,
     nsfw = false,
-    levelmsg = false
+    levelmsg = false,
+    self = false
   } else global.db.data.settings[botNumber] = {
     status: 0,
     autobio: false,
@@ -235,7 +236,8 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     autostiker: false,
     autosimi: false,
     nsfw: false,
-    levelmsg: false
+    levelmsg: false,
+    self: false
   }
 } catch (err) {
   console.error(err)
@@ -3434,14 +3436,15 @@ break
             break
             case 'public': {
                 if (!isCreator) return replay(mess.owner)
-                hisoka.public = true
-                m.reply('Sukse Change To Public Usage')
+                if (!global.db.data.setting[botNumber].self) return replay("*Bot sudah di mode public*")
+                global.db.data.setting[botNumber].self = false
+                replay('Sukse Change To Public Usage')
             }
             break
             case 'self': {
                 if (!isCreator) return replay(mess.owner)
-                hisoka.public = false
-                m.reply('Sukses Change To Self Usage')
+                if (global.db.data.setting[botNumber].self) return replay("*Bot sudah di mode self*")
+                replay('Sukses Change To Self Usage')
             }
             break
 case 'speed': case 'ping': case 'botstatus': case 'statusbot': {
