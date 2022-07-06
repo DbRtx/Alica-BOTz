@@ -977,7 +977,13 @@ Use .enable for enable settings
     }, { quoted: m })
   }
   case 'enable': case 'disable': {
-    let setingan = ["autobio", "automake", "autostiker", "autoreact", "nsfw"]
+    let setingan = [
+      "autobio", 
+      "automake", 
+      "autostiker",
+      "autoreact",
+      "nsfw"
+    ]
     let set = global.db.data.settings[botNumber]
     for (let i of setingan) {
       if (command === "enable") {
