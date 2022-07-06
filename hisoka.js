@@ -954,9 +954,10 @@ switch(command) {
       if (err) return setReply(err)
       let buffer = fs.readFileSync(ran)
       await hisoka.sendMessage(m.chat, {
-        caption: "Nih", 
-        image: buffer
-      })
+        caption: `nih kak @${m.sender.split("@")[0]}`, 
+        image: buffer,
+        contextInfo: thumbnail
+      },{ quoted: m })
       fs.unlinkSync(ran)
     })
   } 
@@ -2179,9 +2180,10 @@ break
                 if (err) return replay(err) 
                 let buffer = fs.readFileSync(ran) 
                 await hisoka.sendMessage(m.chat, {
-                  caption: "Nih", 
-                  image: buffer
-                }) 
+                  caption: `nih kak @${m.sender.split("@")[0]}`, 
+                  image: buffer,
+                  contextInfo: thumbnail
+                }, { quoted: m }) 
                 fs.unlinkSync(ran) 
               })
             }
