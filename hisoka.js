@@ -4005,9 +4005,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃ ⌘ PILIH MENU ⌘*
 *╚═━━━━━━━━━━━━━━━━⊏⊐*
 `,
+                footer: global.footer,
                 buttonText: "Menu",
-                contextInfo: thumbnail,
-                footer: `${global.footer}`,
                 sections            
                 }
               hisoka.sendMessage(m.chat, listMessage, { quoted: m })
