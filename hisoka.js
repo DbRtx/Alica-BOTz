@@ -254,7 +254,19 @@ let thumbnail = {
     "sourceUrl": "https://dlvash.github.io",
     "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
   }
-} 
+}
+//Thumbnail 
+let thumbnail2 = (jpeg) => { 
+  mentionedJid: [user],
+  "externalAdReply": { 
+    "title": `${global.footer}`,
+    "body": `runtime bot ${runtime(process.uptime())}`,
+    "mediaType": 3,
+    "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+    "sourceUrl": "https://dlvash.github.io",
+    "thumbnail": fs.readFileSync(jpeg)
+  }
+}
 
 //replay
 const replay = (anu) => {
