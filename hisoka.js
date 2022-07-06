@@ -1002,7 +1002,8 @@ Use autobio on/of
         buttons: buttons,
         footer: global.footer
       },{ quoted: m }) 
-  } 
+    }
+  }
     break
   case 'afk': {
     let user = global.db.data.users[m.sender]
