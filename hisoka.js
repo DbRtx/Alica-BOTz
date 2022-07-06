@@ -948,7 +948,7 @@ switch(command) {
     if (!text) return replay(`Example: ${prefix + command} 300x300`)
     let p = text.split("x")[0]
     let l = text.split("x")[1]
-    let media = await hisoka.downloadAndSaveMediaMessage(quoted)
+    let media = await hisoka.downloadAndSaveMediaMessage(quoted, "image")
     try { 
       let ran = getRandom('.jpg')
       exec(`ffmpeg -i ${media} -vf scale=${p}:${l} ${ran}`)
