@@ -989,12 +989,12 @@ Use autobio on/of
       }, type: 1
     }] 
     if (args[0] === "on" || args[0] === "enable" || args[0] === "1") {
-      if (global.db.data.settings[botNumber].args[0]) return replay(`*${command}* udh ${args[0]} kak`)
-      global.db.data.settings[botNumber].args[0] = true
+      if (global.db.data.settings[botNumber].command) return replay(`*${command}* udh ${args[0]} kak`)
+      global.db.data.settings[botNumber].command = true
       replay(`*${command}* udh ${args[0]}`)
     } else if (args[0] === "off" || args[0] === "disable" || args[0] === "0") { 
-      if (!global.db.data.settings[botNumber].args[0]) return replay(`*${command}* udh ${args[0]} kak`)
-      global.db.data.settings[botNumber].args[0] = false
+      if (!global.db.data.settings[botNumber].command) return replay(`*${command}* udh ${args[0]} kak`)
+      global.db.data.settings[botNumber].command = false
       replay(`*${command}* udh ${args[0]}`)
     } else {
       hisoka.sendMessage(m.chat, {
