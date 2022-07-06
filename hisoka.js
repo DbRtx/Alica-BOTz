@@ -2173,15 +2173,18 @@ break
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `Balas sticker dengan caption *${prefix + command}*`
                 replay(mess.wait)
-                let media = await hisoka.downloadAndSaveMediaMessage(quoted, "image")
-                let ran = await getRandom('.jpg')
-                exec(`ffmpeg -i ${media} ${ran}`, (err) => {
-                    fs.unlinkSync(media)
-                    if (err) m.reply(err)
-                    let buffer = fs.readFileSync(ran)
-                    hisoka.sendMessage(m.chat, { image: buffer }, { quoted: m })
-                    fs.unlinkSync(ran)
-                })
+                let media = await hisoka.downloadAndSaveMediaMessage(quoted)
+                let ran = getRandom('.png') 
+              exec(`ffmpeg -i ${media} ${ran}`, async (err) => { 
+                fs.unlinkSync(media) 
+                if (err) return replay(err) 
+                let buffer = fs.readFileSync(ran) 
+                await hisoka.sendMessage(from, {
+                  caption: "Nih", 
+                  image: buffer
+                }) 
+                fs.unlinkSync(ran) 
+              })
             }
             break
 	        case 'tomp4': case 'tovideo': {
