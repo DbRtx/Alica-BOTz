@@ -949,18 +949,17 @@ switch(command) {
     let p = text.split("x")[0]
     let l = text.split("x")[1]
     let media = await hisoka.downloadAndSaveMediaMessage(quoted, "image")
-    try { 
-      let ran = getRandom('.jpg')
-      exec(`ffmpeg -i ${media} -vf scale=${p}:${l} ${ran}`)
-      let result = fs.readFileSync(ran)
-      hisoka.sendMessage(m.chat, {
-        image: ran,
-        caption: `nih kak @${m.sender.split("@")[0]}`,
-        contextInfo: thumbnail
-      },{ quoted: m })
-    } catch (err) {
-      replay(`*[error]*\n\n${err}`)
-    }
+    let ran = getRandom('.jpg')
+    exec(`ffmpeg -i ${media} -vf scale=${p}:${l} ${ran}`, async (err) => { 
+      fs.unlinkSync(media)
+      if (err) return setReply(err)
+      let buffer = fs.readFileSync(ran)
+      await hisoka.sendMessage(m.chay, {
+        caption: "Nih", 
+        image: buffer
+      })
+      fs.unlinkSync(ran)
+    })
   } 
     break
   case 'addstik': {
