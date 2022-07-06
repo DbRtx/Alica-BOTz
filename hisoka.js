@@ -942,7 +942,27 @@ switch(command) {
     }
   }
     break
-
+  case 'resize': {
+    if (!m.quoted) return replay("Reply image!")
+    if (!quoted.mtype === "imageMessage") return replay("Itu bukan image")
+    if (!text) return replay(`Example: ${prefix + command} 300x300`)
+    let p = text.split("x")[0]
+    let l = text.split("x")[1]
+    let media = await hisoka.downloadAndSaveMediaMessage(quoted)
+    try { 
+      let ran = getRandom('.jpg')
+      exec(`ffmpeg -i ${media} -vf scale=${p}:${l} ${ran}`)
+      let result = fs.readFileSync(ran)
+      hisoka.sendMessage(m.chat, {
+        image: ran,
+        caption: `nih kak @${m.sender.split("@")[0]}`,
+        contextInfo: thumbnail
+      },{ quoted: m })
+    } catch (err) {
+      replay(`*[error]*\n\n${err}`)
+    }
+  } 
+    break
   case 'addstik': {
     if(!isCreator) return replay(mess.owner)
     if(!m.quoted) return replay("Reply stiker yg mau di add")
