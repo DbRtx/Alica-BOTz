@@ -4445,7 +4445,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break 
             case 'downmenu': {
@@ -4469,7 +4469,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
             case 'searchmenu': {
@@ -4493,7 +4493,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
             case 'randommenu': {
@@ -4521,7 +4521,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
             case 'textpromenu': {
@@ -4553,7 +4553,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
             case 'photooxymenu': {
@@ -4570,7 +4570,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
 /**
@@ -4593,7 +4593,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break*/
             case 'funmenu': {
@@ -4620,7 +4620,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
             case 'primbonmenu': {
@@ -4663,7 +4663,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
             case 'convertmenu': {
@@ -4695,7 +4695,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
             case 'mainmenu': {
@@ -4718,7 +4718,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
              case 'databasemenu': {
@@ -4739,7 +4739,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
             case 'anonimmenu': {
@@ -4756,7 +4756,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
              case 'islammenu': {
@@ -4774,7 +4774,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
              case 'voicemenu': {
@@ -4798,7 +4798,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
              case 'ownermenu': {
@@ -4823,7 +4823,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
             case 'hidemenu': case 'hide':{
@@ -4845,7 +4845,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
             }
             break
              
