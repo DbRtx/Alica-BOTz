@@ -27,7 +27,7 @@ This is Script of WhatsApp multi device, working with [`@adiwajshing/baileys`](h
 
 ```bash
 git clone https://github.com/dlvash/Alica-BOTz
-cd Hisoka-Morou
+cd Alica-BOTz 
 npm install
 ```
 
