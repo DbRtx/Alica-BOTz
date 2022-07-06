@@ -3875,50 +3875,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
               });
               let timestamp = speed()
               let latensi = speed() - timestamp
-              let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                listMessage :{
-                    description: `*╔━━━━━━━━━━━━━━━━━━━━━━━━━━━╗*
-*┃ 《《《《《《《《《◇》》》》》》》》》┃*         
-*╚╦━━━━━━━━━━━━━━━━━━━━━━━━━━╝*
-*╔╣*
-*┃┃ Halo ${pushname}*
-*┃┃ ${ucapanWaktu}*
-*┃┃ Welcome to alica-BOTz* 
-*┃╚━━━━━━━━━━━━━━━━⊏⊐*
-*┃╔━━━━━━━━━━━━━━━━⊏⊐*
-*╠╣ ⌘ BOT STATUS ⌘*
-*┃┃* 
-*┃┃ ⌗ Speed* : ${latensi.toFixed(4)} millisecond
-*┃┃ ⌗ Runtime* : ${runtime(process.uptime())}
-*┃┃ ⌗ Bot Name* : alica-BOTz
-*┃┃ ⌗ Bot recoder* : ${global.author}
-*┃┃ ⌗ Bot template* : Hisoka-Morou
-*┃┃ ⌗ Bot Creator* : DikaArdnt
-*┃┃*
-*┃╚━━━━━━━━━━━━━━━━⊏⊐*
-*┃╔━━━━━━━━━━━━━━━━⊏⊐*
-*╠╣    ⌘ NOTE ⌘*
-*┃┃*
-*┃┃  BOT INI MASIH DALAM*
-*┃┃  PENGEMBANGAN, MOHON MAAF* 
-*┃┃  JIKA MASIH AD BUG*
-*┃┃*
-*┃╚━━━━━━━━━━━━━━━━⊏⊐*
-*┃╔━━━━━━━━━━━━━━━━⊏⊐*
-*╠╣    ⌘ DATE ⌘*
-*┃┃*
-*┃┃ ⌗ MASEHI: ${time}*
-*┃┃ ⌗ HIJRIAH: ${dateIslamic}* 
-*┃┃*
-*┃╚━━━━━━━━━━━━━━━━⊏⊐*
-*┃ ⌘ PILIH MENU ⌘*
-*╚═━━━━━━━━━━━━━━━━⊏⊐*
-`,
-                    buttonText: "Menu",
-                    contextInfo: thumbnail,
-                    footerText: `${global.footer}`,
-                    listType: "SINGLE_SELECT",
-                    sections: [
+              let sections = [
                       {
                         "title": "Main fitur",
                         "rows": [
@@ -4009,11 +3966,51 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                           }
                         ]
                       }
-                    ],
-                  listType: 1
+                    ]
+              let listMessage = { 
+              text: `*╔━━━━━━━━━━━━━━━━━━━━━━━━━━━╗*
+*┃ 《《《《《《《《《◇》》》》》》》》》┃*         
+*╚╦━━━━━━━━━━━━━━━━━━━━━━━━━━╝*
+*╔╣*
+*┃┃ Halo ${pushname}*
+*┃┃ ${ucapanWaktu}*
+*┃┃ Welcome to alica-BOTz* 
+*┃╚━━━━━━━━━━━━━━━━⊏⊐*
+*┃╔━━━━━━━━━━━━━━━━⊏⊐*
+*╠╣ ⌘ BOT STATUS ⌘*
+*┃┃* 
+*┃┃ ⌗ Speed* : ${latensi.toFixed(4)} millisecond
+*┃┃ ⌗ Runtime* : ${runtime(process.uptime())}
+*┃┃ ⌗ Bot Name* : alica-BOTz
+*┃┃ ⌗ Bot recoder* : ${global.author}
+*┃┃ ⌗ Bot template* : Hisoka-Morou
+*┃┃ ⌗ Bot Creator* : DikaArdnt
+*┃┃*
+*┃╚━━━━━━━━━━━━━━━━⊏⊐*
+*┃╔━━━━━━━━━━━━━━━━⊏⊐*
+*╠╣    ⌘ NOTE ⌘*
+*┃┃*
+*┃┃  BOT INI MASIH DALAM*
+*┃┃  PENGEMBANGAN, MOHON MAAF* 
+*┃┃  JIKA MASIH AD BUG*
+*┃┃*
+*┃╚━━━━━━━━━━━━━━━━⊏⊐*
+*┃╔━━━━━━━━━━━━━━━━⊏⊐*
+*╠╣    ⌘ DATE ⌘*
+*┃┃*
+*┃┃ ⌗ MASEHI: ${time}*
+*┃┃ ⌗ HIJRIAH: ${dateIslamic}* 
+*┃┃*
+*┃╚━━━━━━━━━━━━━━━━⊏⊐*
+*┃ ⌘ PILIH MENU ⌘*
+*╚═━━━━━━━━━━━━━━━━⊏⊐*
+`,
+                buttonText: "Menu",
+                contextInfo: thumbnail,
+                footer: `${global.footer}`,
+                sections            
                 }
-              }), {})
-              hisoka.relayMessage(m.chat, template.message, { messageId: template.key.id }, m)
+              hisoka.sendMessage(m.chat, listMessage, { quoted: m })
             }
             break
             case 'semua': case '*': case 'all': {
