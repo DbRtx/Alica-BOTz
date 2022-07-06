@@ -47,7 +47,7 @@ apt install git -y
 apt install nodejs -y
 apt install ffmpeg -y
 git clone https://github.com/dlvash/Alica-BOTz
-cd Hisoka-Morou
+cd Alica-BOTz
 npm install
 ```
 
