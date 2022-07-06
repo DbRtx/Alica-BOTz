@@ -968,39 +968,34 @@ switch(command) {
 ⌘ autoreact : *${set.autoreact}*
 ⌘ nsfw : *${set.nsfw}*
 
-Use .enable for enable settings
+Use autobio on/of
 `
     hisoka.sendMessage(m.chat, {
       text: anu,
-      contextInfo: thumbnail,
-      footer: "Use .enable for enable settings"
+      contextInfo: thumbnail
     }, { quoted: m })
   }
-  case 'enable': case 'disable': {
-    let setingan = [
-      "autobio", 
-      "automake", 
-      "autostiker",
-      "autoreact",
-      "nsfw"
-    ]
-    let set = global.db.data.settings[botNumber]
-    for (let i of setingan) {
-      if (command === "enable") {
-        if (!text) return replay("ap yg mau di enable ?")
-        if (!text.includes(i)) return replay("Not found")
-        if (set.text) return replay(`*${text}* udh on kak`)
-        set.text = true
-        replay(`*${text}* is on`)
-      } else if (command === "disable") {
-        if (!text) return replay("ap yg mau di disable ?")        
-        if (!text.includes(i)) return replay("Not found")
-        if (!set.text) return replay(`*${text}* udh off kak`)
-        set.text = false
-        replay(`*${text}* is off`)
-      }
+  case 'autobio': case 'automake': case 'autostiker': case 'autoreact': case 'nsfw': {
+    if (!isCreator) return replay(mess.owner)
+    let buttons = [{
+      buttonId: `${command} on`, 
+      buttonText: {
+        displayText: 'on'
+      },type: 1
+    },{
+      buttonId: `${command} off`,
+      buttonText: { 
+        displayText: 'off'
+      }, type: 1
+    }]   
+    if (!args[0]) {
+      hisoka.sendMessage(m.chat, {
+        text: `*${command}*`,
+        buttons: buttons,
+        footer: global.footer
+      })
     }
-  }
+  } 
     break
   case 'afk': {
     let user = global.db.data.users[m.sender]
