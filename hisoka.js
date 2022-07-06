@@ -4507,16 +4507,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃┃* ◆ ${prefix}pakboy
 *┃┃* ◆ ${prefix}bucin
 *┃┃* ◆ ${prefix}katasenja
-*┃┃* ◆ ${prefix}couple
-*┃┃* ◆ ${prefix}anime  
-*┃┃* ◆ ${prefix}waifu  
-*┃┃* ◆ ${prefix}husbu  
-*┃┃* ◆ ${prefix}neko  
-*┃┃* ◆ ${prefix}shinobu  
-*┃┃* ◆ ${prefix}waifus (nsfw)  
-*┃┃* ◆ ${prefix}nekos (nsfw)  
-*┃┃* ◆ ${prefix}trap (nsfw)  
-*┃┃* ◆ ${prefix}blowjob (nsfw)  
+*┃┃* ◆ ${prefix}couple 
 *╚╣*
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
