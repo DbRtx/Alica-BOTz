@@ -4412,34 +4412,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃╚━━━━━━━━━━━━━⊏⊐*
 *┃*
 *╚═══━━━━━━━━━━━━━⊏⊐*`
-                let btn = [{
-                                urlButton: {
-                                    displayText: 'Follow IG',
-                                    url: 'https://www.instagram.com/dva127__'
-                                }
-                            }, {
-                                urlButton: {
-                                    displayText: 'PC Owner',
-                                    url: 'https://wa.me/message/7TJJ7FANW43XO1'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Status Bot',
-                                    id: 'ping'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Contact Owner',
-                                    id: 'owner'
-                                }  
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Script',
-                                    id: 'sc'
-                                }
-                            }]
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
-                     }
+              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
+            }
             break
             case 'grupmenu': {
               thumb = fs.readFileSync('./src/jpg/grup.jpg')
