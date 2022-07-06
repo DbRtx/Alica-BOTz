@@ -2174,7 +2174,7 @@ break
                 if (!/webp/.test(mime)) throw `Balas sticker dengan caption *${prefix + command}*`
                 replay(mess.wait)
                 let media = await hisoka.downloadAndSaveMediaMessage(quoted, "image")
-                let ran = await getRandom('.png')
+                let ran = await getRandom('.jpg')
                 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
                     fs.unlinkSync(media)
                     if (err) m.reply(err)
