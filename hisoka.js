@@ -3835,12 +3835,16 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃ ⌘ SILAHKAN PILIH ⌘*
 *╚═══━━━━━━━━━━━━━━━━⊏⊐*
 `
-              let btn = [{ 
-                index: 1,
-                urlButton: {
-                  displayText: 'GC BOT',
-                  url: 'https://dlvash.github.io' 
-      }
+              let btn = [{
+                buttonId: `list`, 
+                buttonText: {
+                  displayText: 'MENU'
+                }, type: 1
+              },{
+                buttonId: `semua`,
+                buttonText: {
+                  displayText: 'ALL MENU'
+                }, type: 1
               }] 
               hisoka.sendMessage(m.chat, {
                 contextInfo: {
