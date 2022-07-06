@@ -56,30 +56,15 @@ let stik = db.data.others.stik = []
 //var private = fazd.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
 //global.btn
 let btn = [{
-  urlButton: {
-    displayText: 'GC BOT',
-    url: 'https://chat.whatsapp.com/By8xoYnP4UBHaa5bqST4FD'
-  }
-}, {
-  urlButton: {
-    displayText: 'PC Owner',
-    url: 'https://wa.me/message/7TJJ7FANW43XO1'
-  }
-}, {
-  quickReplyButton: {
-    displayText: 'Status Bot',
-    id: 'ping'
-  }
-}, {
-  quickReplyButton: {
-    displayText: 'Contact Owner',
-    id: 'owner'
-  }  
-}, {
-  quickReplyButton: {
-    displayText: 'Script',
-    id: 'sc'
-  }
+  buttonId: `sc`, 
+  buttonText: {
+    displayText: 'SC'
+  }, type: 1
+},{
+  buttonId: `owner`,
+  buttonText: {
+    displayText: 'OWNER'
+  }, type: 1
 }]
 
 
@@ -263,7 +248,30 @@ const replay = (anu) => {
     contextInfo: thumbnail 
   }, { quoted: m })
 } 
-
+const sendButDoc = async(id, text1, footer, jpeg, but = [], options = {}) => { 
+  hisoka.sendMessage(id, {
+    contextInfo: { 
+      mentionedJid: [user],
+      "externalAdReply": { 
+        "title": `${global.footer}`,
+        "body": `runtime bot ${runtime(process.uptime())}`,
+        "mediaType": 3,
+        "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+        "sourceUrl": "https://dlvash.github.io",
+        "thumbnail": jpeg
+      }
+    },
+    document: global.thumb,
+    mimetype: 'application/pdf',
+    fileLength : 999999999999999999999,
+    pageCount: 1000, 
+    fileName : footer, 
+    caption: text1,
+    footer: footer,
+    buttons: but,
+    headerType: "DOCUMENT"
+  }, options )
+}
 //Db
 let uXp = global.db.data.users[user].exp
 let uLevel = global.db.data.users[user].level 
@@ -3802,8 +3810,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *╚╦━━━━━━━━━━━━━━━━━━━━━━━━━━╝*
 *╔╣*
 *┃┃ Halo ${pushname} 👋🤗*
-*┃┃ ${ucapanWaktu}*
-*┃┃ Welcome to alica-BOTz*
+*┃┃ Welcome to ${global.footer}*
 *┃┃*
 *┃╚━━━━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
@@ -3836,16 +3843,6 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *╚═══━━━━━━━━━━━━━━━━⊏⊐*
 `
               let btn = [{
-                buttonId: `list`, 
-                buttonText: {
-                  displayText: 'MENU'
-                }, type: 1
-              },{
-                buttonId: `semua`,
-                buttonText: {
-                  displayText: 'ALL MENU'
-                }, type: 1
-              },{
                 buttonId: `list`, 
                 buttonText: {
                   displayText: 'MENU'
@@ -4140,8 +4137,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *╚╦━━━━━━━━━━━━━━━━━━━━━━━━━━╝*
 *╔╣*
 *┃┃ Halo ${pushname}*
-*┃┃ ${ucapanWaktu}*
-*┃┃ Welcome to alica-BOTz* 
+*┃┃ Welcome to ${global.footer}* 
 *┃╚━━━━━━━━━━━━━━━━⊏⊐*
 *┃╔━━━━━━━━━━━━━━━━⊏⊐*
 *╠╣    ⌘ BOT STATUS ⌘*
