@@ -988,11 +988,11 @@ Use autobio on/of
         displayText: 'off'
       }, type: 1
     }] 
-    if ((args[0]) === "on" || (args[0]) === "enable" || (args[0]) === "1") {
+    if (args[0] === "on" || args[0] === "enable" || args[0] === "1") {
       if (global.db.data.settings[botNumber].args[0]) return replay(`*${command}* udh ${args[0]} kak`)
       global.db.data.settings[botNumber].args[0] = true
       replay(`*${command}* udh ${args[0]}`)
-    } else if ((args[0]) === "off" || (args[0]) === "disable" || (args[0]) === "0") { 
+    } else if (args[0] === "off" || args[0] === "disable" || args[0] === "0") { 
       if (!global.db.data.settings[botNumber].args[0]) return replay(`*${command}* udh ${args[0]} kak`)
       global.db.data.settings[botNumber].args[0] = false
       replay(`*${command}* udh ${args[0]}`)
