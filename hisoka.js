@@ -988,14 +988,14 @@ Use .enable for enable settings
     for (let i of setingan) {
       if ( command === "enable") {
         if (args[1]) return replay("ap yg mau di enable ?")
-        if (args[1].includes(i)) return replay("Not found")
+        if (!text.includes(i)) return replay("Not found")
         if (set.args[1]) return replay(`*${text}* udh on kak`)
         global.db.data.settings[botNumber].args[1] = true
         replay(`*${text}* is on`)
   
       } else if ( command === "disable") {
         if (!args[1]) return replay("ap yg mau di disable ?")        
-        if (!args[1].includes(i)) return replay("Not found")
+        if (!text.includes(i)) return replay("Not found")
         if (!set.args[1]) return replay(`*${text}* udh off kak`)
         global.db.data.settings[botNumber].args[1] = false
         replay(`*${text}* is off`)
