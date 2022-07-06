@@ -247,9 +247,9 @@ const replay = (anu) => {
     text: anu, 
     contextInfo: thumbnail 
   }, { quoted: m })
-}
+} 
+const sendButDoc = async(id, text1, footer, jpeg, but = [], options = {}) => {
 try {
-const sendButDoc = async(id, text1, footer, jpeg, but = [], options = {}) => { 
   hisoka.sendMessage(id, {
     contextInfo: { 
       mentionedJid: [user],
@@ -272,9 +272,9 @@ const sendButDoc = async(id, text1, footer, jpeg, but = [], options = {}) => {
     buttons: but,
     headerType: "DOCUMENT"
   }, options )
-}
 } catch (err) {
   replay(`*[error]*\n\n${err}`)
+}
 }
 //Db
 let uXp = global.db.data.users[user].exp
