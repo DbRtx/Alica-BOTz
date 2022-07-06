@@ -943,8 +943,7 @@ switch(command) {
   }
     break
   case 'resize': {
-    if (!m.quoted) return replay("Reply image!")
-    if (!quoted.mtype === "imageMessage") return replay("Itu bukan image")
+    if (!m.mtype === "imageMessage") return replay("Itu bukan image")
     if (!text) return replay(`Example: ${prefix + command} 300x300`)
     let p = text.split("x")[0]
     let l = text.split("x")[1]
