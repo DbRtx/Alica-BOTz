@@ -3845,11 +3845,6 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 buttonText: {
                   displayText: 'ALL MENU'
                 }, type: 1
-              },{
-                buttonId: `owner`,
-                buttonText: {
-                  displayText: 'OWNER'
-                }, type: 1
               }] 
               hisoka.sendMessage(m.chat, {
                 contextInfo: {
