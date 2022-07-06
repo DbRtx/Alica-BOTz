@@ -255,18 +255,6 @@ let thumbnail = {
     "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
   }
 }
-//Thumbnail 
-const thumbnail2 = (jpeg) => { 
-  mentionedJid: [user],
-  "externalAdReply": { 
-    "title": `${global.footer}`,
-    "body": `runtime bot ${runtime(process.uptime())}`,
-    "mediaType": 3,
-    "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
-    "sourceUrl": "https://dlvash.github.io",
-    "thumbnail": fs.readFileSync(jpeg)
-  }
-}
 
 //replay
 const replay = (anu) => {
@@ -3847,35 +3835,34 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃ ⌘ SILAHKAN PILIH ⌘*
 *╚═══━━━━━━━━━━━━━━━━⊏⊐*
 `
-              let btn = [{
-                                urlButton: {
-                                    displayText: 'GC BOT',
-                                    url: 'https://chat.whatsapp.com/By8xoYnP4UBHaa5bqST4FD'
-
-                                }
-                            }, {
-                                urlButton: {
-                                    displayText: 'PC Owner',
-                                    url: 'https://wa.me/message/7TJJ7FANW43XO1'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'MENU',
-                                    id: 'list'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'ALL MENU',
-                                    id: 'semua'
-                                }  
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Script',
-                                    id: 'sc'
-                                }
-                            }]
-              
-              hisoka.send5ButImg(m.chat, anu, hisoka.user.name, thumb, btn)
+              let btn = [{ 
+                index: 1,
+                urlButton: {
+                  displayText: 'GC BOT',
+                  url: 'https://dlvash.github.io' 
+      }
+              }] 
+              hisoka.sendMessage(m.chat, {
+                contextInfo: {
+                  mentionedJid: [user],
+                  "externalAdReply": { 
+                    "title": `${global.footer}`,
+                    "body": `runtime bot ${runtime(process.uptime())}`,
+                    "mediaType": 3,
+                    "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+                    "sourceUrl": "https://dlvash.github.io",
+                    "thumbnail": thumb
+                  }},
+                document: global.thumb,
+                mimetype: 'application/pdf',
+                fileLength : 99999999999999999999999,
+                pageCount: 1000, 
+                fileName : global.footer, 
+                caption: anu,
+                footer: global.footer,
+                buttons: btn,
+                headerType: "DOCUMENT"
+              },{ quoted: m })
 
             }
             break
