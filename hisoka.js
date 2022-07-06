@@ -954,7 +954,7 @@ switch(command) {
       fs.unlinkSync(media)
       if (err) return setReply(err)
       let buffer = fs.readFileSync(ran)
-      await hisoka.sendMessage(m.chay, {
+      await hisoka.sendMessage(m.chat, {
         caption: "Nih", 
         image: buffer
       })
