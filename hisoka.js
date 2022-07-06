@@ -992,14 +992,14 @@ Use .enable for enable settings
         if (set.args[1]) return replay(`*${text}* udh on kak`)
         global.db.data.settings[botNumber].args[1] = true
         replay(`*${text}* is on`)
-        break
+  
       } else if (args[0] === "disable") {
         if (!args[1]) return replay("ap yg mau di disable ?")        
         if (!args[1].includes(i)) return replay("Not found")
         if (!set.args[1]) return replay(`*${text}* udh off kak`)
         global.db.data.settings[botNumber].args[1] = false
         replay(`*${text}* is off`)
-        break
+    
       }
     }
   }
