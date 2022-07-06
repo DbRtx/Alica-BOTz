@@ -986,18 +986,20 @@ Use .enable for enable settings
     ]
     let set = global.db.data.settings[botNumber]
     for (let i of setingan) {
-      if (command === "enable") {
-        if (!text) return replay("ap yg mau di enable ?")
-        if (!text.includes(i)) return replay("Not found")
-        if (set.text) return replay(`*${text}* udh on kak`)
-        set.text = true
+      if (args[0] === "enable") {
+        if (args[1]) return replay("ap yg mau di enable ?")
+        if (args[1].includes(i)) return replay("Not found")
+        if (set.args[1]) return replay(`*${text}* udh on kak`)
+        global.db.data.settings[botNumber].args[1] = true
         replay(`*${text}* is on`)
-      } else if (command === "disable") {
-        if (!text) return replay("ap yg mau di disable ?")        
-        if (!text.includes(i)) return replay("Not found")
-        if (!set.text) return replay(`*${text}* udh off kak`)
-        set.text = false
+        break
+      } else if (args[0] === "disable") {
+        if (!args[1]) return replay("ap yg mau di disable ?")        
+        if (!args[1].includes(i)) return replay("Not found")
+        if (!set.args[1]) return replay(`*${text}* udh off kak`)
+        global.db.data.settings[botNumber].args[1] = false
         replay(`*${text}* is off`)
+        break
       }
     }
   }
