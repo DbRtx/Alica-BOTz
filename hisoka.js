@@ -3845,12 +3845,17 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 buttonText: {
                   displayText: 'ALL MENU'
                 }, type: 1
+              },{
+                buttonId: `owner`,
+                buttonText: {
+                  displayText: 'OWNER'
+                }, type: 1
               }] 
               hisoka.sendMessage(m.chat, {
                 contextInfo: {
                   mentionedJid: [user],
                   "externalAdReply": { 
-                    "title": `${global.footer}`,
+                    "title": `${ucapanWaktu}`,
                     "body": `runtime bot ${runtime(process.uptime())}`,
                     "mediaType": 2,
                     "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
@@ -3859,7 +3864,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                   }},
                 document: global.thumb,
                 mimetype: 'application/pdf',
-                fileLength : 99999999999999999999999,
+                fileLength : 999999999999999999999,
                 pageCount: 1000, 
                 fileName : global.footer, 
                 caption: anu,
