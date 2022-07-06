@@ -978,6 +978,7 @@ Use .enable for enable settings
   }
   case 'enable': case 'disable': {
     let setingan = ["autobio", "automake", "autostiker", "autoreact", "nsfw"]
+    let set = global.db.data.settings[botNumber]
     for (let i of setingan) {
       if (command === "enable") {
         if (!text) return replay("ap yg mau di enable ?")
