@@ -256,7 +256,7 @@ let thumbnail = {
   }
 }
 //Thumbnail 
-let thumbnail2 = (jpeg) => { 
+const thumbnail2 = (jpeg) => { 
   mentionedJid: [user],
   "externalAdReply": { 
     "title": `${global.footer}`,
