@@ -247,13 +247,14 @@ const replay = (anu) => {
     text: anu, 
     contextInfo: thumbnail 
   }, { quoted: m })
-} 
+}
+try {
 const sendButDoc = async(id, text1, footer, jpeg, but = [], options = {}) => { 
   hisoka.sendMessage(id, {
     contextInfo: { 
       mentionedJid: [user],
       "externalAdReply": { 
-        "title": `${global.footer}`,
+        "title": `Hai ${pushname}`,
         "body": `runtime bot ${runtime(process.uptime())}`,
         "mediaType": 2,
         "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
@@ -271,6 +272,9 @@ const sendButDoc = async(id, text1, footer, jpeg, but = [], options = {}) => {
     buttons: but,
     headerType: "DOCUMENT"
   }, options )
+}
+} catch (err) {
+  replay(`*[error]*\n\n${err}`)
 }
 //Db
 let uXp = global.db.data.users[user].exp
