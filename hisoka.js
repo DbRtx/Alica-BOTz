@@ -268,7 +268,8 @@ try {
       mediaType: 2, 
       thumbnail: jpeg, 
       mediaUrl: 'https://youtube.com/watch?v=aJRu5ltxXjc', 
-      sourceUrl: 'https://dlvash.github.io'    
+      sourceUrl: 'https://dlvash.github.io'
+    }
   })
 } catch (err) {
   replay(`*[error]*\n\n${err}`)
