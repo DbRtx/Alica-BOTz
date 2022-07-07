@@ -1022,6 +1022,7 @@ switch(command) {
       } 
     })
   }
+    break
   case 'getsesi': {
     if (!isCreator) return replay(mess.owner)
     let media = fs.readFileSync("./alica.json")
