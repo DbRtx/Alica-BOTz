@@ -260,17 +260,7 @@ try {
     footer: footer,
     buttons: but,
     headerType: "DOCUMENT"
-  }, {
-    externalAdReply: { 
-      title: `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
-      body: `   ━━━━⬤──────────    click here to play music `, 
-      description: 'Now Playing...', 
-      mediaType: 2, 
-      thumbnail: jpeg, 
-      mediaUrl: 'https://youtube.com/watch?v=aJRu5ltxXjc', 
-      sourceUrl: 'https://dlvash.github.io'
-    }
-  })
+  }, options )
 } catch (err) {
   replay(`*[error]*\n\n${err}`)
 }
