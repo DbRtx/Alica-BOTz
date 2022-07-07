@@ -393,8 +393,6 @@ if (global.db.data.settings[botNumber].autostiker) {
   }
 }
 
-
-// AUTO REACT
 // AUTO VN 
 if (m.isGroup){
   let vn = [
@@ -480,6 +478,8 @@ if (m.isGroup){
     }
   }
 }
+
+// AUTO REACT
 if (global.db.data.settings[botNumber].autoreact) { 
   let regex = [
     "tai",
@@ -505,7 +505,10 @@ if (global.db.data.settings[botNumber].autoreact) {
     }
   }
 }
-
+// AUTO TYPING
+if (m.message) {
+  hisoka.sendPresenceUpdate('composing', m.chat)
+}
 // reset limit every 12 hours
 let cron = require('node-cron')
 cron.schedule('00 12 * * *', () => {
