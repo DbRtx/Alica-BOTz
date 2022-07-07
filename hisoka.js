@@ -1004,8 +1004,24 @@ switch(command) {
       footer: hisoka.user.name
     }, { quoted: m })
   }
-    break
-            
+    break 
+  case 'tum': { 
+    let media = await getBuffer ('https://i.ytimg.com/vi/Q-ORH9MbVto/mqdefault.jpg') 
+    hisoka.sendMessage(m.chat, { 
+      text: '12345', 
+      contextInfo: { 
+        externalAdReply: {  
+          title: `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+          body: `   ━━━━⬤──────────    click here to play music `, 
+          description: 'Now Playing...', 
+          mediaType: 2, 
+          thumbnail: media, 
+          mediaUrl: 'https://youtube.com/watch?v=aJRu5ltxXjc', 
+          sourceUrl: 'https://dlvash.github.io'
+        } 
+      } 
+    })
+  }
   case 'getsesi': {
     if (!isCreator) return replay(mess.owner)
     let media = fs.readFileSync("./alica.json")
