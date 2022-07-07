@@ -257,9 +257,9 @@ try {
         "title": `Hai ${pushname}`,
         "body": `runtime bot ${runtime(process.uptime())}`,
         "mediaType": 2,
+        "thumbnail": jpeg,
         "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
         "sourceUrl": "https://dlvash.github.io",
-        "thumbnail": jpeg
       }
     },
     document: global.thumb,
