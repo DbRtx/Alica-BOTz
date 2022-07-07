@@ -251,17 +251,6 @@ const replay = (anu) => {
 const sendButDoc = async(id, text1, footer, jpeg, but = [], options = {}) => {
 try {
   hisoka.sendMessage(id, {
-    contextInfo: { 
-      mentionedJid: [user],
-      "externalAdReply": { 
-        "title": `Hai ${pushname}`,
-        "body": `runtime bot ${runtime(process.uptime())}`,
-        "mediaType": 2,
-        "thumbnail": jpeg,
-        "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
-        "sourceUrl": "https://dlvash.github.io",
-      }
-    },
     document: global.thumb,
     mimetype: 'application/pdf',
     fileLength : 999999999999999999999,
@@ -271,7 +260,16 @@ try {
     footer: footer,
     buttons: but,
     headerType: "DOCUMENT"
-  }, options )
+  }, {
+    externalAdReply: { 
+      title: `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+      body: `   ━━━━⬤──────────    click here to play music `, 
+      description: 'Now Playing...', 
+      mediaType: 2, 
+      thumbnail: jpeg, 
+      mediaUrl: 'https://youtube.com/watch?v=aJRu5ltxXjc', 
+      sourceUrl: 'https://dlvash.github.io'    
+  })
 } catch (err) {
   replay(`*[error]*\n\n${err}`)
 }
