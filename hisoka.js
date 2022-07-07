@@ -471,7 +471,7 @@ if (m.isGroup){
   ] 
   for (let v of vn) {
     if (budy.toLowerCase().includes(v)){
-      let med = `https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${m.message}.mp3`
+      let med = `https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${budy}.mp3`
       hisoka.sendMessage(m.chat, {
         audio: { url: med },
         mimetype: 'audio/mp4',
