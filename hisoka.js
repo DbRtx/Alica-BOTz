@@ -506,7 +506,7 @@ if (global.db.data.settings[botNumber].autoreact) {
   }
 }
 // AUTO TYPING
-if (isCmd) {
+if (isCmd && command) {
   hisoka.sendPresenceUpdate('composing', m.chat)
 }
 // reset limit every 12 hours
