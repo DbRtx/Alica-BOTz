@@ -4534,7 +4534,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *⌘╚━━━━━━━━━━━━━⊏⊐*
 
               `
-              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
+              await sendButDoc(m.chat, anu, global.footer, fs.readFileSync('./src/jpg/grup.jpg'), btn, { quoted: m })
             }
             break 
             case 'downmenu': {
