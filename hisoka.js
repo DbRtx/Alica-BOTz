@@ -3086,7 +3086,7 @@ break
 		    db.data.users[m.sender].limit -= 1
                 } else if (type.toLowerCase() == 'ig') {
                     if (!id) throw `No Query username, Example : ${prefix + command} ig cak_haho`
-                    let { result: anu } = await fetchJson(api('zenz', '/stalker/ig', { username: id }, 'apikey'))
+                    let anu = await fetchJson(api('zenz', '/stalker/ig', { username: id }, 'apikey'))
                     if (anu.status == false) return m.reply(anu.result.message)
                     hisoka.sendMedia(m.chat, anu.result.profile, '', `⭔ Full Name : ${anu.result.full_name}\n⭔ User Name : ${anu.result.user_name}\n⭔ Followers : ${anu.result.followers}\n⭔ Following : ${anu.result.following}\n⭔ Bio : ${anu.result.bio}\n⭔ Post : ${anu.result.post}`, m)
 		    db.data.users[m.sender].limit -= 1
