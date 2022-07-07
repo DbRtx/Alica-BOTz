@@ -476,7 +476,7 @@ if (m.isGroup){
         audio: { url: med },
         mimetype: 'audio/mp4',
         ptt: true
-      })
+      },{ quoted: m.})
     }
   }
 }
