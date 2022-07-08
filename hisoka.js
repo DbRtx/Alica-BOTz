@@ -2096,7 +2096,7 @@ break
                   if (m.mtype === "imageMessage"){
                     await sleep(1500)
                     try { 
-                      let thumb = await hisoka.downloadAndSaveMediaMessage(m, "thumb")
+                      let thumb = await m.download()
                       sendButDoc(yoi, text, 'BOT BOARDCAST', thumb, btn)
                       replay("Done")
                     } catch (err) {
