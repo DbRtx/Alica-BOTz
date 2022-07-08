@@ -4178,7 +4178,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             case 'semua': case '*': case 'all': {
               let timestamp = speed()
               let latensi = speed() - timestamp
-              thumb = fs.readFileSync('./src/jpg/all.jpg')  
+              thumb = fs.readFileSync('./all.jpg')  
                 //-----------JAM-------------
               const hour_now = moment.tz('Asia/Jakarta').format('HH')
               var ucapanWaktu = 'Good morning 🌄'
