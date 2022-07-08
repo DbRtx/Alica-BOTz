@@ -4178,7 +4178,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             case 'semua': case '*': case 'all': {
               let timestamp = speed()
               let latensi = speed() - timestamp
-              let thumb = fs.readFileSync('./src/jpg/all.jpg') 
+              let thumb = await fs.readFileSync('./src/jpg/all.jpg') 
                 //-----------JAM-------------
               const hour_now = moment.tz('Asia/Jakarta').format('HH')
               var ucapanWaktu = 'Good morning 🌄'
@@ -4528,7 +4528,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     "mediaType": 2,
                     "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
                     "sourceUrl": "https://dlvash.github.io",
-                    "thumbnail": fs.readFileSync(`./src/jpg/all.jpg`)
+                    "thumbnail": thumb
                   } 
                 }
               }, { quoted: m })
