@@ -4510,8 +4510,28 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃╚━━━━━━━━━━━━━⊏⊐*
 *┃*
 *╚═══━━━━━━━━━━━━━⊏⊐*`
-              await sendButDoc(m.chat, anu, global.footer, thumb, btn, { quoted: m })
-            }
+              await hisoka.sendMessage(id, {
+                document: global.thumb,
+                mimetype: 'application/pdf',
+                fileLength : 999999999999999999999,
+                pageCount: 1000, 
+                fileName : footer, 
+                caption: text1,
+                footer: footer,
+                buttons: but,
+                headerType: "DOCUMENT"
+                contextInfo: {
+                  mentionedJid: [user],
+                  "externalAdReply": { 
+                    "title": `${global.footer}`,
+                    "body": `runtime bot ${runtime(process.uptime())}`,
+                    "mediaType": 3,
+                    "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+                    "sourceUrl": "https://dlvash.github.io",
+                    "thumbnail": fs.readFileSync(`./src/jpg/all.jpg`)
+                  } 
+                }, { quoted: m })
+              }
             break
             case 'grupmenu': {
               thumb = fs.readFileSync('./src/jpg/grup.jpg')
