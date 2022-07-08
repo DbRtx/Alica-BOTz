@@ -4510,15 +4510,15 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 *┃╚━━━━━━━━━━━━━⊏⊐*
 *┃*
 *╚═══━━━━━━━━━━━━━⊏⊐*`
-              await hisoka.sendMessage(id, {
+              await hisoka.sendMessage(m.chat, {
                 document: global.thumb,
                 mimetype: 'application/pdf',
                 fileLength : 999999999999999999999,
                 pageCount: 1000, 
                 fileName : footer, 
-                caption: text1,
-                footer: footer,
-                buttons: but,
+                caption: anu,
+                footer: global.footer,
+                buttons: btn,
                 headerType: "DOCUMENT",
                 contextInfo: {
                   mentionedJid: [user],
