@@ -248,16 +248,27 @@ const replay = (anu) => {
     contextInfo: thumbnail 
   }, { quoted: m })
 } 
-const sendButDoc = async(id, text1, footer, jpeg, but = [], options = {}) => {
+const sendButDoc = async(id, text1, filename, jpeg, but = [], options = {}) => {
 try {
   hisoka.sendMessage(id, {
+    contextInfo: {
+      mentionedJid: [user], 
+      "externalAdReply": { 
+        "title": `${global.footer}`,
+        "body": `runtime bot ${runtime(process.uptime())}`,
+        "mediaType": 3,
+        "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+        "sourceUrl": "https://dlvash.github.io",
+        "thumbnail": jpeg
+      }
+    } 
     document: global.thumb,
     mimetype: 'application/pdf',
     fileLength : 999999999999999999999,
     pageCount: 1000, 
-    fileName : footer, 
+    fileName : filename, 
     caption: text1,
-    footer: footer,
+    footer: global.footer,
     buttons: but,
     headerType: "DOCUMENT"
   }, options )
@@ -2080,18 +2091,32 @@ break
                 if (!isCreator) return replay(mess.owner)
                 if (!text) throw `Text mana?\n\nExample : ${prefix + command} fatih-san`
                 let anu = await store.chats.all().map(v => v.id)
-                m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
+                replay(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
 		for (let yoi of anu) {
-                  await sleep(1500)
-                  let bc = {
-                    text: `*⌘ BOT BC ⌘* \n\n${text}`,
-                    contextInfo: thumbnail,
-                    footer: global.footer,
-                    headerType: 1
+                  if (m.mtype === "imageMessage"){
+                    await sleep(1500)
+                    try { 
+                      let thumb = await hisoka.downloadAndSaveMediaMessagge(m, "thumb")
+                      sendButDoc(yoi, text, 'BOT BOARDCAST', thumb, btn)
+                      replay("Done")
+                    } catch (err) {
+                      replay(`Gagal mengirim pesan!\n\n${err}`)
+                    } 
+                  } else {
+                    try {
+                      let bc = {
+                      text: `*⌘ BOT BC ⌘* \n\n${text}`,
+                      contextInfo: thumbnail,
+                      footer: global.footer,
+                      headerType: 1
+                      }
+                      hisoka.sendMessage(yoi, bc)
+                      replay('Done')
+                    } catch (err) {
+                      replay(`Gagal mengirim pesan!\n\n${err}`)
+                    }
                   }
-                  hisoka.sendMessage(yoi, bc)
-		}
-              replay('Sukses Broadcast')
+                }              
             }
             break
             case 'infochat': {
