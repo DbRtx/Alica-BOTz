@@ -261,8 +261,9 @@ try {
         "sourceUrl": "https://dlvash.github.io",
         "thumbnail": jpeg
       }
-    } 
-    document: global.thumb,
+    }
+  }
+    document: global.thumb,,
     mimetype: 'application/pdf',
     fileLength : 999999999999999999999,
     pageCount: 1000, 
