@@ -4532,6 +4532,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                   } 
                 }, { quoted: m })
               }
+            }
             break
             case 'grupmenu': {
               thumb = fs.readFileSync('./src/jpg/grup.jpg')
