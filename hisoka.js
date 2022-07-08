@@ -4530,8 +4530,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     "sourceUrl": "https://dlvash.github.io",
                     "thumbnail": fs.readFileSync(`./src/jpg/all.jpg`)
                   } 
-                }, { quoted: m })
-              }
+                }
+              }, { quoted: m })
             }
             break
             case 'grupmenu': {
