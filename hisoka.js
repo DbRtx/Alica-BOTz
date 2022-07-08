@@ -4519,7 +4519,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 caption: text1,
                 footer: footer,
                 buttons: but,
-                headerType: "DOCUMENT"
+                headerType: "DOCUMENT",
                 contextInfo: {
                   mentionedJid: [user],
                   "externalAdReply": { 
