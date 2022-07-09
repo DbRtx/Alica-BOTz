@@ -3988,7 +3988,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     "body": `runtime bot ${runtime(process.uptime())}`,
                     "mediaType": 2,
                     "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
-                    "sourceUrl": "https://dlvash.github.io",
+                    "sourceUrl": "https://dbrtx.github.io/",
                     "thumbnail": thumb
                   }},
                 document: global.thumb,
@@ -4552,7 +4552,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     "body": `runtime bot ${runtime(process.uptime())}`,
                     "mediaType": 2,
                     "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
-                    "sourceUrl": "https://dlvash.github.io",
+                    "sourceUrl": "https://dbrtx.github.io/",
                     "thumbnail": thumb
                   } 
                 }
