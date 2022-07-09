@@ -2536,7 +2536,7 @@ let aklo = [
 ]
 hisoka.sendMessage(m.chat, {
   text: `*YOUTUBE DOWNLOADER*\n${toks}`,
-  contextInfo: options2,
+  contextInfo: thumbnail,
   buttons: aklo,
   footer: global.footer,
 })
