@@ -1234,26 +1234,20 @@ Use autobio on/of
     } catch {
       var pp = "https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png" 
     } 
-      anu = `*╔*
-*┃           ABOUT*
-*╚╦━━━━━━━━━━━━╝*
-*╔╣* 
-*┃┃* ⭔ Username : ${username}
-*┃┃* ⭔ Number   : ${user.split("@")[0]}
-*┃┃* ⭔ Link     : https://wa.me/${user.split`@`[0]}
-*┃┃* 
-*┃┃* ⭔ Exp      : ${uXp} 
-*┃┃* ⭔ Level    : ${uLevel} ${progres} 
-*┃┃* ⭔ Premium  : ${uPrem}
-*┃┃* ⭔ Limit    : ${uLimit}
-*┃┃*
-*┃╚═══━━━━━━━━━━━━━⊏⊐*
-*╚━━━━━━━━━━━━━━━━⊏⊐*`
+      anu = ` Username : ${username}
+Number   : ${user.split("@")[0]}
+Link     : https://wa.me/${user.split`@`[0]}
+
+Exp      : ${uXp} 
+Level    : ${uLevel} ${progres} 
+Premium  : ${uPrem}
+Limit    : ${uLimit}
+`
       hisoka.sendMessage(m.chat, { 
         image: { url: pp }, 
-        caption: `${anu}`,
+        caption: `*User Details`,
         contextInfo: thumbnail,
-        footer: global.footer
+        footer: anu
       }, { quoted : m })
   }
     break
