@@ -2517,25 +2517,31 @@ var toks =`
 🎬 Video : ${FileSize(format.contentLength)}`
 
 let aklo = [
-{"buttonId": `${prefix}playmp3 ${res.url} `,"buttonText": {"displayText": `ᴀᴜᴅɪᴏ`},"type": "RESPONSE"},
-{"buttonId": `${prefix}playmp4 ${res.url}`,"buttonText": {"displayText": `ᴠɪᴅɪᴏ`},"type": "RESPONSE"}
+{"buttonId": `${prefix}playmp3 ${res.url} `,"buttonText": {"displayText": `ᴀᴜᴅɪᴏ`},"type": 1},
+{"buttonId": `${prefix}playmp4 ${res.url}`,"buttonText": {"displayText": `ᴠɪᴅɪᴏ`},"type": 1}
 ]
-hisoka.sendMessage(m.chat, {
-  text: `*YOUTUBE DOWNLOADER*\n${toks}`,
-  contextInfo: { 
-"externalAdReply": {
-"title": `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
-"body": `   ━━━━⬤──────────    click here to play music `,
-"description": 'Now Playing...',
-"mediaType": 2,
-"thumbnail": inithumb,
-"mediaUrl": res.url,
-"sourceUrl": res.url
-}
-},
-  buttons: aklo,
-  footer: global.footer,
-})
+hisoka.sendMessage(m.chat, 
+  contextInfo: {
+      mentionedJid: [user], 
+      "externalAdReply": { 
+        "title": `${global.footer}`,
+        "body": `runtime bot ${runtime(process.uptime())}`,
+        "mediaType": 2,
+        "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+        "sourceUrl": "https://dbrtx.github.io/",
+        "thumbnail": jpeg
+      }
+    },
+    document: global.thumb,
+    mimetype: 'application/pdf',
+    fileLength : 999999999999999999999,
+    pageCount: 1000, 
+    fileName : `YT`, 
+    caption: `YT DOWNLOADER\n${toks}`,
+    footer: global.footer,
+    buttons: aklo,
+    headerType: "DOCUMENT"
+  })
 }
 break
 
