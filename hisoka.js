@@ -2507,21 +2507,7 @@ var thumbnya =`https://i.ytimg.com/vi/${res.videoId}/sqdefault.jpg`
 }
 
 let inithumb = await getBuffer(thumbnya)
-let options2 =
-{ 
-"externalAdReply": {
-"title": `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
-"body": `   ━━━━⬤──────────    click here to play music `,
-"description": 'Now Playing...',
-"mediaType": 2,
-"thumbnail": inithumb,
-"mediaUrl": res.url,
-"sourceUrl": res.url
-}
-}
 
-
-   
 var toks =`
 📂 Judul : ${res.title}
 🌐 Ditonton : ${res.views} Kali 
@@ -2536,7 +2522,17 @@ let aklo = [
 ]
 hisoka.sendMessage(m.chat, {
   text: `*YOUTUBE DOWNLOADER*\n${toks}`,
-  contextInfo: thumbnail,
+  contextInfo: { 
+"externalAdReply": {
+"title": `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+"body": `   ━━━━⬤──────────    click here to play music `,
+"description": 'Now Playing...',
+"mediaType": 2,
+"thumbnail": inithumb,
+"mediaUrl": res.url,
+"sourceUrl": res.url
+}
+},
   buttons: aklo,
   footer: global.footer,
 })
