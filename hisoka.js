@@ -359,8 +359,7 @@ if (global.db.data.settings[botNumber].autostiker) {
 }
 
 // AUTO VN 
-if (m.isGroup){
-  let vn = [
+let vn = [
 'anjay',
 'ara-ara',
 'ara-ara-cowok',
@@ -442,7 +441,6 @@ if (m.isGroup){
       },{ quoted: m})
     }
   }
-}
 
 // AUTO REACT
 if (global.db.data.settings[botNumber].autoreact) { 
