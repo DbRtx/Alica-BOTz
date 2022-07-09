@@ -2523,13 +2523,14 @@ let aklo = [
 hisoka.sendMessage(m.chat, { 
   contextInfo: {
       mentionedJid: [user], 
-      "externalAdReply": { 
-        "title": `${global.footer}`,
-        "body": `runtime bot ${runtime(process.uptime())}`,
-        "mediaType": 2,
-        "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
-        "sourceUrl": "https://dbrtx.github.io/",
-        "thumbnail": inithumb
+      externalAdReply: { 
+        title: `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`,
+        body: `━━━━⬤──────────    click here to play music`,
+        description: 'Now Playing...',
+        mediaType: 2,
+        mediaUrl: res.url,
+        sourceUrl: res.url,
+        thumbnail: inithumb
       }
     },
     document: global.thumb,
