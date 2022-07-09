@@ -37,6 +37,7 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
 //const stik = JSON.parse(fs.readFileSync('./src/stik.json'))
+//
 
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
@@ -54,19 +55,6 @@ let stik = db.data.others.stik = []
 // readmore
 //var groups = fazd.chats.array.filter(v => v.jid.endsWith('g.us'))
 //var private = fazd.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
-//global.btn
-let btn = [{
-  buttonId: `sc`, 
-  buttonText: {
-    displayText: 'SC'
-  }, type: 1
-},{
-  buttonId: `owner`,
-  buttonText: {
-    displayText: 'OWNER'
-  }, type: 1
-}]
-
 
 //Date
 var tw = new Date();
@@ -112,45 +100,7 @@ module.exports = hisoka = async (hisoka, m, chatUpdate, store) => {
     }
     let user = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? hisoka.user.jid : m.sender
      
-    
-
-
-//DOWNLOAD MP4
-const downloadMp4 = async (Link ) => {
-try{
-await ytdl.getInfo(Link);
-let mp4File = getRandom('.mp4') 
-console.log("Download video with ytdl-core")
-let nana = ytdl(Link)
-.pipe(fs.createWriteStream(mp4File))
-.on("finish", async () => {    
-await hisoka.sendMessage(m.chat, { video: fs.readFileSync(mp4File), caption: "Nih!",gifPlayback: false},{quoted: m})
-fs.unlinkSync(`./${mp4File}`)
-})     
-} catch(err) {
-replay(`${err}`)
-}
-}
-
-
-//DOWNLOAD MP3
-const downloadMp3 = async (Link ) => {
-try{
-await ytdl.getInfo(Link);
-let mp3File = getRandom('.mp3') 
-console.log("Download audio with ytdl-core")
-ytdl(Link, {filter: 'audioonly'})
-.pipe(fs.createWriteStream(mp3File))
-.on("finish", async () => {  
-await hisoka.sendMessage(m.chat, {audio:  fs.readFileSync(mp3File), mimetype: 'audio/mp4' },{ quoted: m })
-fs.unlinkSync(mp3File)
-})       
-} catch (err){
-console.log(err)
-}
-}
-
-// Group
+    // Group
 const groupMetadata = m.isGroup ? await hisoka.groupMetadata(m.chat).catch(e => {}) : ''
 const groupName = m.isGroup ? groupMetadata.subject : ''
 const participants = m.isGroup ? await groupMetadata.participants : ''
@@ -228,6 +178,20 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
   console.error(err)
 }
 
+//global.btn
+let btn = [{
+  buttonId: `sc`, 
+  buttonText: {
+    displayText: 'SC'
+  }, type: 1
+},{
+  buttonId: `owner`,
+  buttonText: {
+    displayText: 'OWNER'
+  }, type: 1
+}]
+
+
 //Thumbnail
 let thumbnail = {
   mentionedJid: [user],
@@ -276,6 +240,7 @@ try {
   replay(`*[error]*\n\n${err}`)
 }
 }
+
 //Db
 let uXp = global.db.data.users[user].exp
 let uLevel = global.db.data.users[user].level 
@@ -468,7 +433,7 @@ if (m.isGroup){
 'yoyowaimo' 
   ] 
   for (let v of vn) {
-    if (m.mtype === "conversation" && budy === v) {
+    if (m.mtype === "conversation" && budy.toLowerCase().includes(i)) {
       let med = `https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${budy}.mp3`
       hisoka.sendMessage(m.chat, {
         audio: { url: med },
@@ -587,6 +552,41 @@ if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in globa
     type: 'append'
   }
   hisoka.ev.emit('messages.upsert', msg)
+}
+
+//DOWNLOAD MP4
+const downloadMp4 = async (Link ) => {
+try{
+await ytdl.getInfo(Link);
+let mp4File = getRandom('.mp4') 
+console.log("Download video with ytdl-core")
+let nana = ytdl(Link)
+.pipe(fs.createWriteStream(mp4File))
+.on("finish", async () => {    
+await hisoka.sendMessage(m.chat, { video: fs.readFileSync(mp4File), caption: "Nih!",gifPlayback: false},{quoted: m})
+fs.unlinkSync(`./${mp4File}`)
+})     
+} catch(err) {
+replay(`${err}`)
+}
+}
+
+
+//DOWNLOAD MP3
+const downloadMp3 = async (Link ) => {
+try{
+await ytdl.getInfo(Link);
+let mp3File = getRandom('.mp3') 
+console.log("Download audio with ytdl-core")
+ytdl(Link, {filter: 'audioonly'})
+.pipe(fs.createWriteStream(mp3File))
+.on("finish", async () => {  
+await hisoka.sendMessage(m.chat, {audio:  fs.readFileSync(mp3File), mimetype: 'audio/mp4' },{ quoted: m })
+fs.unlinkSync(mp3File)
+})       
+} catch (err){
+console.log(err)
+}
 }
 
 
