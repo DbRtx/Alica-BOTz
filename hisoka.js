@@ -2529,7 +2529,7 @@ hisoka.sendMessage(m.chat, {
         "mediaType": 2,
         "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
         "sourceUrl": "https://dbrtx.github.io/",
-        "thumbnail": jpeg
+        "thumbnail": inithumb
       }
     },
     document: global.thumb,
