@@ -1233,7 +1233,11 @@ Use autobio on/of
       var pp = await hisoka.profilePictureUrl(user, "image")
     } catch {
       var pp = "https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png" 
-    } 
+    }
+    let btn = [{
+      buttonId: `y`,
+      buttonText: { displayText: `\n ${pushname}`}
+    }]
       anu = ` Username : ${username}
 Number   : ${user.split("@")[0]}
 Link     : https://wa.me/${user.split`@`[0]}
@@ -1247,6 +1251,7 @@ Limit    : ${uLimit}
         image: { url: pp }, 
         caption: `*User Details`,
         contextInfo: thumbnail,
+        buttons: btn,
         footer: anu
       }, { quoted : m })
   }
