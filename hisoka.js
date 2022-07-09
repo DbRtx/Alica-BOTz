@@ -2089,7 +2089,7 @@ break
             break
             case 'bc': case 'broadcast': case 'bcall': {
                 if (!isCreator) return replay(mess.owner)
-                if (!text) throw `Text mana?\n\nExample : ${prefix + command} fatih-san`
+                if (!text) return replay`Text mana?\n\nExample : ${prefix + command} fatih-san`
                 let anu = await store.chats.all().map(v => v.id)
                 replay(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 1.5} detik`)
 		for (let yoi of anu) {
@@ -2481,35 +2481,69 @@ break
         })
         }
         break
-	    case 'play': case 'ytplay': {
-                if (!text) throw `Example : ${prefix + command} story wa anime`
-                let yts = require("yt-search")
-                let search = await yts(text)
-                let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
-                let buttons = [
-                    {buttonId: `ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
-                    {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1}
-                ]
-                let buttonMessage = {
-                    image: { url: anu.thumbnail },
-                    caption: `
-⭔ Title : ${anu.title}
-⭔ Ext : Search
-⭔ ID : ${anu.videoId}
-⭔ Duration : ${anu.timestamp}
-⭔ Viewers : ${anu.views}
-⭔ Upload At : ${anu.ago}
-⭔ Author : ${anu.author.name}
-⭔ Channel : ${anu.author.url}
-⭔ Description : ${anu.description}
-⭔ Url : ${anu.url}`,
-                    footer: hisoka.user.name,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
-            }
-            break
+	    
+case 'play':{
+if(!q) return replay("Teksnya mana om")
+replay(mess.wait)
+let rus = await yts(q)
+if(rus.all.length == "0") return replay("Video tidak bisa di download")
+let data = await rus.all.filter(v => v.type == 'video')
+
+try{
+var res = data[0]
+var info = await ytdl.getInfo(res.url);
+} catch{
+var res = data[1]
+var info = await ytdl.getInfo(res.url);
+}
+
+let audio = ytdl.filterFormats(info.formats, 'audioonly');
+let format = ytdl.chooseFormat(info.formats, { quality: '18' });
+
+try{
+var thumbnya =`https://i.ytimg.com/vi/${res.videoId}/mqdefault.jpg`
+} catch(err) {
+var thumbnya =`https://i.ytimg.com/vi/${res.videoId}/sqdefault.jpg`
+}
+
+let inithumb = await getBuffer(thumbnya)
+let options2 =
+{ 
+externalAdReply: {
+title: `⇆ㅤ ||◁ㅤ❚❚ㅤ▷||ㅤ ↻`, 
+body: `   ━━━━⬤──────────    click here to play music `,
+description: 'Now Playing...',
+mediaType: 2,
+thumbnail: inithumb,
+mediaUrl: res.url,
+sourceUrl: res.url
+}
+}
+
+
+   
+var toks =`
+📂 Judul : ${res.title}
+🌐 Ditonton : ${res.views} Kali 
+⏳ Durasi : ${res.timestamp}
+👤 Channel : ${res.author.name}
+🎧 Audio : ${FileSize(audio[0].contentLength)} 
+🎬 Video : ${FileSize(format.contentLength)}`
+
+let aklo = [
+{"buttonId": `${prefix}playmp3 ${res.url} `,"buttonText": {"displayText": `ᴀᴜᴅɪᴏ`},"type": "RESPONSE"},
+{"buttonId": `${prefix}playmp4 ${res.url}`,"buttonText": {"displayText": `ᴠɪᴅɪᴏ`},"type": "RESPONSE"}
+]
+hisoka.sendMessage(m.chat, {
+  text: `*YOUTUBE DOWNLOADER*\n${toks}`,
+  contextInfo: options2,
+  buttons: aklo,
+  footer: global.footer,
+})
+}
+break
+
+
 	    case 'ytmp3': case 'ytaudio': {
               try {
                 if (!text) return replay`Example : ytmp3 link`
