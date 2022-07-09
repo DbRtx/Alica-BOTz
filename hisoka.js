@@ -1238,7 +1238,7 @@ Use autobio on/of
       buttonId: `y`,
       buttonText: { displayText: `\n ${pushname}`}
     }]
-      anu = ` Username : ${username}
+      anu = `Username : ${username}
 Number   : ${user.split("@")[0]}
 Link     : https://wa.me/${user.split`@`[0]}
 
@@ -1249,7 +1249,7 @@ Limit    : ${uLimit}
 `
       hisoka.sendMessage(m.chat, { 
         image: { url: pp }, 
-        caption: `*User Details`,
+        caption: `*User Details*`,
         contextInfo: thumbnail,
         buttons: btn,
         footer: anu
