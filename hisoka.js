@@ -433,7 +433,7 @@ if (m.isGroup){
 'yoyowaimo' 
   ] 
   for (let v of vn) {
-    if (m.mtype === "conversation" && budy.toLowerCase().includes(i)) {
+    if (m.mtype === "conversation" && budy.toLowerCase().includes(v)) {
       let med = `https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${budy}.mp3`
       hisoka.sendMessage(m.chat, {
         audio: { url: med },
