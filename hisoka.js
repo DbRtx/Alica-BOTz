@@ -236,7 +236,7 @@ let thumbnail = {
     "body": `runtime bot ${runtime(process.uptime())}`,
     "mediaType": 3,
     "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
-    "sourceUrl": "https://dlvash.github.io",
+    "sourceUrl": "https://dbrtx.github.io/",
     "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
   }
 }
@@ -258,7 +258,7 @@ try {
         "body": `runtime bot ${runtime(process.uptime())}`,
         "mediaType": 2,
         "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
-        "sourceUrl": "https://dlvash.github.io",
+        "sourceUrl": "https://dbrtx.github.io/",
         "thumbnail": jpeg
       }
     },
