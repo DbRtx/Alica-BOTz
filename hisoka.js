@@ -3263,7 +3263,7 @@ break
        replay(mess.wait)
        let anu = await fetchJson(api('zekais', '/igdl2', { url: ling }, 'apikey'))
        let text = `*Download from*: ${ling}`
-       for (let media of anu.result ) { 
+       for (let media of anu.result[0] ) { 
          let msg = await hisoka.sendMessage(m.chat, {
          video: { url: media.url },
          caption: text,
@@ -3275,7 +3275,7 @@ break
        },{ quoted: msg })
        }  
      } catch (err) {
-       replay(`[*Error*]\n\n${err}`)
+       replay(`[ *Error* ]\n\n${err}`)
      }
 }
             break
