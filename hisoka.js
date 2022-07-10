@@ -3263,7 +3263,7 @@ break
        replay(mess.wait)
        let anu = await fetchJson(api('neoxr', '/api/ig', { url: ling }, 'apikey'))
        let text = `*Download from*: ${ling}`
-       anu.data.map(async v => {
+       anu.data.map(v => {
          let msg = await hisoka.sendMessage(m.chat, {
          video: { url: v.url },
          caption: text,
