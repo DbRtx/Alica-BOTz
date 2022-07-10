@@ -88,6 +88,12 @@ async function startHisoka() {
         url: 'https://wa.me/message/7TJJ7FANW43XO1'
       }
     }]
+    let btn = [{
+      buttonId: `unblock ${callerId}`,
+      buttonText: { displayText: `UNBLOCK`},
+      type: 1
+    }]
+    let nama = await hisoka.getName(callerId)
     let anu = `*⚠️Warning⚠️*  \n\n*Sistem otomatis block!*\n*Jangan menelpon bot!*\n*Silahkan Hubungi Owner Untuk Dibuka !*\n\n\n\nThanks`
     hisoka.sendMessage(callerId, { 
       text: anu,
@@ -104,6 +110,10 @@ async function startHisoka() {
     })
     await sleep(8000)
     await hisoka.updateBlockStatus(callerId, "block")
+    await hisoka.sendMessage(global.number, {
+      text: `*NOTIF*\n\n*${callerId} ${nama} telah menelpon bot*`,
+      buttons: btn
+    })
     }
     })
 
