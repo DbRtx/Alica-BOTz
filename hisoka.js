@@ -3261,9 +3261,9 @@ break
      try { 
        let ling = m.quoted ? m.quoted.text ? m.quoted.text : q ? q: m.text : q ? q : m.text
        replay(mess.wait)
-       let anu = await fetchJson(`https://api.zeeoneofc.xyz/api/downloader/instagram-video?url=${ling}&apikey=JNsnEz34`)
+       let anu = await fetchJson(api('neoxr', '/api/ig', { url: ling }, 'apikey'))
        let text = `*Download from*: ${ling}`
-       for (let media of anu.result.medias ) { 
+       for (let media of anu.data ) { 
          let msg = await hisoka.sendMessage(m.chat, {
          video: { url: media.url },
          caption: text,
@@ -3275,7 +3275,7 @@ break
        },{ quoted: msg })
        }  
      } catch (err) {
-       replay(`[ *Error* ]\n\n${err}`)
+       replay("server error!")
      }
 }
             break
