@@ -2186,8 +2186,8 @@ break
             case 'wm': {
               if (!m.quoted) return replay(`Reply stiker`)
               if (!text) return replay(`Example: ${prefix + command} NamePack | NameAuthor`)
-              let pack = text.split`|`[0] ? text.split`|`[0] : global.packname
-              let author = text.split`|`[1] ? text.split`|`[1] : global.author 
+              let pack = text.split`|`[0] ? text.split`|`[0] : ''
+              let author = text.split`|`[1] ? text.split`|`[1] : '' 
               try {
                 let media = await quoted.download()
                 let encmedia = await hisoka.sendImageAsSticker(m.chat, media, m, { 
@@ -2202,6 +2202,8 @@ break
             break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
               try { 
+                let author = text ? text.split("|")[1] : global.author
+                let pack = text ? text.split("|")[0] : global.packname
                 if (/image/.test(mime)) {
                   let media = await quoted.download()
                   let encmedia = await hisoka.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
@@ -2209,7 +2211,7 @@ break
                 } else if (/video/.test(mime)) {
                   if ((quoted.msg || quoted).seconds > 11) return replay('Maksimal 10 detik!')
                   let media = await quoted.download()
-                  let encmedia = await hisoka.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                  let encmedia = await hisoka.sendVideoAsSticker(m.chat, media, m, { packname: pack, author: author })
                   await fs.unlinkSync(encmedia)
                 } else {
                   replay(`Kirim/reply gambar/video dengan caption ${prefix + command }`)
