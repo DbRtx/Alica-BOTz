@@ -3261,9 +3261,9 @@ break
      try { 
        let ling = m.quoted ? m.quoted.text ? m.quoted.text : q ? q: m.text : q ? q : m.text
        replay(mess.wait)
-       let anu = await fetchJson(api('zekais', '/igdl2', { url: ling }, 'apikey'))
+       let anu = await fetchJson(`https://api.zeeoneofc.xyz/api/downloader/instagram-video?url=${ling}&apikey=JNsnEz34`)
        let text = `*Download from*: ${ling}`
-       for (let media of anu.result[0] ) { 
+       for (let media of anu.result.medias ) { 
          let msg = await hisoka.sendMessage(m.chat, {
          video: { url: media.url },
          caption: text,
