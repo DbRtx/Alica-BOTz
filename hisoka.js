@@ -2201,9 +2201,9 @@ break
             }
             break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
+              let author = text.split`|`[1] ? text.split`|`[1] : global.author
+              let pack = text.split`|`[0] ? text.split`|`[0] : global.packname
               try { 
-                let author = text.split`|`[1] ? text.split`|`[1] : global.author
-                let pack = text.split`|`[0] ? text.split`|`[0] : global.packname
                 if (/image/.test(mime)) {
                   let media = await quoted.download()
                   let encmedia = await hisoka.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
