@@ -2526,8 +2526,8 @@ var toks =`
 🎬 Video : ${FileSize(format.contentLength)}`
 
 let aklo = [
-{"buttonId": `${prefix}playmp3 ${res.url} `,"buttonText": {"displayText": `ᴀᴜᴅɪᴏ`},"type": 1},
-{"buttonId": `${prefix}playmp4 ${res.url}`,"buttonText": {"displayText": `ᴠɪᴅɪᴏ`},"type": 1}
+{"buttonId": `${prefix}ytmp3 ${res.url} `,"buttonText": {"displayText": `ᴀᴜᴅɪᴏ`},"type": 1},
+{"buttonId": `${prefix}ytmp4 ${res.url}`,"buttonText": {"displayText": `ᴠɪᴅɪᴏ`},"type": 1}
 ]
 hisoka.sendMessage(m.chat, { 
   contextInfo: {
