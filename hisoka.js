@@ -2551,7 +2551,7 @@ hisoka.sendMessage(m.chat, {
     footer: global.footer,
     buttons: aklo,
     headerType: "DOCUMENT"
-  })
+  },{ quoted: m })
 }
 break
 
