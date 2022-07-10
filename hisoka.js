@@ -185,7 +185,7 @@ let btn = [{
     displayText: 'SC'
   }, type: 1
 },{
-  buttonId: `owner`,
+  buttonId: `.owner ownerku`,
   buttonText: {
     displayText: 'OWNER'
   }, type: 1
@@ -359,8 +359,7 @@ if (global.db.data.settings[botNumber].autostiker) {
 }
 // AUTO RESP WITH STIK 
 let sg = [
-  'alica',
-  'alica jelek'
+  'alica'
 ]
 for (let s of sg){
   if (budy.toLowerCase().includes(s)){
