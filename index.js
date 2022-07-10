@@ -101,7 +101,7 @@ async function startHisoka() {
           "thumbnail": fs.readFileSync(`./src/jpg/alica.jpg`)
         }
       }
-    }, { quoted : m })
+    })
     await sleep(8000)
     await hisoka.updateBlockStatus(callerId, "block")
     }
