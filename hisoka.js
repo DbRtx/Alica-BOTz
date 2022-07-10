@@ -346,7 +346,7 @@ if (isImage && automake) {
     if (sticBuffer) await hisoka.sendMessage(m.chat, { sticker: sticBuffer }, { 
       quoted: m,
       mimetype: 'image/webp',
-      ephemeralExpiration: 20000 
+      ephemeralExpiration: 86400 
     }) 
   } 
 }
