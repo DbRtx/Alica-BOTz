@@ -119,6 +119,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
   let user = global.db.data.users[m.sender]
   if (typeof user !== 'object') global.db.data.users[m.sender] = {}   
   if (user) {
+    jid = m.sender
     if (!isNumber(user.afkTime)) user.afkTime = -1
     if (!('afkReason' in user)) user.afkReason = ''
     if (isPremium) user.limit = limitUser
@@ -128,6 +129,7 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
     level = 1
     rank = ''
   } else global.db.data.users[m.sender] = {
+    jid: m.sender,
     afkTime: -1,
     afkReason: '',
     limit: limitUser,
@@ -155,20 +157,22 @@ let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
   if (typeof setting !== 'object') global.db.data.settings[botNumber] = {} 
   if (setting) {
     if (!isNumber(setting.status)) setting.status = 0
-    if (!('autobio' in setting)) setting.autobio = false
+    if (!('autobio' in setting)) setting.autobio = true
     autoreact = false,
     autostiker = false,
     automake = false,
+    autovn = false,
     autosimi = false,
     nsfw = false,
     levelmsg = false,
     self = false
   } else global.db.data.settings[botNumber] = {
     status: 0,
-    autobio: false,
+    autobio: true,
     autoreact: false,
     automake: false,
     autostiker: false,
+    autovn: false,
     autosimi: false,
     nsfw: false,
     levelmsg: false,
@@ -187,7 +191,7 @@ let btn = [{
 },{
   buttonId: `.owner ownerku`,
   buttonText: {
-    displayText: 'OWNER'
+    displayText: 'OWNER\nownerku'
   }, type: 1
 }]
 
@@ -444,7 +448,7 @@ let vn = [
 'yoyowaimo' 
   ] 
   for (let v of vn) {
-    if (budy.toLowerCase().includes(v)) {
+    if (global.db.data.settings[botNumber].autovn && budy.toLowerCase().includes(v)) {
       let med = `https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${v}.mp3`
       hisoka.sendMessage(m.chat, {
         audio: { url: med },
