@@ -362,7 +362,7 @@ let sg = [
   'alica'
 ]
 for (let s of sg){
-  if (m.mtype === "conversation" && budy.toLowerCase().includes(s)){
+  if (budy.toLowerCase().includes(s)){
     let buffer = fs.readFileSync(`./src/stik/${s}.webp`)
     hisoka.sendMessage(m.chat, { 
       sticker: buffer 
@@ -444,7 +444,7 @@ let vn = [
 'yoyowaimo' 
   ] 
   for (let v of vn) {
-    if (m.mtype === "conversation" && budy.toLowerCase().includes(v)) {
+    if (budy.toLowerCase().includes(v)) {
       let med = `https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${v}.mp3`
       hisoka.sendMessage(m.chat, {
         audio: { url: med },
