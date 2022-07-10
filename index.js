@@ -89,7 +89,7 @@ async function startHisoka() {
       }
     }]
     let btn = [{
-      buttonId: `unblock ${callerId}`,
+      buttonId: `unblock ${callerId.split("@")[0]}`,
       buttonText: { displayText: `UNBLOCK`},
       type: 1
     }]
