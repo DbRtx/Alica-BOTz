@@ -357,7 +357,18 @@ if (global.db.data.settings[botNumber].autostiker) {
     }, { quoted: m }) 
   }
 }
-
+// AUTO RESP WITH STIK 
+let sg = [
+  "alica"
+]
+for (let s of sg){
+  if (m.mtype === "conversation" && budy.toLowerCase().includes(s)){
+    let buffer = fs.readFileSync(`./src/stik/${s}.webp`)
+    hisoka.sendMessage(m.chat, { 
+      sticker: buffer 
+    }, { quoted: m })
+  }
+}
 // AUTO VN 
 let vn = [
 'anjay',
