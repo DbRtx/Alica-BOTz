@@ -2604,7 +2604,7 @@ break
                 let anu = await yts(link)
                 if(anu.all.length == "0") return replay("Video tidak di temukan")
                 let info = await ytdl.getInfo(link);
-                let format = ytdl.chooseFormat(info.formats, { quality: '18' });
+                let format = ytdl.chooseFormat(info.formats, { quality: '36' });
                 if(Number(format.contentLength) > 60000000 ) return replay(`Maap size melebihi batas ${FileSize(format.contentLength)}`)
                 let teks =`
 ⭔ Title : ${anu.all[0].title}
