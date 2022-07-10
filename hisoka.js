@@ -3275,7 +3275,7 @@ break
        },{ quoted: msg })
        })   
      } catch (err) {
-       replay("server error!")
+       replay("server error!"+err)
      }
 }
             break
