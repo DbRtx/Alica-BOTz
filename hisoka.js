@@ -2201,8 +2201,8 @@ break
             }
             break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
-              let author = text.split`|`[1] ? text.split`|`[1] : global.author
               let pack = text.split`|`[0] ? text.split`|`[0] : global.packname
+              let author = text.split`|`[1] ? text.split`|`[1] : global.author 
               try { 
                 if (/image/.test(mime)) {
                   let media = await quoted.download()
@@ -2217,7 +2217,7 @@ break
                   replay(`Kirim/reply gambar/video dengan caption ${prefix + command }`)
                 }
               } catch (err) {
-                replay(`Kirim/reply gambar/video dengan caption ${prefix + command }`)
+                replay(`[*Error*]\n\n${err}`)
               }              
             }
             break
