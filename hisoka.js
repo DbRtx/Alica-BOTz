@@ -359,7 +359,8 @@ if (global.db.data.settings[botNumber].autostiker) {
 }
 // AUTO RESP WITH STIK 
 let sg = [
-  'alica'
+  'alica',
+  'alica jelek'
 ]
 for (let s of sg){
   if (budy.toLowerCase().includes(s)){
