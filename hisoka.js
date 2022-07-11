@@ -189,9 +189,9 @@ let btn = [{
     displayText: 'SC'
   }, type: 1
 },{
-  buttonId: `.owner ownerku`,
+  buttonId: `.owner`,
   buttonText: {
-    displayText: 'OWNER\nownerku'
+    displayText: 'OWNER'
   }, type: 1
 }]
 
@@ -449,7 +449,7 @@ let vn = [
   ] 
   for (let v of vn) {
     if (global.db.data.settings[botNumber].autovn && budy.toLowerCase().includes(v)) {
-      let med = `https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${v}.mp3`
+      let med = `https://raw.githubusercontent.com/saipulanuar/api-github/main/audio/${v}.mp3`
       hisoka.sendMessage(m.chat, {
         audio: { url: med },
         mimetype: 'audio/mp4',
@@ -457,7 +457,19 @@ let vn = [
       },{ quoted: m})
     }
   }
-
+// AUDIO 
+const audio = async(aud) => {
+  try {
+    let med = `https://raw.githubusercontent.com/saipulanuar/api-github/main/audio/${aud}.mp3`
+    hisoka.sendMessage(m.chat, {
+      audio: { url: med },
+      mimetype: 'audio/mp4',
+      ppt: true
+    })
+  } catch (err) {
+    replay('audio ny mungkin g da')
+  }
+}  
 // AUTO REACT
 if (global.db.data.settings[botNumber].autoreact) { 
   let regex = [
