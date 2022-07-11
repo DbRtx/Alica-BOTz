@@ -3839,7 +3839,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 }
               } else {
                 hisoka.sendContact(m.chat, global.owner, m)
-              }      
+              }
+              audio("ownerku")
             }
             break
             case 'dika': {
