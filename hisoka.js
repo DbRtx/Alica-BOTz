@@ -464,7 +464,7 @@ const audio = async(aud) => {
     hisoka.sendMessage(m.chat, {
       audio: { url: med },
       mimetype: 'audio/mp4',
-      ppt: true
+      ptt: true
     })
   } catch (err) {
     replay('audio ny mungkin g da')
