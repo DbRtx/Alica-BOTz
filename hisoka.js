@@ -459,8 +459,8 @@ let vn = [
   }
 // AUDIO 
 const audio = async(aud) => {
+  let med = `https://raw.githubusercontent.com/saipulanuar/api-github/main/audio/${aud}.mp3`
   try {
-    let med = `https://raw.githubusercontent.com/saipulanuar/api-github/main/audio/${aud}.mp3`
     hisoka.sendMessage(m.chat, {
       audio: { url: med },
       mimetype: 'audio/mp4',
