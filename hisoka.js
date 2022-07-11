@@ -465,7 +465,7 @@ const audio = async(aud) => {
       audio: { url: med },
       mimetype: 'audio/mp4',
       ptt: true
-    })
+    }, { quoted: m })
   } catch (err) {
     replay('audio ny mungkin g da')
   }
