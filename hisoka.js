@@ -471,29 +471,37 @@ const audio = async(aud) => {
   }
 }  
 // AUTO REACT
-if (global.db.data.settings[botNumber].autoreact) { 
-  let regex = [
-    "tai",
-    "kntll",
-    "kntlll",
-    "kntl",
-    "kontol",
-    "memek",
-    "mmk",
-    "bacot",
-    "bang",
-    "banh",
-    "coli",
-    "tes",
-    "hah",
-    "ha?",
-    "ha"
-  ]
-  for (let i of regex) {
+let kasar = [
+"tai",
+"kntll",
+"kntlll",
+"kntl",
+"kontol",
+"memek",
+"mmk",
+"bacot",
+"coli",
+"anjing",
+"ajg"
+"bngst",
+"bgst"
+]
+if (global.db.data.settings[botNumber].autoreact) {  
+  for (let i of kasar) {
     if (m.isGroup && budy.toLowerCase().includes(i)) {
       let emot = await pickRandom(["🗿", "👍", "🙄", "😝", "😏", "💩", "👻","🔥", "🤣","🤬", "😎", "😂", "😘", "😑", "😱", "❤️", "🔥", "😳","😍","🤩 ","🥳","🤔","🤗","🤤","👎","👊","🙈","🤡" ])
       hisoka.sendMessage(m.chat , { react: { text: emot, key: m.key }})
     }
+  }
+}
+// UST MODE 
+for (let i of kasar) {
+  if (budy.toLowerCase().includes(i)) {
+    replay(`gabole gitu kaka dosa lhoo
+
+ لَا يُحِبُّ اللّٰهُ الْجَهْرَ بِالسُّوْۤءِ مِنَ الْقَوْلِ اِلَّا مَنْ ظُلِمَ ۗ وَكَانَ اللّٰهُ سَمِيْعًا عَلِيْمًا
+
+Allah tidak menyukai perkataan buruk, (yang diucapkan) secara terus terang kecuali oleh orang yang dizalimi. Dan Allah Maha Mendengar, Maha Mengetahui. [Q.S An-Nisa': 148]`)
   }
 }
 // AUTO TYPING
