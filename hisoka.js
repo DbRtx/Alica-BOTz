@@ -1310,14 +1310,6 @@ Limit    : ${uLimit}
         contextInfo: thumbnail,
         buttons: tombol 
       },{ quoted: m })
-    } else { 
-      let media = fs.readFileSync('./src/salam.mp3') 
-      hisoka.sendMessage(m.chat, {
-        audio: media,
-        mimetype:'audio/mp4',
-        ptt:true 
-      }, {quoted:m})
-  
     }
   }
     break 
