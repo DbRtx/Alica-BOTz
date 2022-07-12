@@ -496,7 +496,7 @@ if (global.db.data.settings[botNumber].autoreact) {
 }
 // UST MODE 
 for (let i of kasar) {
-  if (budy.toLowerCase().includes(i)) {
+  if (global.db.data.settings[botNumber].autosimi && budy.toLowerCase().includes(i)) {
     replay(`gabole gitu kaka dosa lhoo
 
  لَا يُحِبُّ اللّٰهُ الْجَهْرَ بِالسُّوْۤءِ مِنَ الْقَوْلِ اِلَّا مَنْ ظُلِمَ ۗ وَكَانَ اللّٰهُ سَمِيْعًا عَلِيْمًا
