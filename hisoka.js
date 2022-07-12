@@ -482,7 +482,7 @@ let kasar = [
 "bacot",
 "coli",
 "anjing",
-"ajg"
+"ajg",
 "bngst",
 "bgst"
 ]
