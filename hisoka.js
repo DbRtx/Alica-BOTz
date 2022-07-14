@@ -2578,7 +2578,7 @@ break
               try {
                 if (!text) return replay`Example : ytmp3 link`
                 replay(mess.wait)
-                let anu = await fetchJson(api('zekais', '/youtube', { url: text }, 'apikey')) 
+                let anu = await fetchJson(api('zekais', '/ytmp3', { url: text }, 'apikey')) 
                 if (anu.size >= 100000) return replay(`File Melebihi Batas ( ${anu.size} )`)
                 let msg = await hisoka.sendMessage(m.chat,{
                   image: { url: anu.thumb },
@@ -2587,7 +2587,7 @@ break
                 }, { quoted: m })
                 
                 hisoka.sendMessage(m.chat, { 
-                  audio: { url: anu.audio[0].url }, 
+                  audio: { url: anu.result }, 
                   mimetype: 'audio/mpeg', 
                   fileName: `${anu.title}.mp3`,
                   contextInfo: thumbnail,
