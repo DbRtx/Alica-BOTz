@@ -2580,12 +2580,7 @@ break
                 replay(mess.wait)
                 let anu = await fetchJson(api('zekais', '/ytmp3', { url: text }, 'apikey')) 
                 if (anu.size >= 100000) return replay(`File Melebihi Batas ( ${anu.size} )`)
-                let msg = await hisoka.sendMessage(m.chat,{
-                  image: { url: anu.thumb },
-                  caption: `⭔ Title : ${anu.title}\n⭔ File Size : ${anu.size}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔`,
-                  contextInfo: thumbnail
-                }, { quoted: m })
-                
+
                 hisoka.sendMessage(m.chat, { 
                   audio: { url: anu.result }, 
                   mimetype: 'audio/mpeg', 
