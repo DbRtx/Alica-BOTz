@@ -224,8 +224,8 @@ try {
       "externalAdReply": { 
         "title": `${global.footer}`,
         "body": `runtime bot ${runtime(process.uptime())}`,
-        "mediaType": 2,
-        "mediaUrl": "https://youtube.com/watch?v=aJRu5ltxXjc",
+        "renderLargerThumbnail": true,
+        "mediaType": 1,
         "sourceUrl": "https://dbrtx.github.io/",
         "thumbnail": jpeg
       }
