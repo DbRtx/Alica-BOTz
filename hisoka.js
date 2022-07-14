@@ -2213,7 +2213,7 @@ break
             }
             break
             case 'sticker': case 's': case 'stickergif': case 'sgif': {
-              let pack = text.split`|`[0] ? text.split`|`[0] : ""
+              let pack = text.split`|`[0] ? text.split`|`[0] : global.pack
               let author = text.split`|`[1] ? text.split`|`[1] : "" 
               try { 
                 if (/image/.test(mime)) {
