@@ -1752,7 +1752,7 @@ let teks = `══✪〘 *👥 Tag All* 〙✪══
             if (!m.isGroup) return replay(mess.group)
             if (!isBotAdmins) return replay(mess.botAdmin)
             if (!isAdmins) return replay(mess.admin)
-            hisoka.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
+            hisoka.sendMessage(m.chat, { text : m.quoted ? m.quoted.text : text ? text : '' , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
             case 'inpo': {
