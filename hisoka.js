@@ -2587,7 +2587,7 @@ break
                   fileName: `${anu.title}.mp3`,
                   contextInfo: thumbnail,
                   footer: "Download by zekais"
-                }, { quoted: msg })
+                }, { quoted: m })
               } catch (err) {
                 replay(`*[error system]*\n\n\n${err}`)
               }             
