@@ -2580,14 +2580,20 @@ break
                 replay(mess.wait)
                 let anu = await fetchJson(api('zekais', '/ytmp3', { url: text }, 'apikey')) 
                 if (anu.size >= 100000) return replay(`File Melebihi Batas ( ${anu.size} )`)
-                for (let i of anu.result ) {
+                for (let i of anu) {
+                let msg = await hisoka.sendMessage(m.chat,{
+                  image: { url: anu.thumb },
+                  caption: `⭔ Title : ${i.title}\n⭔ File Size : ${i.size}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔`,
+                  contextInfo: thumbnail
+                }, { quoted: m })
+                
                 hisoka.sendMessage(m.chat, { 
-                  audio: { url: i }, 
+                  audio: { url: i.result }, 
                   mimetype: 'audio/mpeg', 
-                  fileName: `${anu.title}.mp3`,
+                  fileName: `${i.title}.mp3`,
                   contextInfo: thumbnail,
                   footer: "Download by zekais"
-                }, { quoted: m })
+                }, { quoted: msg })
                 }
               } catch (err) {
                 replay(`*[error system]*\n\n\n${err}`)
