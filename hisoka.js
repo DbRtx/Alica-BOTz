@@ -1100,7 +1100,7 @@ switch(command) {
     let ran = getRandom('.jpg')
     exec(`ffmpeg -i ${media} -vf scale=${p}:${l} ${ran}`, async (err) => { 
       fs.unlinkSync(media)
-      if (err) return setReply(err)
+      if (err) return replay(err)
       let buffer = fs.readFileSync(ran)
       await hisoka.sendMessage(m.chat, {
         caption: `nih kak @${m.sender.split("@")[0]}`, 
