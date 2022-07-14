@@ -2229,7 +2229,7 @@ break
                   replay(`Kirim/reply gambar/video dengan caption ${prefix + command }`)
                 }
               } catch (err) {
-                replay(`[*Error*]\n\n${err}`)
+                replay(`[ *Error* ]\n\n${err}`)
               }              
             }
             break
