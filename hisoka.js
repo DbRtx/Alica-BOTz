@@ -449,7 +449,7 @@ let vn = [
   ] 
   for (let v of vn) {
     if (global.db.data.settings[botNumber].autovn && budy.toLowerCase().includes(v)) {
-      let med = `https://raw.githubusercontent.com/saipulanuar/api-github/main/audio/${v}.mp3`
+      let med = `https://raw.githubusercontent.com/DbRtx/Api-Github/main/audio/${v}.mp3`
       hisoka.sendMessage(m.chat, {
         audio: { url: med },
         mimetype: 'audio/mp4',
