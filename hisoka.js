@@ -3206,7 +3206,7 @@ break
                 try {
                   let link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : text : q ? q : text 
                   replay(mess.wait)
-                  let anu = await fetchJson(api('zekais', '/tiktok', { url: link }, 'apikey'))
+                  let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
                   let buttons = [
                     {buttonId: `tiktokwm ${text}`, buttonText: {displayText: '► With Watermark'}, type: 1},
                     {buttonId: `tiktokmp3 ${text}`, buttonText: {displayText: '♫ Audio'}, type: 1}
