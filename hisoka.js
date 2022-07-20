@@ -3203,8 +3203,7 @@ break
             break
 	      case 'tt': case 'tiktok': case 'tiktoknowm': {
                 if (!text && !m.quoted) throw 'masukan link / reply link'
-                try {
-                  let link = m.quoted ? m.quoted.text ? m.quoted.text : q ? q : text : q ? q : text 
+                try { 
                   replay(mess.wait)
                   let anu = await fetchJson(api('zekais', '/tiktok2', { url: link }, 'apikey'))
                   let buttons = [
@@ -3213,7 +3212,7 @@ break
                 ]
                   let buttonMessage = {
                     video: { url: anu.result.no_wm },
-                    caption: `*Download From* ${link}`,
+                    caption: `*Download From* ${text}`,
                     footer: 'by alica-BOTz',
                     buttons: buttons,
                     contextInfo: thumbnail,
