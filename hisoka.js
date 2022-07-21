@@ -569,8 +569,8 @@ if (db.data.users[m.sender].ban) {
 }
 
 //Owner only
-let o-only = true
-if (o-only) {
+let oonly = true
+if (oonly) {
   return
 }
 
