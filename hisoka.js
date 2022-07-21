@@ -568,12 +568,11 @@ if (db.data.users[m.sender].ban) {
   return
 }
 
-//Owner only
+// owner only
 let oonly = true
 if (oonly) {
   return
 }
-
 // Respon Cmd with media 
 if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.data.sticker)) {
   let hash = global.db.data.sticker[m.msg.fileSha256.toString('base64')]
@@ -2021,7 +2020,18 @@ break
         await hisoka.sendMessage(m.chat, {
           image: { url: "./lib/mute.jpg"},
           caption: " ",
-zsh:1: command not found: nn
+          footer: "Mute BOT",
+          buttons: buttons,
+          contextInfo: thumbnail
+        },{ quoted: m })
+      }
+    } else {
+      if (!isCreator) return replay(mess.owner)
+      if (!args[0]) return replay("On or Off ?")
+      if (!args[1]) return replay("Please input group JID !")
+      if (!args[1].includes("@g.us")) return replay("Invalid group JID") 
+      if (args[0] === "on") {
+        if (db.data.chats[args[1]].mute) return replay(`Sudah Aktif Sebelumnya`)
         db.data.chats[args[1]].mute = true
         hisoka.sendMessage(args[1], {
           text: `${hisoka.user.name} telah di mute di group ini !`,
