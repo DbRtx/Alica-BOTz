@@ -570,7 +570,7 @@ if (db.data.users[m.sender].ban) {
 
 // owner only
 let oonly = true
-if (oonly && !isCreator) {
+if (global.db.data.settings[botNumber].self && !isCreator) {
   return
 }
 // Respon Cmd with media 
